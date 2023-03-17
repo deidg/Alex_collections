@@ -9,7 +9,6 @@ import SnapKit
 
 class MainViewController: UIViewController {
 //    private let tableView = UITableView()
-//    private let mainLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +22,6 @@ class MainViewController: UIViewController {
         return mainTableView
     }()
 
-//    private let mainLabel: UILabel = {
-//        let mainLabel = UILabel()
-//        mainLabel.backgroundColor = .orange // Constants.Colors.backroundColor
-//        return mainLabel
-//    }()
     
     // MARK: UI setup
     private func setupItemsOnView() {
@@ -36,17 +30,7 @@ class MainViewController: UIViewController {
         mainTableView.snp.makeConstraints { make in
             make.edges.equalTo(view)
         }
-        
-//                view.addSubview(mainLabel)
-//        mainLabel.snp.makeConstraints { make in
-//                    make.edges.equalTo(view)
-//                }
-        
-//        mainView.addSubview(mainLabel)
-//        mainLabel.snp.makeConstraints { make in
-//            make.top.equalTo(mainView).inset(10)
-//            make.height.equalTo(100)
-//        }
+
     }
 }
 extension MainViewController {

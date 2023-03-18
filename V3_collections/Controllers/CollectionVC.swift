@@ -14,4 +14,12 @@ class CollectionVC: UIViewController {
         super.viewDidLoad()
         view?.backgroundColor = .systemPink
     }
+    
+    
+    
+    
 }
+
+
+
+

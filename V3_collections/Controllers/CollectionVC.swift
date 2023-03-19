@@ -14,6 +14,11 @@ class CollectionVC: UIViewController {
         super.viewDidLoad()
         setupNavBar()
         view.backgroundColor = .systemRed
+        
+//        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.register(cell.self, forCellReuseIdentifier: <#T##String#>)
+        
     }
     
     func setupNavBar() {
@@ -33,7 +38,7 @@ class CollectionVC: UIViewController {
         return tableView
     }()
     
-    
+    let idCell = "idCell"
     
     
 }
@@ -55,7 +60,7 @@ extension MainViewController: UITableViewDelegate{
     }
     
 //    func tableView(_ tableView: UITableView, cellForRowAt indexPath:  IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "String")
+//        let cell = tableView.dequeueReusableCell(withIdentifier: idCell, for: indexPath)
 //
 //    return cell
 //    }

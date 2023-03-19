@@ -11,32 +11,34 @@
 import UIKit
 import SnapKit
 
-class MainViewController: UIViewController {
-//    private let tableView = UITableView()
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var array = Array<String>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGreen
+        
+        array.append("Array")
+        array.append("Set")
+        array.append("Dictionary")
+        
         //        setupItemsOnView()
     }
-    
-    // MARK: Items
-//    private let mainTableView: UITableView = {
-//        let mainTableView = UITableView()
-//        mainTableView.backgroundColor = .red // Constants.Colors.backroundColor
-//        return mainTableView
-//    }()
 
+    func tableView(_ tableview: UITableView, _: numberOfRowsInSection, section: Int) -> Int {
+        return array.count
+    }
     
-    // MARK: UI setup
-//    private func setupItemsOnView() {
-//
-//        view.addSubview(mainTableView)
-//        mainTableView.snp.makeConstraints { make in
-//            make.edges.equalTo(view)
-//        }
-//
-//    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        if cell == nil {
+            cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+        }
+        return cell!
+    }
+    
+
 }
 //extension MainViewController {
 //    // MARK: extension MainVC - constants

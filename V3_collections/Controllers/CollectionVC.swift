@@ -12,14 +12,16 @@ class CollectionVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavBar()
         view?.backgroundColor = .systemPink
     }
     
+    func setupNavBar() {
+        navigationController?.navigationBar.topItem?.title = "Collections"
+        navigationController?.navigationBar.backgroundColor = .yellow
+        
+    }
     
-    
-    
+
 }
-
-
-
 

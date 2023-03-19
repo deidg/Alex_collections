@@ -17,14 +17,11 @@ func application(_ application: UIApplication,
     [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
     
-
 //
 //    window = UIWindow(frame: UIScreen.main.bounds)
 //    let navigationController = UINavigationController()
 //    window?.rootViewController = navigationController
 //    window?.makeKeyAndVisible()
-    
-    
         return true
     }
 

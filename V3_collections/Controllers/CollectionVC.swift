@@ -10,24 +10,32 @@ import UIKit
 
 class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var array = [String]() // Array<String>()
+    let array = ["Array", "Set", "Dictionary"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
-        view.backgroundColor = .systemRed
+        view.backgroundColor = .gray
         
-        array.append("Array")
-        array.append("Set")
-        array.append("Dictionary")
-        
+        setupViews()
+    }
+  
+    let cellId = "cellId"
+
+    var tableView = UITableView()
+
+    func setupViews() {
+        tableView.delegate = self
+        tableView.dataSource = self
+
+        tableView.register(Cell.self, forCellReuseIdentifier: cellId)
+        tableView.tableFooterView = UIView()
+
+        view = tableView
     }
     
-    func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
-    ) -> Int {
-    return array.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return array.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -36,7 +44,6 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         }
         cell?.textLabel?.text = array[indexPath.row]
-        
         return cell!
     }
     
@@ -50,45 +57,4 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         navigationController?.navigationBar.backgroundColor = .yellow
     }
     
-//    @objc func didTapButton() {
-//        navigationController?.pushViewController(ArrayVC(), animated: true)
-//    }
-    
-    
-    let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
-    }()
-    
-    let idCell = "idCell"
-    
-    
 }
-
-
-//class ArrayVC: UIViewController {
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        view.backgroundColor = .systemGreen
-//    }
-//}
-
-//extension MainViewController: UITableViewDelegate{
-//
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 3
-//    }
-    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath:  IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: idCell, for: indexPath)
-//
-//    return cell
-//    }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return CGFloat
-//    })
-//}

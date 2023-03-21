@@ -10,23 +10,28 @@ import UIKit
 
 class CollectionVC: UIViewController, UITableViewDelegate,  UITableViewDataSource {  //, UITableViewDelegate,  UITableViewDataSource
     let arrayVC = ["Array", "Set", "Dictionary"]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
         view.backgroundColor = .gray
         setupViews()
-        
-        let initialPage = 0
-        let page1 = ArrayNavigationController()
-        let page2 = SetNavigationController()
+  
+//        pages.append(page1)
+//        pages.append(page2)
         
 //        navigationController?.pushViewController(page1, animated: true)
-    }
-  
-    let cellId = "cellId"
+//                navigationController?.pushViewController(page2, animated: true)
 
+    }
+    let initialPage = 0
+    var page1 = ArrayNavigationController()
+    var page2 = SetNavigationController()
+    
+    let cellId = "cellId"
     var tableView = UITableView()
+    
 
     func setupViews() {
         tableView.delegate = self
@@ -51,14 +56,20 @@ class CollectionVC: UIViewController, UITableViewDelegate,  UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            navigationController?.pushViewController(page1, animated: true)
-        case 1:
-            navigationController?.pushViewController(page1, animated: true)
-        default:
-            print("hello")
+        if self.tableView == page1 {
+            print("page1 tapped")
+        } else {
+            print("page1 tapped")
         }
+        
+//        switch indexPath.row {
+//        case 0:
+//            navigationController?.pushViewController(page1, animated: true) // page1
+//        case 1:
+//            navigationController?.pushViewController(page2, animated: true)  // page2
+//        default:
+//            print("hello")
+//        }
     }
     
     
@@ -125,3 +136,4 @@ extension CollectionVC: UITableViewDelegate {
 //
 //
 //}
+*/

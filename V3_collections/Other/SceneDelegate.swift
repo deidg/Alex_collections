@@ -18,7 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let searchNC = UINavigationController(rootViewController: CollectionVC())
+//        var collectionVC = CollectionVC()
+        
+        var collectionVC = UINavigationController(rootViewController: CollectionVC())
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene

@@ -25,7 +25,7 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         pages.append(page1)
         pages.append(page2)
         
-        let pagesStrArray: [String] = pages.count
+        let pagesStrArray: [String] = pages
 
     }
   
@@ -51,12 +51,11 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         }
-//        let a: [String] = Array(command[1...command.count-1])
         cell?.textLabel?.text = pages[indexPath.row]
         return cell!
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(pages[indexPath.row], animated: true)   //.viewController, animated: true)
+        navigationController?.pushViewController(pages[indexPath.row], animated: true)   // .viewController, animated: true)
     }
     
     func setupNavBar() {
@@ -66,13 +65,3 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
 
 }
-
-
-
-
-//        let newViewController = NewViewController()
-//        self.navigationController?.pushViewController(page1, animated: true)
-        
-//        navigationController?.pushViewController(page1, animated: true)
-             
-//        navigationController?.setViewControllers([arrayVC[0]], animated: true) //setViewControllers([array[IndexPath]], direction: .forward, animated: true, completion: nil)

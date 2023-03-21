@@ -11,17 +11,27 @@ import UIKit
 class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let array = ["Array", "Set", "Dictionary"]
-    let arrayNavigationController = ArrayNavigationController()
+//      var pages = [UIViewController]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
         view.backgroundColor = .gray
-        
-//        если первый экран по жестам работает то вторые по кнопке - посмотреть как именно они работают. это как раз и есть навигайшн контролллер
-        
-        
         setupViews()
+        
+        let initialPage = 0
+        let page1 = ArrayNavigationController()
+
+//        pages.append(page1)
+        
+//        let newViewController = NewViewController()
+        self.navigationController?.pushViewController(page1, animated: true)
+        
+//        setViewControllers([array[IndexPath]], direction: .forward, animated: true, completion: nil)
+        
+//        func setViewControllers(_ viewControllers: [array[IndexPath]], animated: Bool
+//        )
+        
     }
   
     let cellId = "cellId"
@@ -62,11 +72,11 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
    
     
-    @objc func presentArrayNC() {
-          let viewController = ArrayNavigationController()
-        present(viewController, animated: true, completion: nil)
-        
-    }
+//    @objc func presentArrayNC() {
+//          let viewController = ArrayNavigationController()
+//        present(viewController, animated: true, completion: nil)
+//
+//    }
 }
 
 

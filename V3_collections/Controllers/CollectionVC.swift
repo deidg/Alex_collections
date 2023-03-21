@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CollectionVC: UIViewController {  //, UITableViewDelegate,  UITableViewDataSource
+class CollectionVC: UIViewController, UITableViewDelegate,  UITableViewDataSource {  //, UITableViewDelegate,  UITableViewDataSource
     let arrayVC = ["Array", "Set", "Dictionary"]
     
     override func viewDidLoad() {
@@ -37,6 +37,36 @@ class CollectionVC: UIViewController {  //, UITableViewDelegate,  UITableViewDat
 
         view = tableView
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayVC.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        if cell == nil {
+            cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+        }
+        cell?.textLabel?.text = arrayVC[indexPath.row]
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            navigationController?.pushViewController(page1, animated: true)
+        case 1:
+            navigationController?.pushViewController(page1, animated: true)
+        default:
+            print("hello")
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
 
     func setupNavBar() {
         navigationController?.navigationBar.topItem?.title = "Collections"
@@ -46,10 +76,13 @@ class CollectionVC: UIViewController {  //, UITableViewDelegate,  UITableViewDat
 
 }
 
+/*
 extension CollectionVC: UITableViewDelegate {
     
 //    @objc func collectionView ( _ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath
 //    ) {
+    
+    //===
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return arrayVC.count
         }
@@ -71,6 +104,7 @@ extension CollectionVC: UITableViewDelegate {
             default:
               print("hello")
             }
+        //===
         
 //        switch indexPath.section {
 //        case 0: return section0.tableViewDidSelectRowAt(tableView, didSelectRowAt: indexPath)

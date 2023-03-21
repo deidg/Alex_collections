@@ -11,30 +11,22 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-    //MainViewController
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-//        var collectionVC = CollectionVC()
-        
         var collectionVC = UINavigationController(rootViewController: CollectionVC())
         
-        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.windowScene = windowScene
-        window?.rootViewController = createCollectionNC()
-        window?.makeKeyAndVisible()
-    }
-    
-    func createCollectionNC() -> UINavigationController {
-        let collectionVC = CollectionVC()
-        collectionVC.title = "Collections"
-//        collectionVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        
-        return UINavigationController(rootViewController: collectionVC)
-        
+        func application(_ application: UIApplication, didFinishLaunchinWithOptions launchOptions:
+                         [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+            window = UIWindow(frame: UIScreen.main.bounds)
+            window?.makeKeyAndVisible()
+            window?.backgroundColor = .systemBackground
+            window?.rootViewController = CollectionVC()
+            return true
+        }    
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

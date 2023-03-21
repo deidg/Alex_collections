@@ -9,9 +9,7 @@ import Foundation
 import UIKit
 
 class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    let array = ["Array", "Set", "Dictionary"]
-//      var pages = [UIViewController]()
+    let arrayVC = ["Array", "Set", "Dictionary"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +20,12 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         let initialPage = 0
         let page1 = ArrayNavigationController()
 
-//        pages.append(page1)
-        
 //        let newViewController = NewViewController()
-        self.navigationController?.pushViewController(page1, animated: true)
+//        self.navigationController?.pushViewController(page1, animated: true)
         
-//        setViewControllers([array[IndexPath]], direction: .forward, animated: true, completion: nil)
-        
-//        func setViewControllers(_ viewControllers: [array[IndexPath]], animated: Bool
-//        )
-        
+//        navigationController?.pushViewController(page1, animated: true)
+             
+//        navigationController?.setViewControllers([arrayVC[0]], animated: true) //setViewControllers([array[IndexPath]], direction: .forward, animated: true, completion: nil)
     }
   
     let cellId = "cellId"
@@ -49,18 +43,16 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return array.count
+        return arrayVC.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         }
-        cell?.textLabel?.text = array[indexPath.row]
+        cell?.textLabel?.text = arrayVC[indexPath.row]
         return cell!
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -70,15 +62,5 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .yellow
     }
-   
-    
-//    @objc func presentArrayNC() {
-//          let viewController = ArrayNavigationController()
-//        present(viewController, animated: true, completion: nil)
-//
-//    }
+
 }
-
-
-
-

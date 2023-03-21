@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CollectionVC: UIViewController, UITableViewDataSource {  //, UITableViewDelegate
     let arrayVC = ["Array", "Set", "Dictionary"]
     
     override func viewDidLoad() {
@@ -19,13 +19,8 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         let initialPage = 0
         let page1 = ArrayNavigationController()
-
-//        let newViewController = NewViewController()
-//        self.navigationController?.pushViewController(page1, animated: true)
         
-//        navigationController?.pushViewController(page1, animated: true)
-             
-//        navigationController?.setViewControllers([arrayVC[0]], animated: true) //setViewControllers([array[IndexPath]], direction: .forward, animated: true, completion: nil)
+        navigationController?.pushViewController(page1, animated: true)
     }
   
     let cellId = "cellId"
@@ -54,7 +49,7 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         return cell!
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: arrayVC.indexPath, animated: true)
     }
     
     func setupNavBar() {
@@ -62,5 +57,18 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .yellow
     }
+
+}
+
+extension CollectionVC: UITableViewDelegate {
+    
+    @objc func collectionView ( _ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath
+    ) {
+        
+    }
+    
+    
+//    optional func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath
+    )
 
 }

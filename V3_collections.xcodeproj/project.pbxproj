@@ -19,6 +19,7 @@
 		FA89224329C433BA0012EA2C /* V3_collectionsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89224229C433BA0012EA2C /* V3_collectionsUITestsLaunchTests.swift */; };
 		FA8995A029C6EB9B00DD1313 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89959F29C6EB9B00DD1313 /* Cell.swift */; };
 		FA93481C29C5EF2400EA7AB2 /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93481B29C5EF2400EA7AB2 /* CollectionVC.swift */; };
+		FA9DD3D729C9D5AB00F0B2FD /* SetNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9DD3D629C9D5AB00F0B2FD /* SetNavigationController.swift */; };
 		FAA813DA29C75D31001C76B9 /* ArrayNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA813D929C75D31001C76B9 /* ArrayNavigationController.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		FA89224229C433BA0012EA2C /* V3_collectionsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3_collectionsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FA89959F29C6EB9B00DD1313 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		FA93481B29C5EF2400EA7AB2 /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
+		FA9DD3D629C9D5AB00F0B2FD /* SetNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNavigationController.swift; sourceTree = "<group>"; };
 		FAA813D929C75D31001C76B9 /* ArrayNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayNavigationController.swift; sourceTree = "<group>"; };
 		FF4245470163A86764AAA7AE /* Pods-V3_collectionsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-V3_collectionsTests.release.xcconfig"; path = "Target Support Files/Pods-V3_collectionsTests/Pods-V3_collectionsTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,6 +185,7 @@
 			children = (
 				FA93481B29C5EF2400EA7AB2 /* CollectionVC.swift */,
 				FAA813D929C75D31001C76B9 /* ArrayNavigationController.swift */,
+				FA9DD3D629C9D5AB00F0B2FD /* SetNavigationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				FA8995A029C6EB9B00DD1313 /* Cell.swift in Sources */,
 				FA93481C29C5EF2400EA7AB2 /* CollectionVC.swift in Sources */,
 				FA89222229C433B60012EA2C /* SceneDelegate.swift in Sources */,
+				FA9DD3D729C9D5AB00F0B2FD /* SetNavigationController.swift in Sources */,
 				FAA813DA29C75D31001C76B9 /* ArrayNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

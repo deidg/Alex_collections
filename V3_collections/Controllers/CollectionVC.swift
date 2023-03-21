@@ -11,11 +11,15 @@ import UIKit
 class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let array = ["Array", "Set", "Dictionary"]
+    let arrayNavigationController = ArrayNavigationController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
         view.backgroundColor = .gray
+        
+//        если первый экран по жестам работает то вторые по кнопке - посмотреть как именно они работают. это как раз и есть навигайшн контролллер
+        
         
         setupViews()
     }
@@ -56,5 +60,15 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .yellow
     }
+   
     
+    @objc func presentArrayNC() {
+          let viewController = ArrayNavigationController()
+        present(viewController, animated: true, completion: nil)
+        
+    }
 }
+
+
+
+

@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 
 class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    let arrayVC = ["Array", "Set", "Dictionary"]
+//    let arrayVC = ["Array", "Set"]//, "Dictionary"]
+    var pages = [UIViewController]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,14 +20,13 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         let initialPage = 0
         let page1 = ArrayNavigationController()
-        let page2 = SetNavigationContoller()
-
-//        let newViewController = NewViewController()
-//        self.navigationController?.pushViewController(page1, animated: true)
+        let page2 = SetNavigationController()
         
-//        navigationController?.pushViewController(page1, animated: true)
-             
-//        navigationController?.setViewControllers([arrayVC[0]], animated: true) //setViewControllers([array[IndexPath]], direction: .forward, animated: true, completion: nil)
+        pages.append(page1)
+        pages.append(page2)
+        
+        let pagesStrArray: [String] = pages.count
+
     }
   
     let cellId = "cellId"
@@ -44,28 +44,19 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayVC.count
+        return pages.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         }
-        cell?.textLabel?.text = arrayVC[indexPath.row]
+//        let a: [String] = Array(command[1...command.count-1])
+        cell?.textLabel?.text = pages[indexPath.row]
         return cell!
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-        
-        
-        if arrayVC.indexPath == 0 {
-                    navigationController?.pushViewController(page1, animated: true)
-                }
-                else if indexPath.row == 1 {
-                    navigationController?.pushViewController(page2, animated: true)
-                }
-        
-        
+        navigationController?.pushViewController(pages[indexPath.row], animated: true)   //.viewController, animated: true)
     }
     
     func setupNavBar() {
@@ -75,3 +66,13 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
 
 }
+
+
+
+
+//        let newViewController = NewViewController()
+//        self.navigationController?.pushViewController(page1, animated: true)
+        
+//        navigationController?.pushViewController(page1, animated: true)
+             
+//        navigationController?.setViewControllers([arrayVC[0]], animated: true) //setViewControllers([array[IndexPath]], direction: .forward, animated: true, completion: nil)

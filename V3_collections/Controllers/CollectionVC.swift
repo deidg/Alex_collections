@@ -8,34 +8,34 @@
 import Foundation
 import UIKit
 
-class CollectionVC: UIViewController, UITableViewDelegate,  UITableViewDataSource {  //, UITableViewDelegate,  UITableViewDataSource
+class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let arrayVC = ["Array", "Set", "Dictionary"]
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
         view.backgroundColor = .gray
         setupViews()
-  
-//        pages.append(page1)
-//        pages.append(page2)
+        
+        let initialPage = 0
+        let page1 = ArrayNavigationController()
+        let page2 = SetNavigationContoller()
+
+//        let newViewController = NewViewController()
+//        self.navigationController?.pushViewController(page1, animated: true)
         
 //        navigationController?.pushViewController(page1, animated: true)
-//                navigationController?.pushViewController(page2, animated: true)
-
+             
+//        navigationController?.setViewControllers([arrayVC[0]], animated: true) //setViewControllers([array[IndexPath]], direction: .forward, animated: true, completion: nil)
     }
-    let initialPage = 0
-    var page1 = ArrayNavigationController()
-    var page2 = SetNavigationController()
-    
+  
     let cellId = "cellId"
+
     var tableView = UITableView()
-    
 
     func setupViews() {
         tableView.delegate = self
-//        tableView.dataSource = self
+        tableView.dataSource = self
 
         tableView.register(Cell.self, forCellReuseIdentifier: cellId)
         tableView.tableFooterView = UIView()
@@ -54,31 +54,20 @@ class CollectionVC: UIViewController, UITableViewDelegate,  UITableViewDataSourc
         cell?.textLabel?.text = arrayVC[indexPath.row]
         return cell!
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.tableView == page1 {
-            print("page1 tapped")
-        } else {
-            print("page1 tapped")
-        }
+//        tableView.deselectRow(at: indexPath, animated: true)
         
-//        switch indexPath.row {
-//        case 0:
-//            navigationController?.pushViewController(page1, animated: true) // page1
-//        case 1:
-//            navigationController?.pushViewController(page2, animated: true)  // page2
-//        default:
-//            print("hello")
-//        }
+        
+        if arrayVC.indexPath == 0 {
+                    navigationController?.pushViewController(page1, animated: true)
+                }
+                else if indexPath.row == 1 {
+                    navigationController?.pushViewController(page2, animated: true)
+                }
+        
+        
     }
     
-    
-    
-    
-    
-    
-    
-
     func setupNavBar() {
         navigationController?.navigationBar.topItem?.title = "Collections"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -86,54 +75,3 @@ class CollectionVC: UIViewController, UITableViewDelegate,  UITableViewDataSourc
     }
 
 }
-
-/*
-extension CollectionVC: UITableViewDelegate {
-    
-//    @objc func collectionView ( _ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath
-//    ) {
-    
-    //===
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return arrayVC.count
-        }
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-            if cell == nil {
-                cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-            }
-            cell?.textLabel?.text = arrayVC[indexPath.row]
-            return cell!
-        }
-        
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-              case 0:
-            navigationController?.pushViewController(page1, animated: true)
-              case 1:
-            navigationController?.pushViewController(page1, animated: true)
-            default:
-              print("hello")
-            }
-        //===
-        
-//        switch indexPath.section {
-//        case 0: return section0.tableViewDidSelectRowAt(tableView, didSelectRowAt: indexPath)
-//        case 1: return section1.tableViewDidSelectRowAt(tableView, didSelectRowAt: indexPath)
-    }
-//        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//            tableView. // .deselectRow(at: arrayVC.indexPath, animated: true)
-//        }
-//    }
-    
-    
-//    optional func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath
-//    )
-
-}
-
-//extension CollectionVC: UITableViewDataSource {
-//
-//
-//}
-*/

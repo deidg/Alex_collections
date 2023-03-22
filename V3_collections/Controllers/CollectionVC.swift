@@ -9,8 +9,18 @@ import Foundation
 import UIKit
 
 class CollectionVC: UIViewController {
-    let arrayVC = ["Array", "Set", "Dictionary"]
-    //    var array2 = [UIViewController]()
+    //    let arrayVC: [UIViewController] = [arrayController, setController, dictionaryController]
+    //        var array2 = [UIViewController]()
+    
+    let arrayController = ArrayController()
+    let setController = SetController()
+    let dictionaryController = DictionaryController()
+    
+    let arrayVC: [UIViewController] = []()
+    arrayVC.append(arrayController)
+    arrayVC.append(setController)
+    arrayVC.append(dictionaryController)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,14 +30,11 @@ class CollectionVC: UIViewController {
         setupViews()
         
         //        let initialPage = 0
-        //        let arrayController = ArrayController()
-        //        let setController = SetController()
-        //        let dictionaryController = DictionaryController()
         
-        //                array2.append(arrayController)
-        //                array2.append(setController)
-        //                array2.append(dictionaryController)
-        
+        //
+        //                        array2.append(arrayController)
+        //                        array2.append(setController)
+        //                        array2.append(dictionaryController)
     }
     
     let cellId = "cellId"
@@ -85,22 +92,21 @@ extension CollectionVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigationController?.pushViewController(arrayVC[indexPath.row], animated: true)   // .viewController, animated: true)
         //    }
-        
     }
 }
-    extension CollectionVC: UITableViewDataSource {
-        
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return arrayVC.count
-        }
-        
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-            if cell == nil {
-                cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-            }
-            cell?.textLabel?.text = arrayVC[indexPath.row]
-            return cell!
-        }
+extension CollectionVC: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayVC.count
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        if cell == nil {
+            cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+        }
+        cell?.textLabel?.text = arrayVC[indexPath.row]
+        return cell!
+    }
+}
 

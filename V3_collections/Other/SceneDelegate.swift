@@ -19,14 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         var collectionVC = UINavigationController(rootViewController: CollectionVC())
         
-        func application(_ application: UIApplication, didFinishLaunchinWithOptions launchOptions:
-                         [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-            window = UIWindow(frame: UIScreen.main.bounds)
-            window?.makeKeyAndVisible()
-            window?.backgroundColor = .systemBackground
-            window?.rootViewController = CollectionVC()
-            return true
-        }    
+        window?.windowScene = windowScene
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        window?.backgroundColor = .systemBackground
+        window?.rootViewController = collectionVC
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

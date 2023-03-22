@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-//    let arrayVC = ["Array", "Set"]//, "Dictionary"]
-    var pages = [UIViewController]()
+    let arrayVC: UIViewController = ["Array", "Set", "Dictionary"]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,13 +19,11 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         setupViews()
         
         let initialPage = 0
-        let page1 = ArrayNavigationController()
-        let page2 = SetNavigationController()
+        let arrayController = ArrayController()
+        let setController = SetController()
+        let dictionaryController = DictionaryController()
         
-        pages.append(page1)
-        pages.append(page2)
-        
-        let pagesStrArray: [String] = pages
+//        let pagesStrArray: [String] = pages.indexPath
 
     }
   
@@ -51,11 +49,11 @@ class CollectionVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         }
-        cell?.textLabel?.text = pages[indexPath.row]
+        cell?.textLabel?.text = pagesStrArray[indexPath.row] //pages[indexPath.row]
         return cell!
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(pages[indexPath.row], animated: true)   // .viewController, animated: true)
+        navigationController?.pushViewController(arrayVC[indexPath.row], animated: true)   // .viewController, animated: true)
     }
     
     func setupNavBar() {

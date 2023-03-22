@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class SetNavigationController: UIViewController {
+class SetController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

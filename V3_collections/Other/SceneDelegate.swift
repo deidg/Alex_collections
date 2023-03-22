@@ -17,14 +17,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let searchNC = UINavigationController(rootViewController: CollectionVC())
+        let collectionVC = UINavigationController(rootViewController: CollectionVC())
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = CollectionVC()
+        window?.rootViewController = collectionVC
         window?.makeKeyAndVisible()
-        //        searchNC.title = "Collections"
-        //        searchNC.navigationBar.prefersLargeTitles = true
         
         
         

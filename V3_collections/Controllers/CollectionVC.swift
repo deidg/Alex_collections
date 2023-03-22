@@ -18,11 +18,12 @@ class CollectionVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        setup()
         setupNavBar()
-        view.backgroundColor = .gray
         setupViews()
     }
+    
+    
+    
     
     let cellId = "cellId"
     
@@ -32,6 +33,8 @@ class CollectionVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        view.backgroundColor = .red
+
         tableView.register(Cell.self, forCellReuseIdentifier: cellId)
         tableView.tableFooterView = UIView()
         
@@ -56,11 +59,11 @@ extension CollectionVC: UITableViewDelegate {
 
         switch indexPath.row {
         case 0:
-            present(arrayController, animated: true)
+            self.show(arrayController, sender: self)
         case 1:
-            present(setController, animated: true)
+            self.show(setController, sender: self)
         case 2:
-            present(dictionaryController, animated: true)
+            self.show(dictionaryController, sender: self)
         default:
             print("")
         }

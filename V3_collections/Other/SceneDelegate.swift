@@ -17,14 +17,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        var collectionVC = UINavigationController(rootViewController: CollectionVC())
+        let searchNC = UINavigationController(rootViewController: CollectionVC())
         
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = CollectionVC()
         window?.makeKeyAndVisible()
-        window?.backgroundColor = .systemBackground
-        window?.rootViewController = collectionVC
+        //        searchNC.title = "Collections"
+        //        searchNC.navigationBar.prefersLargeTitles = true
+        
+        
+        
+        //=====
+        //        guard let windowScene = (scene as? UIWindowScene) else { return }
+        //
+        //        var collectionVC = UINavigationController(rootViewController: CollectionVC())
+        //
+        //        window?.windowScene = windowScene
+        //        window = UIWindow(frame: UIScreen.main.bounds)
+        //        window?.backgroundColor = .systemBackground
+        //        window?.rootViewController = collectionVC
+        //        window?.makeKeyAndVisible()
     }
+    
+    
     
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

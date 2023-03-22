@@ -22,9 +22,6 @@ class CollectionVC: UIViewController {
         setupViews()
     }
     
-    
-    
-    
     let cellId = "cellId"
     
     let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)  // framed вместо grouped
@@ -69,6 +66,8 @@ extension CollectionVC: UITableViewDelegate {
         }
     }
 }
+
+//TODO:  убрать cell! стр 83
 extension CollectionVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

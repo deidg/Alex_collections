@@ -1,4 +1,3 @@
-
 //
 //  SceneDelegate.swift
 //  V3_collections
@@ -6,7 +5,7 @@
 //  Created by Alex on 17.03.2023.
 //
 
-import UIKit
+import UIKit 
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -23,23 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.rootViewController = collectionVC
         window?.makeKeyAndVisible()
-        
-        
-        
-        //=====
-        //        guard let windowScene = (scene as? UIWindowScene) else { return }
-        //
-        //        var collectionVC = UINavigationController(rootViewController: CollectionVC())
-        //
-        //        window?.windowScene = windowScene
-        //        window = UIWindow(frame: UIScreen.main.bounds)
-        //        window?.backgroundColor = .systemBackground
-        //        window?.rootViewController = collectionVC
-        //        window?.makeKeyAndVisible()
     }
-    
-    
-    
+  
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

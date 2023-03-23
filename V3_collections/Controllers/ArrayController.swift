@@ -9,9 +9,13 @@ import Foundation
 import UIKit
 import SnapKit
 
-class ArrayController: UIViewController, UITableViewDelegate {
+class ArrayController: UIViewController {
+    
+    let cellArrayContollerMain = CellArayContollerMain()
+//    cellArrcellArrayContollerMain
     
     let tableView = UITableView()
+    static let cellId = "cellId"
     tableView.backgroundColor = .blue
     
     
@@ -24,10 +28,11 @@ class ArrayController: UIViewController, UITableViewDelegate {
         setupNavBar()
         setupUI()
         
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
+  
     }
+    
+    self.tableView.delegate = self
+    self.tableView.dataSource = self
     
     //    private let onlyCharLabel: UILabel = {
     //        let onlyCharLabel = UILabel()
@@ -63,7 +68,9 @@ class ArrayController: UIViewController, UITableViewDelegate {
 }
 
 extension UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+    }
 }
 
 extension UITableViewDataSource {
@@ -72,8 +79,9 @@ extension UITableViewDataSource {
         return 1    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellcellArrayContollerMainId, for: indexPath)
         
-//        return cell
+                return cell
     }
     
 }

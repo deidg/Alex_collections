@@ -11,11 +11,16 @@ import SnapKit
 
 class ArrayController: UIViewController {
     
-    let cellArrayContollerMain = CellArayContollerMain()
+//    let cellArrayContollerMain = CellArayContollerMain()
  
-    let tableView = UITableView()
-    static let cellId = "cellId"
-    tableView.backgroundColor = .blue
+     let cellId = "cellId"
+ 
+    var tableView: UITableView = {
+        let tableView = UITableView()
+//        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +44,8 @@ class ArrayController: UIViewController {
     //    }()
     
     func setupUI() {
+        tableView.backgroundColor = .blue
+
         view.addSubview(tableView)
         view.snp.makeConstraints{ make in
             make.top.equalTo(view.safeAreaLayoutGuide)

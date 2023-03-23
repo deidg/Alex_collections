@@ -10,6 +10,7 @@ import UIKit
 
 class CollectionVC: UIViewController {
     
+//    let collectionVC = CollectionVC()
     let arrayController = ArrayController()
     let setController = SetController()
     let dictionaryController = DictionaryController()

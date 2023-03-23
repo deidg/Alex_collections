@@ -9,18 +9,22 @@ import Foundation
 import UIKit
 import SnapKit
 
-class ArrayController: UIViewController {
+class ArrayController: UIViewController, UITableViewDelegate, UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
     
-//    let cellArrayContollerMain = CellArayContollerMain()
- 
-     let cellId = "cellId"
- 
+    
+    let cellArrayContollerMain = CellArrayContollerMain()
+    
+    let cellId = "cellId"
+    
     var tableView: UITableView = {
         let tableView = UITableView()
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
+        //        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +32,14 @@ class ArrayController: UIViewController {
         setupNavBar()
         setupUI()
         
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(CellArrayContollerMain.self, forCellReuseIdentifier: cellId)Ω
+       
     }
     
-    
+    //    tableView.delegate = self
+    //    tableView.dataSource = self
     
     //    private let onlyCharLabel: UILabel = {
     //        let onlyCharLabel = UILabel()
@@ -45,7 +52,9 @@ class ArrayController: UIViewController {
     
     func setupUI() {
         tableView.backgroundColor = .blue
-
+     
+        
+     
         view.addSubview(tableView)
         view.snp.makeConstraints{ make in
             make.top.equalTo(view.safeAreaLayoutGuide)
@@ -53,6 +62,7 @@ class ArrayController: UIViewController {
             make.leading.equalToSuperview()
                make.trailing.equalToSuperview()
             
+            tableView.reloadData()
         }
     }
     
@@ -62,7 +72,7 @@ class ArrayController: UIViewController {
         navigationController?.navigationBar.backgroundColor = .yellow
     }
     
-
+    
 }
 
 extension UITableViewDelegate {
@@ -77,9 +87,9 @@ extension UITableViewDataSource {
         return 1    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellArrayContollerMain, for: indexPath) as! CellArrayContollerMain //  после as! можно отрубить
         
-                return cell
+        return cell
     }
     
 }

@@ -79,7 +79,7 @@ class ArrayController: UIViewController {
 
 extension ArrayController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
+        return 1
     }
 }
 
@@ -91,7 +91,7 @@ extension ArrayController: UITableViewDataSource {
         return 1    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellArrayContollerMain, for: indexPath) as! CellArrayContollerMain //  после as! можно отрубить
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! CellArrayContollerMain //  после as! можно отрубить
         
         return cell
     }

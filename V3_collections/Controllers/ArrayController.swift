@@ -9,21 +9,21 @@ import Foundation
 import UIKit
 import SnapKit
 
-class ArrayController: UIViewController, UITableViewDelegate, UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
-    }
-    
+class ArrayController: UIViewController {
     
     let cellArrayContollerMain = CellArrayContollerMain()
     
     let cellId = "cellId"
     
-    var tableView: UITableView = {
-        let tableView = UITableView()
-        //        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
-    }()
+//    var tableView: UITableView = {
+//        let tableView = UITableView()
+//        //        tableView.translatesAutoresizingMaskIntoConstraints = false
+//        return tableView
+//    }()
+    
+    let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
+    
+  
     
     
     override func viewDidLoad() {
@@ -32,11 +32,11 @@ class ArrayController: UIViewController, UITableViewDelegate, UITableViewDelegat
         setupNavBar()
         setupUI()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(CellArrayContollerMain.self, forCellReuseIdentifier: cellId)Ω
-       
+        
     }
+    
+    
+    
     
     //    tableView.delegate = self
     //    tableView.dataSource = self
@@ -52,9 +52,11 @@ class ArrayController: UIViewController, UITableViewDelegate, UITableViewDelegat
     
     func setupUI() {
         tableView.backgroundColor = .blue
-     
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        tableView.register(CellArrayContollerMain.self, forCellReuseIdentifier: cellId)
         
-     
+        
         view.addSubview(tableView)
         view.snp.makeConstraints{ make in
             make.top.equalTo(view.safeAreaLayoutGuide)
@@ -75,13 +77,15 @@ class ArrayController: UIViewController, UITableViewDelegate, UITableViewDelegat
     
 }
 
-extension UITableViewDelegate {
+extension ArrayController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
     }
 }
 
-extension UITableViewDataSource {
+
+
+extension ArrayController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1    }

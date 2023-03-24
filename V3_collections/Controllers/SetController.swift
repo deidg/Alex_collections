@@ -10,9 +10,15 @@ import UIKit
 
 class SetController: UIViewController {
     
+    let setControllerCell = SetControllerCell()
+    let tableViewArrayMain = UITableView()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view?.backgroundColor = .systemPink
+//        setupNavBar()
+//        setupUI()
     }
     
 }

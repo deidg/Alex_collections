@@ -18,11 +18,7 @@ class ArrayController: UIViewController {
         super.viewDidLoad()
         view?.backgroundColor = .green
         setupNavBar()
-        setupUI()
-        
-        
-
-        
+        setupUI()     
     }
     let cellIdArrayMain = "cellArrayContollerMain"
     
@@ -32,7 +28,7 @@ class ArrayController: UIViewController {
         tableViewArrayMain.backgroundColor = .blue
         
         tableViewArrayMain.register(CellArrayContollerMain.self, forCellReuseIdentifier: "cellArrayContollerMain")
-
+        
         tableViewArrayMain.tableFooterView = UIView()
         
         view.addSubview(tableViewArrayMain)
@@ -62,14 +58,19 @@ extension ArrayController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 1
     }
     
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "cellArrayContollerMain")
         cell?.textLabel?.text = "hello world"
-        
-        return cell!
+
+        return cell! //cellArrayContollerMain
+//    https://stackoverflow.com/questions/59019575/return-empty-cell-to-avoid-force-casting-tableview   vadyan 264k
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 30.0
     }
 }

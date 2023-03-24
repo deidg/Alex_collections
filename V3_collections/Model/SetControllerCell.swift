@@ -1,14 +1,13 @@
 //
-//  cellArayContollerMain.swift
+//  SetControllerCell.swift
 //  V3_collections
 //
-//  Created by Alex on 23.03.2023.
+//  Created by Alex on 24.03.2023.
 //
 
 import UIKit
 
-
-class CellArrayContollerMain: UITableViewCell {
+class SetControllerCell: UITableViewCell {
 
     private let titleLabel = UILabel()
     
@@ -30,7 +29,7 @@ class CellArrayContollerMain: UITableViewCell {
     }
 }
 
-extension CellArrayContollerMain {
+extension SetControllerCell {
 
 //    func setup() {
 //        titleLabel.translatesAutoresizingMaskIntoConstraints = false

@@ -18,7 +18,7 @@ class ArrayController: UIViewController {
         super.viewDidLoad()
         view?.backgroundColor = .green
         setupNavBar()
-        setupUI()     
+        setupUI()
     }
     let cellIdArrayMain = "cellArrayContollerMain"
     
@@ -35,8 +35,6 @@ class ArrayController: UIViewController {
         tableViewArrayMain.snp.makeConstraints{ make in
             make.edges.equalToSuperview()
         }
-        
-        
     }
     
     func setupNavBar() {

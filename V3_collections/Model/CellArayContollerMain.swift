@@ -21,7 +21,7 @@ class CellArrayContollerMain: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setup()
+//        setup()
         layout()
     }
 
@@ -32,13 +32,14 @@ class CellArrayContollerMain: UITableViewCell {
 
 extension CellArrayContollerMain {
 
-    func setup() {
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
+//    func setup() {
+//        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+//    }
+//
     func layout() {
         // don't disable translatesAutoresizingMaskIntoConstraints on the cell itself
-        contentView.addSubview(titleLabel) // important!
+//        contentView.addSubview(titleLabel) // important!
+        addSubview(titleLabel)
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),

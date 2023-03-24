@@ -19,15 +19,17 @@ class ArrayController: UIViewController {
         view?.backgroundColor = .green
         setupNavBar()
         setupUI()
+        
+        
     }
-    let cellIdArrayMain = "cellArrayContollerMain"
+//    let cellIdArrayMain = "cellArrayContollerMain"
     
     func setupUI() {
         self.tableViewArrayMain.delegate = self
         self.tableViewArrayMain.dataSource = self
         tableViewArrayMain.backgroundColor = .blue
         
-        tableViewArrayMain.register(CellArrayContollerMain.self, forCellReuseIdentifier: cellIdArrayMain)
+        tableViewArrayMain.register(CellArrayContollerMain.self, forCellReuseIdentifier: "cellArrayContollerMain")
         
         tableViewArrayMain.tableFooterView = UIView()
         
@@ -43,28 +45,25 @@ class ArrayController: UIViewController {
 }
 // MARK: extensions
 extension ArrayController: UITableViewDelegate {
-    
-    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //
-    //
-    //    }
-    
-    
     //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    //        return 1
+    //        return 100
     //    }
 }
 extension ArrayController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdArrayMain) //as! CellArrayContollerMain //  после as! можно отрубить
-//        cell?.textLabel?.text = String
+    
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cellArrayContollerMain")
+        cell?.textLabel?.text = "hello world"
         
-//    cell?.textLabel?.text = String(arrayVC[indexPath.row])
         return cell!
     }
 }

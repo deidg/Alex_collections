@@ -12,7 +12,8 @@ import SnapKit
 class ArrayController: UIViewController {
     
     let cellArrayContollerMain = CellArrayContollerMain()
-    let tableViewArrayMain = UITableView() //.init(frame: .zero, style: UITableView.Style.grouped)
+    let cellArrayContollerMain2 = CellArrayContollerMain()
+    let tableViewArrayMain = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,8 @@ class ArrayController: UIViewController {
         setupUI()
     }
     let cellIdArrayMain = "cellArrayContollerMain"
+    let cellIdArrayMain2 = "cellArrayContollerMain2"
+    
     
     func setupUI() {
         self.tableViewArrayMain.delegate = self
@@ -51,8 +54,12 @@ extension ArrayController: UITableViewDelegate {
 }
 extension ArrayController: UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    func numberOfSections(in tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+              return 1
+          } else {
+              return 6 //pushUpArray.count
+          }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,14 +68,30 @@ extension ArrayController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cellArrayContollerMain")
-        cell?.textLabel?.text = "hello world"
-
-        return cell! //cellArrayContollerMain
+        
+        if indexPath.section == 0 {
+            var cell = tableView.dequeueReusableCell(withIdentifier: "cellArrayContollerMain")
+            cell?.textLabel?.text = "hello world"
+            
+            return cell! //cellArrayContollerMain
+        } else {
+            var cell2 = tableView.dequeueReusableCell(withIdentifier: "cellArrayContollerMain")
+            cell2?.textLabel?.text = "WORLD"
+            
+            return cell2! //cellArrayContollerMain
+        }
+        return UITableViewCell
 //    https://stackoverflow.com/questions/59019575/return-empty-cell-to-avoid-force-casting-tableview   vadyan 264k
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+//        if indexPath.row == 0{
+//                   return 70.0
+//               }
+//               return 35.0
+        
+        
         return 30.0
     }
 }

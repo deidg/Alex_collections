@@ -11,7 +11,7 @@ import SnapKit
 
 class ArrayController: UIViewController {
     
-    let cellArrayContollerMain = CellArrayContollerMain()
+//    let cellArrayContollerMain = CellArrayContollerMain()
     let tableViewArrayMain = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
     
     override func viewDidLoad() {
@@ -20,7 +20,7 @@ class ArrayController: UIViewController {
         setupNavBar()
         setupUI()
     }
-    let cellIdArrayMain = "cellIdArrayMain"
+    let cellIdArrayMain = "cellArrayContollerMain"
     
     func setupUI() {
         self.tableViewArrayMain.delegate = self

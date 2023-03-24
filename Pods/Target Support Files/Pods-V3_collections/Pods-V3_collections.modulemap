@@ -1,0 +1,6 @@
+module Pods_V3_collections {
+  umbrella header "Pods-V3_collections-umbrella.h"
+
+  export *
+  module * { export * }
+}

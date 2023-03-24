@@ -1,0 +1,6 @@
+module Pods_V3_collections_V3_collectionsUITests {
+  umbrella header "Pods-V3_collections-V3_collectionsUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

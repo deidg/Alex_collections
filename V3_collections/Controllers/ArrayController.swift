@@ -11,8 +11,8 @@ import SnapKit
 
 class ArrayController: UIViewController {
     
-//    let cellArrayContollerMain = CellArrayContollerMain()
-    let tableViewArrayMain = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
+    let cellArrayContollerMain = CellArrayContollerMain()
+    let tableViewArrayMain = UITableView() //.init(frame: .zero, style: UITableView.Style.grouped)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +21,10 @@ class ArrayController: UIViewController {
         setupUI()
         
         
+
+        
     }
-//    let cellIdArrayMain = "cellArrayContollerMain"
+    let cellIdArrayMain = "cellArrayContollerMain"
     
     func setupUI() {
         self.tableViewArrayMain.delegate = self
@@ -30,10 +32,14 @@ class ArrayController: UIViewController {
         tableViewArrayMain.backgroundColor = .blue
         
         tableViewArrayMain.register(CellArrayContollerMain.self, forCellReuseIdentifier: "cellArrayContollerMain")
-        
+
         tableViewArrayMain.tableFooterView = UIView()
         
-        //        view = tableViewArrayMain
+        view.addSubview(tableViewArrayMain)
+        tableViewArrayMain.snp.makeConstraints{ make in
+            make.edges.equalToSuperview()
+        }
+        
         
     }
     
@@ -56,7 +62,7 @@ extension ArrayController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 10
     }
     
     

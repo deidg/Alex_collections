@@ -26,7 +26,7 @@ class SetController: UIViewController {
     func setupUI() {
         self.tableViewSetMain.delegate = self
         self.tableViewSetMain.dataSource = self
-        tableViewSetMain.backgroundColor = .blue // не работает
+        tableViewSetMain.backgroundColor = .systemPink 
         
         tableViewSetMain.register(CellArrayContollerMain.self, forCellReuseIdentifier: "setControllerCell")
         

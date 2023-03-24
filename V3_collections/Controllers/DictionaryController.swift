@@ -27,7 +27,7 @@ class DictionaryController: UIViewController {
     func setupUI() {
         self.tableViewDictionaryMain.delegate = self
         self.tableViewDictionaryMain.dataSource = self
-        tableViewDictionaryMain.backgroundColor = .blue // не работает
+        tableViewDictionaryMain.backgroundColor = .cyan 
         
         tableViewDictionaryMain.register(CellArrayContollerMain.self, forCellReuseIdentifier: "dictionaryControllerCell")
         

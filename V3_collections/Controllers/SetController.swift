@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class SetController: UIViewController {
     
@@ -17,8 +18,8 @@ class SetController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view?.backgroundColor = .systemPink
-        //        setupNavBar()
-        //        setupUI()
+                setupNavBar()
+                setupUI()
     }
     let setCell = "setControllerCell"
     
@@ -35,13 +36,14 @@ class SetController: UIViewController {
         tableViewArrayMain.snp.makeConstraints{ make in
             make.edges.equalToSuperview()
         }
+    }
         func setupNavBar() {
             navigationController?.navigationBar.topItem?.title = "Set"
             navigationController?.navigationBar.prefersLargeTitles = false
             navigationController?.navigationBar.backgroundColor = .yellow
         }
     }
-}
+
 
     // MARK: extensions
     extension SetController: UITableViewDelegate {

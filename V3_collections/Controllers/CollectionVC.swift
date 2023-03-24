@@ -5,6 +5,8 @@
 //  Created by Alex on 18.03.2023.
 //
 
+//TODO:  - пофиксить баг - при загрузке экран с названием Коллекция. А при возврате - Array. Вариант - возвращать VC через pop?
+
 import Foundation
 import UIKit
 
@@ -46,9 +48,9 @@ class CollectionVC: UIViewController {
     }
 }
 
-class TableViewCell: UITableViewCell {
-    
-}
+//class TableViewCell: UITableViewCell {
+//
+//}
 
 // MARK: extensions
 extension CollectionVC: UITableViewDelegate {

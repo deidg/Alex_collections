@@ -12,31 +12,27 @@ import SnapKit
 class ArrayController: UIViewController {
     
     let cellArrayContollerMain = CellArrayContollerMain()
-    let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
-
+    let tableViewArrayMain = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view?.backgroundColor = .green
         setupNavBar()
         setupUI()
     }
-    let cellId = "cellId"
-
-    func setupUI() {
-        tableView.backgroundColor = .blue
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        tableView.register(CellArrayContollerMain.self, forCellReuseIdentifier: cellId)
+    let cellIdArrayMain = "cellIdArrayMain"
     
-//        view.addSubview(tableView)
-//        view.snp.makeConstraints{ make in
-//            make.top.equalTo(view.safeAreaLayoutGuide)
-//            //               make.top.equalTo(navigationController?.navigationBar.bott)
-//            make.leading.equalToSuperview()
-//               make.trailing.equalToSuperview()
-//
-//            tableView.reloadData()
-//        }
+    func setupUI() {
+        self.tableViewArrayMain.delegate = self
+        self.tableViewArrayMain.dataSource = self
+        tableViewArrayMain.backgroundColor = .blue
+        
+        tableViewArrayMain.register(CellArrayContollerMain.self, forCellReuseIdentifier: cellIdArrayMain)
+        
+        tableViewArrayMain.tableFooterView = UIView()
+        
+        //        view = tableViewArrayMain
+        
     }
     
     func setupNavBar() {
@@ -47,18 +43,28 @@ class ArrayController: UIViewController {
 }
 // MARK: extensions
 extension ArrayController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 1
-    }
+    
+    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //
+    //
+    //    }
+    
+    
+    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    //        return 1
+    //    }
 }
 extension ArrayController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1    }
+        return 1
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! CellArrayContollerMain //  после as! можно отрубить
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdArrayMain) //as! CellArrayContollerMain //  после as! можно отрубить
+//        cell?.textLabel?.text = String
         
-        return cell
+//    cell?.textLabel?.text = String(arrayVC[indexPath.row])
+        return cell!
     }
 }

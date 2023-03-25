@@ -36,9 +36,12 @@ class ArrayController: UIViewController {
     
     
     func setupUI() {
-        self.tableViewArrayMain.delegate = self
-        self.tableViewArrayMain.dataSource = self
-        tableViewArrayMain.backgroundColor = .blue
+        tableViewArrayMain.delegate = self
+        tableViewArrayMain.dataSource = self
+        
+//        self.tableViewArrayMain.delegate = self
+//        self.tableViewArrayMain.dataSource = self
+        tableViewArrayMain.backgroundColor = .systemBackground
         
         tableViewArrayMain.register(CellArrayContollerMain.self, forCellReuseIdentifier: "cellArrayContollerMain")
         
@@ -63,6 +66,10 @@ extension ArrayController: UITableViewDelegate {
     //    }
 }
 extension ArrayController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.sections[section]
+    }
     
     func tableView(in tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return infoLabels[section].count

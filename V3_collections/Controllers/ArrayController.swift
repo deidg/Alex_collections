@@ -14,8 +14,15 @@ import SnapKit
 
 class ArrayController: UIViewController {
     
-//    let cellArrayContollerMain = CellArrayContollerMain()
-//    let cellArrayContollerMain2 = CellArrayContollerMain()
+    //    let cellArrayContollerMain = CellArrayContollerMain()
+    //    let cellArrayContollerMain2 = CellArrayContollerMain()
+    let sections = ["MainSection","CommonSections"]
+    let infoLabels = [
+        ["label0"],
+        ["label1", "label2", "label3", "label4", "label5", "label6",
+         "label7", "label8", "label9", "label10", "label11", "label12"]
+    ]
+    
     let tableViewArrayMain = UITableView()
     
     override func viewDidLoad() {
@@ -24,8 +31,8 @@ class ArrayController: UIViewController {
         setupNavBar()
         setupUI()
     }
-//    let cellIdArrayMain = "cellArrayContollerMain"
-//    let cellIdArrayMain2 = "cellArrayContollerMain2"
+        let cellIdArrayMain = "cellArrayContollerMain"
+    //    let cellIdArrayMain2 = "cellArrayContollerMain2"
     
     
     func setupUI() {
@@ -57,8 +64,8 @@ extension ArrayController: UITableViewDelegate {
 }
 extension ArrayController: UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+    func tableView(in tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return infoLabels[section].count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,15 +74,17 @@ extension ArrayController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellArrayContollerMain")
+        cell?.textLabel?.text = infoLabels[indexPath.section][indexPath.row]
         
         
-        return //UITableViewCell
-//    https://stackoverflow.com/questions/59019575/return-empty-cell-to-avoid-force-casting-tableview   vadyan 264k
+        return cell! //UITableViewCell
+        //    https://stackoverflow.com/questions/59019575/return-empty-cell-to-avoid-force-casting-tableview   vadyan 264k
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-      
+        
         
         return 30.0
     }

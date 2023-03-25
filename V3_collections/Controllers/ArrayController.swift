@@ -42,6 +42,7 @@ class ArrayController: UIViewController {
 //        self.tableViewArrayMain.delegate = self
 //        self.tableViewArrayMain.dataSource = self
         tableViewArrayMain.backgroundColor = .systemBackground
+//        tableView.width
         
         tableViewArrayMain.register(CellArrayContollerMain.self, forCellReuseIdentifier: "cellArrayContollerMain")
         

@@ -23,6 +23,7 @@ class CellArrayContollerMain: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 //        setup()
         layout()
+//        self.frame.width = superview?.frame.width/2
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -37,8 +38,8 @@ extension CellArrayContollerMain {
 //    }
 //
     func layout() {
-        // don't disable translatesAutoresizingMaskIntoConstraints on the cell itself
-//        contentView.addSubview(titleLabel) // important!
+
+        
         addSubview(titleLabel)
 
         NSLayoutConstraint.activate([

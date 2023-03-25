@@ -69,6 +69,10 @@ extension ArrayController: UITableViewDelegate {
     }
 }
 extension ArrayController: UITableViewDataSource {
+ 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return infoLabels.count
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return infoLabels[section].count
@@ -82,8 +86,6 @@ extension ArrayController: UITableViewDataSource {
         //    https://stackoverflow.com/questions/59019575/return-empty-cell-to-avoid-force-casting-tableview   vadyan 264k
     }
    
-    
-
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.sections[section]

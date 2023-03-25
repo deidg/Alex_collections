@@ -45,7 +45,7 @@ class ArrayController: UIViewController {
         
         tableViewArrayMain.register(CellArrayContollerMain.self, forCellReuseIdentifier: "cellArrayContollerMain")
         
-        tableViewArrayMain.tableFooterView = UIView()
+//        tableViewArrayMain.tableFooterView = UIView()
         
         view.addSubview(tableViewArrayMain)
         tableViewArrayMain.snp.makeConstraints{ make in
@@ -64,35 +64,33 @@ extension ArrayController: UITableViewDelegate {
     //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     //        return 100
     //    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("the row tapped")
+    }
 }
 extension ArrayController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return infoLabels[section].count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellArrayContollerMain", for: indexPath)
+        cell.textLabel?.text = infoLabels[indexPath.section][indexPath.row]
+        
+        return cell //UITableViewCell
+        //    https://stackoverflow.com/questions/59019575/return-empty-cell-to-avoid-force-casting-tableview   vadyan 264k
+    }
+   
+    
+
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.sections[section]
     }
     
-    func tableView(in tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return infoLabels[section].count
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellArrayContollerMain")
-        cell?.textLabel?.text = infoLabels[indexPath.section][indexPath.row]
-        
-        
-        return cell! //UITableViewCell
-        //    https://stackoverflow.com/questions/59019575/return-empty-cell-to-avoid-force-casting-tableview   vadyan 264k
-    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        
-        
         return 30.0
     }
 }

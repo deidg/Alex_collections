@@ -5,14 +5,17 @@
 //  Created by Alex on 19.03.2023.
 //
 
+// разобраться как делить на секции и строчки.
+
+
 import Foundation
 import UIKit
 import SnapKit
 
 class ArrayController: UIViewController {
     
-    let cellArrayContollerMain = CellArrayContollerMain()
-    let cellArrayContollerMain2 = CellArrayContollerMain()
+//    let cellArrayContollerMain = CellArrayContollerMain()
+//    let cellArrayContollerMain2 = CellArrayContollerMain()
     let tableViewArrayMain = UITableView()
     
     override func viewDidLoad() {
@@ -21,8 +24,8 @@ class ArrayController: UIViewController {
         setupNavBar()
         setupUI()
     }
-    let cellIdArrayMain = "cellArrayContollerMain"
-    let cellIdArrayMain2 = "cellArrayContollerMain2"
+//    let cellIdArrayMain = "cellArrayContollerMain"
+//    let cellIdArrayMain2 = "cellArrayContollerMain2"
     
     
     func setupUI() {
@@ -55,11 +58,7 @@ extension ArrayController: UITableViewDelegate {
 extension ArrayController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-              return 1
-          } else {
-              return 6 //pushUpArray.count
-          }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,28 +68,14 @@ extension ArrayController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 {
-            var cell = tableView.dequeueReusableCell(withIdentifier: "cellArrayContollerMain")
-            cell?.textLabel?.text = "hello world"
-            
-            return cell! //cellArrayContollerMain
-        } else {
-            var cell2 = tableView.dequeueReusableCell(withIdentifier: "cellArrayContollerMain")
-            cell2?.textLabel?.text = "WORLD"
-            
-            return cell2! //cellArrayContollerMain
-        }
-        return UITableViewCell
+        
+        return //UITableViewCell
 //    https://stackoverflow.com/questions/59019575/return-empty-cell-to-avoid-force-casting-tableview   vadyan 264k
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-//        if indexPath.row == 0{
-//                   return 70.0
-//               }
-//               return 35.0
-        
+      
         
         return 30.0
     }

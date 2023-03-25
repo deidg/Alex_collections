@@ -14,7 +14,6 @@ class SetController: UIViewController {
     
     let setControllerCell = SetControllerCell()
     
-    
     let sections = ["MainSection","CommonSections"]
     let infoLabels = [
         ["label0"],

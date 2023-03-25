@@ -39,8 +39,6 @@ class ArrayController: UIViewController {
         tableViewArrayMain.delegate = self
         tableViewArrayMain.dataSource = self
         
-//        self.tableViewArrayMain.delegate = self
-//        self.tableViewArrayMain.dataSource = self
         tableViewArrayMain.backgroundColor = .systemBackground
 //        tableView.width
         

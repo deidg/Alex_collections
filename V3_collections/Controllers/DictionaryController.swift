@@ -13,8 +13,15 @@ import SnapKit
 class DictionaryController: UIViewController {
     
     let dictionaryControllerCell = DictionaryControllerCell()
-    let tableViewDictionaryMain = UITableView()
 
+    let sections = ["MainSection","CommonSections"]
+    let infoLabels = [
+        ["label0"],
+        ["label1", "label2", "label3", "label4", "label5", "label6",
+         "label7", "label8", "label9", "label10", "label11", "label12"]
+    ]
+    
+    let tableViewDictionaryMain = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +34,7 @@ class DictionaryController: UIViewController {
     func setupUI() {
         self.tableViewDictionaryMain.delegate = self
         self.tableViewDictionaryMain.dataSource = self
-        tableViewDictionaryMain.backgroundColor = .cyan 
+        tableViewDictionaryMain.backgroundColor = .systemBackground
         
         tableViewDictionaryMain.register(CellArrayContollerMain.self, forCellReuseIdentifier: "dictionaryControllerCell")
         
@@ -39,7 +46,7 @@ class DictionaryController: UIViewController {
         }
     }
     func setupNavBar() {
-        navigationController?.navigationBar.topItem?.title = "Set"
+        navigationController?.navigationBar.topItem?.title = "Dictionary"
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.backgroundColor = .yellow
     }
@@ -48,31 +55,33 @@ class DictionaryController: UIViewController {
     
 // MARK: extensions
 extension DictionaryController: UITableViewDelegate {
-    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    //        return 100
-    //    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("the row tapped")
+    }
 }
 extension DictionaryController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return infoLabels.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return infoLabels[section].count
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "dictionaryControllerCell")
-        cell?.textLabel?.text = "hello world"
+        var cell = tableView.dequeueReusableCell(withIdentifier: "dictionaryControllerCell", for: indexPath)
+        cell.textLabel?.text = infoLabels[indexPath.section][indexPath.row]
         
-        return cell! //cellArrayContollerMain
-        //    https://stackoverflow.com/questions/59019575/return-empty-cell-to-avoid-force-casting-tableview   vadyan 264k
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.sections[section]
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 30.0
+        return 80.0
     }
 }
 

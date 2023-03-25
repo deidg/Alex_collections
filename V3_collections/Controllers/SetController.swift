@@ -26,7 +26,9 @@ class SetController: UIViewController {
     func setupUI() {
         self.tableViewSetMain.delegate = self
         self.tableViewSetMain.dataSource = self
-        tableViewSetMain.backgroundColor = .systemPink 
+        tableViewSetMain.backgroundColor = .systemPink
+//        tableViewSetMain.estimatedRowHeight = 30
+
         
         tableViewSetMain.register(CellArrayContollerMain.self, forCellReuseIdentifier: "setControllerCell")
         
@@ -61,7 +63,6 @@ extension SetController: UITableViewDataSource {
         return 1
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "setControllerCell")
         cell?.textLabel?.text = "hello world"
@@ -70,7 +71,7 @@ extension SetController: UITableViewDataSource {
         //    https://stackoverflow.com/questions/59019575/return-empty-cell-to-avoid-force-casting-tableview   vadyan 264k
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 30.0
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return tableView.frame.height = 30.0 //50.0
+//    }
 }

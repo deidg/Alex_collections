@@ -23,6 +23,7 @@ class SetController: UIViewController {
     func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 2)
         layout.minimumLineSpacing = 1
         layout.minimumInteritemSpacing = 1
         layout.itemSize = CGSize(width: (view.frame.size.width/2)-3,

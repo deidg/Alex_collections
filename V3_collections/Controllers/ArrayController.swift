@@ -28,7 +28,7 @@ class ArrayController: UIViewController {
         arrayCollectionView.dataSource = self
         
         view.addSubview(arrayCollectionView)
-        
+        arrayCollectionView.translatesAutoresizingMaskIntoConstraints = false //  ? а нужен ли он?
     }
     
     override func viewDidLayoutSubviews() {
@@ -68,3 +68,5 @@ extension ArrayController: UICollectionViewDataSource {
     
     
 }
+
+

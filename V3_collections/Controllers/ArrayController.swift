@@ -31,6 +31,9 @@ class ArrayController: UIViewController {
         arrayCollectionView.translatesAutoresizingMaskIntoConstraints = false //  ? а нужен ли он?
     }
     
+
+    
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         arrayCollectionView.frame = view.bounds

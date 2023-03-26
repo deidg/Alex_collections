@@ -28,7 +28,8 @@ class SetController: UIViewController {
         guard let collectionView = collectionView else {
             return
         }
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "setCell")
+        collectionView.register(SetCollectionViewCell.self,
+                                forCellWithReuseIdentifier: SetCollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
         view.addSubview(collectionView)
@@ -53,14 +54,14 @@ class SetController: UIViewController {
 
 extension SetController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return 12
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) ->
     UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "setCell",
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SetCollectionViewCell.identifier,
                                                       for: indexPath)
-        cell.contentView.backgroundColor = .systemBlue
+//        cell.contentView.backgroundColor = .systemBlue
         return cell
         
         

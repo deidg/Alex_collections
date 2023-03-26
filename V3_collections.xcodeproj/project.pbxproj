@@ -23,6 +23,7 @@
 		FAA813DA29C75D31001C76B9 /* ArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA813D929C75D31001C76B9 /* ArrayController.swift */; };
 		FAAA525A29D009C700B5FAA2 /* ArrayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAA525929D009C700B5FAA2 /* ArrayCollectionViewCell.swift */; };
 		FAAA525E29D00FF200B5FAA2 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAA525D29D00FF200B5FAA2 /* Cell.swift */; };
+		FAB93B3529D05B96009554A0 /* SetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB93B3429D05B96009554A0 /* SetCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		FAA813D929C75D31001C76B9 /* ArrayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayController.swift; sourceTree = "<group>"; };
 		FAAA525929D009C700B5FAA2 /* ArrayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAAA525D29D00FF200B5FAA2 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		FAB93B3429D05B96009554A0 /* SetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCollectionViewCell.swift; sourceTree = "<group>"; };
 		FF4245470163A86764AAA7AE /* Pods-V3_collectionsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-V3_collectionsTests.release.xcconfig"; path = "Target Support Files/Pods-V3_collectionsTests/Pods-V3_collectionsTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -215,6 +217,7 @@
 			children = (
 				FAAA525929D009C700B5FAA2 /* ArrayCollectionViewCell.swift */,
 				FAAA525D29D00FF200B5FAA2 /* Cell.swift */,
+				FAB93B3429D05B96009554A0 /* SetCollectionViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				FA9EEFC329CABF8000B5E6DA /* DictionaryController.swift in Sources */,
 				FA93481C29C5EF2400EA7AB2 /* CollectionVC.swift in Sources */,
 				FAAA525A29D009C700B5FAA2 /* ArrayCollectionViewCell.swift in Sources */,
+				FAB93B3529D05B96009554A0 /* SetCollectionViewCell.swift in Sources */,
 				FA89222229C433B60012EA2C /* SceneDelegate.swift in Sources */,
 				FAAA525E29D00FF200B5FAA2 /* Cell.swift in Sources */,
 				FA9DD3D729C9D5AB00F0B2FD /* SetController.swift in Sources */,

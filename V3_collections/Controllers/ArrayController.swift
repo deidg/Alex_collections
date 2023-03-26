@@ -20,6 +20,8 @@ class ArrayController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        arrayCollectionView.register(ArrayCollectionViewCell.self,
+                                     forCellWithReuseIdentifier: ArrayCollectionViewCell.identifier)
         view?.backgroundColor = .green
         arrayCollectionView.delegate = self
         arrayCollectionView.dataSource = self
@@ -28,22 +30,38 @@ class ArrayController: UIViewController {
         
     }
     
+    override func viewDidLayoutSubviews() {
+        arrayCollectionView.frame = view.bounds
+    }
+    
     func setupUI() {
         
         
     }
-
-func setupNavBar() {
-    navigationController?.navigationBar.topItem?.title = "Array"
-    navigationController?.navigationBar.prefersLargeTitles = false
-    navigationController?.navigationBar.backgroundColor = .yellow
-}
+    
+    func setupNavBar() {
+        navigationController?.navigationBar.topItem?.title = "Array"
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.backgroundColor = .yellow
+    }
 }
 // MARK: extensions
-extension UICollectionViewDelegate {
+extension ArrayController: UICollectionViewDelegate {
     
 }
 
-extension UICollectionViewDataSource {
+extension ArrayController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        return 12
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let cell = arrayCollectionView.dequeueReusableCell(withReuseIdentifier: ArrayCollectionViewCell.identifier,
+                                                           for: indexPath)
+        return cell
+    }
+    
     
 }

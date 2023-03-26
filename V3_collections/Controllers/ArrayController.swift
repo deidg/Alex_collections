@@ -16,7 +16,8 @@ class ArrayController: UIViewController {
     
     private let arrayCollectionView = UICollectionView(
         frame: .zero,
-        collectionViewLayout: UICollectionViewLayout())
+        collectionViewLayout: UICollectionViewLayout()
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,7 @@ class ArrayController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         arrayCollectionView.frame = view.bounds
     }
     
@@ -51,6 +53,7 @@ extension ArrayController: UICollectionViewDelegate {
 }
 
 extension ArrayController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         return 12

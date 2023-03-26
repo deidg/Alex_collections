@@ -12,10 +12,14 @@ import SnapKit
 class SetController: UIViewController {
     
     private var collectionView: UICollectionView?
+//    var screenWidth: CGFloat!
+    let width = UIScreen.main.bounds.width
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view?.backgroundColor = .systemPink
+//        screenWidth = screenSize.width
         setupNavBar()
         setupCollectionView()
     }
@@ -68,10 +72,20 @@ extension SetController: UICollectionViewDataSource {
                                                       for: indexPath)
 //        cell.contentView.backgroundColor = .systemBlue
         return cell
-        
-        
     }
+   
 }
 extension SetController: UICollectionViewDelegate {
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+       
+//        if indexPath.row == 0
+//        {
+//            return CGSize(width = view.frame.size.width,
+//                                height = view.frame.size.height)
+//        }
+//        return CGSize(width: (view.frame.size.width/2)-3,
+//                       height: (view.frame.size.height/8)-9)
+//    }
 }

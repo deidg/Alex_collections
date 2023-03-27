@@ -39,14 +39,19 @@ class ArrayController: UIViewController {
 //        tableViewArray.dataSource = self
     }
     
+    func configure<T: SelfConfiguringCell>(cellType: T.Type, with intValue: Int, for indexPath: IndexPath) -> T {
+        guard let cell =  tableViewArray.dequeueReusableCell(withReuseIdentifier: cellType.reuseId, for: indexPath) as? T else {
+            fatalError("Error \(cellType)")
+        }
+        return cell
+    }
+    
     private func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource<SectionKind, Int>(collectionView: tableViewArray, cellProvider: { (tableViewArray, indexPath, intValue) -> UICollectionViewCell? in
             let section = SectionKind(rawValue: indexPath.section)!  //  ПРОВЕРИТЬ что будет если убрать знак !
             switch section {
-            case .list:
-                <#code#>
-            case .grid3:
-                <#code#>
+            default:
+                return self.configure(cellType: ArrayCollectionViewCell.self, with: intValue, for: indexPath)
             }
         })
     }

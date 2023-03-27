@@ -14,6 +14,11 @@ import SnapKit
 
 class ArrayController: UIViewController {
     
+    enum SectionKind: Int, CaseIterable {
+        case list, grid3     //  list - bigLable, grid3 - мелкие ячейки
+    }
+    
+    var dataSource: UICollectionViewDiffableDataSource<SectionKind, Int>! = nil
     var tableViewArray: UICollectionView! // УБРАТЬ - ! !!!()
 
     override func viewDidLoad() {
@@ -30,8 +35,20 @@ class ArrayController: UIViewController {
         view.addSubview(tableViewArray)
         tableViewArray.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "dictionaryCell")
         
-        tableViewArray.delegate = self
-        tableViewArray.dataSource = self
+//        tableViewArray.delegate = self
+//        tableViewArray.dataSource = self
+    }
+    
+    private func setupDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<SectionKind, Int>(collectionView: tableViewArray, cellProvider: { (tableViewArray, indexPath, intValue) -> UICollectionViewCell? in
+            let section = SectionKind(rawValue: indexPath.section)!  //  ПРОВЕРИТЬ что будет если убрать знак !
+            switch section {
+            case .list:
+                <#code#>
+            case .grid3:
+                <#code#>
+            }
+        })
     }
     
     private func createLayout() -> UICollectionViewLayout {

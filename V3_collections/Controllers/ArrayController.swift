@@ -24,7 +24,7 @@ class ArrayController: UIViewController {
     }
     
     func setupCV() {
-        tableViewArray = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
+        tableViewArray = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         tableViewArray.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableViewArray.backgroundColor = .gray
         view.addSubview(tableViewArray)
@@ -32,6 +32,19 @@ class ArrayController: UIViewController {
         
         tableViewArray.delegate = self
         tableViewArray.dataSource = self
+    }
+    
+    private func createLayout() -> UICollectionViewLayout {
+        // section -> group -> items -> size
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2),
+                                              heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                           heightDimension: .fractionalHeight(0.2))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
     }
     
     func setupNavBar() {
@@ -59,9 +72,5 @@ extension ArrayController: UICollectionViewDataSource {
     }
 }
 
-extension ArrayController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: view.frame.width, height: 70)
-    }
-}
+
 

@@ -5,38 +5,33 @@
 //  Created by Alex on 22.03.2023.
 //
 
-import Foundation
 import UIKit
-import SnapKit
 
 
 class DictionaryController: UIViewController {
-    
-//
-    
-    let tableViewDictionaryMain = UITableView()
+
+    var tableViewDictionary: UICollectionView! // УБРАТЬ - ! !!!()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view?.backgroundColor = .cyan
         setupNavBar()
-        setupUI()
+        setupCV()
     }
-    let daictionaryCell = "dictionaryControllerCell"
 
-    func setupUI() {
-//        self.tableViewDictionaryMain.delegate = self
-//        self.tableViewDictionaryMain.dataSource = self
-        tableViewDictionaryMain.backgroundColor = .systemBackground
+    func setupCV() {
+        tableViewDictionary = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
+        tableViewDictionary.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        tableViewDictionary.backgroundColor = .gray
+        tableViewDictionary.register(UICollectionView.self, forCellWithReuseIdentifier: "dictionaryCell")
         
-        
-        tableViewDictionaryMain.tableFooterView = UIView()
-        
-        view.addSubview(tableViewDictionaryMain)
-        tableViewDictionaryMain.snp.makeConstraints{ make in
-            make.edges.equalToSuperview()
-        }
+        tableViewDictionary.delegate = self
+        tableViewDictionary.dataSource = self
     }
+    
+    
+    
+   
     func setupNavBar() {
         navigationController?.navigationBar.topItem?.title = "Dictionary"
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -47,5 +42,21 @@ class DictionaryController: UIViewController {
     
 // MARK: extensions
 
+extension DictionaryController: UICollectionViewDelegate {
+    
+}
 
+extension DictionaryController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dictionaryCell", for: indexPath)
+        cell.backgroundColor = .red
+        return cell
+    }
+    
+    
+}
 

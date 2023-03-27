@@ -5,6 +5,8 @@
 //  Created by Alex on 21.03.2023.
 //
 // TODO: появляется возврат в Array - хотя это set, т.е. не работает кнопка возврата. Появляется на сразу, а после захода в Array
+//https://www.youtube.com/watch?v=dmWFLRGWPUs
+
 
 import UIKit
 import SnapKit
@@ -77,15 +79,15 @@ extension SetController: UICollectionViewDataSource {
 }
 extension SetController: UICollectionViewDelegate {
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        
-       
-//        if indexPath.row == 0
-//        {
-//            return CGSize(width = view.frame.size.width,
-//                                height = view.frame.size.height)
-//        }
-//        return CGSize(width: (view.frame.size.width/2)-3,
-//                       height: (view.frame.size.height/8)-9)
+//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+//        
+//       
+////        if indexPath.row == 0
+////        {
+////            return CGSize(width = view.frame.size.width,
+////                                height = view.frame.size.height)
+////        }
+////        return CGSize(width: (view.frame.size.width/2)-3,
+////                       height: (view.frame.size.height/8)-9)
 //    }
 }

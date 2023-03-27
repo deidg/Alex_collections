@@ -57,7 +57,39 @@ extension DictionaryController: UICollectionViewDataSource {
         cell.backgroundColor = .red
         return cell
     }
-    
-    
 }
 
+extension DictionaryController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize.init(width: view.frame.width, height: 70)
+    }
+}
+
+
+
+
+
+//
+//import SwiftUI
+//struct FlowProvider: PreviewProvider {
+//    static var previews: some View {
+//        ContainerView().edgesIgnoringSafeArea(.all)
+//    }
+//
+//    struct ContainterView: UIViewControllerRepresentable {
+//
+//        let tabBar = MainTabBarController()
+//        func makeUIViewController(context: Context) -> some UIViewController {
+//            UIViewControllerRepresentableContext<FlowProvider.ContainterView>) ->
+//            MainTabBarController {
+//                return tabBar
+//            }
+//
+//            func updateUIVewController(_ uiViewController:
+//                                       FlowProvider.ContainterView.UIViewControllerType, context:
+//                                       UIViewControllerRepresentableContext<FlowProvider.ContainterView>) {
+//
+//            }
+//        }
+//    }
+//}

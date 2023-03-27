@@ -14,62 +14,54 @@ import SnapKit
 
 class ArrayController: UIViewController {
     
-    private let arrayCollectionView = UICollectionView(
-        frame: .zero,
-        collectionViewLayout: UICollectionViewLayout()
-    )
-    
+    var tableViewArray: UICollectionView! // УБРАТЬ - ! !!!()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        arrayCollectionView.register(ArrayCollectionViewCell.self,
-                                     forCellWithReuseIdentifier: ArrayCollectionViewCell.identifier)
-        view?.backgroundColor = .green
-        arrayCollectionView.delegate = self
-        arrayCollectionView.dataSource = self
-        
-        view.addSubview(arrayCollectionView)
-        arrayCollectionView.translatesAutoresizingMaskIntoConstraints = false //  ? а нужен ли он?
+        view?.backgroundColor = .cyan
+        setupNavBar()
+        setupCV()
     }
     
-
-    
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        arrayCollectionView.frame = view.bounds
-    }
-    
-    func setupUI() {
+    func setupCV() {
+        tableViewArray = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
+        tableViewArray.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        tableViewArray.backgroundColor = .gray
+        view.addSubview(tableViewArray)
+        tableViewArray.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "dictionaryCell")
         
-        
+        tableViewArray.delegate = self
+        tableViewArray.dataSource = self
     }
     
     func setupNavBar() {
-        navigationController?.navigationBar.topItem?.title = "Array"
+        navigationController?.navigationBar.topItem?.title = "Dictionary"
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.backgroundColor = .yellow
     }
+    
 }
-// MARK: extensions
+
+// MARK:  extensions
 extension ArrayController: UICollectionViewDelegate {
     
 }
 
 extension ArrayController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        return 12
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        5
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
-        let cell = arrayCollectionView.dequeueReusableCell(withReuseIdentifier: ArrayCollectionViewCell.identifier,
-                                                           for: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dictionaryCell", for: indexPath)
+        cell.backgroundColor = .red
         return cell
     }
-    
-    
 }
 
+extension ArrayController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize.init(width: view.frame.width, height: 70)
+    }
+}
 

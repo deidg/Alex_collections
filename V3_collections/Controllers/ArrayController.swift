@@ -36,11 +36,11 @@ class ArrayController: UIViewController {
     
     private func createLayout() -> UICollectionViewLayout {
         // section -> group -> items -> size
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2),
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                               heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                           heightDimension: .fractionalHeight(0.2))
+                                           heightDimension: .fractionalHeight(0.2)) // вот тут он в 49.00 сделал .fractioalWidth
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         let layout = UICollectionViewCompositionalLayout(section: section)
@@ -62,12 +62,13 @@ extension ArrayController: UICollectionViewDelegate {
 
 extension ArrayController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dictionaryCell", for: indexPath)
         cell.backgroundColor = .red
+        cell.layer.borderWidth = 1
         return cell
     }
 }

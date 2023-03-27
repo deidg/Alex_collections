@@ -23,7 +23,8 @@ class DictionaryController: UIViewController {
         tableViewDictionary = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
         tableViewDictionary.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableViewDictionary.backgroundColor = .gray
-        tableViewDictionary.register(UICollectionView.self, forCellWithReuseIdentifier: "dictionaryCell")
+        view.addSubview(tableViewDictionary)
+        tableViewDictionary.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "dictionaryCell")
         
         tableViewDictionary.delegate = self
         tableViewDictionary.dataSource = self

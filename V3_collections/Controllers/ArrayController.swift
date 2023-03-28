@@ -49,7 +49,7 @@ class ArrayController: UIViewController {
         //        //  еще раз найти откуда появляется эта ячейка "cell". не аттавизм ли это?
         ////        tableViewArray.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "ArrayCollectionViewCell")
         //
-     
+        
         //
         //        //1.33.20
         //        setupDataSource()
@@ -57,7 +57,7 @@ class ArrayController: UIViewController {
         //
         ////        tableViewArray.delegate = self
         ////        tableViewArray.dataSource = self
-        //    }
+            }
         
         private func setDelegates() {
             arrayCollectionView.delegate = self
@@ -65,23 +65,23 @@ class ArrayController: UIViewController {
         }
         //}
         
-        func configure<T: SelfConfiguringCell>(cellType: T.Type, with intValue: Int, for indexPath: IndexPath) -> T {
-            guard let cell =  tableViewArray.dequeueReusableCell(withReuseIdentifier: cellType.reuseId, for: indexPath) as? T else {
-                fatalError("Error \(cellType)")
-            }
-            return cell
-        }
-        
-        private func setupDataSource() {
-            dataSource = UICollectionViewDiffableDataSource<SectionKind, Int>(collectionView: tableViewArray, cellProvider: { (tableViewArray, indexPath, intValue) -> UICollectionViewCell? in
-                let section = SectionKind(rawValue: indexPath.section)!  //  ПРОВЕРИТЬ что будет если убрать знак !
-                switch section {
-                default:
-                    return self.configure(cellType: ArrayCollectionViewCell.self, with: intValue, for: indexPath)
-                }
-            })
-        }
-        
+//        func configure<T: SelfConfiguringCell>(cellType: T.Type, with intValue: Int, for indexPath: IndexPath) -> T {
+//            guard let cell =  tableViewArray.dequeueReusableCell(withReuseIdentifier: cellType.reuseId, for: indexPath) as? T else {
+//                fatalError("Error \(cellType)")
+//            }
+//            return cell
+//        }
+//
+//        private func setupDataSource() {
+//            dataSource = UICollectionViewDiffableDataSource<SectionKind, Int>(collectionView: tableViewArray, cellProvider: { (tableViewArray, indexPath, intValue) -> UICollectionViewCell? in
+//                let section = SectionKind(rawValue: indexPath.section)!  //  ПРОВЕРИТЬ что будет если убрать знак !
+//                switch section {
+//                default:
+//                    return self.configure(cellType: ArrayCollectionViewCell.self, with: intValue, for: indexPath)
+//                }
+//            })
+//        }
+
         //    func reloadData() {
         //        var snapshot = NSDiffableDataSourceSnapshot<SectionKind, Int>()
         //        //        let itemPerSection = 10
@@ -104,6 +104,7 @@ class ArrayController: UIViewController {
             let layout = UICollectionViewCompositionalLayout(section: section)
             return layout
         }
+//    }
         
         func setupNavBar() {
             navigationController?.navigationBar.topItem?.title = "Dictionary"
@@ -111,7 +112,7 @@ class ArrayController: UIViewController {
             navigationController?.navigationBar.backgroundColor = .yellow
         }
         
-    }
+//    }
 }
 
 // MARK:  extensions
@@ -149,6 +150,21 @@ extension ArrayController: UICollectionViewDataSource {
             }
             cell.configureCell(imageName: tiles[indexPath.row].image)  // d 16.40 он говорит о тайтле
             return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+        case arrayCollectionView.elementKindSectionHeader:
+            let header = arrayCollectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                              withReuseIdentifier: "header",
+                                                                              for: indexPath)
+            
+            return header
+        default:
+            return UICollectionReusableView()
         }
     }
 }

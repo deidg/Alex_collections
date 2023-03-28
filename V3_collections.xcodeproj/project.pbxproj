@@ -24,6 +24,7 @@
 		FAA4D3BA29D3073700CB3130 /* ListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA4D3B929D3073700CB3130 /* ListSection.swift */; };
 		FAA4D3BC29D3081700CB3130 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA4D3BB29D3081700CB3130 /* MockData.swift */; };
 		FAA4D3BE29D3451E00CB3130 /* ArrayCVTilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA4D3BD29D3451E00CB3130 /* ArrayCVTilesCell.swift */; };
+		FAA4D3C029D35C6800CB3130 /* HeaderSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA4D3BF29D35C6700CB3130 /* HeaderSupplementaryView.swift */; };
 		FAA813DA29C75D31001C76B9 /* ArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA813D929C75D31001C76B9 /* ArrayController.swift */; };
 		FAAA525A29D009C700B5FAA2 /* ArrayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAA525929D009C700B5FAA2 /* ArrayCollectionViewCell.swift */; };
 		FAAA525E29D00FF200B5FAA2 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAA525D29D00FF200B5FAA2 /* Cell.swift */; };
@@ -74,6 +75,7 @@
 		FAA4D3B929D3073700CB3130 /* ListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSection.swift; sourceTree = "<group>"; };
 		FAA4D3BB29D3081700CB3130 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		FAA4D3BD29D3451E00CB3130 /* ArrayCVTilesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayCVTilesCell.swift; sourceTree = "<group>"; };
+		FAA4D3BF29D35C6700CB3130 /* HeaderSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSupplementaryView.swift; sourceTree = "<group>"; };
 		FAA813D929C75D31001C76B9 /* ArrayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayController.swift; sourceTree = "<group>"; };
 		FAAA525929D009C700B5FAA2 /* ArrayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAAA525D29D00FF200B5FAA2 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				FAA4D3BD29D3451E00CB3130 /* ArrayCVTilesCell.swift */,
 				FAAA525D29D00FF200B5FAA2 /* Cell.swift */,
 				FAB93B3429D05B96009554A0 /* SetCollectionViewCell.swift */,
+				FAA4D3BF29D35C6700CB3130 /* HeaderSupplementaryView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				FAAA525A29D009C700B5FAA2 /* ArrayCollectionViewCell.swift in Sources */,
 				FAB93B3529D05B96009554A0 /* SetCollectionViewCell.swift in Sources */,
 				FA89222229C433B60012EA2C /* SceneDelegate.swift in Sources */,
+				FAA4D3C029D35C6800CB3130 /* HeaderSupplementaryView.swift in Sources */,
 				FAAA525E29D00FF200B5FAA2 /* Cell.swift in Sources */,
 				FA9DD3D729C9D5AB00F0B2FD /* SetController.swift in Sources */,
 				FAA4D3BA29D3073700CB3130 /* ListSection.swift in Sources */,

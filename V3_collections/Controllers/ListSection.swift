@@ -5,6 +5,7 @@
 //  Created by Alex on 28.03.2023.
 //
 
+import UIKit
 import Foundation
 
 enum ListSection {
@@ -13,11 +14,12 @@ enum ListSection {
     
     var items: [ListItem] {
         switch self {
-        case .firstRow(let items)
+        case .firstRow(let items),
         case .tiles(let items):
             return items
         }
     }
+    
     var count: Int {
         items.count
     }
@@ -33,4 +35,3 @@ enum ListSection {
 }
 
 
-найти в видео где он проставил этот инициализатор - возможно надо ссмотреть видео дальше. 

@@ -20,10 +20,12 @@ class ArrayController: UIViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<SectionKind, Int>! = nil
     var tableViewArray: UICollectionView! // УБРАТЬ - ! !!!()
+//    var tableViewArray = UICollectionView() // УБРАТЬ - ! !!!()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view?.backgroundColor = .cyan
+        view?.backgroundColor = .systemBackground
         setupNavBar()
         setupCV()
     }
@@ -33,8 +35,17 @@ class ArrayController: UIViewController {
         tableViewArray.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableViewArray.backgroundColor = .gray
         view.addSubview(tableViewArray)
-        tableViewArray.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "dictionaryCell")
         
+        //  еще раз найти откуда появляется эта ячейка "cell". не аттавизм ли это?  
+//        tableViewArray.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "ArrayCollectionViewCell")
+        
+        tableViewArray.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "ArrayCollectionViewCell")
+        tableViewArray.register(ArrayCollectionViewCell.self, forCellWithReuseIdentifier: ArrayCollectionViewCell.reuseId)
+        
+        //1.33.20
+        setupDataSource()
+        reloadData()
+
 //        tableViewArray.delegate = self
 //        tableViewArray.dataSource = self
     }
@@ -54,6 +65,16 @@ class ArrayController: UIViewController {
                 return self.configure(cellType: ArrayCollectionViewCell.self, with: intValue, for: indexPath)
             }
         })
+    }
+    
+    func reloadData() {
+        var snapshot = NSDiffableDataSourceSnapshot<SectionKind, Int>()
+//        let itemPerSection = 10
+        SectionKind.allCases.forEach { (sectionKind) in
+            snapshot.appendSections([sectionKind])
+            snapshot.appendItems([1], toSection:  sectionKind)
+        }
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
     
     private func createLayout() -> UICollectionViewLayout {

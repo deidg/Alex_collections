@@ -16,13 +16,15 @@ protocol SelfConfiguringCell {
 class ArrayCollectionViewCell: UICollectionViewCell, SelfConfiguringCell {
     
     
-    static var reuseId: String = "User cell"
+    static var reuseId: String = "ArrayCollectionViewCell"
     
     let friendImageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(white: 1, alpha: 1)
+        backgroundColor = UIColor.purple
+
+//        backgroundColor = UIColor(white: 1, alpha: 1)
         setupConstraints()
         
         self.layer.cornerRadius = 4
@@ -31,10 +33,10 @@ class ArrayCollectionViewCell: UICollectionViewCell, SelfConfiguringCell {
 
     func setupConstraints() {
         friendImageView.translatesAutoresizingMaskIntoConstraints = false
-        friendImageView.backgroundColor = .blue
+        friendImageView.backgroundColor = .systemPink   // COLOR
         addSubview(friendImageView)
         friendImageView.frame = self.bounds
-        backgroundColor = .green
+        backgroundColor = .red                   // COLOR
         
     }
     

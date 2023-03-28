@@ -14,9 +14,24 @@ import SnapKit
 
 class ArrayController: UIViewController {
     
-    enum SectionKind: Int, CaseIterable {
-        case list, grid3     //  list - bigLable, grid3 - мелкие ячейки
+    enum ListSection {
+        case firstRow([ListItem])  // большая ячейка
+        case tiles([ListItem])     // маленькая ячейка
+        
+        var items: [ListItem] {
+            switch self {
+            case .firstRow(let items)
+                    .tiles(let items):
+                return items
+            }
+        }
+        var count: Int {
+            items.count
+        }
     }
+    
+    
+    
     
     var dataSource: UICollectionViewDiffableDataSource<SectionKind, Int>! = nil
     var tableViewArray: UICollectionView! // УБРАТЬ - ! !!!()

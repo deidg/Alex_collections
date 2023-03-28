@@ -14,7 +14,7 @@ enum ListSection {
     var items: [ListItem] {
         switch self {
         case .firstRow(let items)
-                .tiles(let items):
+        case .tiles(let items):
             return items
         }
     }

@@ -31,9 +31,13 @@ class SetController: UIViewController {
         // Item
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1),
+                widthDimension: .fractionalWidth(2/3),  //1
                 heightDimension: .fractionalHeight(1)
             )
+        )
+        
+        item.contentInsets = NSDirectionalEdgeInsets(
+            top: 2, leading: 2, bottom: 2, trailing: 2
         )
         
         let verticalStackItem = NSCollectionLayoutItem(
@@ -41,6 +45,9 @@ class SetController: UIViewController {
                 widthDimension: .fractionalWidth(1),
                 heightDimension: .fractionalWidth(0.5)
             )
+        )
+        verticalStackItem.contentInsets = NSDirectionalEdgeInsets(
+            top: 2, leading: 2, bottom: 2, trailing: 2
         )
         
         let VerticalStackGroup = NSCollectionLayoutGroup.vertical(

@@ -32,37 +32,37 @@ class SetController: UIViewController {
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),  //1
-                heightDimension: .fractionalHeight(0.2)
+                heightDimension: .fractionalHeight(0.5)
             )
         )
         
-//        item.contentInsets = NSDirectionalEdgeInsets(
-//            top: 0, leading: 0, bottom: 0, trailing: 0
-//        )
+        item.contentInsets = NSDirectionalEdgeInsets(
+            top: 0, leading: 0, bottom: 0, trailing: 0
+        )
         
-//        let verticalStackItem = NSCollectionLayoutItem(
-//            layoutSize: NSCollectionLayoutSize(
-//                widthDimension: .fractionalWidth(1),
-//                heightDimension: .fractionalWidth(0.5)
-//            )
-//        )
-//        verticalStackItem.contentInsets = NSDirectionalEdgeInsets(
-//            top: 2, leading: 2, bottom: 2, trailing: 2
-//        )
+        let verticalStackItem = NSCollectionLayoutItem(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .fractionalWidth(0.5)
+            )
+        )
+        verticalStackItem.contentInsets = NSDirectionalEdgeInsets(
+            top: 2, leading: 2, bottom: 2, trailing: 2
+        )
         
-//        let VerticalStackGroup = NSCollectionLayoutGroup.vertical(
-//            layoutSize: NSCollectionLayoutSize(
-//                widthDimension: .fractionalWidth(1/3),
-//                heightDimension: .fractionalWidth(1)
-//            ),
-//            subitem: verticalStackItem,
-//            count: 2
-//        )
+        let VerticalStackGroup = NSCollectionLayoutGroup.vertical(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1/3),
+                heightDimension: .fractionalWidth(1)
+            ),
+            subitem: verticalStackItem,
+            count: 2
+        )
         
         let tripleItem = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalWidth(1)
+            heightDimension: .fractionalWidth(0.2)  // высота горизонтальной ячейки
             )
         )
         
@@ -84,7 +84,7 @@ class SetController: UIViewController {
             ),
             subitems: [
                 item,
-//                VerticalStackGroup
+                VerticalStackGroup
             ]
         )
         
@@ -95,8 +95,8 @@ class SetController: UIViewController {
                     ),
             subitems: [
 
-                tripletHorizontalGroup
-//                horizontalGroup,
+                tripletHorizontalGroup,
+                horizontalGroup
             ]
         
         )

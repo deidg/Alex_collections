@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class MyCollectionViewCell: UICollectionViewCell {
     static var identifier = "MyCollectionViewCell"
@@ -21,6 +22,13 @@ class MyCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(imageView)  //  название массива
+        imageView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+//            make.height.equalTo(30)
+//            make.leading.equalToSuperview()
+//            make.trailing.equalToSuperview()
+            
+        }
         
         let images: [UIImage] = [
             UIImage(named: "pic1"),

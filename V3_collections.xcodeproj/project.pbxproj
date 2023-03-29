@@ -21,9 +21,6 @@
 		FA93481C29C5EF2400EA7AB2 /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93481B29C5EF2400EA7AB2 /* CollectionVC.swift */; };
 		FA9DD3D729C9D5AB00F0B2FD /* SetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9DD3D629C9D5AB00F0B2FD /* SetController.swift */; };
 		FA9EEFC329CABF8000B5E6DA /* DictionaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9EEFC229CABF8000B5E6DA /* DictionaryController.swift */; };
-		FAA4D3B829D306C400CB3130 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA4D3B729D306C300CB3130 /* ListItem.swift */; };
-		FAA4D3BA29D3073700CB3130 /* ListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA4D3B929D3073700CB3130 /* ListSection.swift */; };
-		FAA4D3BC29D3081700CB3130 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA4D3BB29D3081700CB3130 /* MockData.swift */; };
 		FAA4D3BE29D3451E00CB3130 /* ArrayCVTilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA4D3BD29D3451E00CB3130 /* ArrayCVTilesCell.swift */; };
 		FAA4D3C029D35C6800CB3130 /* HeaderSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA4D3BF29D35C6700CB3130 /* HeaderSupplementaryView.swift */; };
 		FAA813DA29C75D31001C76B9 /* ArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA813D929C75D31001C76B9 /* ArrayController.swift */; };
@@ -73,9 +70,6 @@
 		FA93481B29C5EF2400EA7AB2 /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
 		FA9DD3D629C9D5AB00F0B2FD /* SetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetController.swift; sourceTree = "<group>"; };
 		FA9EEFC229CABF8000B5E6DA /* DictionaryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryController.swift; sourceTree = "<group>"; };
-		FAA4D3B729D306C300CB3130 /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
-		FAA4D3B929D3073700CB3130 /* ListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSection.swift; sourceTree = "<group>"; };
-		FAA4D3BB29D3081700CB3130 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		FAA4D3BD29D3451E00CB3130 /* ArrayCVTilesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayCVTilesCell.swift; sourceTree = "<group>"; };
 		FAA4D3BF29D35C6700CB3130 /* HeaderSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSupplementaryView.swift; sourceTree = "<group>"; };
 		FAA813D929C75D31001C76B9 /* ArrayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayController.swift; sourceTree = "<group>"; };
@@ -205,9 +199,6 @@
 				FAA813D929C75D31001C76B9 /* ArrayController.swift */,
 				FA9DD3D629C9D5AB00F0B2FD /* SetController.swift */,
 				FA9EEFC229CABF8000B5E6DA /* DictionaryController.swift */,
-				FAA4D3B729D306C300CB3130 /* ListItem.swift */,
-				FAA4D3B929D3073700CB3130 /* ListSection.swift */,
-				FAA4D3BB29D3081700CB3130 /* MockData.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -462,8 +453,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAA4D3B829D306C400CB3130 /* ListItem.swift in Sources */,
-				FAA4D3BC29D3081700CB3130 /* MockData.swift in Sources */,
 				FAA4D3BE29D3451E00CB3130 /* ArrayCVTilesCell.swift in Sources */,
 				FA89222029C433B60012EA2C /* AppDelegate.swift in Sources */,
 				FA9EEFC329CABF8000B5E6DA /* DictionaryController.swift in Sources */,
@@ -475,7 +464,6 @@
 				FAAA525E29D00FF200B5FAA2 /* Cell.swift in Sources */,
 				FA92002029D3FBF000C9C7F9 /* MyCollectionViewCell.swift in Sources */,
 				FA9DD3D729C9D5AB00F0B2FD /* SetController.swift in Sources */,
-				FAA4D3BA29D3073700CB3130 /* ListSection.swift in Sources */,
 				FAA813DA29C75D31001C76B9 /* ArrayController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

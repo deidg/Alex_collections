@@ -24,8 +24,8 @@ class MyCollectionViewCell: UICollectionViewCell {
         
         let images: [UIImage] = [
             UIImage(named: "pic1"),
-            UIImage(named: "pic2"),
-            UIImage(named: "pic3"),
+//            UIImage(named: "pic2"),
+//            UIImage(named: "pic3"),
         ].compactMap({ $0 })
         imageView.image = images.randomElement()
         contentView.clipsToBounds = true

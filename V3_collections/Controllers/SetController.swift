@@ -35,15 +35,38 @@ class SetController: UIViewController {
                 heightDimension: .fractionalHeight(1)
             )
         )
+        
+        let verticalStackItem = NSCollectionLayoutItem(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .fractionalWidth(0.5)
+            )
+        )
+        
+        let VerticalStackGroup = NSCollectionLayoutGroup.vertical(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1/3),
+                heightDimension: .fractionalWidth(1)
+            ),
+            subitem: verticalStackItem,
+            count: 2
+        )
+        
         // Group
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1),
-                heightDimension: .fractionalHeight(2/5)
-            ),
-            subitem: item,
-            count: 2
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .fractionalWidth(3/5)
+                ),
+            subitems: [
+              item,
+              VerticalStackGroup
+            ]
         )
+        
+        
+        
+        
         
         // Sections
         let section = NSCollectionLayoutSection(group: group)

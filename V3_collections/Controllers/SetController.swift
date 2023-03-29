@@ -59,24 +59,47 @@ class SetController: UIViewController {
             count: 2
         )
         
-        // Group
-        let group = NSCollectionLayoutGroup.horizontal(
+        let tripleItem = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1/3),
+            heightDimension: .absolute(100))
+        )
+        
+        let tripletHorizontalGroup = NSCollectionLayoutGroup.horizontal(
+            layoutSize:  NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
-                heightDimension: .fractionalWidth(3/5)
-                ),
-            subitems: [
-              item,
-              VerticalStackGroup
-            ]
+                heightDimension: .fractionalWidth(1/3)),
+            subitem: tripleItem,
+            count: 3
         )
         
         
+        // Group
+        let horizontalGroup = NSCollectionLayoutGroup.horizontal(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .fractionalHeight(2/3)
+            ),
+            subitems: [
+                item,
+                VerticalStackGroup
+            ]
+        )
         
+        let verticalGroup = NSCollectionLayoutGroup.vertical(
+            layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1.0),
+                    heightDimension: .fractionalWidth(3/5)
+                    ),
+            subitems: [
+                horizontalGroup,
+                tripletHorizontalGroup
+            ]
         
+        )
         
         // Sections
-        let section = NSCollectionLayoutSection(group: group)
+        let section = NSCollectionLayoutSection(group: verticalGroup)
         
         
         // Return

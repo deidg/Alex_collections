@@ -8,30 +8,30 @@
 import UIKit
 import Foundation
 
-enum ListSection {
-    case firstRow([ListItem])  // большая ячейка
-    case tiles([ListItem])     // маленькая ячейка
-    
-    var items: [ListItem] {
-        switch self {
-        case .firstRow(let items),
-        case .tiles(let items):
-            return items
-        }
-    }
-    
-    var count: Int {
-        items.count
-    }
-    
-    var title: String {
-        switch self {
-        case .firstRow(_):
-            return "firstRow"
-        case .tiles(_):
-            return "tile"
-        }
-    }
-}
+//enum ListSection {
+//    case firstRow([ListItem])  // большая ячейка
+//    case tiles([ListItem])     // маленькая ячейка
+//    
+////    var items: [ListItem] {
+////        switch self {
+////        case .firstRow(let items),
+////        case .tiles(let items):
+////            return items
+////        }
+////    }
+//    
+////    var count: Int {
+////        items.count
+////    }
+//    
+//    var title: String {
+//        switch self {
+//        case .firstRow(_):
+//            return "firstRow"
+//        case .tiles(_):
+//            return "tile"
+//        }
+//    }
+//}
 
 

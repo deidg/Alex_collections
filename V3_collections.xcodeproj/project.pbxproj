@@ -17,6 +17,7 @@
 		FA89223729C433BA0012EA2C /* V3_collectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89223629C433BA0012EA2C /* V3_collectionsTests.swift */; };
 		FA89224129C433BA0012EA2C /* V3_collectionsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89224029C433BA0012EA2C /* V3_collectionsUITests.swift */; };
 		FA89224329C433BA0012EA2C /* V3_collectionsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89224229C433BA0012EA2C /* V3_collectionsUITestsLaunchTests.swift */; };
+		FA92002029D3FBF000C9C7F9 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92001F29D3FBF000C9C7F9 /* MyCollectionViewCell.swift */; };
 		FA93481C29C5EF2400EA7AB2 /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93481B29C5EF2400EA7AB2 /* CollectionVC.swift */; };
 		FA9DD3D729C9D5AB00F0B2FD /* SetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9DD3D629C9D5AB00F0B2FD /* SetController.swift */; };
 		FA9EEFC329CABF8000B5E6DA /* DictionaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9EEFC229CABF8000B5E6DA /* DictionaryController.swift */; };
@@ -68,6 +69,7 @@
 		FA89223C29C433BA0012EA2C /* V3_collectionsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = V3_collectionsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA89224029C433BA0012EA2C /* V3_collectionsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3_collectionsUITests.swift; sourceTree = "<group>"; };
 		FA89224229C433BA0012EA2C /* V3_collectionsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3_collectionsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FA92001F29D3FBF000C9C7F9 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA93481B29C5EF2400EA7AB2 /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
 		FA9DD3D629C9D5AB00F0B2FD /* SetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetController.swift; sourceTree = "<group>"; };
 		FA9EEFC229CABF8000B5E6DA /* DictionaryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryController.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				FAAA525D29D00FF200B5FAA2 /* Cell.swift */,
 				FAB93B3429D05B96009554A0 /* SetCollectionViewCell.swift */,
 				FAA4D3BF29D35C6700CB3130 /* HeaderSupplementaryView.swift */,
+				FA92001F29D3FBF000C9C7F9 /* MyCollectionViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				FA89222229C433B60012EA2C /* SceneDelegate.swift in Sources */,
 				FAA4D3C029D35C6800CB3130 /* HeaderSupplementaryView.swift in Sources */,
 				FAAA525E29D00FF200B5FAA2 /* Cell.swift in Sources */,
+				FA92002029D3FBF000C9C7F9 /* MyCollectionViewCell.swift in Sources */,
 				FA9DD3D729C9D5AB00F0B2FD /* SetController.swift in Sources */,
 				FAA4D3BA29D3073700CB3130 /* ListSection.swift in Sources */,
 				FAA813DA29C75D31001C76B9 /* ArrayController.swift in Sources */,

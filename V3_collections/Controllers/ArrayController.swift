@@ -5,6 +5,8 @@
 //  Created by Alex on 19.03.2023.
 //
 
+
+//iOs academy - https://www.youtube.com/watch?v=vAhas_my5mo&t=45s
 // разобраться как делить на секции и строчки.
 
 
@@ -23,7 +25,7 @@ class ArrayController: UIViewController {
         return arrayCollectionView
     }()
     
-    private let sections = MockData.shared.pageData
+//    private let sections = MockData.shared.pageData
     
     
     override func viewDidLoad() {
@@ -37,8 +39,8 @@ class ArrayController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(arrayCollectionView)
         
-        arrayCollectionView.register(ArrayCollectionViewCell.self, forCellWithReuseIdentifier: "ArrayCollectionViewCell")
-        arrayCollectionView.register(ArrayCVTilesCell.self, forCellWithReuseIdentifier: "ArrayCollectionViewCell")
+        arrayCollectionView.register(ArrayCollectionViewCell.self, forCellWithReuseIdentifier: ArrayCollectionViewCell.identifier)
+        arrayCollectionView.register(ArrayCVTilesCell.self, forCellWithReuseIdentifier: ArrayCollectionViewCell.identifier)
         
         
         
@@ -60,8 +62,8 @@ class ArrayController: UIViewController {
             }
         
         private func setDelegates() {
-            arrayCollectionView.delegate = self
-            arrayCollectionView.dataSource = self
+//            arrayCollectionView.delegate = self
+//            arrayCollectionView.dataSource = self
         }
         //}
         
@@ -120,68 +122,75 @@ extension ArrayController: UICollectionViewDelegate {
     
 }
 
-extension ArrayController: UICollectionViewDataSource {
+//extension ArrayController: UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        <#code#>
+//    }
+    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        sections.count
+//        sections.count
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        sections[section].count
+//        sections[section].count
+        return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch sections[indexPath.section] {
-            
-        case .firstRow(let firstRow):
-            guard let cell = arrayCollectionView.dequeueReusableCell(withReuseIdentifier: arrayCollectionViewCell,
-                                                                     for: indexPath) as? ArrayCollectionViewCell
-            else {
-                return UICollectionViewCell()
-            }
-            cell.configureCell(imageName: firstRow[indexPath.row].image)//  Название картинки
-            return cell
-            
-        case.tiles(let tiles):
-            guard let cell = arrayCollectionView.dequeueReusableCell(withReuseIdentifier: arrayCollectionViewCell,
-                                                                     for: indexPath) as? ArrayCollectionViewCell
-            else {
-                return UICollectionViewCell()
-            }
-            cell.configureCell(imageName: tiles[indexPath.row].image)  // d 16.40 он говорит о тайтле
-            return cell
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        switch sections[indexPath.section] {
+//
+//        case .firstRow(let firstRow):
+//            guard let cell = arrayCollectionView.dequeueReusableCell(withReuseIdentifier: arrayCollectionViewCell,
+//                                                                     for: indexPath) as? ArrayCollectionViewCell
+//            else {
+//                return UICollectionViewCell()
+//            }
+//            cell.configureCell(imageName: firstRow[indexPath.row].image)//  Название картинки
+//            return cell
+//
+//        case.tiles(let tiles):
+//            guard let cell = arrayCollectionView.dequeueReusableCell(withReuseIdentifier: arrayCollectionViewCell,
+//                                                                     for: indexPath) as? ArrayCollectionViewCell
+//            else {
+//                return UICollectionViewCell()
+//            }
+//            cell.configureCell(imageName: tiles[indexPath.row].image)  // d 16.40 он говорит о тайтле
+//            return cell
+//        }
+//    }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        switch kind {
-        case arrayCollectionView.elementKindSectionHeader:
-            let header = arrayCollectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                              withReuseIdentifier: "header",
-                                                                              for: indexPath)
-            
-            return header
-        default:
-            return UICollectionReusableView()
-        }
-    }
-}
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String,
+//                        at indexPath: IndexPath) -> UICollectionReusableView {
+//
+////        switch kind {
+////        case arrayCollectionView.elementKindSectionHeader:
+////            let header = arrayCollectionView.dequeueReusableSupplementaryView(ofKind: kind,
+////                                                                              withReuseIdentifier: "header",
+////                                                                              for: indexPath) as! HeaderSupplementaryView
+////            header.configureHeader
+////
+////            return header
+////        default:
+////            return UICollectionReusableView()
+////        }
+//    }
+//}
 
-extension ArrayController {
-    
-    private func setConstraints() {
-        
-        NSLayoutConstraint.activate([
-            arrayCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            arrayCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-            arrayCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
-            arrayCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
-        ])
-        
-    }
-}
+//extension ArrayController {
+//
+//    private func setConstraints() {
+//
+//        NSLayoutConstraint.activate([
+//            arrayCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+//            arrayCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
+//            arrayCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+//            arrayCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
+//        ])
+//
+//    }
+//}
     
     
 

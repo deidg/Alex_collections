@@ -15,6 +15,9 @@ protocol SelfConfiguringCell {
 
 class ArrayCollectionViewCell: UICollectionViewCell {
     
+    static var identifier = "ArrayCollectionViewCell"    // самоделка
+    
+    
     private let firstRowImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit

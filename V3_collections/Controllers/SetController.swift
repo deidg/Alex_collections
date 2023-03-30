@@ -5,24 +5,23 @@
 //  Created by Alex on 21.03.2023.
 //
 
-
 import UIKit
 import SnapKit
 
 class SetController: UIViewController {
-   
+    
     
     private let collectionView: UICollectionView = {
-       let layout = UICollectionViewFlowLayout()
+        let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-//        layout.minimumInteritemSpacing = 0
-//        layout.minimumLineSpacing = 0
+        //        layout.minimumInteritemSpacing = 0
+        //        layout.minimumLineSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .green
         
         return collectionView
     }()
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupContraints()
@@ -38,12 +37,14 @@ class SetController: UIViewController {
         if indexPath.row == 0 {
             return CGSize(width: collectionView.bounds.width, height: 100)
         } else {
-//            return CGSize(width: (collectionView.bounds.width/2)-1, height: 100)
+                        return CGSize(width: (collectionView.bounds.width/2), height: 100)   //
             
-            let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
-                    let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
-                    let size: CGFloat = (collectionView.frame.size.width - space) / 2.0
-                    return CGSize(width: size, height: 100)
+//            let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
+//            let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) +
+//            (flowayout?.sectionInset.left ?? 0.0) +
+//            (flowayout?.sectionInset.right ?? 0.0)
+//            let size: CGFloat = (collectionView.frame.size.width - space) / 2.0
+//            return CGSize(width: size, height: 100)
         }
     }
     
@@ -57,7 +58,7 @@ class SetController: UIViewController {
 
 extension SetController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 13
+        return 26
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -67,17 +68,21 @@ extension SetController: UICollectionViewDataSource {
         cell.backgroundColor = .yellow
         return cell
     }
-   
+    
 }
 
 extension SetController: UICollectionViewDelegate {
 }
 
 extension SetController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 1
-//    }
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 }
 
 

@@ -13,6 +13,11 @@ import SnapKit
 class MyCollectionViewCell: UICollectionViewCell {
     static var identifier = "MyCollectionViewCell"
     
+   
+    
+    
+    
+    //========================
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true

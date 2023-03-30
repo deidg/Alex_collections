@@ -4,124 +4,80 @@
 //
 //  Created by Alex on 21.03.2023.
 //
-// TODO: появляется возврат в Array - хотя это set, т.е. не работает кнопка возврата. Появляется на сразу, а после захода в Array
-//https://www.youtube.com/watch?v=dmWFLRGWPUs
 
 
 import UIKit
 import SnapKit
 
 class SetController: UIViewController {
+   
     
-    private let collectionView = UICollectionView(
-        frame: .zero,
-        collectionViewLayout: SetController.createLayout()
-    )
-    
+    private let collectionView: UICollectionView = {
+       let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+//        layout.minimumInteritemSpacing = 0
+//        layout.minimumLineSpacing = 0
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .green
+        
+        return collectionView
+    }()
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(collectionView)
-        collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: MyCollectionViewCell.identifier)
-        collectionView.frame = view.bounds
-        collectionView.backgroundColor = .white
+        setupContraints()
+        
+        collectionView.delegate = self
         collectionView.dataSource = self
+        
+        collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
     }
     
-    static func createLayout() -> UICollectionViewCompositionalLayout {
-        // Item
-        let item = NSCollectionLayoutItem(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(2/3),  //1
-                heightDimension: .fractionalHeight(1)
-            )
-        )
-        
-        item.contentInsets = NSDirectionalEdgeInsets(
-            top: 2, leading: 2, bottom: 2, trailing: 2
-        )
-        
-        let verticalStackItem = NSCollectionLayoutItem(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1),
-                heightDimension: .fractionalWidth(0.5)
-            )
-        )
-        verticalStackItem.contentInsets = NSDirectionalEdgeInsets(
-            top: 2, leading: 2, bottom: 2, trailing: 2
-        )
-        
-        let VerticalStackGroup = NSCollectionLayoutGroup.vertical(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1/3),
-                heightDimension: .fractionalWidth(1)
-            ),
-            subitem: verticalStackItem,
-            count: 2
-        )
-        
-        let tripleItem = NSCollectionLayoutItem(
-            layoutSize: NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalWidth(1)
-            )
-        )
-        
-        let tripletHorizontalGroup = NSCollectionLayoutGroup.horizontal(
-            layoutSize:  NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .fractionalWidth(0.5)
-            ),
-            subitem: tripleItem,
-            count: 1
-        )
-        
-        
-        // Group
-        let horizontalGroup = NSCollectionLayoutGroup.horizontal(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .fractionalHeight(0.5)
-            ),
-            subitems: [
-                item,
-                VerticalStackGroup
-            ]
-        )
-        
-        let verticalGroup = NSCollectionLayoutGroup.vertical(
-            layoutSize: NSCollectionLayoutSize(
-                    widthDimension: .fractionalWidth(1.0),
-                    heightDimension: .fractionalHeight(1)
-                    ),
-            subitems: [
-                horizontalGroup,
-                tripletHorizontalGroup
-            ]
-        
-        )
-        
-        // Sections
-        let section = NSCollectionLayoutSection(group: verticalGroup)
-        
-        
-        // Return
-        return UICollectionViewCompositionalLayout(section: section)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.row == 0 {
+            return CGSize(width: collectionView.bounds.width, height: 100)
+        } else {
+//            return CGSize(width: (collectionView.bounds.width/2)-1, height: 100)
+            
+            let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
+                    let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
+                    let size: CGFloat = (collectionView.frame.size.width - space) / 2.0
+                    return CGSize(width: size, height: 100)
+        }
+    }
+    
+    func setupContraints() {
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints{ make in
+            make.edges.equalToSuperview()
+        }
     }
 }
 
-
 extension SetController: UICollectionViewDataSource {
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return 13
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCell.identifier, for: indexPath)
-        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell",
+                                                            for: indexPath) as? MyCollectionViewCell else
+        { return UICollectionViewCell() }
+        cell.backgroundColor = .yellow
         return cell
     }
+   
+}
+
+extension SetController: UICollectionViewDelegate {
+}
+
+extension SetController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 1
+//    }
+    
 }
 
 

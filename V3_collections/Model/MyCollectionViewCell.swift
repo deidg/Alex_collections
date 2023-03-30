@@ -1,3 +1,4 @@
+
 //
 //  MyCollectionViewCell.swift
 //  V3_collections
@@ -7,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class MyCollectionViewCell: UICollectionViewCell {
     static var identifier = "MyCollectionViewCell"
@@ -14,18 +16,18 @@ class MyCollectionViewCell: UICollectionViewCell {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(imageView)  //  название массива
+        contentView.addSubview(imageView)
         
         let images: [UIImage] = [
             UIImage(named: "pic1"),
-            UIImage(named: "pic2"),
-            UIImage(named: "pic3"),
+//            UIImage(named: "pic2"),
+//            UIImage(named: "pic3"),
         ].compactMap({ $0 })
         imageView.image = images.randomElement()
         contentView.clipsToBounds = true
@@ -40,3 +42,4 @@ class MyCollectionViewCell: UICollectionViewCell {
         imageView.frame = contentView.bounds
     }
 }
+

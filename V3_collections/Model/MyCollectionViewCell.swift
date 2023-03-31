@@ -12,9 +12,16 @@ import SnapKit
 
 class MyCollectionViewCell: UICollectionViewCell {
     static var identifier = "MyCollectionViewCell"
-    
+//   let selectedImagae = UIImage = "pic1"
+//    let imageView = UIImageView()
    
-    
+//    let label: UILabel = {
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.text = "Create Int array with"
+//        label.font = .systemFont(ofSize: 20, weight: .bold)
+//        return label
+//    }()
     
     
     //========================
@@ -22,6 +29,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
+//        imageView.frame.height = 30
         return imageView
     }()
     

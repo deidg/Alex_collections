@@ -12,7 +12,7 @@ class ArrayController: UIViewController {
     
     
     
-
+    
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -37,27 +37,32 @@ class ArrayController: UIViewController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize(width: collectionView.bounds.width, height: 100)
-        }
-    
-/*
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.row == 0 {
-            return CGSize(width: collectionView.bounds.width, height: 100)
-        } else {
-                        return CGSize(width: (collectionView.bounds.width/2), height: 100)   //
-            
-//            let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
-//            let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) +
-//            (flowayout?.sectionInset.left ?? 0.0) +
-//            (flowayout?.sectionInset.right ?? 0.0)
-//            let size: CGFloat = (collectionView.frame.size.width - space) / 2.0
-//            return CGSize(width: size, height: 100)
-        }
+        return CGSize(width: collectionView.bounds.width, height: 100)
     }
- */
-
+    
+    
+    
+    
+    
+    
+    /*
+     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+     sizeForItemAt indexPath: IndexPath) -> CGSize {
+     if indexPath.row == 0 {
+     return CGSize(width: collectionView.bounds.width, height: 100)
+     } else {
+     return CGSize(width: (collectionView.bounds.width/2), height: 100)   //
+     
+     //            let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
+     //            let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) +
+     //            (flowayout?.sectionInset.left ?? 0.0) +
+     //            (flowayout?.sectionInset.right ?? 0.0)
+     //            let size: CGFloat = (collectionView.frame.size.width - space) / 2.0
+     //            return CGSize(width: size, height: 100)
+     }
+     }
+     */
+    
     func setupContraints() {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints{ make in
@@ -65,7 +70,7 @@ class ArrayController: UIViewController {
         }
     }
 }
- extension ArrayController: UICollectionViewDataSource {
+extension ArrayController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
@@ -81,6 +86,29 @@ class ArrayController: UIViewController {
 }
 
 extension ArrayController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell {
+            collectionView.backgroundColor = .red
+            
+            print("hello")
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        collectionView.backgroundColor = .cyan
+
+    }
+    
+//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+//
+//        print("hellot")
+//        let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell
+//        cell?.isSelected = false
+//
+//        //        let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell
+//    }
 }
 
 extension ArrayController: UICollectionViewDelegateFlowLayout {
@@ -92,7 +120,7 @@ extension ArrayController: UICollectionViewDelegateFlowLayout {
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    
+    
 }
-
-
 

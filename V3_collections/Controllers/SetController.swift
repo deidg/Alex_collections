@@ -56,7 +56,7 @@ class SetController: UIViewController {
     }
 }
 
-extension SetController: UICollectionViewDataSource {
+extension  SetController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 26
     }

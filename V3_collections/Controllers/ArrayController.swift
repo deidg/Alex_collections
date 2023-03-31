@@ -11,6 +11,9 @@ import SnapKit
 class ArrayController: UIViewController {
     
     
+    
+
+    
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -34,6 +37,12 @@ class ArrayController: UIViewController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: collectionView.bounds.width, height: 100)
+        }
+    
+/*
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 0 {
             return CGSize(width: collectionView.bounds.width, height: 100)
         } else {
@@ -47,7 +56,8 @@ class ArrayController: UIViewController {
 //            return CGSize(width: size, height: 100)
         }
     }
-    
+ */
+
     func setupContraints() {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints{ make in
@@ -55,10 +65,9 @@ class ArrayController: UIViewController {
         }
     }
 }
-
-extension ArrayController: UICollectionViewDataSource {
+ extension ArrayController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 26
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

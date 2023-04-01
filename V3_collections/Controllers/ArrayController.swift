@@ -82,7 +82,7 @@ extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         func cellTapped() {
             var counter = 0
-            while counter <= 10 {
+            while counter <= 11 {
                 cellArray.append(myCollectionViewCell)
                 counter += 1
             }

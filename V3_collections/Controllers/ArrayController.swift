@@ -37,7 +37,6 @@ class ArrayController: UIViewController {
         
         appendToArray()
 
-        
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
     }
     
@@ -55,14 +54,49 @@ class ArrayController: UIViewController {
          }
      }
  
-    
     func setupContraints() {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints{ make in
             make.edges.equalToSuperview()
         }
     }
+    
+    var cellNamesArray: String = []
+    
+"Array generation time: "
+
+"Insert 1000 elements at the beginning of the array one-by-one"
+"Insert 1000 elements at the beginning of the array at once"
+    
+"Insert 1000 elements in the middle of the array one-by-one"
+"Insert 1000 elements in the middle of the array all at once"
+    
+"Insert 1000 elements in the end of the array one-by-one"
+"Insert 1000 elements in the end of the array all at once"
+    
+"Remove 1000 elements at the beginning of the array one-by-one"
+"Remove 1000 elements at the beginning of the array"
+
+"Remove 1000 elements in the end of the array one-by-one"
+"Remove 1000 elements in the middle of the array"
+    
+"Remove 1000 elements at the end of the array one-by-one"
+"Remove 1000 elements at the end of the array"
+    
+
+
+
+    
+    
+    
+    
 }
+
+
+
+
+
+
 extension ArrayController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cellArray.count

@@ -11,9 +11,9 @@ import SnapKit
 class ArrayController: UIViewController {
     
     var myArray: [Int] = []
+    var cellArray: [UICollectionViewCell] = []
     let myCollectionViewCell = MyCollectionViewCell()
-    //    var isFirstCell: Bool = true
-    
+    let cell = Cell()
     
     
     private let collectionView: UICollectionView = {
@@ -34,33 +34,20 @@ class ArrayController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-        firstCellSetup()
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
+        appendToArray()
     }
     
-    //    сделать setup где стоит 1. а после нажатия вкл. другая функция которая меняет на много ячеек. reload?
-    
-    func firstCellSetup() {
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                            sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize(width: collectionView.bounds.width, height: 100)
-        }
+    func appendToArray() {
+        cellArray.append(myCollectionViewCell)
     }
     
-        func secondCellSetup() {
-                func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-                    return 13
-                }
-                func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                                    sizeForItemAt indexPath: IndexPath) -> CGSize {
-                        let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
-                        let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) +
-                        (flowayout?.sectionInset.left ?? 0.0) +
-                        (flowayout?.sectionInset.right ?? 0.0)
-                        let size: CGFloat = (collectionView.frame.size.width - space) / 2.0
-                        return CGSize(width: size, height: 100)
-                    }
-                }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 100)
+    }
+    
+    
     
     
     
@@ -92,7 +79,7 @@ class ArrayController: UIViewController {
 }
 extension ArrayController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return cellArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -107,41 +94,15 @@ extension ArrayController: UICollectionViewDataSource {
 extension ArrayController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        func makingArray() {
+
+        func cellTapped() {
             collectionView.backgroundColor = .red
-            secondCellSetup()
-            //                print(isFirstCell)
             var integerArray = [Int](0...100)
-            collectionView.reloadData()
-            //            начать делать логику - поменять текст, добавить новые ячейки. 4 мин
-            //====
-            /*
-             func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-             sizeForItemAt indexPath: IndexPath) -> CGSize {
-             if indexPath.row == 0 {
-             return CGSize(width: collectionView.bounds.width, height: 100)
-             } else {
-             return CGSize(width: (collectionView.bounds.width/2), height: 100)   //
-             
-             let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
-             let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) +
-             (flowayout?.sectionInset.left ?? 0.0) +
-             (flowayout?.sectionInset.right ?? 0.0)
-             let size: CGFloat = (collectionView.frame.size.width - space) / 2.0
-             return CGSize(width: size, height: 100)
-             }
-             }
-             */
-            //====
-            
-            
-            
-            
+            //                        print(integerArray)
         }
-        makingArray()
-        
-        
+   cellTapped()
+
+    
     }
 }
 
@@ -155,6 +116,7 @@ extension ArrayController: UICollectionViewDelegateFlowLayout {
         return 0
     }
     
-    
+   
 }
+
 

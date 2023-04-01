@@ -24,6 +24,7 @@ class ArrayController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .gray
         
+    
         return collectionView
     }()
     
@@ -34,8 +35,10 @@ class ArrayController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-        collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
         appendToArray()
+
+        
+        collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
     }
     
     func appendToArray() {
@@ -94,15 +97,23 @@ extension ArrayController: UICollectionViewDataSource {
 extension ArrayController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        
         func cellTapped() {
+            var counter = 0
+            
+            while counter <= 10 {
+                cellArray.append(myCollectionViewCell)
+                counter += 1
+            }
+            
             collectionView.backgroundColor = .red
             var integerArray = [Int](0...100)
+            collectionView.reloadData()
             //                        print(integerArray)
         }
-   cellTapped()
-
-    
+        cellTapped()
+        
+        
     }
 }
 
@@ -116,7 +127,7 @@ extension ArrayController: UICollectionViewDelegateFlowLayout {
         return 0
     }
     
-   
+    
 }
 
 

@@ -16,7 +16,7 @@ class ArrayController: UIViewController {
     let cell = Cell()
     
     
-    private let collectionView: UICollectionView = {
+    private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         //        layout.minimumInteritemSpacing = 0
@@ -44,34 +44,17 @@ class ArrayController: UIViewController {
     func appendToArray() {
         cellArray.append(myCollectionViewCell)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 100)
-    }
-    
-    
-    
-    
-    
-    
-    /*
-     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-     sizeForItemAt indexPath: IndexPath) -> CGSize {
-     if indexPath.row == 0 {
-     return CGSize(width: collectionView.bounds.width, height: 100)
-     } else {
-     return CGSize(width: (collectionView.bounds.width/2), height: 100)   //
      
-     //            let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
-     //            let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) +
-     //            (flowayout?.sectionInset.left ?? 0.0) +
-     //            (flowayout?.sectionInset.right ?? 0.0)
-     //            let size: CGFloat = (collectionView.frame.size.width - space) / 2.0
-     //            return CGSize(width: size, height: 100)
+    
+     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                         sizeForItemAt indexPath: IndexPath) -> CGSize {
+         if indexPath.row == 0 {
+             return CGSize(width: collectionView.bounds.width, height: 100)
+         } else {
+             return CGSize(width: (collectionView.bounds.width/2), height: 100)
+         }
      }
-     }
-     */
+ 
     
     func setupContraints() {
         view.addSubview(collectionView)
@@ -97,23 +80,18 @@ extension ArrayController: UICollectionViewDataSource {
 extension ArrayController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         func cellTapped() {
             var counter = 0
-            
             while counter <= 10 {
                 cellArray.append(myCollectionViewCell)
                 counter += 1
             }
-            
+
             collectionView.backgroundColor = .red
             var integerArray = [Int](0...100)
             collectionView.reloadData()
-            //                        print(integerArray)
         }
         cellTapped()
-        
-        
     }
 }
 
@@ -129,5 +107,6 @@ extension ArrayController: UICollectionViewDelegateFlowLayout {
     
     
 }
+
 
 

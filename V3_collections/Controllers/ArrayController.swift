@@ -10,7 +10,9 @@ import SnapKit
 
 class ArrayController: UIViewController {
     
-    
+    var myArray: [Int] = []
+//    var myArray = [Int]()
+    let myCollectionViewCell = MyCollectionViewCell()
     
     
     
@@ -20,7 +22,7 @@ class ArrayController: UIViewController {
         //        layout.minimumInteritemSpacing = 0
         //        layout.minimumLineSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .green
+        collectionView.backgroundColor = .gray
         
         return collectionView
     }()
@@ -29,8 +31,8 @@ class ArrayController: UIViewController {
         super.viewDidLoad()
         setupContraints()
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
         
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
     }
@@ -82,33 +84,21 @@ extension ArrayController: UICollectionViewDataSource {
         cell.backgroundColor = .yellow
         return cell
     }
-    
 }
 
 extension ArrayController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell {
-            collectionView.backgroundColor = .red
-            
-            print("hello")
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        collectionView.backgroundColor = .cyan
 
-    }
+        func cellTapped() {
+            collectionView.backgroundColor = .red
+            var integerArray = [Int](0...100)
+            //                        print(integerArray)
+        }
+   cellTapped()
+
     
-//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-//
-//        print("hellot")
-//        let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell
-//        cell?.isSelected = false
-//
-//        //        let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell
-//    }
+    }
 }
 
 extension ArrayController: UICollectionViewDelegateFlowLayout {
@@ -121,6 +111,6 @@ extension ArrayController: UICollectionViewDelegateFlowLayout {
         return 0
     }
     
-    
+   
 }
 

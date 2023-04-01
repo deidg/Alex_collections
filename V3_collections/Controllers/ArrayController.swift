@@ -13,6 +13,7 @@ class ArrayController: UIViewController {
     var myArray: [Int] = []
 //    var myArray = [Int]()
     let myCollectionViewCell = MyCollectionViewCell()
+    var isFirstCell: Bool = true
     
     
     
@@ -90,12 +91,38 @@ extension ArrayController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        func cellTapped() {
+        func makingArray() {
             collectionView.backgroundColor = .red
+            isFirstCell = false
+            print(isFirstCell)
             var integerArray = [Int](0...100)
-            //                        print(integerArray)
+            
+//            начать делать логику - поменять текст, добавить новые ячейки. 4 мин
+            //====
+            /*
+            func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+            sizeForItemAt indexPath: IndexPath) -> CGSize {
+            if indexPath.row == 0 {
+            return CGSize(width: collectionView.bounds.width, height: 100)
+            } else {
+            return CGSize(width: (collectionView.bounds.width/2), height: 100)   //
+            
+                        let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
+                        let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) +
+                        (flowayout?.sectionInset.left ?? 0.0) +
+                        (flowayout?.sectionInset.right ?? 0.0)
+                        let size: CGFloat = (collectionView.frame.size.width - space) / 2.0
+                        return CGSize(width: size, height: 100)
+            }
+            }
+             */
+                //====
+            
+            
+            
+            
         }
-   cellTapped()
+        makingArray()
 
     
     }

@@ -37,11 +37,9 @@ class MyCollectionViewCell: UICollectionViewCell {
         label.frame = contentView.bounds
     }
     
-    func printMes() {
-        print("hekko")
-//        superview.backgroundColor = .red
-
-    }
+//    func printMes() {
+//  
+//    }
 }
     
   

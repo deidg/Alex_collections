@@ -12,21 +12,21 @@ import SnapKit
 
 class MyCollectionViewCell: UICollectionViewCell {
     static var identifier = "MyCollectionViewCell"
-
-//TODO: setup background color
-        let label: UILabel = {
-            let label = UILabel()
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = "Create Int array with"
-            label.backgroundColor = UIColor(red: 166, green: 197, blue: 198, alpha: 1)
-            label.font = .systemFont(ofSize: 20, weight: .medium)
-            return label
-        }()
     
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-            contentView.addSubview(label)
-}
+    //TODO: setup background color
+    let label: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Create Int array with"
+        label.backgroundColor = UIColor(red: 166, green: 197, blue: 198, alpha: 1)
+        label.font = .systemFont(ofSize: 20, weight: .medium)
+        return label
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        contentView.addSubview(label)
+    }
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -37,30 +37,29 @@ class MyCollectionViewCell: UICollectionViewCell {
         label.frame = contentView.bounds
     }
     
-//    func printMes() {
-//  
-//    }
-}
+    //    func printMes() {
+    //
+    //    }
+    //}
     
-  
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
     func printMes() {
-
-//        print("print smth")
-            var integerArray = [Int](0...100)
-//            self.backgroundColor = .red
-            print(integerArray)
+        //        print("print smth")
+        var integerArray = [Int](0...100)
+        //            self.backgroundColor = .red
+        print(integerArray)
         
         
-//        label.backgroundColor = .systemPink
-//        print(myArray)
+        //        label.backgroundColor = .systemPink
+        //        print(myArray)
     }
-
+}
 
     //========================
 //    private let imageView: UIImageView = {

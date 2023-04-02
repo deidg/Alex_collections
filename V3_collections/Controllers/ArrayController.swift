@@ -20,7 +20,7 @@ class ArrayController: UIViewController {
     var cellArray: [UICollectionViewCell] = []
     let myCollectionViewCell = MyCollectionViewCell()
     let cell = Cell()
-    let textArray
+    let taskArray = TaskArray()
     
     
     private var collectionView: UICollectionView = {
@@ -105,6 +105,9 @@ extension ArrayController: UICollectionViewDelegate {
         func cellTapped() {
             var counter = 0
             while counter <= 11 {
+
+                myCollectionViewCell.label.text = "veff"
+                
                 cellArray.append(myCollectionViewCell)
                 counter += 1
             }

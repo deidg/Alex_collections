@@ -39,14 +39,14 @@ class ArrayController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-        appendToArray()
+//        appendToArray()
         
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
     }
     
-    func appendToArray() {
-        cellArray.append(myCollectionViewCell)
-    }
+//    func appendToArray() {
+//        cellArray.append(myCollectionViewCell)
+//    }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
@@ -113,24 +113,31 @@ extension ArrayController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell",
                                                             for: indexPath) as? MyCollectionViewCell else
         { return UICollectionViewCell() }
+        
+        let item = taskForFirstCellArray[indexPath.row]
+        cell.label.text = item
+//        cell.label.attributedTex
+        
+
+        
+        
         cell.backgroundColor = .yellow
         return cell
     }
 }
 
 extension ArrayController: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         taskForFirstCellArray.append(contentsOf: taskArray)
+        
         
         collectionView.backgroundColor = .red
         var integerArray = [Int](0...100)
         collectionView.reloadData()
     }
-    //        cellTapped()
 }
-//}
+
 
 extension ArrayController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,

@@ -4,6 +4,12 @@
 //
 //  Created by Alex on 21.03.2023.
 //
+// TODO: 1. ПРисвоить ячейкам имена
+//2.  в отдельный файл вынести методы по коллекциям?
+// 3.    26 мин.
+
+
+
 
 import UIKit
 import SnapKit
@@ -14,6 +20,7 @@ class ArrayController: UIViewController {
     var cellArray: [UICollectionViewCell] = []
     let myCollectionViewCell = MyCollectionViewCell()
     let cell = Cell()
+    let textArray
     
     
     private var collectionView: UICollectionView = {
@@ -61,28 +68,9 @@ class ArrayController: UIViewController {
         }
     }
     
-    var cellNamesArray: String = []
+//    var cellNamesArray: String = []
     
-"Array generation time: "
 
-"Insert 1000 elements at the beginning of the array one-by-one"
-"Insert 1000 elements at the beginning of the array at once"
-    
-"Insert 1000 elements in the middle of the array one-by-one"
-"Insert 1000 elements in the middle of the array all at once"
-    
-"Insert 1000 elements in the end of the array one-by-one"
-"Insert 1000 elements in the end of the array all at once"
-    
-"Remove 1000 elements at the beginning of the array one-by-one"
-"Remove 1000 elements at the beginning of the array"
-
-"Remove 1000 elements in the end of the array one-by-one"
-"Remove 1000 elements in the middle of the array"
-    
-"Remove 1000 elements at the end of the array one-by-one"
-"Remove 1000 elements at the end of the array"
-    
 
 
 

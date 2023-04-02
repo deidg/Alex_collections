@@ -23,6 +23,7 @@
 		FA9EEFC329CABF8000B5E6DA /* DictionaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9EEFC229CABF8000B5E6DA /* DictionaryController.swift */; };
 		FAA813DA29C75D31001C76B9 /* ArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA813D929C75D31001C76B9 /* ArrayController.swift */; };
 		FAAA525E29D00FF200B5FAA2 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAA525D29D00FF200B5FAA2 /* Cell.swift */; };
+		FACB3F9429D8A9FB00846725 /* TaskArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB3F9329D8A9FB00846725 /* TaskArray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		FA9EEFC229CABF8000B5E6DA /* DictionaryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryController.swift; sourceTree = "<group>"; };
 		FAA813D929C75D31001C76B9 /* ArrayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayController.swift; sourceTree = "<group>"; };
 		FAAA525D29D00FF200B5FAA2 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		FACB3F9329D8A9FB00846725 /* TaskArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskArray.swift; sourceTree = "<group>"; };
 		FF4245470163A86764AAA7AE /* Pods-V3_collectionsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-V3_collectionsTests.release.xcconfig"; path = "Target Support Files/Pods-V3_collectionsTests/Pods-V3_collectionsTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				FA89222829C433B90012EA2C /* Assets.xcassets */,
+				FACB3F9329D8A9FB00846725 /* TaskArray.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				FA89222029C433B60012EA2C /* AppDelegate.swift in Sources */,
 				FA9EEFC329CABF8000B5E6DA /* DictionaryController.swift in Sources */,
 				FA93481C29C5EF2400EA7AB2 /* CollectionVC.swift in Sources */,
+				FACB3F9429D8A9FB00846725 /* TaskArray.swift in Sources */,
 				FA89222229C433B60012EA2C /* SceneDelegate.swift in Sources */,
 				FAAA525E29D00FF200B5FAA2 /* Cell.swift in Sources */,
 				FA92002029D3FBF000C9C7F9 /* MyCollectionViewCell.swift in Sources */,

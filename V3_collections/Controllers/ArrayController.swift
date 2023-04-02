@@ -4,9 +4,7 @@
 //
 //  Created by Alex on 21.03.2023.
 //
-// TODO: 1. ПРисвоить ячейкам имена
-//2.  в отдельный файл вынести методы по коллекциям?
-// 3.    26 мин.
+
 
 
 
@@ -20,7 +18,6 @@ class ArrayController: UIViewController {
     var cellArray: [UICollectionViewCell] = []
     let myCollectionViewCell = MyCollectionViewCell()
     let cell = Cell()
-    let taskArray = TaskArray()
     
     
     private var collectionView: UICollectionView = {
@@ -31,7 +28,7 @@ class ArrayController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .gray
         
-    
+        
         return collectionView
     }()
     
@@ -43,24 +40,24 @@ class ArrayController: UIViewController {
         self.collectionView.dataSource = self
         
         appendToArray()
-
+        
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
     }
     
     func appendToArray() {
         cellArray.append(myCollectionViewCell)
     }
-     
     
-     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-         if indexPath.row == 0 {
-             return CGSize(width: collectionView.bounds.width, height: 100)
-         } else {
-             return CGSize(width: (collectionView.bounds.width/2), height: 100)
-         }
-     }
- 
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.row == 0 {
+            return CGSize(width: collectionView.bounds.width, height: 100)
+        } else {
+            return CGSize(width: (collectionView.bounds.width/2), height: 100)
+        }
+    }
+    
     func setupContraints() {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints{ make in
@@ -68,15 +65,37 @@ class ArrayController: UIViewController {
         }
     }
     
-//    var cellNamesArray: String = []
-    
-
-
-
-
-    
-    
-    
+    var taskForFirstCellArray: [String] = [
+        "Array generation time: "
+    ]
+    var taskArray: [String] = [
+        //for array
+        "Insert 1000 elements at the beginning of the array one-by-one",
+        "Insert 1000 elements at the beginning of the array at once",
+        
+        "Insert 1000 elements in the middle of the array one-by-one",
+        "Insert 1000 elements in the middle of the array all at once",
+        
+        "Insert 1000 elements in the end of the array one-by-one",
+        "Insert 1000 elements in the end of the array all at once",
+        
+        "Remove 1000 elements at the beginning of the array one-by-one",
+        "Remove 1000 elements at the beginning of the array",
+        
+        "Remove 1000 elements in the end of the array one-by-one",
+        "Remove 1000 elements in the middle of the array",
+        
+        "Remove 1000 elements at the end of the array one-by-one",
+        "Remove 1000 elements at the end of the array",
+        //for set
+        "All matching letters",
+        "All characters that do not match",
+        "All unique characters from the first text field that do not match in text fields",
+        // for  3 UIScreen
+        "Find the first contact",
+        "Find the last contact",
+        "Find the non-existing element"
+    ]
     
 }
 
@@ -87,7 +106,7 @@ class ArrayController: UIViewController {
 
 extension ArrayController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellArray.count
+        return taskForFirstCellArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -102,23 +121,16 @@ extension ArrayController: UICollectionViewDataSource {
 extension ArrayController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        func cellTapped() {
-            var counter = 0
-            while counter <= 11 {
-
-                myCollectionViewCell.label.text = "veff"
-                
-                cellArray.append(myCollectionViewCell)
-                counter += 1
-            }
-
-            collectionView.backgroundColor = .red
-            var integerArray = [Int](0...100)
-            collectionView.reloadData()
-        }
-        cellTapped()
+        
+        taskForFirstCellArray.append(contentsOf: taskArray)
+        
+        collectionView.backgroundColor = .red
+        var integerArray = [Int](0...100)
+        collectionView.reloadData()
     }
+    //        cellTapped()
 }
+//}
 
 extension ArrayController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,

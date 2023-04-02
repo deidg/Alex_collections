@@ -70,11 +70,11 @@ class ArrayController: UIViewController {
     ]
     var taskArray: [String] = [
         //for array
-        "Insert 1000 elements at the beginning of the array one-by-one",
-        "Insert 1000 elements at the beginning of the array at once",
+        "Insert 1000 elements at the beginning / of the array one-by-one",
+        "Insert 1000 elements at the beginning / of the array at once",
         
-        "Insert 1000 elements in the middle of the array one-by-one",
-        "Insert 1000 elements in the middle of the array all at once",
+        "Insert 1000 elements in the middle of / the array one-by-one",
+        "Insert 1000 elements in the middle of / the array all at once",
         
         "Insert 1000 elements in the end of the array one-by-one",
         "Insert 1000 elements in the end of the array all at once",
@@ -116,11 +116,7 @@ extension ArrayController: UICollectionViewDataSource {
         
         let item = taskForFirstCellArray[indexPath.row]
         cell.label.text = item
-//        cell.label.attributedTex
-        
-
-        
-        
+        cell.label.numberOfLines = 0
         cell.backgroundColor = .yellow
         return cell
     }
@@ -131,6 +127,7 @@ extension ArrayController: UICollectionViewDelegate {
         
         taskForFirstCellArray.append(contentsOf: taskArray)
         
+
         
         collectionView.backgroundColor = .red
         var integerArray = [Int](0...100)

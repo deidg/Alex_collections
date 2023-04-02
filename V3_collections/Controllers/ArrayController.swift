@@ -18,7 +18,7 @@ class ArrayController: UIViewController {
     var cellArray: [UICollectionViewCell] = []
     let myCollectionViewCell = MyCollectionViewCell()
     let cell = Cell()
-    
+    let arrayManager = ArrayManager()
     
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -27,8 +27,6 @@ class ArrayController: UIViewController {
         //        layout.minimumLineSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .gray
-        
-        
         return collectionView
     }()
     
@@ -38,16 +36,8 @@ class ArrayController: UIViewController {
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        
-//        appendToArray()
-        
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
     }
-    
-//    func appendToArray() {
-//        cellArray.append(myCollectionViewCell)
-//    }
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -99,11 +89,6 @@ class ArrayController: UIViewController {
     
 }
 
-
-
-
-
-
 extension ArrayController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return taskForFirstCellArray.count
@@ -127,14 +112,11 @@ extension ArrayController: UICollectionViewDelegate {
         
         taskForFirstCellArray.append(contentsOf: taskArray)
         
-
-        
         collectionView.backgroundColor = .red
-        var integerArray = [Int](0...100)
+        let largeArray = arrayManager.createArray()
         collectionView.reloadData()
     }
 }
-
 
 extension ArrayController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
@@ -145,8 +127,6 @@ extension ArrayController: UICollectionViewDelegateFlowLayout {
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
-    
 }
 
 

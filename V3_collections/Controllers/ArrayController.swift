@@ -32,14 +32,15 @@ class ArrayController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupContraints()
-        activityIndicator.startAnimating()
+        setupActivityIndicator()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
     }
-
+    
     func setupActivityIndicator() {
-        activityIndicator.center =  self.myCollectionViewCell.label.center //self.view.center
+        activityIndicator.center = myCollectionViewCell.label.center
+
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .large
         activityIndicator.color = UIColor.red
@@ -117,28 +118,20 @@ extension ArrayController: UICollectionViewDataSource {
 extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        //        //indicator turn ON
-                activityIndicator.startAnimating()
-                self.view.isUserInteractionEnabled = false
-        
-        taskForFirstCellArray.append(contentsOf: taskArray)
-        
-        collectionView.backgroundColor = .red
-        
-        //indicator turn ON
-//        self.activityIndicator.startAnimating()
+        // indicator turn ON
+//        activityIndicator.startAnimating()
 //        self.view.isUserInteractionEnabled = false
         
+        taskForFirstCellArray.append(contentsOf: taskArray)
+        collectionView.backgroundColor = .red
         let largeArray = arrayManager.createArray()
         let consumedTime = arrayManager.createArray()
         
-        //indicator turn OFF
-        self.activityIndicator.stopAnimating()
-        self.view.isUserInteractionEnabled = true
+//        // indicator turn OFF
+//        self.activityIndicator.stopAnimating()
+//        self.view.isUserInteractionEnabled = true
         
         taskForFirstCellArray[0] = "Array generation time: \(consumedTime)"
-        
-        //        print(consumedTime)
         collectionView.reloadData()
     }
 }

@@ -10,7 +10,15 @@ import UIKit
 
 class ArrayManager {
     
+    var activityIndicator = UIActivityIndicatorView()
+
+    
+    
     func createArray() -> Double {
+        
+        // indicator turn ON
+        activityIndicator.startAnimating()
+//        view.isUserInteractionEnabled = false
         
         let start = Date()
 
@@ -20,11 +28,22 @@ class ArrayManager {
         
         var consumedTime: Double = end.timeIntervalSince(start)
         var consumedTimeRounded = (consumedTime*100).rounded()/100
+        
+        // indicator turn OFF
+        self.activityIndicator.stopAnimating()
+//        self.view.isUserInteractionEnabled = true
 
         return Double(consumedTimeRounded)
     }
     
-    
+//    func setupActivityIndicator() {
+//        activityIndicator.center = self.label.center
+//
+//        activityIndicator.hidesWhenStopped = true
+//        activityIndicator.style = .large
+//        activityIndicator.color = UIColor.red
+//        myCollectionViewCell.label.addSubview(activityIndicator)
+//    }
     
     
     func genarationTimeCounter() {

@@ -10,15 +10,29 @@ import UIKit
 
 class ArrayManager {
     
-    func createArray() -> Array<Any> {
-        var integerArray = [Int](0...100)
-        print("Array created")
-        return integerArray
+    func createArray() {
+        let start = Date()
+
+        var integerArray = [Int](0...100_000)
+        
+        let end = Date()
+        let consumedTime = end.timeIntervalSince(start)
+        
+        print(consumedTime)
     }
     
-    func genarationTimeCounter(){
+    
+    
+    
+    func genarationTimeCounter() {
+        let start = Date.timeIntervalSinceReferenceDate
         
+        var integerArray = [Int](0...10_000_000)
+        
+        let end = Date.timeIntervalSinceReferenceDate
+        let secondsElapsed = end - start
     }
+    
     // insert at the Beginning
     func insertAtBegining1b1(){
         

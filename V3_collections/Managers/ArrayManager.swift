@@ -10,15 +10,18 @@ import UIKit
 
 class ArrayManager {
     
-    func createArray() {
+    func createArray() -> Double {
+        
         let start = Date()
 
-        var integerArray = [Int](0...100_000)
+        var integerArray = [Int](0...4_000_000)
         
         let end = Date()
-        let consumedTime = end.timeIntervalSince(start)
         
-        print(consumedTime)
+        var consumedTime: Double = end.timeIntervalSince(start)
+        var consumedTimeRounded = (consumedTime*100).rounded()/100
+
+        return Double(consumedTimeRounded)
     }
     
     

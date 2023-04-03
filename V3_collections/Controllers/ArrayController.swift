@@ -19,12 +19,11 @@ class ArrayController: UIViewController {
     let myCollectionViewCell = MyCollectionViewCell()
     let cell = Cell()
     let arrayManager = ArrayManager()
+    var activityIndicator = UIActivityIndicatorView()
     
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        //        layout.minimumInteritemSpacing = 0
-        //        layout.minimumLineSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .gray
         return collectionView
@@ -33,10 +32,18 @@ class ArrayController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupContraints()
-        
+        activityIndicator.startAnimating()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
+    }
+
+    func setupActivityIndicator() {
+        activityIndicator.center =  self.myCollectionViewCell.label.center //self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
+        activityIndicator.color = UIColor.red
+        myCollectionViewCell.label.addSubview(activityIndicator)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
@@ -110,10 +117,28 @@ extension ArrayController: UICollectionViewDataSource {
 extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        //        //indicator turn ON
+                activityIndicator.startAnimating()
+                self.view.isUserInteractionEnabled = false
+        
         taskForFirstCellArray.append(contentsOf: taskArray)
         
         collectionView.backgroundColor = .red
+        
+        //indicator turn ON
+//        self.activityIndicator.startAnimating()
+//        self.view.isUserInteractionEnabled = false
+        
         let largeArray = arrayManager.createArray()
+        let consumedTime = arrayManager.createArray()
+        
+        //indicator turn OFF
+        self.activityIndicator.stopAnimating()
+        self.view.isUserInteractionEnabled = true
+        
+        taskForFirstCellArray[0] = "Array generation time: \(consumedTime)"
+        
+        //        print(consumedTime)
         collectionView.reloadData()
     }
 }

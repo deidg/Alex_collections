@@ -13,6 +13,13 @@ import SnapKit
 class MyCollectionViewCell: UICollectionViewCell {
     static var identifier = "MyCollectionViewCell"
     
+    
+    var activityIndicator = UIActivityIndicatorView()
+    
+    
+    //    найти код и еще раз посомтреть на него. а также посмотреть слова Влада где размещать код - в клетке?
+    
+    
     //TODO: setup background color
     let label: UILabel = {
         let label = UILabel()
@@ -26,6 +33,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(label)
+        setupActivityIndicator()
     }
     
     required init?(coder: NSCoder) {
@@ -37,66 +45,44 @@ class MyCollectionViewCell: UICollectionViewCell {
         label.frame = contentView.bounds
     }
     
-    //    func printMes() {
-    //
-    //    }
-    //}
+    
+    // MARK: activity Indicator
+    func setupActivityIndicator() {
+        activityIndicator.center = self.label.center
+        
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
+        activityIndicator.color = UIColor.red
+        label.addSubview(activityIndicator)
+    }
+    
+    // indicator turn ON
+    func activityIndicatorOn() {
+        activityIndicator.startAnimating()
+        //        view.isUserInteractionEnabled = false
+    }
+    
+    // indicator turn OFF
+    func activityIndicatorOff() {
+        
+        self.activityIndicator.stopAnimating()
+        //        self.view.isUserInteractionEnabled = true
+    }
     
     
     
     
     
     
-    
-    
-    func printMes() {
-        //        print("print smth")
-        var integerArray = [Int](0...100)
-        //            self.backgroundColor = .red
-        print(integerArray)
+//    func printMes() {
+//        //        print("print smth")
+//        var integerArray = [Int](0...100)
+//        //            self.backgroundColor = .red
+//        print(integerArray)
         
         
         //        label.backgroundColor = .systemPink
         //        print(myArray)
-    }
+//    }
 }
 
-    //========================
-//    private let imageView: UIImageView = {
-//        let imageView = UIImageView()
-////        imageView.clipsToBounds = true
-////        imageView.contentMode = .scaleAspectFill
-////        imageView.frame.height = 30
-//        return imageView
-//    }()
-    
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        contentView.addSubview(imageView)
-        
-//        let images: [UIImage] = [
-//            UIImage(named: "pic1"),
-////            UIImage(named: "pic2"),
-////            UIImage(named: "pic3"),
-//        ].compactMap({ $0 })
-//        imageView.image = images.randomElement()
-//        contentView.clipsToBounds = true
-//    }
-    
-//    required init?(coder: NSCoder) {
-//        fatalError()
-//    }
-    
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        imageView.frame = contentView.bounds
-//    }
-//}
-
-
-
-//var array10mln: [Int] = []
-////        let array10mln = [Int]()
-//for i in 0...10 {
-//    array10mln.append(2)
-//}

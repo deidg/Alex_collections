@@ -19,7 +19,7 @@ class ArrayController: UIViewController {
     let myCollectionViewCell = MyCollectionViewCell()
     let cell = Cell()
     let arrayManager = ArrayManager()
-    var activityIndicator = UIActivityIndicatorView()
+//    var activityIndicator = UIActivityIndicatorView()
     
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -32,20 +32,20 @@ class ArrayController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupContraints()
-        setupActivityIndicator()
+//        setupActivityIndicator()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
     }
     
-    func setupActivityIndicator() {
-        activityIndicator.center = myCollectionViewCell.label.center
-
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .large
-        activityIndicator.color = UIColor.red
-        myCollectionViewCell.label.addSubview(activityIndicator)
-    }
+//    func setupActivityIndicator() {
+//        activityIndicator.center = myCollectionViewCell.label.center
+//
+//        activityIndicator.hidesWhenStopped = true
+//        activityIndicator.style = .large
+//        activityIndicator.color = UIColor.red
+//        myCollectionViewCell.label.addSubview(activityIndicator)
+//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -118,6 +118,8 @@ extension ArrayController: UICollectionViewDataSource {
 extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        myCollectionViewCell.activityIndicatorOn()
+        
         // indicator turn ON
 //        activityIndicator.startAnimating()
 //        self.view.isUserInteractionEnabled = false
@@ -130,6 +132,8 @@ extension ArrayController: UICollectionViewDelegate {
 //        // indicator turn OFF
 //        self.activityIndicator.stopAnimating()
 //        self.view.isUserInteractionEnabled = true
+        
+        myCollectionViewCell.activityIndicatorOff()
         
         taskForFirstCellArray[0] = "Array generation time: \(consumedTime)"
         collectionView.reloadData()

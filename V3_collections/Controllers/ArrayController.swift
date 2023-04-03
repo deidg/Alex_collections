@@ -6,9 +6,6 @@
 //
 
 
-
-
-
 import UIKit
 import SnapKit
 
@@ -19,8 +16,8 @@ class ArrayController: UIViewController {
     let myCollectionViewCell = MyCollectionViewCell()
     let cell = Cell()
     let arrayManager = ArrayManager()
-//    var activityIndicator = UIActivityIndicatorView()
-    
+    var activityIndicator = UIActivityIndicatorView()
+
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -106,34 +103,27 @@ extension ArrayController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell",
                                                             for: indexPath) as? MyCollectionViewCell else
         { return UICollectionViewCell() }
-        
+
         let item = taskForFirstCellArray[indexPath.row]
         cell.label.text = item
         cell.label.numberOfLines = 0
         cell.backgroundColor = .yellow
+        
         return cell
     }
 }
 
 extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        myCollectionViewCell.activityIndicatorOn()
-        
-        // indicator turn ON
-//        activityIndicator.startAnimating()
-//        self.view.isUserInteractionEnabled = false
-        
+     
+//        myCollectionViewCell.activityIndicatorOn()
+ 
         taskForFirstCellArray.append(contentsOf: taskArray)
         collectionView.backgroundColor = .red
         let largeArray = arrayManager.createArray()
         let consumedTime = arrayManager.createArray()
         
-//        // indicator turn OFF
-//        self.activityIndicator.stopAnimating()
-//        self.view.isUserInteractionEnabled = true
-        
-        myCollectionViewCell.activityIndicatorOff()
+//        myCollectionViewCe ll.activityIndicatorOff()
         
         taskForFirstCellArray[0] = "Array generation time: \(consumedTime)"
         collectionView.reloadData()

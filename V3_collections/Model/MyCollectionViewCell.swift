@@ -13,12 +13,7 @@ import SnapKit
 class MyCollectionViewCell: UICollectionViewCell {
     static var identifier = "MyCollectionViewCell"
     
-    
     var activityIndicator = UIActivityIndicatorView()
-    
-    
-    //    найти код и еще раз посомтреть на него. а также посмотреть слова Влада где размещать код - в клетке?
-    
     
     //TODO: setup background color
     let label: UILabel = {
@@ -38,6 +33,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError()
+        super.init(coder: coder)
     }
     
     override func layoutSubviews() {
@@ -47,9 +43,10 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     
     // MARK: activity Indicator
+
     func setupActivityIndicator() {
         activityIndicator.center = self.label.center
-        
+
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .large
         activityIndicator.color = UIColor.red
@@ -61,10 +58,10 @@ class MyCollectionViewCell: UICollectionViewCell {
         activityIndicator.startAnimating()
         //        view.isUserInteractionEnabled = false
     }
-    
+
     // indicator turn OFF
     func activityIndicatorOff() {
-        
+
         self.activityIndicator.stopAnimating()
         //        self.view.isUserInteractionEnabled = true
     }

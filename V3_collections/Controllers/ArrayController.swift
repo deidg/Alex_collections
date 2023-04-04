@@ -29,20 +29,10 @@ class ArrayController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupContraints()
-//        setupActivityIndicator()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
     }
-    
-//    func setupActivityIndicator() {
-//        activityIndicator.center = myCollectionViewCell.label.center
-//
-//        activityIndicator.hidesWhenStopped = true
-//        activityIndicator.style = .large
-//        activityIndicator.color = UIColor.red
-//        myCollectionViewCell.label.addSubview(activityIndicator)
-//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -91,7 +81,6 @@ class ArrayController: UIViewController {
         "Find the last contact",
         "Find the non-existing element"
     ]
-    
 }
 
 extension ArrayController: UICollectionViewDataSource {
@@ -116,14 +105,14 @@ extension ArrayController: UICollectionViewDataSource {
 extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
      
-//        myCollectionViewCell.activityIndicatorOn()
+        myCollectionViewCell.activityIndicatorOn()
  
         taskForFirstCellArray.append(contentsOf: taskArray)
         collectionView.backgroundColor = .red
         let largeArray = arrayManager.createArray()
         let consumedTime = arrayManager.createArray()
         
-//        myCollectionViewCe ll.activityIndicatorOff()
+        myCollectionViewCell.activityIndicatorOff()
         
         taskForFirstCellArray[0] = "Array generation time: \(consumedTime)"
         collectionView.reloadData()

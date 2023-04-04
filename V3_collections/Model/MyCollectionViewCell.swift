@@ -12,7 +12,6 @@ import SnapKit
 
 class MyCollectionViewCell: UICollectionViewCell {
     static var identifier = "MyCollectionViewCell"
-    
     var activityIndicator = UIActivityIndicatorView()
     
     //TODO: setup background color
@@ -30,56 +29,32 @@ class MyCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(label)
         setupActivityIndicator()
     }
-    
     required init?(coder: NSCoder) {
         fatalError()
         super.init(coder: coder)
     }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         label.frame = contentView.bounds
     }
     
-    
     // MARK: activity Indicator
-
     func setupActivityIndicator() {
         activityIndicator.center = self.label.center
-
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .large
         activityIndicator.color = UIColor.red
         label.addSubview(activityIndicator)
     }
-    
     // indicator turn ON
     func activityIndicatorOn() {
         activityIndicator.startAnimating()
         //        view.isUserInteractionEnabled = false
     }
-
     // indicator turn OFF
     func activityIndicatorOff() {
-
-        self.activityIndicator.stopAnimating()
+        activityIndicator.stopAnimating()
         //        self.view.isUserInteractionEnabled = true
     }
-    
-    
-    
-    
-    
-    
-//    func printMes() {
-//        //        print("print smth")
-//        var integerArray = [Int](0...100)
-//        //            self.backgroundColor = .red
-//        print(integerArray)
-        
-        
-        //        label.backgroundColor = .systemPink
-        //        print(myArray)
-//    }
 }
 

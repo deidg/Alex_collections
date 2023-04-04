@@ -8,6 +8,9 @@
 import Foundation
 import UIKit
 
+// TODO: Вопросы Влады
+//написать Владу что непонятно почему активити индикатор должен быть в ячейке. Наверное он должен быть тут в менеджере, где все методы....  Ведь в ячейке только описание ее, но не методы.
+
 class ArrayManager {
     
     var activityIndicator = UIActivityIndicatorView()
@@ -25,7 +28,7 @@ class ArrayManager {
     func createArray() -> Double {
         
         // indicator turn ON
-//        activityIndicator.startAnimating()
+        activityIndicator.startAnimating()
 //        view.isUserInteractionEnabled = false
         
         let start = Date()
@@ -38,7 +41,7 @@ class ArrayManager {
         var consumedTimeRounded = (consumedTime*100).rounded()/100
         
         // indicator turn OFF
-//        self.activityIndicator.stopAnimating()
+        self.activityIndicator.stopAnimating()
 //        self.view.isUserInteractionEnabled = true
 
         return Double(consumedTimeRounded)

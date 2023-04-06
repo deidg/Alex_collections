@@ -5,6 +5,9 @@
 //  Created by Alex on 21.03.2023.
 //
 
+//  разобраться почему после нажатия большой кнопки не появляются остальные 12
+// начать разбираться с Состоянием
+
 
 import UIKit
 import SnapKit
@@ -51,7 +54,7 @@ class ArrayController: UIViewController {
     }
     
     var taskForFirstCellArray: [String] = [
-        "Array generation time: "
+        "Create Int array with 10_000_000 elements" // "Array generation time: "
     ]
     var taskArray: [String] = [
         //for array
@@ -114,6 +117,14 @@ extension ArrayController: UICollectionViewDelegate {
         arrayManager.createArr { result in
             self.taskForFirstCellArray.append(contentsOf: self.taskArray)
             cell.label.text = "Creation time: \(result)"
+            
+            self.taskForFirstCellArray.append(contentsOf: self.taskArray)
+                    collectionView.backgroundColor = .red
+//                    let largeArray = arrayManager.createArray()
+//                    let consumedTime = arrayManager.createArray()
+                    collectionView.reloadData()
+
+            
             //change state
         }
         

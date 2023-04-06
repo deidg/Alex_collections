@@ -15,7 +15,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     var activityIndicator = UIActivityIndicatorView()
     
     //TODO: setup background color
-    private let label: UILabel = {
+    let label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Create Int array with"
@@ -28,7 +28,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.addSubview(label)
         setupActivityIndicator()
-//        activityIndicator.startAnimating()
+        //        activityIndicator.startAnimating()
         
     }
     required init?(coder: NSCoder) {
@@ -42,7 +42,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     // MARK: activity Indicator
     func setupActivityIndicator() {
-//        activityIndicator.center = self.label.center
+        //        activityIndicator.center = self.label.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .large
         activityIndicator.color = UIColor.red
@@ -51,13 +51,48 @@ class MyCollectionViewCell: UICollectionViewCell {
             make.center.equalToSuperview()
         }
     }
-        // indicator turn ON
-        func activityIndicatorOn() {
-            activityIndicator.startAnimating()
-        }
-        // indicator turn OFF
-        func activityIndicatorOff() {
-            activityIndicator.stopAnimating()
-        }
+    
+    
+    func initialState() {
+        
     }
+    
+    func loadingState() {
+        activityIndicator.startAnimating()
+    }
+    
+    func showResultState() {
+        activityIndicator.stopAnimating()
+        
+    }
+    
+    
+//
+//    var state: State {
+//
+//        return State
+//    }
+    
+    
+    
+    //        // indicator turn ON
+    //        func activityIndicatorOn() {
+    //            activityIndicator.startAnimating()
+    //        }
+    //        // indicator turn OFF
+    //        func activityIndicatorOff() {
+    //            activityIndicator.stopAnimating()
+    //        }
+    
+    // открыть прошлый паттерн стейт и разобраться как он работает.
+    //    начать делать state в клетке. для каждой
+}
 
+extension MyCollectionViewCell {
+    enum State {
+        case initial
+        case loading
+        case result
+    }
+    
+}

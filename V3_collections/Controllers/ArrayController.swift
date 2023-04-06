@@ -16,13 +16,13 @@ class ArrayController: UIViewController {
     let myCollectionViewCell = MyCollectionViewCell()
     let cell = Cell()
     let arrayManager = ArrayManager()
-    var activityIndicator = UIActivityIndicatorView()
+//    var activityIndicator = UIActivityIndicatorView()
 
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .gray
+        collectionView.backgroundColor = .white
         return collectionView
     }()
     
@@ -104,20 +104,38 @@ extension ArrayController: UICollectionViewDataSource {
 
 extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-     
-        myCollectionViewCell.activityIndicatorOn()
- 
-        taskForFirstCellArray.append(contentsOf: taskArray)
-        collectionView.backgroundColor = .red
-        let largeArray = arrayManager.createArray()
-        let consumedTime = arrayManager.createArray()
+        guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
+       
         
-        myCollectionViewCell.activityIndicatorOff()
+        //cell. state.
+        cell.activityIndicator.startAnimating()
         
-        taskForFirstCellArray[0] = "Array generation time: \(consumedTime)"
-        collectionView.reloadData()
+        
+        arrayManager.createArr { result in
+            self.taskForFirstCellArray.append(contentsOf: self.taskArray)
+            cell.label.text = "Creation time: \(result)"
+            //change state
+        }
+        
+        cell.activityIndicator.stopAnimating()
+
+        
+        }
+        
+        
+//                activityIndicator.startAnimating()
+
+//        taskForFirstCellArray.append(contentsOf: taskArray)
+//        collectionView.backgroundColor = .red
+//        let largeArray = arrayManager.createArray()
+//        let consumedTime = arrayManager.createArray()
+//
+//        myCollectionViewCell.activityIndicatorOff()
+        
+//        taskForFirstCellArray[0] = "Array generation time: \(consumedTime)"
+//        collectionView.reloadData()
     }
-}
+//}
 
 extension ArrayController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,

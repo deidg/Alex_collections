@@ -6,115 +6,33 @@
 //
 
 import Foundation
-import UIKit
-
-// TODO: Вопросы Влады
-//написать Владу что непонятно почему активити индикатор должен быть в ячейке. Наверное он должен быть тут в менеджере, где все методы....  Ведь в ячейке только описание ее, но не методы.
 
 class ArrayManager {
     
-    var activityIndicator = UIActivityIndicatorView()
-    let myCollectionViewCell = MyCollectionViewCell()
-
-    func setupActivityIndicator() {
-        activityIndicator.center = myCollectionViewCell.center
-
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .large
-        activityIndicator.color = UIColor.red
-        myCollectionViewCell.addSubview(activityIndicator)
-    }
+    let queue = DispatchQueue(label: "Array_manager_queue_working", qos: .userInitiated)
     
-    func createArray() -> Double {
-        
-        // indicator turn ON
-        activityIndicator.startAnimating()
-//        view.isUserInteractionEnabled = false
-        
-        let start = Date()
-
-        var integerArray = [Int](0...4_000_000)
-        
-        let end = Date()
-        
-        var consumedTime: Double = end.timeIntervalSince(start)
-        var consumedTimeRounded = (consumedTime*100).rounded()/100
-        
-        // indicator turn OFF
-        self.activityIndicator.stopAnimating()
-//        self.view.isUserInteractionEnabled = true
-
-        return Double(consumedTimeRounded)
-    }
+    var arr = [Int]()
     
-//    func setupActivityIndicator() {
-//        activityIndicator.center = self.label.center
-//
-//        activityIndicator.hidesWhenStopped = true
-//        activityIndicator.style = .large
-//        activityIndicator.color = UIColor.red
-//        myCollectionViewCell.label.addSubview(activityIndicator)
-//    }
-    
-    
-    func genarationTimeCounter() {
-        let start = Date.timeIntervalSinceReferenceDate
+    func createArr(completion: ((Double) -> Void)?) {
+        queue.async { [weak self] in
+            guard let self else { return }
+            
+            let start = CFAbsoluteTimeGetCurrent()
+            
+            let arr = [Int](0..<10_000_000)
+            
+            let result = CFAbsoluteTimeGetCurrent() - start
+            self.arr = arr
+            DispatchQueue.main.async {
+                completion?(result)
+            }
+        }
         
-        var integerArray = [Int](0...10_000_000)
         
-        let end = Date.timeIntervalSinceReferenceDate
-        let secondsElapsed = end - start
-    }
-    
-    // insert at the Beginning
-    func insertAtBegining1b1(){
-        
-    }
-    func insertAtBeginingAtOnce() {
-        
-    }
-    
-   // insert in the Middle
-    func insertInMiddle1b1(){
-        
-    }
-    func insertInMiddleAtOnce(){
-        
-    }
-    
-    // insert in the End
-    func insertInTheEnd1b1(){
-        
-    }
-    func insertInTheEndAtOnce(){
-        
-    }
-
-    
-    // remove at the Beginning
-    func removeAtBegining1b1(){
-        
-    }
-    func removeAtBegining() {
-        
-    }
-    
-   // remove in the Middle
-    func removeInMiddle1b1(){
-        
-    }
-    func removeInMiddle(){
-        
-    }
-    
-    // remove in the End
-    func removeInTheEnd1b1(){
-        
-    }
-    func removeInTheEnd(){
         
     }
     
     
     
+   
 }

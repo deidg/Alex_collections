@@ -15,7 +15,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     var activityIndicator = UIActivityIndicatorView()
     
     //TODO: setup background color
-    let label: UILabel = {
+    private let label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Create Int array with"
@@ -28,10 +28,12 @@ class MyCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.addSubview(label)
         setupActivityIndicator()
+//        activityIndicator.startAnimating()
+        
     }
     required init?(coder: NSCoder) {
-        fatalError()
         super.init(coder: coder)
+        fatalError()
     }
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -40,21 +42,22 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     // MARK: activity Indicator
     func setupActivityIndicator() {
-        activityIndicator.center = self.label.center
+//        activityIndicator.center = self.label.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .large
         activityIndicator.color = UIColor.red
-        label.addSubview(activityIndicator)
+        contentView.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints{ make in
+            make.center.equalToSuperview()
+        }
     }
-    // indicator turn ON
-    func activityIndicatorOn() {
-        activityIndicator.startAnimating()
-        //        view.isUserInteractionEnabled = false
+        // indicator turn ON
+        func activityIndicatorOn() {
+            activityIndicator.startAnimating()
+        }
+        // indicator turn OFF
+        func activityIndicatorOff() {
+            activityIndicator.stopAnimating()
+        }
     }
-    // indicator turn OFF
-    func activityIndicatorOff() {
-        activityIndicator.stopAnimating()
-        //        self.view.isUserInteractionEnabled = true
-    }
-}
 

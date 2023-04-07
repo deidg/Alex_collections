@@ -13,13 +13,18 @@ import SnapKit
 class MyCollectionViewCell: UICollectionViewCell {
     static var identifier = "MyCollectionViewCell"
     var activityIndicator = UIActivityIndicatorView()
+    var state: State = .initial {
+        didSet {
+            applyState(state)
+        }
+    }
     
-    //TODO: setup background color
+    //TODO: setup number of lines
     let label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Create Int array with"
-        label.backgroundColor = UIColor(red: 166, green: 197, blue: 198, alpha: 1)
+        label.backgroundColor = .yellow  // .systemBackground  //
         label.font = .systemFont(ofSize: 20, weight: .medium)
         return label
     }()
@@ -53,39 +58,64 @@ class MyCollectionViewCell: UICollectionViewCell {
     }
     
     
-    func initialState() {
+    private func applyState(_ state: State) {
+        func initialState() {
+            
+            //            answerTextView.text = ""
+            //            reverseTextField.text = ""
+            //            ignoreTextField.text = ""
+            //            divider.backgroundColor = Constants.Divider.dividerBackgroundColor
+            //            reverseButton.backgroundColor = Constants.DisplayButton.displayButtonBackgroundColor
+            //            reverseButton.setTitle("Reverse", for: .normal)
+            //            reverseButton.isEnabled = false
+        }
         
-    }
-    
-    func loadingState() {
-        activityIndicator.startAnimating()
-    }
-    
-    func showResultState() {
-        activityIndicator.stopAnimating()
         
+        
+        
+        //    func initialState() {
+        //
+        //    }
+        
+        func loadingState() {
+            activityIndicator.startAnimating()
+        }
+        
+        func showResultState() {
+            activityIndicator.stopAnimating()
+            
+        }
+        
+        //    switch state: {
+        //      case .initial:
+        //
+        //      case .loading:
+        //
+        //      case .result:
+        //
+        //    }
+        
+        
+        //
+        //    var state: State {
+        //
+        //        return State
+        //    }
+        
+        
+        
+        //        // indicator turn ON
+        //        func activityIndicatorOn() {
+        //            activityIndicator.startAnimating()
+        //        }
+        //        // indicator turn OFF
+        //        func activityIndicatorOff() {
+        //            activityIndicator.stopAnimating()
+        //        }
+        
+        // открыть прошлый паттерн стейт и разобраться как он работает.
+        //    начать делать state в клетке. для каждой
     }
-    
-    
-//
-//    var state: State {
-//
-//        return State
-//    }
-    
-    
-    
-    //        // indicator turn ON
-    //        func activityIndicatorOn() {
-    //            activityIndicator.startAnimating()
-    //        }
-    //        // indicator turn OFF
-    //        func activityIndicatorOff() {
-    //            activityIndicator.stopAnimating()
-    //        }
-    
-    // открыть прошлый паттерн стейт и разобраться как он работает.
-    //    начать делать state в клетке. для каждой
 }
 
 extension MyCollectionViewCell {

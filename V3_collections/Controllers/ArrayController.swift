@@ -5,7 +5,6 @@
 //  Created by Alex on 21.03.2023.
 //
 
-//  разобраться почему после нажатия большой кнопки не появляются остальные 12
 // начать разбираться с Состоянием
 
 
@@ -19,8 +18,8 @@ class ArrayController: UIViewController {
     let myCollectionViewCell = MyCollectionViewCell()
     let cell = Cell()
     let arrayManager = ArrayManager()
-//    var activityIndicator = UIActivityIndicatorView()
-
+    //    var activityIndicator = UIActivityIndicatorView()
+    
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -95,7 +94,7 @@ extension ArrayController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell",
                                                             for: indexPath) as? MyCollectionViewCell else
         { return UICollectionViewCell() }
-
+        
         let item = taskForFirstCellArray[indexPath.row]
         cell.label.text = item
         cell.label.numberOfLines = 0
@@ -108,7 +107,7 @@ extension ArrayController: UICollectionViewDataSource {
 extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
-       
+        
         
         //cell. state.
         cell.activityIndicator.startAnimating()
@@ -119,33 +118,21 @@ extension ArrayController: UICollectionViewDelegate {
             cell.label.text = "Creation time: \(result)"
             
             self.taskForFirstCellArray.append(contentsOf: self.taskArray)
-                    collectionView.backgroundColor = .red
-//                    let largeArray = arrayManager.createArray()
-//                    let consumedTime = arrayManager.createArray()
-                    collectionView.reloadData()
-
+            collectionView.backgroundColor = .red
+            collectionView.reloadData()
+            
             
             //change state
         }
         
         cell.activityIndicator.stopAnimating()
-
-        
-        }
         
         
-//                activityIndicator.startAnimating()
-
-//        taskForFirstCellArray.append(contentsOf: taskArray)
-//        collectionView.backgroundColor = .red
-//        let largeArray = arrayManager.createArray()
-//        let consumedTime = arrayManager.createArray()
-//
-//        myCollectionViewCell.activityIndicatorOff()
-        
-//        taskForFirstCellArray[0] = "Array generation time: \(consumedTime)"
-//        collectionView.reloadData()
     }
+    
+    
+  
+}
 //}
 
 extension ArrayController: UICollectionViewDelegateFlowLayout {

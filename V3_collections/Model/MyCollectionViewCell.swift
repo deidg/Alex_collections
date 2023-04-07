@@ -19,6 +19,9 @@ class MyCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    
+//    понять как вставить состояние в клетку. 29мин
+    
     //TODO: setup number of lines
     let label: UILabel = {
         let label = UILabel()
@@ -26,6 +29,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         label.text = "Create Int array with"
         label.backgroundColor = .yellow  // .systemBackground  //
         label.font = .systemFont(ofSize: 20, weight: .medium)
+    
         return label
     }()
     
@@ -60,22 +64,8 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     private func applyState(_ state: State) {
         func initialState() {
-            
-            //            answerTextView.text = ""
-            //            reverseTextField.text = ""
-            //            ignoreTextField.text = ""
-            //            divider.backgroundColor = Constants.Divider.dividerBackgroundColor
-            //            reverseButton.backgroundColor = Constants.DisplayButton.displayButtonBackgroundColor
-            //            reverseButton.setTitle("Reverse", for: .normal)
-            //            reverseButton.isEnabled = false
+            print("Cell inited")
         }
-        
-        
-        
-        
-        //    func initialState() {
-        //
-        //    }
         
         func loadingState() {
             activityIndicator.startAnimating()

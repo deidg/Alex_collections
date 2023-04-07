@@ -114,6 +114,7 @@ extension ArrayController: UICollectionViewDelegate {
         
         
         arrayManager.createArr { result in
+//            myCollectionViewCell. applyState(State)
             self.taskForFirstCellArray.append(contentsOf: self.taskArray)
             cell.label.text = "Creation time: \(result)"
             

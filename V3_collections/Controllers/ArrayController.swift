@@ -5,6 +5,7 @@
 //  Created by Alex on 21.03.2023.
 //
 
+// посмотреть проект от hackSwift - https://www.youtube.com/@twostraws/search?query=names%20to%20faces
 // начать разбираться с Состоянием
 
 
@@ -95,7 +96,7 @@ extension ArrayController: UICollectionViewDataSource {
                                                             for: indexPath) as? MyCollectionViewCell else
         { return UICollectionViewCell() }
         
-        let item = taskForFirstCellArray[indexPath.row]
+        let item = taskForFirstCellArray[indexPath.row]  // item
         cell.label.text = item
         cell.label.numberOfLines = 0
         cell.backgroundColor = .yellow
@@ -141,6 +142,9 @@ extension ArrayController: UICollectionViewDelegate {
             }
             
             cell.activityIndicator.stopAnimating()
+        
+        
+        
         }
     }
 }

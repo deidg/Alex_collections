@@ -107,47 +107,49 @@ extension ArrayController: UICollectionViewDataSource {
 
 extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
-        
-        for task in taskForFirstCellArray {
-            switch task {
-            case "Create Int array with 10_000_000 elements": print("0")
-            case "Insert 1000 elements at the beginning / of the array one-by-one": print("1")
-            case "Insert 1000 elements at the beginning / of the array at once": print("2")
-            case "Insert 1000 elements in the middle of / the array one-by-one": print("3")
-            case "Insert 1000 elements in the middle of / the array all at once": print("4")
-            case "Insert 1000 elements in the end of the array one-by-one": print("5")
-            case "Insert 1000 elements in the end of the array all at once": print("6")
-            case "Remove 1000 elements at the beginning of the array one-by-one": print("7")
-            case "Remove 1000 elements at the beginning of the array": print("8")
-            case "Remove 1000 elements in the end of the array one-by-one": print("9")
-            case "Remove 1000 elements in the middle of the array": print("10")
-            case "Remove 1000 elements at the end of the array one-by-one": print("11")
-            case "Remove 1000 elements at the end of the array": print("12")
-            default: print("error")
+        guard var cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
+       
+        if cell.label.text == taskForFirstCellArray[indexPath.row] {
+            for cell in taskForFirstCellArray {
+                switch cell {
+                case "Create Int array with 10_000_000 elements": print("herrn0")
+                case "Insert 1000 elements at the beginning / of the array one-by-one": print("1")
+                case "Insert 1000 elements at the beginning / of the array at once": print("2")
+                case "Insert 1000 elements in the middle of / the array one-by-one": print("3")
+                case "Insert 1000 elements in the middle of / the array all at once": print("4")
+                case "Insert 1000 elements in the end of the array one-by-one": print("5")
+                case "Insert 1000 elements in the end of the array all at once": print("6")
+                case "Remove 1000 elements at the beginning of the array one-by-one": print("7")
+                case "Remove 1000 elements at the beginning of the array": print("8")
+                case "Remove 1000 elements in the end of the array one-by-one": print("9")
+                case "Remove 1000 elements in the middle of the array": print("10")
+                case "Remove 1000 elements at the end of the array one-by-one": print("11")
+                case "Remove 1000 elements at the end of the array": print("12")
+                default: print("error")
+                }
             }
-            
-            //cell. state.
-            cell.activityIndicator.startAnimating()
-            
-            arrayManager.createArr { result in
-                //            myCollectionViewCell. applyState(State)
-                self.taskForFirstCellArray.append(contentsOf: self.taskArray)
-                cell.label.text = "Creation time: \(result)"
+                //cell. state.
+                cell.activityIndicator.startAnimating()
+
+                arrayManager.createArr { result in
+                    //            myCollectionViewCell. applyState(State)
+                    self.taskForFirstCellArray.append(contentsOf: self.taskArray)
+                    cell.label.text = "Creation time: \(result)"
+
+                    self.taskForFirstCellArray.append(contentsOf: self.taskArray)
+                    collectionView.backgroundColor = .red
+                    collectionView.reloadData()
+                    //change state
+                }
+
+                cell.activityIndicator.stopAnimating()
                 
-                self.taskForFirstCellArray.append(contentsOf: self.taskArray)
-                collectionView.backgroundColor = .red
-                collectionView.reloadData()
-                //change state
             }
-            
-            cell.activityIndicator.stopAnimating()
-        
         
         
         }
     }
-}
+//}
 
 extension ArrayController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,

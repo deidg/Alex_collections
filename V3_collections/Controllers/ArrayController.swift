@@ -19,7 +19,7 @@ class ArrayController: UIViewController {
     let myCollectionViewCell = MyCollectionViewCell()
     let cell = Cell()
     let arrayManager = ArrayManager()
-    //    var activityIndicator = UIActivityIndicatorView()
+        var activityIndicator = UIActivityIndicatorView()
     
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -109,12 +109,13 @@ extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard var cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
        
+            /*
         if cell.label.text == taskForFirstCellArray[indexPath.row] {
 //            for cell in taskForFirstCellArray {
                 switch taskForFirstCellArray[indexPath.row] {
                 case "Create Int array with 10_000_000 elements": print("herrn0")
                 case "Insert 1000 elements at the beginning / of the array one-by-one": print("1")
-                case "Insert 1000 elements at the beginning / of the array at once": print("2")
+//                case "Insert 1000 elements at the beginning / of the array at once": print("2")
                 case "Insert 1000 elements in the middle of / the array one-by-one": print("3")
                 case "Insert 1000 elements in the middle of / the array all at once": print("4")
                 case "Insert 1000 elements in the end of the array one-by-one": print("5")
@@ -128,21 +129,25 @@ extension ArrayController: UICollectionViewDelegate {
                 default: print("error")
                 }
             }
-                //cell. state.
-                cell.activityIndicator.startAnimating()
+             */
+             
+//                cell. state.
+//        cell.activityIndicator.startAnimating()
+                activityIndicator.startAnimating()
 
-                arrayManager.createArr { result in
+                arrayManager.createArr{ result in
                     //            myCollectionViewCell. applyState(State)
                     self.taskForFirstCellArray.append(contentsOf: self.taskArray)
                     cell.label.text = "Creation time: \(result)"
 
-                    self.taskForFirstCellArray.append(contentsOf: self.taskArray)
                     collectionView.backgroundColor = .red
                     collectionView.reloadData()
                     //change state
                 }
 
-                cell.activityIndicator.stopAnimating()
+//                cell.activityIndicator.stopAnimating()
+                  activityIndicator.stopAnimating()
+
                 
             }
         
@@ -161,6 +166,8 @@ extension ArrayController: UICollectionViewDelegateFlowLayout {
         return 0
     }
 }
+
+
 
 
 

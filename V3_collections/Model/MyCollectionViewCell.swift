@@ -12,7 +12,7 @@ import SnapKit
 
 class MyCollectionViewCell: UICollectionViewCell {
     static var identifier = "MyCollectionViewCell"
-    var activityIndicator = UIActivityIndicatorView()
+//    var activityIndicator = UIActivityIndicatorView()
     var state: State = .initial {
         didSet {
             applyState(state)
@@ -29,9 +29,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 20, weight: .medium)
         return label
     }()
-    
-    
-    
+  
     override init(frame: CGRect) {
         super.init(frame: frame)
 //        contentView.addSubview(label)
@@ -55,15 +53,27 @@ class MyCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    
+    var activityIndicator: UIActivityIndicatorView = {
+          let  activityIndicator = UIActivityIndicatorView()
+          activityIndicator.hidesWhenStopped = true
+          activityIndicator.style = .large
+          activityIndicator.color = UIColor.red
+  
+          return activityIndicator
+      }()
+    
+    
+    
     // MARK: activity Indicator
     func setupActivityIndicator() {
-//                activityIndicator.center = self.label.center
+                activityIndicator.center = self.label.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .large
         activityIndicator.color = UIColor.red
-        contentView.addSubview(activityIndicator)
+        label.addSubview(activityIndicator)
         activityIndicator.snp.makeConstraints{ make in
-            make.center.equalToSuperview()
+            make.center.equalTo(label)
         }
     }
     
@@ -78,6 +88,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         
         func showResultState() {
             activityIndicator.stopAnimating()
+            label.text = "Execution time: "
         }
     }
 }
@@ -90,3 +101,6 @@ extension MyCollectionViewCell {
     }
     
 }
+
+
+//подумать о стейтах и где их делать. как отображать. 

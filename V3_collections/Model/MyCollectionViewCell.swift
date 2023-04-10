@@ -19,7 +19,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    //TODO: setup number of lines
+    //TODO: lines between cells
     let label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -51,7 +51,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     func labelSetup() {
         contentView.addSubview(label)
         label.snp.makeConstraints{ make in
-            make.leading.top.trailing.bottom.equalToSuperview()
+            make.leading.top.trailing.bottom.equalToSuperview().inset(2)
         }
     }
     

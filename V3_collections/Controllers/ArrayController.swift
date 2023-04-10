@@ -129,10 +129,9 @@ extension ArrayController: UICollectionViewDataSource {
 extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
-       
+            
         
-        
-        if cell.label.text == taskForFirstCellArray[indexPath.row], flag == true {
+        if cell.label.text == taskForFirstCellArray[indexPath.row], flag == true {   //  &&? -  bug?
 //            for cell in taskForFirstCellArray {
                 switch taskForFirstCellArray[indexPath.row] {
                 case "Create Int array with 10_000_000 elements":
@@ -141,8 +140,9 @@ extension ArrayController: UICollectionViewDelegate {
                     print("arr")
                 case "Insert 1000 elements at the beginning / of the array one-by-one":
 //                    activityIndicator.startAnimating()
-                    print("case1")
+                    
                     arrayManager.insertElementsBeginning1by1()
+                    print("case1")
 //                    activityIndicator.startAnimating()
                 case "Insert 1000 elements at the beginning / of the array at once":
                     print("case2")
@@ -188,28 +188,26 @@ extension ArrayController: UICollectionViewDelegate {
         
 
         //cell. state.
-//        cell.activityIndicator.startAnimating()
-//        self.activityIndicator.startAnimating()
+
         if flag == false {
-            self.activityIndicator.startAnimating()
-      
-        
-        
-        //cell. state.
-        activityIndicator.startAnimating() //.startAnimating()
+//            self.activityIndicator.startAnimating()
+
         
         arrayManager.createArr { result in
             self.taskForFirstCellArray.append(contentsOf: self.taskArray)
             cell.label.text = "Creation time: \(result)"
+            self.flag = true
             
             //change state
-            self.activityIndicator.stopAnimating()
+//            self.activityIndicator.stopAnimating()
        
-            collectionView.reloadData()
+//            collectionView.reloadData()
         }
+            self.taskForFirstCellArray.append(contentsOf: self.taskArray)
+            
 //        activityIndicator.stopAnimating()
 
-//        collectionView.reloadData()
+        collectionView.reloadData()
         }
         
 

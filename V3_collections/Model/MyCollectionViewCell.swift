@@ -12,7 +12,7 @@ import SnapKit
 
 class MyCollectionViewCell: UICollectionViewCell {
     static var identifier = "MyCollectionViewCell"
-//    var activityIndicator = UIActivityIndicatorView()
+    //    var activityIndicator = UIActivityIndicatorView()
     var state: State = .initial {
         didSet {
             applyState(state)
@@ -29,10 +29,10 @@ class MyCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 20, weight: .medium)
         return label
     }()
-  
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        contentView.addSubview(label)
+        //        contentView.addSubview(label)
         setupActivityIndicator()
         labelSetup()
         //        activityIndicator.startAnimating()
@@ -45,7 +45,6 @@ class MyCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         label.frame = contentView.bounds
     }
-    
     func labelSetup() {
         contentView.addSubview(label)
         label.snp.makeConstraints{ make in
@@ -53,21 +52,17 @@ class MyCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    
     var activityIndicator: UIActivityIndicatorView = {
-          let  activityIndicator = UIActivityIndicatorView()
-          activityIndicator.hidesWhenStopped = true
-          activityIndicator.style = .large
-          activityIndicator.color = UIColor.red
-  
-          return activityIndicator
-      }()
-    
-    
+        let  activityIndicator = UIActivityIndicatorView()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
+        activityIndicator.color = UIColor.red
+        return activityIndicator
+    }()
     
     // MARK: activity Indicator
     func setupActivityIndicator() {
-                activityIndicator.center = self.label.center
+        activityIndicator.center = self.label.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .large
         activityIndicator.color = UIColor.red
@@ -101,6 +96,3 @@ extension MyCollectionViewCell {
     }
     
 }
-
-
-//подумать о стейтах и где их делать. как отображать. 

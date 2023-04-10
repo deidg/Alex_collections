@@ -1,5 +1,5 @@
 //
-//  SetNavigationController.swift
+//  ArrayController.swift
 //  V3_collections
 //
 //  Created by Alex on 21.03.2023.
@@ -16,7 +16,7 @@ class ArrayController: UIViewController {
     let myCollectionViewCell = MyCollectionViewCell()
     let cell = Cell()
     let arrayManager = ArrayManager()
-//    var activityIndicator2 = UIActivityIndicatorView()
+//    var activityIndicator = UIActivityIndicatorView()
 
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -32,7 +32,8 @@ class ArrayController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
-        myCollectionViewCell.setupActivityIndicator()
+//        myCollectionViewCell.setupActivityIndicator()
+        activityIndicatorSetup()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
@@ -51,12 +52,17 @@ class ArrayController: UIViewController {
         }
     }
     
-    var activityIndicator: UIActivityIndicatorView {
+    var activityIndicator: UIActivityIndicatorView = {
         let  activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .large
         activityIndicator.color = UIColor.red
-        view.addSubview(activityIndicator)
+       
+        return activityIndicator
+    }()
+    
+    func activityIndicatorSetup() {
+        self.view.addSubview(activityIndicator)
         activityIndicator.snp.makeConstraints{ make in
             make.center.equalToSuperview()
             //                   activityIndicator.center = self.view.center
@@ -64,7 +70,6 @@ class ArrayController: UIViewController {
             //                   activityIndicator?.style = UIActivityIndicatorView.Style.medium
             //                   activityIndicator?.color = .red
         }
-        return activityIndicator
     }
     
     
@@ -124,34 +129,24 @@ extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
        
-        
         //cell. state.
         activityIndicator.startAnimating() //.startAnimating()
-        
         
         arrayManager.createArr { result in
             self.taskForFirstCellArray.append(contentsOf: self.taskArray)
             cell.label.text = "Creation time: \(result)"
+            
             //change state
+            self.activityIndicator.stopAnimating()
+       
+            collectionView.reloadData()
         }
-        
-        activityIndicator.stopAnimating()
+//        activityIndicator.stopAnimating()
 
-        
-        }
-        
-        
-//                activityIndicator.startAnimating()
-
-//        taskForFirstCellArray.append(contentsOf: taskArray)
-//        collectionView.backgroundColor = .red
-//        let largeArray = arrayManager.createArray()
-//        let consumedTime = arrayManager.createArray()
-//
-//        myCollectionViewCell.activityIndicatorOff()
-        
-//        taskForFirstCellArray[0] = "Array generation time: \(consumedTime)"
 //        collectionView.reloadData()
+        }
+        
+
     }
 //}
 

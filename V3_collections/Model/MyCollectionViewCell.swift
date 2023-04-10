@@ -24,15 +24,19 @@ class MyCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Create Int array with"
+        label.numberOfLines = 0
         label.backgroundColor = .yellow  // .systemBackground  //
         label.font = .systemFont(ofSize: 20, weight: .medium)
         return label
     }()
     
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(label)
+//        contentView.addSubview(label)
         setupActivityIndicator()
+        labelSetup()
         //        activityIndicator.startAnimating()
     }
     required init?(coder: NSCoder) {
@@ -44,9 +48,16 @@ class MyCollectionViewCell: UICollectionViewCell {
         label.frame = contentView.bounds
     }
     
+    func labelSetup() {
+        contentView.addSubview(label)
+        label.snp.makeConstraints{ make in
+            make.leading.top.trailing.bottom.equalToSuperview()
+        }
+    }
+    
     // MARK: activity Indicator
     func setupActivityIndicator() {
-        //        activityIndicator.center = self.label.center
+//                activityIndicator.center = self.label.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .large
         activityIndicator.color = UIColor.red

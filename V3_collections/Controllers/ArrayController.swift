@@ -34,7 +34,7 @@ class ArrayController: UIViewController {
         self.collectionView.dataSource = self
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
 //        myCollectionViewCell.setupActivityIndicator()
-        activityIndicatorSetup()
+//        activityIndicatorSetup()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
@@ -53,25 +53,21 @@ class ArrayController: UIViewController {
         }
     }
     
-    var activityIndicator: UIActivityIndicatorView = {
-        let  activityIndicator = UIActivityIndicatorView()
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .large
-        activityIndicator.color = UIColor.red
-       
-        return activityIndicator
-    }()
-    
-    func activityIndicatorSetup() {
-        self.view.addSubview(activityIndicator)
-        activityIndicator.snp.makeConstraints{ make in
-            make.center.equalToSuperview()
-            //                   activityIndicator.center = self.view.center
-            //                   activityIndicator?.hidesWhenStopped = true
-            //                   activityIndicator?.style = UIActivityIndicatorView.Style.medium
-            //                   activityIndicator?.color = .red
-        }
-    }
+//    var activityIndicator: UIActivityIndicatorView = {
+//        let  activityIndicator = UIActivityIndicatorView()
+//        activityIndicator.hidesWhenStopped = true
+//        activityIndicator.style = .large
+//        activityIndicator.color = UIColor.red
+//       
+//        return activityIndicator
+//    }()
+//    
+//    func activityIndicatorSetup() {
+//        self.view.addSubview(activityIndicator)
+//        activityIndicator.snp.makeConstraints{ make in
+//            make.center.equalToSuperview()
+//        }
+//    }
     
     
     var taskForFirstCellArray: [String] = [
@@ -139,15 +135,15 @@ extension ArrayController: UICollectionViewDelegate {
                     
                     print("arr")
                 case "Insert 1000 elements at the beginning / of the array one-by-one":
-//                    activityIndicator.startAnimating()
+                    myCollectionViewCell.activityIndicator.startAnimating()
                     
                     arrayManager.insertElementsBeginning1by1()
                     print("case1")
-//                    activityIndicator.startAnimating()
+                    myCollectionViewCell.activityIndicator.stopAnimating()
                 case "Insert 1000 elements at the beginning / of the array at once":
-                    print("case2")
-                    arrayManager.insertElementsBeginningAtOnce()
                     
+                    arrayManager.insertElementsBeginningAtOnce()
+                    print("case2")
                 case "Insert 1000 elements in the middle of / the array one-by-one":
                     print("3")
                     arrayManager.insertElementsMiddle1by1()
@@ -190,7 +186,7 @@ extension ArrayController: UICollectionViewDelegate {
         //cell. state.
 
         if flag == false {
-//            self.activityIndicator.startAnimating()
+            myCollectionViewCell.activityIndicator.startAnimating()
 
         
         arrayManager.createArr { result in
@@ -199,13 +195,13 @@ extension ArrayController: UICollectionViewDelegate {
             self.flag = true
             
             //change state
-//            self.activityIndicator.stopAnimating()
+//            self.myCollectionViewCell.activityIndicator.stopAnimating()
        
 //            collectionView.reloadData()
         }
             self.taskForFirstCellArray.append(contentsOf: self.taskArray)
             
-//        activityIndicator.stopAnimating()
+        myCollectionViewCell.activityIndicator.stopAnimating()
 
         collectionView.reloadData()
         }

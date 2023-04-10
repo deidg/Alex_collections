@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+import SnapKit
 
 class ArrayManager {
     
@@ -21,7 +23,7 @@ class ArrayManager {
             
             let start = CFAbsoluteTimeGetCurrent()
             
-            let arr = [Int](0..<3_000_000_)
+            let arr = [Int](0..<10_000_000)
 //            print(arr)
             let arr2 = [Int](0..<1_000)
             
@@ -34,13 +36,30 @@ class ArrayManager {
         }
     }
     
+//    var activityIndicator: UIActivityIndicatorView = {
+//        let  activityIndicator = UIActivityIndicatorView()
+//        activityIndicator.hidesWhenStopped = true
+//        activityIndicator.style = .large
+//        activityIndicator.color = UIColor.red
+//       
+//        return activityIndicator
+//    }()
+    
+//    func activityIndicatorSetup() {
+//        .addSubview(activityIndicator)
+//        activityIndicator.snp.makeConstraints{ make in
+//            make.center.equalToSuperview()
+//        }
+//    }
+    
     func insertElementsBeginning1by1(){
+//        activityIndicator.startAnimating()
         
         for i in (0..<1_000).reversed() {
             arr.insert(i, at: 0)
         }
-        
-        print(arr) // ("inserted 1000 elements at the beginning of the array one-by-one")
+//        activityIndicator.stopAnimating()
+//        print(arr) // ("inserted 1000 elements at the beginning of the array one-by-one")
         print("1")
     }
     

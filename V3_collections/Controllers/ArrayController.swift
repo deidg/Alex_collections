@@ -4,7 +4,7 @@
 //
 //  Created by Alex on 21.03.2023.
 //
-//флаг сделан. разделяет потоки. думать как сделать функционал ячеек.
+
 
 import UIKit
 import SnapKit
@@ -16,9 +16,7 @@ class ArrayController: UIViewController {
     let myCollectionViewCell = MyCollectionViewCell()
     let cell = Cell()
     let arrayManager = ArrayManager()
-    var activityIndicator = UIActivityIndicatorView()
-    var flag: Bool = false
-
+//    var activityIndicator2 = UIActivityIndicatorView()
 
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -34,6 +32,7 @@ class ArrayController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
+        myCollectionViewCell.setupActivityIndicator()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
@@ -51,6 +50,23 @@ class ArrayController: UIViewController {
             make.edges.equalToSuperview()
         }
     }
+    
+    var activityIndicator: UIActivityIndicatorView {
+        let  activityIndicator = UIActivityIndicatorView()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
+        activityIndicator.color = UIColor.red
+        view.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints{ make in
+            make.center.equalToSuperview()
+            //                   activityIndicator.center = self.view.center
+            //                   activityIndicator?.hidesWhenStopped = true
+            //                   activityIndicator?.style = UIActivityIndicatorView.Style.medium
+            //                   activityIndicator?.color = .red
+        }
+        return activityIndicator
+    }
+    
     
     var taskForFirstCellArray: [String] = [
         "Array generation time: "
@@ -74,14 +90,14 @@ class ArrayController: UIViewController {
         
         "Remove 1000 elements at the end of the array one-by-one",
         "Remove 1000 elements at the end of the array",
-//        //for set
-//        "All matching letters",
-//        "All characters that do not match",
-//        "All unique characters from the first text field that do not match in text fields",
-//        // for  3 UIScreen
-//        "Find the first contact",
-//        "Find the last contact",
-//        "Find the non-existing element"
+        //for set
+        "All matching letters",
+        "All characters that do not match",
+        "All unique characters from the first text field that do not match in text fields",
+        // for  3 UIScreen
+        "Find the first contact",
+        "Find the last contact",
+        "Find the non-existing element"
     ]
 }
 
@@ -107,111 +123,35 @@ extension ArrayController: UICollectionViewDataSource {
 extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
- 
-        if cell.label.text == taskForFirstCellArray[indexPath.row], flag == true {
-//            for cell in taskForFirstCellArray {
-                switch taskForFirstCellArray[indexPath.row] {
-                case "Create Int array with 10_000_000 elements":
-                    
-                    
-                    print("arr")
-                case "Insert 1000 elements at the beginning / of the array one-by-one":
-//                    activityIndicator.startAnimating()
-                    print("case1")
-                    arrayManager.insertElementsBeginning1by1()
-//                    activityIndicator.startAnimating()
-                case "Insert 1000 elements at the beginning / of the array at once":
-                    print("case2")
-                    arrayManager.insertElementsBeginningAtOnce()
-                    
-                case "Insert 1000 elements in the middle of / the array one-by-one":
-                    print("3")
-                    arrayManager.insertElementsMiddle1by1()
-                    
-                case "Insert 1000 elements in the middle of / the array all at once":
-                    print("4")
-                    arrayManager.insertElementsMiddleAtOnce()
-                case "Insert 1000 elements in the end of the array one-by-one":
-                    print("5")
-                    arrayManager.insertElementsEnd1by1()
-                case "Insert 1000 elements in the end of the array all at once":
-                    print("6")
-                    arrayManager.insertElementsEndAtOnce()
-                    
-                    //=====
-                    
-                case "Remove 1000 elements at the beginning of the array one-by-one":
-                    arrayManager.removeElementsBeginning1by1()
-                    print("7")
-                case "Remove 1000 elements at the beginning of the array":
-                    arrayManager.removeElementsBeginningAtOnce()
-                    print("8")
-                case "Remove 1000 elements in the end of the array one-by-one":
-                    arrayManager.removeElementsMiddle1by1()
-                    print("9")
-                case "Remove 1000 elements in the middle of the array":
-                    arrayManager.removeElementsMiddleAtOnce()
-                    print("10")
-                case "Remove 1000 elements at the end of the array one-by-one":
-                    arrayManager.removeElementsEnd1by1()
-                    print("11")
-                case "Remove 1000 elements at the end of the array":
-                    arrayManager.removeElementsEndAtOnce()
-                    print("12")
-                default: print("error")
-                }
-            }
-        
-        
+       
         
         //cell. state.
-//        cell.activityIndicator.startAnimating()
-//        self.activityIndicator.startAnimating()
-
-        if flag == false {
-            self.activityIndicator.startAnimating()
-
-            arrayManager.createArr { result in
-                //            self.taskForFirstCellArray.append(contentsOf: self.taskArray)
-                cell.label.text = "Creation time: \(result)"
-                self.flag = true
-                print("flag status - \(self.flag)")
-                //change state
-                
-                //            collectionView.reloadData()
-                
-            }
+        activityIndicator.startAnimating() //.startAnimating()
+        
+        
+        arrayManager.createArr { result in
             self.taskForFirstCellArray.append(contentsOf: self.taskArray)
-            
-            
-            //        if cell.label.text == taskForFirstCellArray[indexPath.row] {
-            ////            for cell in taskForFirstCellArray {
-            //                switch taskForFirstCellArray[indexPath.row] {
-            //                case "Create Int array with 10_000_000 elements": print("herrn0")
-            //                case "Insert 1000 elements at the beginning / of the array one-by-one": print("1")
-            ////                case "Insert 1000 elements at the beginning / of the array at once": print("2")
-            //                case "Insert 1000 elements in the middle of / the array one-by-one": print("3")
-            //                case "Insert 1000 elements in the middle of / the array all at once": print("4")
-            //                case "Insert 1000 elements in the end of the array one-by-one": print("5")
-            //                case "Insert 1000 elements in the end of the array all at once": print("6")
-            //                case "Remove 1000 elements at the beginning of the array one-by-one": print("7")
-            //                case "Remove 1000 elements at the beginning of the array": print("8")
-            //                case "Remove 1000 elements in the end of the array one-by-one": print("9")
-            //                case "Remove 1000 elements in the middle of the array": print("10")
-            //                case "Remove 1000 elements at the end of the array one-by-one": print("11")
-            //                case "Remove 1000 elements at the end of the array": print("12")
-            //                default: print("error")
-            //                }
-            //            }
-            
-            //        cell.activityIndicator.stopAnimating()
-            self.activityIndicator.stopAnimating()
-            
-            
-            collectionView.reloadData()
+            cell.label.text = "Creation time: \(result)"
+            //change state
         }
-        }
+        
+        activityIndicator.stopAnimating()
 
+        
+        }
+        
+        
+//                activityIndicator.startAnimating()
+
+//        taskForFirstCellArray.append(contentsOf: taskArray)
+//        collectionView.backgroundColor = .red
+//        let largeArray = arrayManager.createArray()
+//        let consumedTime = arrayManager.createArray()
+//
+//        myCollectionViewCell.activityIndicatorOff()
+        
+//        taskForFirstCellArray[0] = "Array generation time: \(consumedTime)"
+//        collectionView.reloadData()
     }
 //}
 
@@ -225,7 +165,6 @@ extension ArrayController: UICollectionViewDelegateFlowLayout {
         return 0
     }
 }
-
 
 
 

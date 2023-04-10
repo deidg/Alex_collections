@@ -17,6 +17,7 @@ class ArrayController: UIViewController {
     let cell = Cell()
     let arrayManager = ArrayManager()
 //    var activityIndicator = UIActivityIndicatorView()
+    var flag: Bool = false
 
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -129,6 +130,71 @@ extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
        
+        
+        
+        if cell.label.text == taskForFirstCellArray[indexPath.row], flag == true {
+//            for cell in taskForFirstCellArray {
+                switch taskForFirstCellArray[indexPath.row] {
+                case "Create Int array with 10_000_000 elements":
+                    
+                    
+                    print("arr")
+                case "Insert 1000 elements at the beginning / of the array one-by-one":
+//                    activityIndicator.startAnimating()
+                    print("case1")
+                    arrayManager.insertElementsBeginning1by1()
+//                    activityIndicator.startAnimating()
+                case "Insert 1000 elements at the beginning / of the array at once":
+                    print("case2")
+                    arrayManager.insertElementsBeginningAtOnce()
+                    
+                case "Insert 1000 elements in the middle of / the array one-by-one":
+                    print("3")
+                    arrayManager.insertElementsMiddle1by1()
+                    
+                case "Insert 1000 elements in the middle of / the array all at once":
+                    print("4")
+                    arrayManager.insertElementsMiddleAtOnce()
+                case "Insert 1000 elements in the end of the array one-by-one":
+                    print("5")
+                    arrayManager.insertElementsEnd1by1()
+                case "Insert 1000 elements in the end of the array all at once":
+                    print("6")
+                    arrayManager.insertElementsEndAtOnce()
+                    
+                    //=====
+                    
+                case "Remove 1000 elements at the beginning of the array one-by-one":
+                    arrayManager.removeElementsBeginning1by1()
+                    print("7")
+                case "Remove 1000 elements at the beginning of the array":
+                    arrayManager.removeElementsBeginningAtOnce()
+                    print("8")
+                case "Remove 1000 elements in the end of the array one-by-one":
+                    arrayManager.removeElementsMiddle1by1()
+                    print("9")
+                case "Remove 1000 elements in the middle of the array":
+                    arrayManager.removeElementsMiddleAtOnce()
+                    print("10")
+                case "Remove 1000 elements at the end of the array one-by-one":
+                    arrayManager.removeElementsEnd1by1()
+                    print("11")
+                case "Remove 1000 elements at the end of the array":
+                    arrayManager.removeElementsEndAtOnce()
+                    print("12")
+                default: print("error")
+                }
+            }
+        
+
+        //cell. state.
+//        cell.activityIndicator.startAnimating()
+//        self.activityIndicator.startAnimating()
+        if flag == false {
+            self.activityIndicator.startAnimating()
+      
+        
+        
         //cell. state.
         activityIndicator.startAnimating() //.startAnimating()
         
@@ -148,7 +214,7 @@ extension ArrayController: UICollectionViewDelegate {
         
 
     }
-//}
+}
 
 extension ArrayController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
@@ -164,3 +230,4 @@ extension ArrayController: UICollectionViewDelegateFlowLayout {
 
 
 
+//найти вариант с флагом. скопировать этот кусок кода или вставить сюда флаг. надо подумать.

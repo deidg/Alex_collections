@@ -130,7 +130,20 @@ class ArrayController: UIViewController {
     
     private func applyState(_ state: State) {
         func initialState() {
-            print("Cell inited")
+            
+            myCollectionViewCell.label.text = ""  // указать первоначальный текст (взять его из массива
+            myCollectionViewCell.backgroundColor = .green  // необязательно
+            
+            print("Cell is initiated")
+            
+            //            answerTextView.text = ""
+            //            reverseTextField.text = ""
+            //            ignoreTextField.text = ""
+            //            divider.backgroundColor = Constants.Divider.dividerBackgroundColor
+            //            reverseButton.backgroundColor = Constants.DisplayButton.displayButtonBackgroundColor
+            //            reverseButton.setTitle("Reverse", for: .normal)
+            //            reverseButton.isEnabled = false
+            
         }
         
         func loadingState() {
@@ -139,13 +152,27 @@ class ArrayController: UIViewController {
         
         func showResultState() {
             activityIndicator.stopAnimating()
-                myCollectionViewCell.label.text = "Execution time: "
+            //                myCollectionViewCell.label.text = "Execution time: /()"
+            arrayManager.createArr { result in
+                self.taskForFirstCellArray.append(contentsOf: self.taskArray)
+                self.myCollectionViewCell.label.text = "Creation time: \(result)"
+                self.flag = true
+            }
+            
+            
+            switch state {
+            case .initial:
+                initialState()
+            case .loading:
+                loadingState()
+            case .result:
+                showResultState()
+            }
         }
+        
+        
+        
     }
-    
-    
-    
-    
 }
 
 extension ArrayController: UICollectionViewDataSource {
@@ -181,9 +208,32 @@ extension ArrayController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
+        
+//        switch state {
+//        case .initial:
+//            initialState()
+//        case .loading:
+//            loadingState()
+//        case .result:
+//            showResultState()
+//        }
+        
+        
+        
         if cell.label.text == taskForFirstCellArray[indexPath.row], flag == true {   //  &&? -  bug?
             switch taskForFirstCellArray[indexPath.row] {
             case "Create Int array with 10_000_000 elements":
+                
+//                switch state {
+//                case .initial:
+//                    initialState()
+//                case .loading:
+//                    loadingState()
+//                case .result:
+//                    showResultState()
+//                }
+                
+                
                 print("arr")
             case "Insert 1000 elements at the beginning / of the array one-by-one":
 //                activityIndicator.startAnimating()

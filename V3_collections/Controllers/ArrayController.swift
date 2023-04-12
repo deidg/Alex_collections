@@ -16,6 +16,12 @@ class ArrayController: UIViewController {
     let myCollectionViewCell = MyCollectionViewCell()
     let cell = Cell()
     let arrayManager = ArrayManager()
+    
+    var state: State = .initial {
+        didSet {
+            applyState(state)
+        }
+    }
     //    var activityIndicator = UIActivityIndicatorView()
     var flag: Bool = false
     
@@ -35,7 +41,27 @@ class ArrayController: UIViewController {
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
         //        myCollectionViewCell.setupActivityIndicator()
         //        activityIndicatorSetup()
+//        setupActivityIndicator()
     }
+    
+    var activityIndicator: UIActivityIndicatorView = {
+        let  activityIndicator = UIActivityIndicatorView()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
+        activityIndicator.color = UIColor.red
+        return activityIndicator
+    }()
+    
+//    func setupActivityIndicator() {
+//        activityIndicator.center = self.label.center
+//        activityIndicator.hidesWhenStopped = true
+//        activityIndicator.style = .large
+//        activityIndicator.color = UIColor.red
+//        label.addSubview(activityIndicator)
+//        activityIndicator.snp.makeConstraints{ make in
+//            make.center.equalTo(label)
+//        }
+//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -91,15 +117,35 @@ class ArrayController: UIViewController {
         
         "Remove 1000 elements at the end of the array one-by-one",
         "Remove 1000 elements at the end of the array",
-        //for set
-        "All matching letters",
-        "All characters that do not match",
-        "All unique characters from the first text field that do not match in text fields",
-        // for  3 UIScreen
-        "Find the first contact",
-        "Find the last contact",
-        "Find the non-existing element"
+        //        //for set
+        //        "All matching letters",
+        //        "All characters that do not match",
+        //        "All unique characters from the first text field that do not match in text fields",
+        //        // for  3 UIScreen
+        //        "Find the first contact",
+        //        "Find the last contact",
+        //        "Find the non-existing element"
     ]
+    
+    
+    private func applyState(_ state: State) {
+        func initialState() {
+            print("Cell inited")
+        }
+        
+        func loadingState() {
+            activityIndicator.startAnimating()
+        }
+        
+        func showResultState() {
+            activityIndicator.stopAnimating()
+                myCollectionViewCell.label.text = "Execution time: "
+        }
+    }
+    
+    
+    
+    
 }
 
 extension ArrayController: UICollectionViewDataSource {
@@ -122,6 +168,17 @@ extension ArrayController: UICollectionViewDataSource {
 }
 
 extension ArrayController: UICollectionViewDelegate {
+    
+    enum State {
+        case initial
+        case loading
+        case result
+    }
+    
+    
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
         if cell.label.text == taskForFirstCellArray[indexPath.row], flag == true {   //  &&? -  bug?
@@ -129,12 +186,12 @@ extension ArrayController: UICollectionViewDelegate {
             case "Create Int array with 10_000_000 elements":
                 print("arr")
             case "Insert 1000 elements at the beginning / of the array one-by-one":
-                myCollectionViewCell.activityIndicator.startAnimating()
+//                activityIndicator.startAnimating()
                 
                 arrayManager.insertElementsBeginning1by1()
                 print("case1")
                 
-                myCollectionViewCell.activityIndicator.stopAnimating()
+//                activityIndicator.stopAnimating()
             case "Insert 1000 elements at the beginning / of the array at once":
                 arrayManager.insertElementsBeginningAtOnce()
                 print("case2")
@@ -177,7 +234,7 @@ extension ArrayController: UICollectionViewDelegate {
         
         //cell. state.
         if flag == false {
-            myCollectionViewCell.activityIndicator.startAnimating()
+            activityIndicator.startAnimating()
             
             arrayManager.createArr { result in
                 self.taskForFirstCellArray.append(contentsOf: self.taskArray)
@@ -187,7 +244,7 @@ extension ArrayController: UICollectionViewDelegate {
                 //change state
             }
             self.taskForFirstCellArray.append(contentsOf: self.taskArray)
-            myCollectionViewCell.activityIndicator.stopAnimating()
+            activityIndicator.stopAnimating()
             collectionView.reloadData()
         }
     }

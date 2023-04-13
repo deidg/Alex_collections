@@ -175,6 +175,17 @@ class ArrayController: UIViewController {
     }
 }
 
+extension ArrayController {
+    
+    enum State {
+        case initial
+        case loading
+        case result
+    }
+    
+}
+
+
 extension ArrayController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return taskForFirstCellArray.count
@@ -196,12 +207,12 @@ extension ArrayController: UICollectionViewDataSource {
 
 extension ArrayController: UICollectionViewDelegate {
     
-    enum State {
-        case initial
-        case loading
-        case result
-    }
-    
+//    enum State {
+//        case initial
+//        case loading
+//        case result
+//    }
+//
     
     
     
@@ -238,11 +249,13 @@ extension ArrayController: UICollectionViewDelegate {
             case "Insert 1000 elements at the beginning / of the array one-by-one":
 //                activityIndicator.startAnimating()
                 
-//                myCollectionViewCell.state = .initial
                 cell.label.text = "blkyaa"
-                arrayManager.insertElementsBeginning1by1()
-//                applyState(.loading)
-                myCollectionViewCell.state = .initial
+                arrayManager.insertElementsBeginning1by1 { result in
+
+//                    myce.state = .initial
+
+                    myCollectionViewCell.applyState(.loading)
+                }
 
                 print("case1")
                 

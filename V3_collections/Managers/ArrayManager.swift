@@ -14,7 +14,7 @@ class ArrayManager {
     let queue = DispatchQueue(label: "Array_manager_queue_working", qos: .userInitiated)
     var arr = [Int]()
     var arr2 = [Int]()
-
+//посмотреть еще раз что такое комплишн
     func createArr(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -23,7 +23,7 @@ class ArrayManager {
             
             let arr = [Int](0..<3_000_000)
             let arr2 = [Int](0..<1_000)
-            
+                        
             let result = CFAbsoluteTimeGetCurrent() - start
             self.arr = arr
             self.arr2 = arr2
@@ -33,12 +33,25 @@ class ArrayManager {
         }
     }
  
-    func insertElementsBeginning1by1(){
-                
-        for i in (0..<1_000).reversed() {
-            arr.insert(i, at: 0)
+    func insertElementsBeginning1by1(completion: ((Double) -> Void)?) {
+        
+        queue.async { [weak self] in
+            guard let self else { return }
+            
+            let start = CFAbsoluteTimeGetCurrent()
+            
+            for i in (0..<1_000).reversed() {
+                self.arr.insert(i, at: 0)
+            }
+            
+            let result = CFAbsoluteTimeGetCurrent() - start
+
+            DispatchQueue.main.async {
+                completion?(result)
+            }
         }
         print("1")
+//        return resultDouble
     }
     
     func insertElementsBeginningAtOnce(){

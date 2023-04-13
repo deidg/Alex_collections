@@ -21,7 +21,7 @@ class ArrayManager {
             
             let start = CFAbsoluteTimeGetCurrent()
             
-            let arr = [Int](0..<10_000_000)
+            let arr = [Int](0..<3_000_000)
             let arr2 = [Int](0..<1_000)
             
             let result = CFAbsoluteTimeGetCurrent() - start

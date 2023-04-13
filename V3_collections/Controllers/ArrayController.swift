@@ -238,7 +238,12 @@ extension ArrayController: UICollectionViewDelegate {
             case "Insert 1000 elements at the beginning / of the array one-by-one":
 //                activityIndicator.startAnimating()
                 
+//                myCollectionViewCell.state = .initial
+                cell.label.text = "blkyaa"
                 arrayManager.insertElementsBeginning1by1()
+//                applyState(.loading)
+                myCollectionViewCell.state = .initial
+
                 print("case1")
                 
 //                activityIndicator.stopAnimating()

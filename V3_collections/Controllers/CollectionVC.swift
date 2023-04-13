@@ -44,7 +44,7 @@ class CollectionVC: UIViewController {
     func setupNavBar() {
         navigationController?.navigationBar.topItem?.title = "Collections"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.backgroundColor = .yellow
+//        navigationController?.navigationBar.backgroundColor = .yellow
     }
 }
 

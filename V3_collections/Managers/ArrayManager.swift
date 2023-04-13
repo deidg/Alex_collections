@@ -17,7 +17,7 @@ class ArrayManager {
 //посмотреть еще раз что такое комплишн
     func createArr(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
-            guard let self else { return }
+            guard let self else { return }    //  TODO: guard let self -  почитать
             
             let start = CFAbsoluteTimeGetCurrent()
             
@@ -137,29 +137,3 @@ class ArrayManager {
 }
 
 
-//    var activityIndicator: UIActivityIndicatorView = {
-//        let  activityIndicator = UIActivityIndicatorView()
-//        activityIndicator.hidesWhenStopped = true
-//        activityIndicator.style = .large
-//        activityIndicator.color = UIColor.red
-//        return activityIndicator
-//    }()
-    
-//    func activityIndicatorSetup() {
-//        .addSubview(activityIndicator)
-//        activityIndicator.snp.makeConstraints{ make in
-//            make.center.equalToSuperview()
-//        }
-//    }
-
-
-
-//func insertElementsBeginning1by1(){
-//    //        activityIndicator.startAnimating()
-//
-//    for i in (0..<1_000).reversed() {
-//        arr.insert(i, at: 0)
-//        //        activityIndicator.stopAnimating()
-//    }
-//    print("1")
-//}

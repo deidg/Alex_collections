@@ -18,86 +18,68 @@ class MyCollectionViewCell: UICollectionViewCell {
             applyState(state)
         }
     }
+    var textToShow: String = "" {
+        didSet {
+            label.text = textToShow
+        }
+    }
     
     //TODO: lines between cells
-    let label: UILabel = {
+    private let label: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Create Int array with"
-        label.numberOfLines = 0
+        label.numberOfLines = 0  //
         label.textAlignment = .left
-        label.backgroundColor = .yellow  // .systemBackground  //
         label.font = .systemFont(ofSize: 20, weight: .medium)
         return label
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        //        contentView.addSubview(label)
-//        setupActivityIndicator()
-        labelSetup()
-        //        activityIndicator.startAnimating()
-    }
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        fatalError()
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        label.frame = contentView.bounds
-    }
-    func labelSetup() {
-        contentView.addSubview(label)
-        label.snp.makeConstraints{ make in
-            make.leading.top.trailing.bottom.equalToSuperview().inset(2)
-        }
-    }
-    
-    var activityIndicator: UIActivityIndicatorView = {
-        let  activityIndicator = UIActivityIndicatorView()
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .large
         activityIndicator.color = UIColor.red
         return activityIndicator
     }()
     
-//     MARK: activity Indicator
-    func setupActivityIndicator() {
-        activityIndicator.center = self.label.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .large
-        activityIndicator.color = UIColor.red
-        label.addSubview(activityIndicator)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        cellSetupUI()
+    }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        fatalError()
+    }
+    
+    private func cellSetupUI() {
+        contentView.addSubview(label)
+        label.snp.makeConstraints{ make in
+            make.leading.top.trailing.bottom.equalToSuperview().inset(2)
+        }
+        contentView.addSubview(activityIndicator)
         activityIndicator.snp.makeConstraints{ make in
-            make.center.equalTo(label)
+            make.center.equalToSuperview()
         }
     }
     
+
+    
+   
+    
+
+    
     private func applyState(_ state: State) {
-        func initialState() {
-//            print("Cell inited from MyCollectionViewCell")
-//            label.text = "blyaaa!"
-        }
-
-        func loadingState() {
-            activityIndicator.startAnimating()
-            label.text = "yeahaa!"
-        }
-
-        func showResultState() {
-            activityIndicator.stopAnimating()
-            label.text = "Execution time: "
-        }
-        
+      
         switch state {
         case .initial:
-            initialState()
+            return
         case .loading:
-            loadingState()
-        case .result:
-            showResultState()
+            activityIndicator.startAnimating()
+            label.isHidden = true
+        case .result(let result):
+            activityIndicator.stopAnimating()
+            label.isHidden = false
+            label.text = "Execution time: \(result)"
         }
-        
     }
 }
 
@@ -105,7 +87,7 @@ extension MyCollectionViewCell {
     enum State {
         case initial
         case loading
-        case result
+        case result(result: Double)
     }
     
 }

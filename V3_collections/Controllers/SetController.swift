@@ -65,7 +65,7 @@ extension  SetController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell",
                                                             for: indexPath) as? MyCollectionViewCell else
         { return UICollectionViewCell() }
-        cell.backgroundColor = .yellow
+//        cell.backgroundColor = .yellow
         return cell
     }
     

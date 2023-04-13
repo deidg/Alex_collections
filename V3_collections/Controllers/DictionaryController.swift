@@ -36,7 +36,7 @@ class DictionaryController: UIViewController {
     func setupNavBar() {
         navigationController?.navigationBar.topItem?.title = "Dictionary"
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationBar.backgroundColor = .yellow
+//        navigationController?.navigationBar.backgroundColor = .yellow
     }
 }
     

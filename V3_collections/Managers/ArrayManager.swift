@@ -51,7 +51,6 @@ class ArrayManager {
             }
         }
         print("1")
-//        return resultDouble
     }
     
     func insertElementsBeginningAtOnce(){

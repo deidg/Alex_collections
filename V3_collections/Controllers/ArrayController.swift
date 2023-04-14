@@ -119,6 +119,15 @@ extension ArrayController: UICollectionViewDelegate {
             }
             taskForFirstCellArray.append(contentsOf: taskArray)
             collectionView.reloadData()
+            
+        case 1:
+            cell.state = .loading
+            
+            arrayManager.insertElementsBeginning1by1 { time in
+                cell.state = .result(result: time)
+            }
+            
+            
         default:
             break
         }

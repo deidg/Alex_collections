@@ -4,6 +4,8 @@
 //
 //  Created by Alex on 02.04.2023.
 //
+//  TODO:  округлить значения до 0.00
+
 
 import Foundation
 import UIKit
@@ -14,6 +16,8 @@ class ArrayManager {
     let queue = DispatchQueue(label: "Array_manager_queue_working", qos: .userInitiated)
     var arr = [Int]()
     var arr2 = [Int]()
+
+    
 //посмотреть еще раз что такое комплишн
     func createArr(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
@@ -24,7 +28,7 @@ class ArrayManager {
             let arr = [Int](0..<3_000_000)
             let arr2 = [Int](0..<1_000)
                         
-            let result = CFAbsoluteTimeGetCurrent() - start
+            let result = (CFAbsoluteTimeGetCurrent() - start).rounded()
             self.arr = arr
             self.arr2 = arr2
             DispatchQueue.main.async {
@@ -44,7 +48,7 @@ class ArrayManager {
                 self.arr.insert(i, at: 0)
             }
             
-            let result = CFAbsoluteTimeGetCurrent() - start
+            let result = (CFAbsoluteTimeGetCurrent() - start).rounded()
 
             DispatchQueue.main.async {
                 completion?(result)
@@ -53,12 +57,24 @@ class ArrayManager {
         print("1")
     }
     
-    func insertElementsBeginningAtOnce(){
-        arr.insert(contentsOf: arr2, at: 0)
-        print(arr)
+    func insertElementsBeginningAtOnce(completion: ((Double) -> Void)?) {
+        
+        queue.async { [weak self] in
+            guard let self else { return }
+            
+            let start = CFAbsoluteTimeGetCurrent()
+            
+            self.arr.insert(contentsOf: self.arr2, at: 0)
+           
+            let result = (CFAbsoluteTimeGetCurrent() - start)
+            
+            DispatchQueue.main.async {
+                completion?(result)
+            }
+        }
         print("2")
     }
-    
+    продолджить дальше делать ячейки
     func insertElementsMiddle1by1(){
         for i in (0...1_000).reversed() {
             arr.insert(i, at: (arr.count/2)) // TODO: added backwords

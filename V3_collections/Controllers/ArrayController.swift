@@ -126,6 +126,14 @@ extension ArrayController: UICollectionViewDelegate {
             arrayManager.insertElementsBeginning1by1 { time in
                 cell.state = .result(result: time)
             }
+        case 2:
+            cell.state = .loading
+            
+            arrayManager.insertElementsBeginningAtOnce { time in
+                cell.state = .result(result: time)
+            }
+            
+            
             
             
         default:

@@ -18,7 +18,7 @@ class MyCollectionViewCell: UICollectionViewCell {
             applyState(state)
         }
     }
-    var textToShow: String = "" {
+    var textToShow: String = "" {     // убрал потому что в ArrayController больше не используется. ПОКА НЕ СТИРАТЬ!!!
         didSet {
             label.text = textToShow
         }

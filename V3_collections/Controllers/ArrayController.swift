@@ -95,9 +95,12 @@ extension ArrayController: UICollectionViewDataSource {
                                                             for: indexPath) as? MyCollectionViewCell else
         { return UICollectionViewCell() }
         
-        let item = taskForFirstCellArray[indexPath.row]
+            /*     рабочий вариант
+        let item = taskForFirstCellArray[indexPath.row]     ПОКА НЕ СТИРАТЬ!!
         cell.textToShow = item
-//        cell.state  =   //.initial(item)
+             */
+        cell.textToShow = taskForFirstCellArray[indexPath.row]   //  ПОДУМАТЬ  сделать без textToShow
+
         
         return cell
     }
@@ -107,11 +110,10 @@ extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
         
-        
         switch indexPath.item {
         case 0:
             cell.state = .loading
-            
+    
             arrayManager.createArr { time in
                 cell.state = .result(result: time)
             }
@@ -120,7 +122,6 @@ extension ArrayController: UICollectionViewDelegate {
         default:
             break
         }
-        
     }
 }
     

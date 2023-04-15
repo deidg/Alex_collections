@@ -30,7 +30,7 @@ class ArrayController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
-    
+        
     }
     
     var activityIndicator: UIActivityIndicatorView = {
@@ -41,7 +41,7 @@ class ArrayController: UIViewController {
         return activityIndicator
     }()
     
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 0 {
@@ -57,7 +57,7 @@ class ArrayController: UIViewController {
             make.edges.equalToSuperview()
         }
     }
-
+    
     
     var taskForFirstCellArray: [String] = [
         "Create array for 10 mln elements: "
@@ -82,7 +82,7 @@ class ArrayController: UIViewController {
         "Remove 1000 elements at the end of the array one-by-one",
         "Remove 1000 elements at the end of the array",
     ]
-      
+    
 }
 
 extension ArrayController: UICollectionViewDataSource {
@@ -95,12 +95,12 @@ extension ArrayController: UICollectionViewDataSource {
                                                             for: indexPath) as? MyCollectionViewCell else
         { return UICollectionViewCell() }
         
-            /*     рабочий вариант
-        let item = taskForFirstCellArray[indexPath.row]     ПОКА НЕ СТИРАТЬ!!
-        cell.textToShow = item
-             */
+        /*     рабочий вариант
+         let item = taskForFirstCellArray[indexPath.row]     ПОКА НЕ СТИРАТЬ!!
+         cell.textToShow = item
+         */
         cell.textToShow = taskForFirstCellArray[indexPath.row]   //  ПОДУМАТЬ  сделать без textToShow
-
+        
         
         return cell
     }
@@ -110,14 +110,17 @@ extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
         
+        
+        
         switch indexPath.item {
         case 0:
+            
             cell.state = .loading
-    
-            arrayManager.createArr { time in
+            
+            self.arrayManager.createArr { time in
                 cell.state = .result(result: time)
             }
-            taskForFirstCellArray.append(contentsOf: taskArray)
+            self.taskForFirstCellArray.append(contentsOf: self.taskArray)
             collectionView.reloadData()
             
         case 1:
@@ -208,17 +211,17 @@ extension ArrayController: UICollectionViewDelegate {
         }
     }
 }
-    
-    extension ArrayController: UICollectionViewDelegateFlowLayout {
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                            minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            return 0
-        }
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                            minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return 0
-        }
+
+extension ArrayController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
-    
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+}
+
+
 

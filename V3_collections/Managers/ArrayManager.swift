@@ -28,7 +28,7 @@ class ArrayManager {
             let arr = [Int](0..<10_000_000)
             let arr2 = [Int](0..<1_000)
                         
-            let result = (CFAbsoluteTimeGetCurrent() - start).rounded()
+            let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             self.arr = arr
             self.arr2 = arr2
             DispatchQueue.main.async {

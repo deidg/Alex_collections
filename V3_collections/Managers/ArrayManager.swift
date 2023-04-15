@@ -25,7 +25,7 @@ class ArrayManager {
             
             let start = CFAbsoluteTimeGetCurrent()
             
-            let arr = [Int](0..<3_000_000)
+            let arr = [Int](0..<10_000_000)
             let arr2 = [Int](0..<1_000)
                         
             let result = (CFAbsoluteTimeGetCurrent() - start).rounded()
@@ -48,8 +48,9 @@ class ArrayManager {
                 self.arr.insert(i, at: 0)
             }
             
-            let result = (CFAbsoluteTimeGetCurrent() - start).rounded()
+            let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
 
+            
             DispatchQueue.main.async {
                 completion?(result)
             }
@@ -66,8 +67,8 @@ class ArrayManager {
             
             self.arr.insert(contentsOf: self.arr2, at: 0)
            
-            let result = CFAbsoluteTimeGetCurrent() - start
-            
+            let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
+                   
             DispatchQueue.main.async {
                 completion?(result)
             }
@@ -85,7 +86,7 @@ class ArrayManager {
             for i in (0...1_000).reversed() {
                 self.arr.insert(i, at: (self.arr.count/2)) // TODO: added backwords
             }
-            let result = CFAbsoluteTimeGetCurrent() - start
+            let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             
             DispatchQueue.main.async {
                 completion?(result)
@@ -104,7 +105,7 @@ class ArrayManager {
             
             self.arr.insert(contentsOf: self.arr2, at: self.arr.count/2)
 
-            let result = CFAbsoluteTimeGetCurrent() - start
+            let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             
             DispatchQueue.main.async {
                 completion?(result)
@@ -124,7 +125,7 @@ class ArrayManager {
                 self.arr.append(i) //+= i
                 i += 1
             }
-            let result = CFAbsoluteTimeGetCurrent() - start
+            let result = ((CFAbsoluteTimeGetCurrent() - start)*1000).rounded() / 1000
             
             DispatchQueue.main.async {
                 completion?(result)
@@ -142,7 +143,7 @@ class ArrayManager {
             
             self.arr.append(contentsOf: self.arr2)
 
-            let result = CFAbsoluteTimeGetCurrent() - start
+            let result = ((CFAbsoluteTimeGetCurrent() - start)*10000).rounded() / 10000
             
             DispatchQueue.main.async {
                 completion?(result)
@@ -163,7 +164,7 @@ class ArrayManager {
                 self.arr.remove(at: 0)
                 i += i+1
             }
-            let result = CFAbsoluteTimeGetCurrent() - start
+            let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             
             DispatchQueue.main.async {
                 completion?(result)
@@ -181,7 +182,7 @@ class ArrayManager {
             
             self.arr.removeFirst(1_000)  // TODO: added backwords
 
-            let result = CFAbsoluteTimeGetCurrent() - start
+            let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             
             DispatchQueue.main.async {
                 completion?(result)
@@ -201,7 +202,7 @@ class ArrayManager {
                 self.arr.remove(at: self.arr.count/2)
                 i += i+1
             }
-            let result = CFAbsoluteTimeGetCurrent() - start
+            let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             
             DispatchQueue.main.async {
                 completion?(result)
@@ -219,7 +220,7 @@ class ArrayManager {
             
             self.arr.removeSubrange(self.arr.count/2 ..< ((self.arr.count/2) + self.arr2.count)) //(arr2.count, at: arr.count/2)
             
-            let result = CFAbsoluteTimeGetCurrent() - start
+            let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             
             DispatchQueue.main.async {
                 completion?(result)
@@ -240,7 +241,7 @@ class ArrayManager {
                 i += 1
             }
             
-            let result = CFAbsoluteTimeGetCurrent() - start
+            let result = ((CFAbsoluteTimeGetCurrent() - start)*10000).rounded() / 10000
             
             DispatchQueue.main.async {
                 completion?(result)
@@ -258,7 +259,7 @@ class ArrayManager {
                 
                 self.arr.removeLast(1_000)// TODO: added backwords
                 
-                let result = CFAbsoluteTimeGetCurrent() - start
+                let result = ((CFAbsoluteTimeGetCurrent() - start)*10000).rounded() / 10000
 
                 
                 DispatchQueue.main.async {

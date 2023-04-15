@@ -95,12 +95,12 @@ extension ArrayController: UICollectionViewDataSource {
                                                             for: indexPath) as? MyCollectionViewCell else
         { return UICollectionViewCell() }
         
-//             рабочий вариант
-         let item = taskForFirstCellArray[indexPath.row]
-//        ПОКА НЕ СТИРАТЬ!!
-         cell.textToShow = item
-//         */
-//        cell.textToShow = taskForFirstCellArray[indexPath.row]   //  ПОДУМАТЬ  сделать без textToShow
+        //             рабочий вариант
+        let item = taskForFirstCellArray[indexPath.row]
+        //        ПОКА НЕ СТИРАТЬ!!
+        cell.textToShow = item
+        //         */
+        //        cell.textToShow = taskForFirstCellArray[indexPath.row]   //  ПОДУМАТЬ  сделать без textToShow
         cell.state = .initial
         
         return cell
@@ -113,33 +113,34 @@ extension ArrayController: UICollectionViewDelegate {
         
         let completionHandler: (Bool) -> Void = { done in
             if done {
-//                self.taskForFirstCellArray.append(contentsOf: self.taskArray)
-//                collectionView.reloadData()
+//                                self.taskForFirstCellArray.append(contentsOf: self.taskArray)
+//                                collectionView.reloadData()
             }
         }
-//        var counter: Bool = true
         
         switch indexPath.item {
         case 0:
-     
+            
             func make10mlnArr(using completionHandler: (Bool) -> Void) {
+                print("her1")
                 cell.state = .loading
+                print("her2")
+                
                 self.arrayManager.createArr { time in
                     cell.state = .result(result: time)
-//                    self.taskForFirstCellArray.append(contentsOf: self.taskArray)
-//                                    collectionView.reloadData()
-
+                    print("her3")
+                    
+                    //                    self.taskForFirstCellArray.append(contentsOf: self.taskArray)
+                    //                                    collectionView.reloadData()
+                    
                 }
-
+                
             }
             make10mlnArr(using: completionHandler)
-            self.taskForFirstCellArray.append(contentsOf: self.taskArray)
-            collectionView.reloadData()
+                        self.taskForFirstCellArray.append(contentsOf: self.taskArray)
+                        collectionView.reloadData()
             
-            //            completionHandler(true)
-//                self.taskForFirstCellArray.append(contentsOf: self.taskArray)
-//                collectionView.reloadData()
-
+         
         case 1:
             cell.state = .loading
             arrayManager.insertElementsBeginning1by1 { time in

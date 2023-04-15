@@ -66,7 +66,7 @@ class ArrayManager {
             
             self.arr.insert(contentsOf: self.arr2, at: 0)
            
-            let result = (CFAbsoluteTimeGetCurrent() - start)
+            let result = CFAbsoluteTimeGetCurrent() - start
             
             DispatchQueue.main.async {
                 completion?(result)
@@ -74,81 +74,199 @@ class ArrayManager {
         }
         print("2")
     }
-    продолджить дальше делать ячейки
-    func insertElementsMiddle1by1(){
-        for i in (0...1_000).reversed() {
-            arr.insert(i, at: (arr.count/2)) // TODO: added backwords
+    
+    func insertElementsMiddle1by1(completion: ((Double) -> Void)?) {
+        
+        queue.async { [weak self] in
+            guard let self else { return }
+            
+            let start = CFAbsoluteTimeGetCurrent()
+            
+            for i in (0...1_000).reversed() {
+                self.arr.insert(i, at: (self.arr.count/2)) // TODO: added backwords
+            }
+            let result = CFAbsoluteTimeGetCurrent() - start
+            
+            DispatchQueue.main.async {
+                completion?(result)
+            }
         }
-        print(arr)
         print("3")
     }
+
     
-    func insertElementsMiddleAtOnce(){
-        arr.insert(contentsOf: arr2, at: arr.count/2)
-        print(arr)
+    func insertElementsMiddleAtOnce(completion: ((Double) -> Void)?) {
+        
+        queue.async { [weak self] in
+            guard let self else { return }
+            
+            let start = CFAbsoluteTimeGetCurrent()
+            
+            self.arr.insert(contentsOf: self.arr2, at: self.arr.count/2)
+
+            let result = CFAbsoluteTimeGetCurrent() - start
+            
+            DispatchQueue.main.async {
+                completion?(result)
+            }
+        }
         print("4")
     }
- 
-    func insertElementsEnd1by1(){
-        for var i in 0..<1_000 {
-            arr.append(i) //+= i
-            i += 1
+
+    func insertElementsEnd1by1(completion: ((Double) -> Void)?) {
+        
+        queue.async { [weak self] in
+            guard let self else { return }
+            
+            let start = CFAbsoluteTimeGetCurrent()
+            
+            for var i in 0..<1_000 {
+                self.arr.append(i) //+= i
+                i += 1
+            }
+            let result = CFAbsoluteTimeGetCurrent() - start
+            
+            DispatchQueue.main.async {
+                completion?(result)
+            }
         }
-        print(arr)
         print("5")
     }
-    
-    func insertElementsEndAtOnce(){
-        arr.append(contentsOf: arr2)
-        print(arr)
+ 
+    func insertElementsEndAtOnce(completion: ((Double) -> Void)?) {
+        
+        queue.async { [weak self] in
+            guard let self else { return }
+            
+            let start = CFAbsoluteTimeGetCurrent()
+            
+            self.arr.append(contentsOf: self.arr2)
+
+            let result = CFAbsoluteTimeGetCurrent() - start
+            
+            DispatchQueue.main.async {
+                completion?(result)
+            }
+        }
         print("6")
     }
+ 
     ///==================================
-    func removeElementsBeginning1by1(){
-        for var i in 0..<1_000 {
-            arr.remove(at: 0)
-            i += i+1
+    func removeElementsBeginning1by1(completion: ((Double) -> Void)?) {
+        
+        queue.async { [weak self] in
+            guard let self else { return }
+            
+            let start = CFAbsoluteTimeGetCurrent()
+            
+            for var i in 0..<1_000 {
+                self.arr.remove(at: 0)
+                i += i+1
+            }
+            let result = CFAbsoluteTimeGetCurrent() - start
+            
+            DispatchQueue.main.async {
+                completion?(result)
+            }
         }
-        print(arr)
         print("7")
     }
-    
-    func removeElementsBeginningAtOnce(){
-        arr.removeFirst(1_000)  // TODO: added backwords
-        print(arr)
+  
+    func removeElementsBeginningAtOnce(completion: ((Double) -> Void)?) {
+        
+        queue.async { [weak self] in
+            guard let self else { return }
+            
+            let start = CFAbsoluteTimeGetCurrent()
+            
+            self.arr.removeFirst(1_000)  // TODO: added backwords
+
+            let result = CFAbsoluteTimeGetCurrent() - start
+            
+            DispatchQueue.main.async {
+                completion?(result)
+            }
+        }
         print("8")
     }
     
-    func removeElementsMiddle1by1(){
-        for var i in 0..<1_000 {   //  counted both ways + change number of row!
-            arr.remove(at: arr.count/2)
-            i += i+1
+    func removeElementsMiddle1by1(completion: ((Double) -> Void)?) {
+        
+        queue.async { [weak self] in
+            guard let self else { return }
+            
+            let start = CFAbsoluteTimeGetCurrent()
+            
+            for var i in 0..<1_000 {   //  counted both ways + change number of row!
+                self.arr.remove(at: self.arr.count/2)
+                i += i+1
+            }
+            let result = CFAbsoluteTimeGetCurrent() - start
+            
+            DispatchQueue.main.async {
+                completion?(result)
+            }
         }
-        print(arr)
         print("9")
     }
     
-    func removeElementsMiddleAtOnce(){
-        arr.removeSubrange(arr.count/2..<((arr.count/2)+arr2.count)) //(arr2.count, at: arr.count/2)
-        print(arr)
+    func removeElementsMiddleAtOnce(completion: ((Double) -> Void)?) {
+        
+        queue.async { [weak self] in
+            guard let self else { return }
+            
+            let start = CFAbsoluteTimeGetCurrent()
+            
+            self.arr.removeSubrange(self.arr.count/2 ..< ((self.arr.count/2) + self.arr2.count)) //(arr2.count, at: arr.count/2)
+            
+            let result = CFAbsoluteTimeGetCurrent() - start
+            
+            DispatchQueue.main.async {
+                completion?(result)
+            }
+        }
         print("10")
     }
-    
-    func removeElementsEnd1by1(){
-        for var i in 0..<1_000 {
-            arr.removeLast()
-            i += 1
+ 
+    func removeElementsEnd1by1(completion: ((Double) -> Void)?) {
+        
+        queue.async { [weak self] in
+            guard let self else { return }
+            
+            let start = CFAbsoluteTimeGetCurrent()
+            
+            for var i in 0..<1_000 {
+                self.arr.removeLast()
+                i += 1
+            }
+            
+            let result = CFAbsoluteTimeGetCurrent() - start
+            
+            DispatchQueue.main.async {
+                completion?(result)
+            }
         }
-        print(arr)
         print("11")
     }
     
-    func removeElementsEndAtOnce(){
-        arr.removeLast(1_000)// TODO: added backwords
-        print(arr)
-        print("12")
-    }
-   
+    func removeElementsEndAtOnce(completion: ((Double) -> Void)?) {
+            
+            queue.async { [weak self] in
+                guard let self else { return }
+                
+                let start = CFAbsoluteTimeGetCurrent()
+                
+                self.arr.removeLast(1_000)// TODO: added backwords
+                
+                let result = CFAbsoluteTimeGetCurrent() - start
+
+                
+                DispatchQueue.main.async {
+                    completion?(result)
+                }
+            }
+            print("12")
+        }
 }
 
 

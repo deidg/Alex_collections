@@ -13,6 +13,11 @@ import SnapKit
 class MyCollectionViewCell: UICollectionViewCell {
     static var identifier = "MyCollectionViewCell"
     //    var activityIndicator = UIActivityIndicatorView()
+    
+//    var taskForFirstCellArray: [String] = ArrayController.taskForFirstCellArray
+//    var taskArray = ArrayController()
+
+    
     var state: State = .initial {
         didSet {
             applyState(state)
@@ -72,6 +77,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         switch state {
         case .initial:
             return
+//            taskForFirstCellArray.append
         case .loading:
             activityIndicator.startAnimating()
             label.isHidden = true

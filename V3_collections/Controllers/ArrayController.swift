@@ -95,12 +95,13 @@ extension ArrayController: UICollectionViewDataSource {
                                                             for: indexPath) as? MyCollectionViewCell else
         { return UICollectionViewCell() }
         
-        /*     рабочий вариант
-         let item = taskForFirstCellArray[indexPath.row]     ПОКА НЕ СТИРАТЬ!!
+//             рабочий вариант
+         let item = taskForFirstCellArray[indexPath.row]
+//        ПОКА НЕ СТИРАТЬ!!
          cell.textToShow = item
-         */
-        cell.textToShow = taskForFirstCellArray[indexPath.row]   //  ПОДУМАТЬ  сделать без textToShow
-        
+//         */
+//        cell.textToShow = taskForFirstCellArray[indexPath.row]   //  ПОДУМАТЬ  сделать без textToShow
+        cell.state = .initial
         
         return cell
     }
@@ -110,102 +111,89 @@ extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
         
-        
+        var counter: Bool = true
         
         switch indexPath.item {
         case 0:
-            
-            cell.state = .loading
-            
-            self.arrayManager.createArr { time in
-                cell.state = .result(result: time)
+//            var counter: Bool = true    // TODO: main label renew -  need to block
+//
+            if counter == true {
+                cell.state = .loading
+                self.arrayManager.createArr { time in
+                    cell.state = .result(result: time)
+                }
+                self.taskForFirstCellArray.append(contentsOf: self.taskArray)
+                collectionView.reloadData()
+                
+                print(counter)
+                print("=====")
+                counter = false
+                print(counter)
+
+            } else {
+                print("ger")
             }
-            self.taskForFirstCellArray.append(contentsOf: self.taskArray)
-            collectionView.reloadData()
-            
         case 1:
             cell.state = .loading
-            
             arrayManager.insertElementsBeginning1by1 { time in
                 cell.state = .result(result: time)
             }
         case 2:
             cell.state = .loading
-            
             arrayManager.insertElementsBeginningAtOnce { time in
                 cell.state = .result(result: time)
             }
         case 3:
             cell.state = .loading
-            
             arrayManager.insertElementsMiddle1by1 { time in
                 cell.state = .result(result: time)
             }
-            
         case 4:
             cell.state = .loading
-            
             arrayManager.insertElementsMiddleAtOnce { time in
                 cell.state = .result(result: time)
             }
-            
         case 5:
             cell.state = .loading
-            
             arrayManager.insertElementsEnd1by1 { time in
                 cell.state = .result(result: time)
             }
-            
         case 6:
             cell.state = .loading
-            
             arrayManager.insertElementsEndAtOnce { time in
                 cell.state = .result(result: time)
             }
-            
         case 7:
             cell.state = .loading
-            
             arrayManager.removeElementsBeginning1by1 { time in
                 cell.state = .result(result: time)
             }
-            
         case 8:
             cell.state = .loading
             
             arrayManager.removeElementsBeginningAtOnce { time in
                 cell.state = .result(result: time)
             }
-            
         case 9:
             cell.state = .loading
-            
             arrayManager.removeElementsMiddle1by1 { time in
                 cell.state = .result(result: time)
             }
-            
         case 10:
             cell.state = .loading
-            
             arrayManager.removeElementsMiddleAtOnce { time in
                 cell.state = .result(result: time)
             }
-            
         case 11:
             cell.state = .loading
-            
             arrayManager.removeElementsEnd1by1 { time in
                 cell.state = .result(result: time)
             }
-            
         case 12:
             cell.state = .loading
-            
             arrayManager.removeElementsEndAtOnce { time in
                 cell.state = .result(result: time)
             }
-            
-            
         default:
             break
         }

@@ -20,21 +20,31 @@ class ArrayManager {
     
 //посмотреть еще раз что такое комплишн
     func createArr(completion: ((Double) -> Void)?) {
+//        var arrDone: Bool = false
+//
+//        if arrDone == false {
         queue.async { [weak self] in
             guard let self else { return }    //  TODO: guard let self -  почитать
-            
-            let start = CFAbsoluteTimeGetCurrent()
-            
-            let arr = [Int](0..<10_000_000)
-            let arr2 = [Int](0..<1_000)
-                        
-            let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
-            self.arr = arr
-            self.arr2 = arr2
-            DispatchQueue.main.async {
-                completion?(result)
+
+                
+                let start = CFAbsoluteTimeGetCurrent()
+                
+                let arr = [Int](0..<10_000_000)
+                let arr2 = [Int](0..<1_000)
+                
+                let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
+                self.arr = arr
+                self.arr2 = arr2
+//                arrDone = true
+                DispatchQueue.main.async {
+                    completion?(result)
+                }
             }
-        }
+            
+            
+//        } else {
+//            print("Array have been done already!")
+//        }
     }
  
     func insertElementsBeginning1by1(completion: ((Double) -> Void)?) {

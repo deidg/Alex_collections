@@ -111,28 +111,35 @@ extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
         
-        var counter: Bool = true
+        let completionHandler: (Bool) -> Void = { done in
+            if done {
+//                self.taskForFirstCellArray.append(contentsOf: self.taskArray)
+//                collectionView.reloadData()
+            }
+        }
+//        var counter: Bool = true
         
         switch indexPath.item {
         case 0:
-//            var counter: Bool = true    // TODO: main label renew -  need to block
-//
-            if counter == true {
+     
+            func make10mlnArr(using completionHandler: (Bool) -> Void) {
                 cell.state = .loading
                 self.arrayManager.createArr { time in
                     cell.state = .result(result: time)
-                }
-                self.taskForFirstCellArray.append(contentsOf: self.taskArray)
-                collectionView.reloadData()
-                
-                print(counter)
-                print("=====")
-                counter = false
-                print(counter)
+//                    self.taskForFirstCellArray.append(contentsOf: self.taskArray)
+//                                    collectionView.reloadData()
 
-            } else {
-                print("ger")
+                }
+
             }
+            make10mlnArr(using: completionHandler)
+            self.taskForFirstCellArray.append(contentsOf: self.taskArray)
+            collectionView.reloadData()
+            
+            //            completionHandler(true)
+//                self.taskForFirstCellArray.append(contentsOf: self.taskArray)
+//                collectionView.reloadData()
+
         case 1:
             cell.state = .loading
             arrayManager.insertElementsBeginning1by1 { time in

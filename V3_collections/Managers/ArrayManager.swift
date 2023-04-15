@@ -29,7 +29,7 @@ class ArrayManager {
                 
                 let start = CFAbsoluteTimeGetCurrent()
                 
-                let arr = [Int](0..<10_000_000)
+                let arr = [Int](0..<2_000_000)
                 let arr2 = [Int](0..<1_000)
                 
                 let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100

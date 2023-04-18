@@ -111,45 +111,25 @@ extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
         
-//        let completionHandler: (Bool) -> Void = { done in
-//            if done {
-////                                self.taskForFirstCellArray.append(contentsOf: self.taskArray)
-////                                collectionView.reloadData()
-//            }
-//        }
         
         switch indexPath.item {
         case 0:
-            
-//            func make10mlnArr(using completionHandler: (Bool) -> Void) {
-//                func make10mlnArr(using completionHandler: (Bool) -> Void) {
 
-                print("her1")
                 cell.state = .loading
-                print("her2")
                 
                 self.arrayManager.createArr { time in
-                    cell.state = .result(result: time)
-                    collectionView.reloadData()
 
-                    print("her3")
-                    
-                 self.taskForFirstCellArray.append(contentsOf: self.taskArray)
-                    collectionView.reloadData()
+//                collectionView.reloadData()
 
-//                 collectionView.reloadData()
-//                completionHandler(true)
-//                    collectionView.reloadData()
-                }
-//                                 collectionView.reloadData()
-
+                self.taskForFirstCellArray.append(contentsOf: self.taskArray)
                 
-//            }
-//                (using: completionHandler)
-//            collectionView.reloadData()
-//                        self.taskForFirstCellArray.append(contentsOf: self.taskArray)
-//                        collectionView.reloadData()
-            
+                cell.state = .result(result: time)
+             
+                collectionView.reloadData()
+                }
+
+            collectionView.reloadData()
+
          
         case 1:
             cell.state = .loading

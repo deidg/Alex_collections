@@ -95,9 +95,7 @@ extension ArrayController: UICollectionViewDataSource {
                                                             for: indexPath) as? MyCollectionViewCell else
         { return UICollectionViewCell() }
         
-        //             рабочий вариант
         let item = taskForFirstCellArray[indexPath.row]
-        //        ПОКА НЕ СТИРАТЬ!!
         cell.textToShow = item
         //         */
         //        cell.textToShow = taskForFirstCellArray[indexPath.row]   //  ПОДУМАТЬ  сделать без textToShow
@@ -111,35 +109,33 @@ extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
         
-        
+        //TODO: make enum
         switch indexPath.item {
         case 0:
             
             cell.state = .loading
             
             self.arrayManager.createArr { time in
-                
-                collectionView.reloadData()
-                
+      
+                self.taskForFirstCellArray[0] = "creation time: \(time)"
                 self.taskForFirstCellArray.append(contentsOf: self.taskArray)
+                collectionView.reloadData()
                 
                 cell.state = .result(result: time)
-                
-                collectionView.reloadData()
+
+                cell.isUserInteractionEnabled = false
+
             }
-            
-            //            cell.state = .result(result: time)
-            
-            collectionView.reloadData()
+
             
             
         case 1:
             cell.state = .loading
-            DispatchQueue.global(qos: .userInitiated).async {
-                [weak self] in
-                self?.arrayManager.insertElementsBeginning1by1 { time in
+//            DispatchQueue.global(qos: .userInitiated).async {
+//                [weak self] in
+                self.arrayManager.insertElementsBeginning1by1 { time in
                     cell.state = .result(result: time)
-                }
+//                }
             }
             
         case 2:
@@ -234,6 +230,8 @@ extension ArrayController: UICollectionViewDelegate {
         default:
             break
         }
+//              collectionView.reloadData()
+
     }
 }
 

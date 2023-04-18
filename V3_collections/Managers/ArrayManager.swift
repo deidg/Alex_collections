@@ -15,7 +15,7 @@ class ArrayManager {
     
     let queue = DispatchQueue(label: "Array_manager_queue_working", qos: .userInitiated)
     var arr = [Int]()
-    var arr2 = [Int]()
+    let arr2 = [Int](0..<1_000)
 
     
 //посмотреть еще раз что такое комплишн
@@ -27,11 +27,10 @@ class ArrayManager {
                 let start = CFAbsoluteTimeGetCurrent()
                 
                 let arr = [Int](0..<3_000_000)
-                let arr2 = [Int](0..<1_000)
                 
                 let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
                 self.arr = arr
-                self.arr2 = arr2
+//                self.arr2 = arr2
 //                arrDone = true
                 DispatchQueue.main.async {
                     completion?(result)

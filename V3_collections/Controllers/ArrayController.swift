@@ -114,33 +114,29 @@ extension ArrayController: UICollectionViewDelegate {
         
         switch indexPath.item {
         case 0:
-
-                cell.state = .loading
+            
+            cell.state = .loading
+            
+            self.arrayManager.createArr { time in
                 
-                self.arrayManager.createArr { time in
-
                 collectionView.reloadData()
-
+                
                 self.taskForFirstCellArray.append(contentsOf: self.taskArray)
                 
                 cell.state = .result(result: time)
-             
+                
                 collectionView.reloadData()
-                }
-
-//            cell.state = .result(result: time)
-
+            }
+            
+            //            cell.state = .result(result: time)
+            
             collectionView.reloadData()
-
-         
+            
+            
         case 1:
-      
             cell.state = .loading
-
             DispatchQueue.global(qos: .userInitiated).async {
                 [weak self] in
-
-//                cell.state = .loading
                 self?.arrayManager.insertElementsBeginning1by1 { time in
                     cell.state = .result(result: time)
                 }
@@ -148,59 +144,92 @@ extension ArrayController: UICollectionViewDelegate {
             
         case 2:
             cell.state = .loading
-            arrayManager.insertElementsBeginningAtOnce { time in
-                cell.state = .result(result: time)
+            DispatchQueue.global(qos: .userInitiated).async {
+                [weak self] in
+                self?.arrayManager.insertElementsBeginningAtOnce { time in
+                    cell.state = .result(result: time)
+                }
             }
+            
         case 3:
             cell.state = .loading
-            arrayManager.insertElementsMiddle1by1 { time in
-                cell.state = .result(result: time)
+            DispatchQueue.global(qos: .userInitiated).async {
+                [weak self] in
+                self?.arrayManager.insertElementsMiddle1by1 { time in
+                    cell.state = .result(result: time)
+                }
             }
         case 4:
             cell.state = .loading
-            arrayManager.insertElementsMiddleAtOnce { time in
-                cell.state = .result(result: time)
+            DispatchQueue.global(qos: .userInitiated).async {
+                [weak self] in
+                self?.arrayManager.insertElementsMiddleAtOnce { time in
+                    cell.state = .result(result: time)
+                }
             }
         case 5:
             cell.state = .loading
-            arrayManager.insertElementsEnd1by1 { time in
-                cell.state = .result(result: time)
+            DispatchQueue.global(qos: .userInitiated).async {
+                [weak self] in
+                self?.arrayManager.insertElementsEnd1by1 { time in
+                    cell.state = .result(result: time)
+                }
             }
         case 6:
             cell.state = .loading
-            arrayManager.insertElementsEndAtOnce { time in
-                cell.state = .result(result: time)
+            DispatchQueue.global(qos: .userInitiated).async {
+                [weak self] in
+                self?.arrayManager.insertElementsEndAtOnce { time in
+                    cell.state = .result(result: time)
+                }
             }
         case 7:
             cell.state = .loading
-            arrayManager.removeElementsBeginning1by1 { time in
-                cell.state = .result(result: time)
+            DispatchQueue.global(qos: .userInitiated).async {
+                [weak self] in
+                self?.arrayManager.removeElementsBeginning1by1 { time in
+                    cell.state = .result(result: time)
+                }
             }
         case 8:
             cell.state = .loading
-            
-            arrayManager.removeElementsBeginningAtOnce { time in
-                cell.state = .result(result: time)
+            DispatchQueue.global(qos: .userInitiated).async {
+                [weak self] in
+                self?.arrayManager.removeElementsBeginningAtOnce { time in
+                    cell.state = .result(result: time)
+                }
             }
         case 9:
             cell.state = .loading
-            arrayManager.removeElementsMiddle1by1 { time in
-                cell.state = .result(result: time)
+            DispatchQueue.global(qos: .userInitiated).async {
+                [weak self] in
+                self?.arrayManager.removeElementsMiddle1by1 { time in
+                    cell.state = .result(result: time)
+                }
             }
         case 10:
             cell.state = .loading
-            arrayManager.removeElementsMiddleAtOnce { time in
-                cell.state = .result(result: time)
+            DispatchQueue.global(qos: .userInitiated).async {
+                [weak self] in
+                self?.arrayManager.removeElementsMiddleAtOnce { time in
+                    cell.state = .result(result: time)
+                }
             }
         case 11:
             cell.state = .loading
-            arrayManager.removeElementsEnd1by1 { time in
-                cell.state = .result(result: time)
+            DispatchQueue.global(qos: .userInitiated).async {
+                [weak self] in
+                self?.arrayManager.removeElementsEnd1by1 { time in
+                    cell.state = .result(result: time)
+                }
             }
         case 12:
             cell.state = .loading
-            arrayManager.removeElementsEndAtOnce { time in
-                cell.state = .result(result: time)
+            DispatchQueue.global(qos: .userInitiated).async {
+                [weak self] in
+                self?.arrayManager.removeElementsEndAtOnce { time in
+                    cell.state = .result(result: time)
+                }
             }
         default:
             break

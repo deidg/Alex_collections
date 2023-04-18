@@ -119,7 +119,7 @@ extension ArrayController: UICollectionViewDelegate {
                 
                 self.arrayManager.createArr { time in
 
-//                collectionView.reloadData()
+                collectionView.reloadData()
 
                 self.taskForFirstCellArray.append(contentsOf: self.taskArray)
                 
@@ -128,14 +128,24 @@ extension ArrayController: UICollectionViewDelegate {
                 collectionView.reloadData()
                 }
 
+//            cell.state = .result(result: time)
+
             collectionView.reloadData()
 
          
         case 1:
+      
             cell.state = .loading
-            arrayManager.insertElementsBeginning1by1 { time in
-                cell.state = .result(result: time)
+
+            DispatchQueue.global(qos: .userInitiated).async {
+                [weak self] in
+
+//                cell.state = .loading
+                self?.arrayManager.insertElementsBeginning1by1 { time in
+                    cell.state = .result(result: time)
+                }
             }
+            
         case 2:
             cell.state = .loading
             arrayManager.insertElementsBeginningAtOnce { time in

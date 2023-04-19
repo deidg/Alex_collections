@@ -21,14 +21,23 @@ class SetController: UIViewController {
     let textField1: UITextField = {
         let textField1 = UITextField()
         textField1.backgroundColor = .white
-//        textField1.layer.cornerRadius = 3
+        textField1.layer.cornerRadius = 5
+        textField1.layer.borderColor = CGColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
+        textField1.layer.borderWidth = 1.0
+        
 //        textField1.font
         return textField1
     }()
     let textField2: UITextField = {
         let textField2 = UITextField()
         textField2.backgroundColor = .white
-//        textField2.layer.cornerRadius = 3  // для View
+        textField2.layer.cornerRadius = 5
+        textField2.layer.borderColor = CGColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
+        textField2.layer.borderWidth = 1.0
+
+
+        
+        
         //        textField1.font
         return textField2
     }()
@@ -37,6 +46,10 @@ class SetController: UIViewController {
         let buttonForMatchCharacters = UIButton()
         buttonForMatchCharacters.backgroundColor = .orange
         buttonForMatchCharacters.setTitle("All matching letters", for: .normal)
+        
+        //        textField2.frame = CGRect(x: 100, y: 100, width: 100, height: 50)
+
+        
 //        buttonForMatchCharacters.font.color
         buttonForMatchCharacters.setTitleColor(.blue, for: .normal)
         
@@ -71,8 +84,16 @@ class SetController: UIViewController {
     private func setupUIelements() {
         view.addSubview(textField1)
         textField1.snp.makeConstraints{ make in
-            make.top.equalTo(view).offset(100)
-            make.leading.trailing.equalTo(view).offset(16)
+            make.top.equalTo(view).offset(150)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(30)
+//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
+        }
+        view.addSubview(textField2)
+        textField2.snp.makeConstraints{ make in
+            make.top.equalTo(textField1.snp.bottom).offset(10)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(30)
 //            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
     }

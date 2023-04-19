@@ -10,6 +10,14 @@ import SnapKit
 
 class SetController: UIViewController {
     
+//    private let setView: UIView = {
+////        let setView = UIView()
+//        let setView = UIView()
+////        setView.layoutGuides = .
+////        setView.backgroundColor = .green
+//        return setView
+//    }()
+ 
     let textField1: UITextField = {
         let textField1 = UITextField()
         textField1.backgroundColor = .white
@@ -27,37 +35,46 @@ class SetController: UIViewController {
     
     let buttonForMatchCharacters: UIButton = {
         let buttonForMatchCharacters = UIButton()
-        buttonForMatchCharacters.backgroundColor = .white
+        buttonForMatchCharacters.backgroundColor = .orange
         buttonForMatchCharacters.setTitle("All matching letters", for: .normal)
 //        buttonForMatchCharacters.font.color
-        
+        buttonForMatchCharacters.setTitleColor(.blue, for: .normal)
         
         
         return buttonForMatchCharacters
     }()
     let buttonForNotMatchCharacters: UIButton = {
         let buttonForNotMatchCharacters = UIButton()
-        buttonForNotMatchCharacters.backgroundColor = .white
+        buttonForNotMatchCharacters.backgroundColor = .yellow
         buttonForNotMatchCharacters.setTitle("All characters that do not match", for: .normal)
-        
+        buttonForNotMatchCharacters.setTitleColor(.blue, for: .normal)
+
         
         return buttonForNotMatchCharacters
     }()
     let buttonForUniqueCharacters: UIButton = {
         let buttonForUniqueCharacters = UIButton()
-        buttonForUniqueCharacters.backgroundColor = .white
+        buttonForUniqueCharacters.backgroundColor = .blue
         buttonForUniqueCharacters.setTitle("All unique characters from the first text field that do not match in text fields", for: .normal)
-        
+        buttonForUniqueCharacters.setTitleColor(.blue, for: .normal)
+
         
         return buttonForUniqueCharacters
     }()
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
         setupUIelements()
     }
     
     private func setupUIelements() {
-        
+        view.addSubview(textField1)
+        textField1.snp.makeConstraints{ make in
+            make.top.equalTo(view).offset(100)
+            make.leading.trailing.equalTo(view).offset(16)
+//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
+        }
     }
     
 }

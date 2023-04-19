@@ -55,9 +55,9 @@ class ArrayController: UIViewController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 0 {
-            return CGSize(width: collectionView.bounds.width, height: 100)
+            return CGSize(width: collectionView.bounds.width, height: 105)
         } else {
-            return CGSize(width: (collectionView.bounds.width/2), height: 100)
+            return CGSize(width: (collectionView.bounds.width/2), height: 105)
         }
     }
     
@@ -160,58 +160,58 @@ extension ArrayController: UICollectionViewDelegate {
             
         case 2:
             cell.state = .loading
-                self?.arrayManager.insertElementsBeginningAtOnce { time in
+                self.arrayManager.insertElementsBeginningAtOnce { time in
                     cell.state = .result(result: time)
             }
             
         case 3:
             cell.state = .loading
-                self?.arrayManager.insertElementsMiddle1by1 { time in
+                self.arrayManager.insertElementsMiddle1by1 { time in
                     cell.state = .result(result: time)
             }
         case 4:
             cell.state = .loading
-                self?.arrayManager.insertElementsMiddleAtOnce { time in
+                self.arrayManager.insertElementsMiddleAtOnce { time in
                     cell.state = .result(result: time)
             }
         case 5:
             cell.state = .loading
-                self?.arrayManager.insertElementsEnd1by1 { time in
+                self.arrayManager.insertElementsEnd1by1 { time in
                     cell.state = .result(result: time)
             }
         case 6:
             cell.state = .loading
-                self?.arrayManager.insertElementsEndAtOnce { time in
+                self.arrayManager.insertElementsEndAtOnce { time in
                     cell.state = .result(result: time)
             }
         case 7:
             cell.state = .loading
-                self?.arrayManager.removeElementsBeginning1by1 { time in
+                self.arrayManager.removeElementsBeginning1by1 { time in
                     cell.state = .result(result: time)
             }
         case 8:
             cell.state = .loading
-                self?.arrayManager.removeElementsBeginningAtOnce { time in
+                self.arrayManager.removeElementsBeginningAtOnce { time in
                     cell.state = .result(result: time)
             }
         case 9:
             cell.state = .loading
-                self?.arrayManager.removeElementsMiddle1by1 { time in
+                self.arrayManager.removeElementsMiddle1by1 { time in
                     cell.state = .result(result: time)
             }
         case 10:
             cell.state = .loading
-                self?.arrayManager.removeElementsMiddleAtOnce { time in
+                self.arrayManager.removeElementsMiddleAtOnce { time in
                     cell.state = .result(result: time)
             }
         case 11:
             cell.state = .loading
-                self?.arrayManager.removeElementsEnd1by1 { time in
+                self.arrayManager.removeElementsEnd1by1 { time in
                     cell.state = .result(result: time)
             }
         case 12:
             cell.state = .loading
-                self?.arrayManager.removeElementsEndAtOnce { time in
+                self.arrayManager.removeElementsEndAtOnce { time in
                     cell.state = .result(result: time)
             }
         default:

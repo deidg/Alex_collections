@@ -56,6 +56,9 @@ class MyCollectionViewCell: UICollectionViewCell {
     }
     
     private func cellSetupUI() {
+//        contentView.layer.borderWidth = 1
+//        contentView.layer.borderColor = .init(red: 110, green: 120, blue: 140, alpha: 1)
+        
         contentView.addSubview(label)
         label.snp.makeConstraints{ make in
             make.leading.top.trailing.bottom.equalToSuperview().inset(2)

@@ -13,7 +13,7 @@ class ArrayController: UIViewController {
     
     var myArray: [Int] = []
     var cellArray: [UICollectionViewCell] = []
-    let cell = Cell()
+//    let cell = Cell()
     let arrayManager = ArrayManager()
     
     private var collectionView: UICollectionView = {
@@ -21,6 +21,8 @@ class ArrayController: UIViewController {
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .white
+//        collectionView.layer.borderWidth = 1
+//        collectionView.layer.borderColor = .init(red: 110, green: 120, blue: 140, alpha: 1)
         return collectionView
     }()
     
@@ -63,7 +65,6 @@ class ArrayController: UIViewController {
         "Create array for 10 mln elements: "
     ]
     var taskArray: [String] = [
-        //for array
         "Insert 1000 elements at the beginning / of the array one-by-one",
         "Insert 1000 elements at the beginning / of the array at once",
         
@@ -97,6 +98,8 @@ extension ArrayController: UICollectionViewDataSource {
         
         let item = taskForFirstCellArray[indexPath.row]
         cell.textToShow = item
+//        cell.layer.borderColor = .init(red: 010, green: 220, blue: 150, alpha: 1)
+//        cell.layer.borderWidth = 1
         //         */
         //        cell.textToShow = taskForFirstCellArray[indexPath.row]   //  ПОДУМАТЬ  сделать без textToShow
         cell.state = .initial

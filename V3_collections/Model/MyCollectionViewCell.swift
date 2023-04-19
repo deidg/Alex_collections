@@ -48,6 +48,8 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.layer.borderColor = UIColor.gray.cgColor
+        self.layer.borderWidth = 1
         cellSetupUI()
     }
     required init?(coder: NSCoder) {

@@ -5,6 +5,8 @@
 //  Created by Alex on 26.03.2023.
 //
 
+//  ячейка для CollectionVC
+
 import UIKit
 
 class Cell: UITableViewCell {

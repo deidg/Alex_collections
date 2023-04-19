@@ -13,7 +13,6 @@ class ArrayController: UIViewController {
     
     var myArray: [Int] = []
     var cellArray: [UICollectionViewCell] = []
-//    let cell = Cell()
     let arrayManager = ArrayManager()
     
     private var collectionView: UICollectionView = {
@@ -21,8 +20,8 @@ class ArrayController: UIViewController {
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .white
-//        collectionView.layer.borderWidth = 1
-//        collectionView.layer.borderColor = .init(red: 110, green: 120, blue: 140, alpha: 1)
+//        collectionView.layer.borderWidth = 5
+//        collectionView.layer.borderColor = UIColor.yellow.cgColor
         return collectionView
     }()
     

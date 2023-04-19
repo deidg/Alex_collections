@@ -33,7 +33,7 @@ class CollectionVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        view.backgroundColor = .red
+        view.backgroundColor = .white
 
         tableView.register(Cell.self, forCellReuseIdentifier: cellId)
         tableView.tableFooterView = UIView()
@@ -43,6 +43,7 @@ class CollectionVC: UIViewController {
     
     func setupNavBar() {
         navigationController?.navigationBar.topItem?.title = "Collections"
+//        navigationController?.navigationBar.backgroundColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1)
 //        navigationController?.navigationBar.prefersLargeTitles = true
 //        navigationController?.navigationBar.backgroundColor = .yellow
     }

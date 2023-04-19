@@ -12,12 +12,7 @@ import SnapKit
 
 class MyCollectionViewCell: UICollectionViewCell {
     static var identifier = "MyCollectionViewCell"
-    //    var activityIndicator = UIActivityIndicatorView()
-    
-//    var taskForFirstCellArray: [String] = ArrayController.taskForFirstCellArray
-//    var taskArray = ArrayController()
 
-    
     var state: State = .initial {
         didSet {
             applyState(state)
@@ -48,7 +43,9 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.borderColor = UIColor.gray.cgColor
+        
+         // цвет рамки и ее толщина
+          self.layer.borderColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1).cgColor
         self.layer.borderWidth = 1
         cellSetupUI()
     }
@@ -58,9 +55,6 @@ class MyCollectionViewCell: UICollectionViewCell {
     }
     
     private func cellSetupUI() {
-//        contentView.layer.borderWidth = 1
-//        contentView.layer.borderColor = .init(red: 110, green: 120, blue: 140, alpha: 1)
-        
         contentView.addSubview(label)
         label.snp.makeConstraints{ make in
             make.leading.top.trailing.bottom.equalToSuperview().inset(2)

@@ -19,7 +19,15 @@ class ArrayController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
+        
+        // цвет нижней части
+        collectionView.backgroundColor = UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1)
+//        navigat
+        //UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
+        
+        
+        
+        
 //        collectionView.layer.borderWidth = 5
 //        collectionView.layer.borderColor = UIColor.yellow.cgColor
         return collectionView
@@ -97,6 +105,11 @@ extension ArrayController: UICollectionViewDataSource {
         
         let item = taskForFirstCellArray[indexPath.row]
         cell.textToShow = item
+        
+        // цвет ячейки
+        cell.backgroundColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
+        
+        
 //        cell.layer.borderColor = .init(red: 010, green: 220, blue: 150, alpha: 1)
 //        cell.layer.borderWidth = 1
         //         */

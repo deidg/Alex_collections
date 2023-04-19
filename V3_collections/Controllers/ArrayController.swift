@@ -15,6 +15,29 @@ class ArrayController: UIViewController {
     var cellArray: [UICollectionViewCell] = []
     let arrayManager = ArrayManager()
     
+    let topView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+    let bottomView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    
+//    let titleLabel: UILabel = {
+//        let titleLabel = UILabel()
+////        titleLabel.font = Constants.Fonts.titleLabelFont //titleLabelFont
+//        titleLabel.textAlignment = .center
+//        titleLabel.backgroundColor = .white
+////        titleLabel.text = Constants.Labels.largeLabelText //largeLabelText
+//        return titleLabel
+//    }()
+    
+    
+    
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -42,6 +65,9 @@ class ArrayController: UIViewController {
         
     }
     
+    
+    
+    
     var activityIndicator: UIActivityIndicatorView = {
         let  activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
@@ -63,8 +89,23 @@ class ArrayController: UIViewController {
     func setupContraints() {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints{ make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.trailing.leading.bottom.equalToSuperview()
         }
+        view.addSubview(topView)
+        topView.snp.makeConstraints{ make in
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
+        }
+        
+        view.addSubview(bottomView)
+        bottomView.snp.makeConstraints{ make in
+            make.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        
     }
     
     
@@ -134,6 +175,7 @@ extension ArrayController: UICollectionViewDelegate {
       
                 self.taskForFirstCellArray[0] = "creation time: \(time)"
                 self.taskForFirstCellArray.append(contentsOf: self.taskArray)
+                
                 collectionView.reloadData()
                 
                 cell.state = .result(result: time)

@@ -12,10 +12,23 @@ import UIKit
 
 class CollectionVC: UIViewController {
     
-//    let collectionVC = CollectionVC()
+    //    let collectionVC = CollectionVC()
     let arrayController = ArrayController()
     let setController = SetController()
     let dictionaryController = DictionaryController()
+    
+  
+    let titleLabel: UILabel = {
+        let titleLabel = UILabel()
+//        titleLabel.font = Constants.Fonts.titleLabelFont //titleLabelFont
+        titleLabel.textAlignment = .center
+        titleLabel.backgroundColor = .white
+//        titleLabel.text = Constants.Labels.largeLabelText //largeLabelText
+        return titleLabel
+    }()
+    
+    
+    
     
     let arrayVC = ["Array", "Set", "Dictionary"]
     
@@ -29,24 +42,37 @@ class CollectionVC: UIViewController {
     
     let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)  // framed вместо grouped
     
+    
     func setupViews() {
         tableView.delegate = self
         tableView.dataSource = self
         
         view.backgroundColor = .white
-
+        
         tableView.register(Cell.self, forCellReuseIdentifier: cellId)
         tableView.tableFooterView = UIView()
+//        tableView.backgroundColor = .systemPink
         
         view = tableView
     }
     
     func setupNavBar() {
         navigationController?.navigationBar.topItem?.title = "Collections"
-//        navigationController?.navigationBar.backgroundColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1)
-//        navigationController?.navigationBar.prefersLargeTitles = true
-//        navigationController?.navigationBar.backgroundColor = .yellow
+        //        navigationController?.navigationBar.backgroundColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1)
+        //        navigationController?.navigationBar.prefersLargeTitles = true
+        //        navigationController?.navigationBar.backgroundColor = .yellow
     }
+    
+    
+    
+//    tableView.addSubview(titleLabel)
+//    titleLabel.snp.makeConstraints { make in
+//        make.leading.trailing.equalToSuperview().inset(16)
+//        make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(64)
+//        make.height.equalTo(41)
+//    }
+   
+    
 }
 
 //class TableViewCell: UITableViewCell {
@@ -61,6 +87,14 @@ extension CollectionVC: UITableViewDelegate {
         switch indexPath.row {
         case 0:
             self.show(arrayController, sender: self)
+            navigationController?.navigationBar.backgroundColor = .white
+//            navigationController.shared.statusBarView?.backgroundColor = UIColor.red
+//            tableView.backgroundColor = .systemPink
+
+            
+            
+//            navigationController?.navigationBar.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+            //UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1)
         case 1:
             self.show(setController, sender: self)
         case 2:

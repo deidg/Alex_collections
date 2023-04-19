@@ -10,79 +10,49 @@ import SnapKit
 
 class SetController: UIViewController {
     
+    let textField1: UITextField = {
+        let textField1 = UITextField()
+        textField1.backgroundColor = .white
+//        textField1.layer.cornerRadius = 3
+//        textField1.font
+        return textField1
+    }()
+    let textField2: UITextField = {
+        let textField2 = UITextField()
+        textField2.backgroundColor = .white
+//        textField2.layer.cornerRadius = 3  // для View
+        //        textField1.font
+        return textField2
+    }()
     
-    private let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        //        layout.minimumInteritemSpacing = 0
-        //        layout.minimumLineSpacing = 0
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .green
+    let buttonForMatchCharacters: UIButton = {
+        let buttonForMatchCharacters = UIButton()
         
-        return collectionView
+        
+        
+        
+        
+        return buttonForMatchCharacters
+    }()
+    let buttonForNotMatchCharacters: UIButton = {
+        let buttonForNotMatchCharacters = UIButton()
+        
+        return buttonForNotMatchCharacters
+    }()
+    let buttonForUniqueCharacters: UIButton = {
+        let buttonForUniqueCharacters = UIButton()
+        
+        return buttonForUniqueCharacters
     }()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        setupContraints()
+        setupUIelements()
+    }
+    
+    private func setupUIelements() {
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
-        collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.row == 0 {
-            return CGSize(width: collectionView.bounds.width, height: 100)
-        } else {
-                        return CGSize(width: (collectionView.bounds.width/2), height: 100)   //
-            
-//            let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
-//            let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) +
-//            (flowayout?.sectionInset.left ?? 0.0) +
-//            (flowayout?.sectionInset.right ?? 0.0)
-//            let size: CGFloat = (collectionView.frame.size.width - space) / 2.0
-//            return CGSize(width: size, height: 100)
-        }
-    }
-    
-    func setupContraints() {
-        view.addSubview(collectionView)
-        collectionView.snp.makeConstraints{ make in
-            make.edges.equalToSuperview()
-        }
-    }
-}
-
-extension  SetController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 26
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell",
-                                                            for: indexPath) as? MyCollectionViewCell else
-        { return UICollectionViewCell() }
-//        cell.backgroundColor = .yellow
-        return cell
-    }
-    
-}
-
-extension SetController: UICollectionViewDelegate {
-}
-
-extension SetController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
 }
 
 

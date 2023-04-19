@@ -25,19 +25,7 @@ class ArrayController: UIViewController {
         view.backgroundColor = .white
         return view
     }()
-    
-    
-//    let titleLabel: UILabel = {
-//        let titleLabel = UILabel()
-////        titleLabel.font = Constants.Fonts.titleLabelFont //titleLabelFont
-//        titleLabel.textAlignment = .center
-//        titleLabel.backgroundColor = .white
-////        titleLabel.text = Constants.Labels.largeLabelText //largeLabelText
-//        return titleLabel
-//    }()
-    
-    
-    
+ 
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -45,14 +33,6 @@ class ArrayController: UIViewController {
         
         // цвет нижней части
         collectionView.backgroundColor = UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1)
-//        navigat
-        //UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
-        
-        
-        
-        
-//        collectionView.layer.borderWidth = 5
-//        collectionView.layer.borderColor = UIColor.yellow.cgColor
         return collectionView
     }()
     
@@ -62,12 +42,8 @@ class ArrayController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
-        
     }
-    
-    
-    
-    
+
     var activityIndicator: UIActivityIndicatorView = {
         let  activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
@@ -75,7 +51,6 @@ class ArrayController: UIViewController {
         activityIndicator.color = UIColor.red
         return activityIndicator
     }()
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -98,7 +73,6 @@ class ArrayController: UIViewController {
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
-        
         view.addSubview(bottomView)
         bottomView.snp.makeConstraints{ make in
             make.bottom.equalToSuperview()
@@ -107,8 +81,7 @@ class ArrayController: UIViewController {
         }
         
     }
-    
-    
+  
     var taskForFirstCellArray: [String] = [
         "Create array for 10 mln elements: "
     ]
@@ -131,7 +104,6 @@ class ArrayController: UIViewController {
         "Remove 1000 elements at the end of the array one-by-one",
         "Remove 1000 elements at the end of the array",
     ]
-    
 }
 
 extension ArrayController: UICollectionViewDataSource {
@@ -149,11 +121,7 @@ extension ArrayController: UICollectionViewDataSource {
         
         // цвет ячейки
         cell.backgroundColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
-        
-        
-//        cell.layer.borderColor = .init(red: 010, green: 220, blue: 150, alpha: 1)
-//        cell.layer.borderWidth = 1
-        //         */
+
         //        cell.textToShow = taskForFirstCellArray[indexPath.row]   //  ПОДУМАТЬ  сделать без textToShow
         cell.state = .initial
         
@@ -183,112 +151,72 @@ extension ArrayController: UICollectionViewDelegate {
                 cell.isUserInteractionEnabled = false
 
             }
-
-            
-            
-        case 1:
+          case 1:
             cell.state = .loading
-//            DispatchQueue.global(qos: .userInitiated).async {
-//                [weak self] in
+
                 self.arrayManager.insertElementsBeginning1by1 { time in
                     cell.state = .result(result: time)
-//                }
             }
             
         case 2:
             cell.state = .loading
-            DispatchQueue.global(qos: .userInitiated).async {
-                [weak self] in
                 self?.arrayManager.insertElementsBeginningAtOnce { time in
                     cell.state = .result(result: time)
-                }
             }
             
         case 3:
             cell.state = .loading
-            DispatchQueue.global(qos: .userInitiated).async {
-                [weak self] in
                 self?.arrayManager.insertElementsMiddle1by1 { time in
                     cell.state = .result(result: time)
-                }
             }
         case 4:
             cell.state = .loading
-            DispatchQueue.global(qos: .userInitiated).async {
-                [weak self] in
                 self?.arrayManager.insertElementsMiddleAtOnce { time in
                     cell.state = .result(result: time)
-                }
             }
         case 5:
             cell.state = .loading
-            DispatchQueue.global(qos: .userInitiated).async {
-                [weak self] in
                 self?.arrayManager.insertElementsEnd1by1 { time in
                     cell.state = .result(result: time)
-                }
             }
         case 6:
             cell.state = .loading
-            DispatchQueue.global(qos: .userInitiated).async {
-                [weak self] in
                 self?.arrayManager.insertElementsEndAtOnce { time in
                     cell.state = .result(result: time)
-                }
             }
         case 7:
             cell.state = .loading
-            DispatchQueue.global(qos: .userInitiated).async {
-                [weak self] in
                 self?.arrayManager.removeElementsBeginning1by1 { time in
                     cell.state = .result(result: time)
-                }
             }
         case 8:
             cell.state = .loading
-            DispatchQueue.global(qos: .userInitiated).async {
-                [weak self] in
                 self?.arrayManager.removeElementsBeginningAtOnce { time in
                     cell.state = .result(result: time)
-                }
             }
         case 9:
             cell.state = .loading
-            DispatchQueue.global(qos: .userInitiated).async {
-                [weak self] in
                 self?.arrayManager.removeElementsMiddle1by1 { time in
                     cell.state = .result(result: time)
-                }
             }
         case 10:
             cell.state = .loading
-            DispatchQueue.global(qos: .userInitiated).async {
-                [weak self] in
                 self?.arrayManager.removeElementsMiddleAtOnce { time in
                     cell.state = .result(result: time)
-                }
             }
         case 11:
             cell.state = .loading
-            DispatchQueue.global(qos: .userInitiated).async {
-                [weak self] in
                 self?.arrayManager.removeElementsEnd1by1 { time in
                     cell.state = .result(result: time)
-                }
             }
         case 12:
             cell.state = .loading
-            DispatchQueue.global(qos: .userInitiated).async {
-                [weak self] in
                 self?.arrayManager.removeElementsEndAtOnce { time in
                     cell.state = .result(result: time)
-                }
             }
         default:
             break
         }
-//              collectionView.reloadData()
-
     }
 }
 

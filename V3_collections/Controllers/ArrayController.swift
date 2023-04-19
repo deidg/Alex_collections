@@ -153,66 +153,76 @@ extension ArrayController: UICollectionViewDelegate {
             }
           case 1:
             cell.state = .loading
-
                 self.arrayManager.insertElementsBeginning1by1 { time in
                     cell.state = .result(result: time)
+                    cell.isUserInteractionEnabled = false
             }
-            
         case 2:
             cell.state = .loading
                 self.arrayManager.insertElementsBeginningAtOnce { time in
                     cell.state = .result(result: time)
+                    cell.isUserInteractionEnabled = false
             }
             
         case 3:
             cell.state = .loading
                 self.arrayManager.insertElementsMiddle1by1 { time in
                     cell.state = .result(result: time)
+                    cell.isUserInteractionEnabled = false
             }
         case 4:
             cell.state = .loading
                 self.arrayManager.insertElementsMiddleAtOnce { time in
                     cell.state = .result(result: time)
+                    cell.isUserInteractionEnabled = false
             }
         case 5:
             cell.state = .loading
                 self.arrayManager.insertElementsEnd1by1 { time in
                     cell.state = .result(result: time)
+                    cell.isUserInteractionEnabled = false
             }
         case 6:
             cell.state = .loading
                 self.arrayManager.insertElementsEndAtOnce { time in
                     cell.state = .result(result: time)
+                    cell.isUserInteractionEnabled = false
             }
         case 7:
             cell.state = .loading
                 self.arrayManager.removeElementsBeginning1by1 { time in
                     cell.state = .result(result: time)
+                    cell.isUserInteractionEnabled = false
             }
         case 8:
             cell.state = .loading
                 self.arrayManager.removeElementsBeginningAtOnce { time in
                     cell.state = .result(result: time)
+                    cell.isUserInteractionEnabled = false
             }
         case 9:
             cell.state = .loading
                 self.arrayManager.removeElementsMiddle1by1 { time in
                     cell.state = .result(result: time)
+                    cell.isUserInteractionEnabled = false
             }
         case 10:
             cell.state = .loading
                 self.arrayManager.removeElementsMiddleAtOnce { time in
                     cell.state = .result(result: time)
+                    cell.isUserInteractionEnabled = false
             }
         case 11:
             cell.state = .loading
                 self.arrayManager.removeElementsEnd1by1 { time in
                     cell.state = .result(result: time)
+                    cell.isUserInteractionEnabled = false
             }
         case 12:
             cell.state = .loading
                 self.arrayManager.removeElementsEndAtOnce { time in
                     cell.state = .result(result: time)
+                    cell.isUserInteractionEnabled = false
             }
         default:
             break

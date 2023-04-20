@@ -9,23 +9,17 @@ import UIKit
 import SnapKit
 
 class SetController: UIViewController {
-    
-//    private let setView: UIView = {
-////        let setView = UIView()
-//        let setView = UIView()
-////        setView.layoutGuides = .
-////        setView.backgroundColor = .green
-//        return setView
-//    }()
- 
+
     let textField1: UITextField = {
         let textField1 = UITextField()
         textField1.backgroundColor = .white
         textField1.layer.cornerRadius = 5
         textField1.layer.borderColor = CGColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
         textField1.layer.borderWidth = 1.0
-        
-//        textField1.font
+        //отступ от левого края
+        let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
+        textField1.leftViewMode = .always
+        textField1.leftView = spacerView
         return textField1
     }()
     let textField2: UITextField = {
@@ -34,11 +28,9 @@ class SetController: UIViewController {
         textField2.layer.cornerRadius = 5
         textField2.layer.borderColor = CGColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
         textField2.layer.borderWidth = 1.0
-
-
-        
-        
-        //        textField1.font
+        let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
+        textField2.leftViewMode = .always
+        textField2.leftView = spacerView
         return textField2
     }()
     

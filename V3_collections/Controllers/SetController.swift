@@ -98,7 +98,7 @@ class SetController: UIViewController {
         }
     }
     
-    func  makeAnswerLabel1() {
+    func  makeAnswerLabel1() -> UILabel {
         let answerLabel1 = UILabel()
         answerLabel1.backgroundColor = .orange
         
@@ -107,6 +107,7 @@ class SetController: UIViewController {
             make.top.equalTo(buttonForMatchCharacters.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(30)
+            return answerLabel1
         }
         
         //раздвигает место под ответ
@@ -146,10 +147,13 @@ class SetController: UIViewController {
     @objc private func buttonPressed(sender: UIButton) {
         switch sender {
         case buttonForMatchCharacters:
+            findMatching()
             print("1")
         case buttonForNotMatchCharacters:
+            findDifference()
             print("2")
         case buttonForUniqueCharacters:
+            findUniqueChars()
             print("3")
         default:
             print("")
@@ -162,6 +166,32 @@ class SetController: UIViewController {
         buttonForNotMatchCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         buttonForUniqueCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
+    
+    func findMatching() {
+        let textFromTF1: String = textField1.text ?? ""
+        let charSet1 = Set(textFromTF1)
+        print(charSet1)
+        
+        let textFromTF2: String = textField2.text ?? ""
+        let charSet2 = Set(textFromTF2)
+        print(charSet2)
+        
+        let intersectionResult = charSet1.intersection(charSet2)
+        print(intersectionResult)
+        //zxCFvbn
+        //asdCFgh
+        
+        
+    }
+    
+    func findDifference() {
+        
+    }
+    
+    func findUniqueChars() {
+        
+    }
+    
 }
 
 extension SetController {

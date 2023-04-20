@@ -77,7 +77,7 @@ class SetController: UIViewController {
     let answerLabel3: UILabel = {
         let answerLabel3 = UILabel()
         answerLabel3.isHidden = true
-        answerLabel3.backgroundColor = .blue
+        answerLabel3.backgroundColor = .white
         answerLabel3.textAlignment = .center
         return answerLabel3
     }()
@@ -192,7 +192,18 @@ class SetController: UIViewController {
     }
     
     func findUniqueChars() {
+        let textFromTF1: String = textField1.text ?? ""
+        let charSet1 = Set(textFromTF1)
+        let textFromTF2: String = textField2.text ?? ""
+        let charSet2 = Set(textFromTF2)
         
+        let intersectionResult = charSet1.intersection(charSet2)
+        let unitedSet = intersectionResult.union(charSet2)
+        let uniqueCharSet = String(charSet1.subtracting(unitedSet))
+        print(uniqueCharSet)
+
+        answerLabel3.isHidden = false
+        answerLabel3.text = uniqueCharSet
     }
     
 }

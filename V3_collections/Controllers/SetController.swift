@@ -43,7 +43,8 @@ class SetController: UIViewController {
     let answerLabel1: UILabel = {
         let answerLabel1 = UILabel()
         answerLabel1.isHidden = true
-        answerLabel1.backgroundColor = .blue
+        answerLabel1.backgroundColor = .white
+        answerLabel1.textAlignment = .center
         return answerLabel1
     }()
             
@@ -59,6 +60,7 @@ class SetController: UIViewController {
         let answerLabel2 = UILabel()
         answerLabel2.isHidden = true
         answerLabel2.backgroundColor = .blue
+        answerLabel2.textAlignment = .center
         return answerLabel2
     }()
     
@@ -76,11 +78,10 @@ class SetController: UIViewController {
         let answerLabel3 = UILabel()
         answerLabel3.isHidden = true
         answerLabel3.backgroundColor = .blue
+        answerLabel3.textAlignment = .center
         return answerLabel3
     }()
-    
-    
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUIelements()
@@ -106,35 +107,30 @@ class SetController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(30)
         }
-        
         view.addSubview(answerLabel1)
         answerLabel1.snp.makeConstraints{ make in
             make.top.equalTo(buttonForMatchCharacters.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(30)
         }
-        
         view.addSubview(buttonForNotMatchCharacters)
         buttonForNotMatchCharacters.snp.makeConstraints{ make in
             make.top.equalTo(buttonForMatchCharacters.snp.bottom).offset(40)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(30)
         }
-        
         view.addSubview(answerLabel2)
         answerLabel2.snp.makeConstraints{ make in
             make.top.equalTo(buttonForNotMatchCharacters.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(30)
         }
-        
         view.addSubview(buttonForUniqueCharacters)
         buttonForUniqueCharacters.snp.makeConstraints{ make in
             make.top.equalTo(buttonForNotMatchCharacters.snp.bottom).offset(40)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(60)
         }
-        
         view.addSubview(answerLabel3)
         answerLabel3.snp.makeConstraints{ make in
             make.top.equalTo(buttonForUniqueCharacters.snp.bottom).offset(10)
@@ -171,17 +167,15 @@ class SetController: UIViewController {
     func findMatching() {
         let textFromTF1: String = textField1.text ?? ""
         let charSet1 = Set(textFromTF1)
-        print(charSet1)
-        
         let textFromTF2: String = textField2.text ?? ""
         let charSet2 = Set(textFromTF2)
-        print(charSet2)
         
-        let intersectionResult = charSet1.intersection(charSet2)
-        print(intersectionResult)
+        let intersectionResult = String(charSet1.intersection(charSet2))
         //zxCFvbn
         //asdCFgh
         
+        answerLabel1.isHidden = false
+        answerLabel1.text = intersectionResult
         
     }
     

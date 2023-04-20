@@ -39,6 +39,14 @@ class SetController: UIViewController {
         buttonForMatchCharacters.setTitleColor(.blue, for: .normal)
         return buttonForMatchCharacters
     }()
+    
+    let answerLabel1: UILabel = {
+        let answerLabel1 = UILabel()
+        answerLabel1.isHidden = true
+        answerLabel1.backgroundColor = .blue
+        return answerLabel1
+    }()
+            
     let buttonForNotMatchCharacters: UIButton = {
         let buttonForNotMatchCharacters = UIButton()
         buttonForNotMatchCharacters.backgroundColor = .white
@@ -46,6 +54,14 @@ class SetController: UIViewController {
         buttonForNotMatchCharacters.setTitleColor(.blue, for: .normal)
         return buttonForNotMatchCharacters
     }()
+    
+    let answerLabel2: UILabel = {
+        let answerLabel2 = UILabel()
+        answerLabel2.isHidden = true
+        answerLabel2.backgroundColor = .blue
+        return answerLabel2
+    }()
+    
     let buttonForUniqueCharacters: UIButton = {
         let buttonForUniqueCharacters = UIButton()
         buttonForUniqueCharacters.backgroundColor = .white
@@ -56,13 +72,19 @@ class SetController: UIViewController {
         return buttonForUniqueCharacters
     }()
     
+    let answerLabel3: UILabel = {
+        let answerLabel3 = UILabel()
+        answerLabel3.isHidden = true
+        answerLabel3.backgroundColor = .blue
+        return answerLabel3
+    }()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUIelements()
         defaultConfiguration()
-        makeAnswerLabel1()
-        makeAnswerLabel2()
-        makeAnswerLabel3()
     }
     
     private func setupUIelements() {
@@ -84,45 +106,20 @@ class SetController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(30)
         }
-        view.addSubview(buttonForNotMatchCharacters)
-        buttonForNotMatchCharacters.snp.makeConstraints{ make in
-            make.top.equalTo(buttonForMatchCharacters.snp.bottom).offset(40)
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(30)
-        }
-        view.addSubview(buttonForUniqueCharacters)
-        buttonForUniqueCharacters.snp.makeConstraints{ make in
-            make.top.equalTo(buttonForNotMatchCharacters.snp.bottom).offset(40)
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(60)
-        }
-    }
-    
-    func  makeAnswerLabel1() -> UILabel {
-        let answerLabel1 = UILabel()
-        answerLabel1.backgroundColor = .orange
         
         view.addSubview(answerLabel1)
         answerLabel1.snp.makeConstraints{ make in
             make.top.equalTo(buttonForMatchCharacters.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(30)
-            return answerLabel1
         }
         
-        //раздвигает место под ответ
-//        view.addSubview(buttonForNotMatchCharacters)
-//        buttonForNotMatchCharacters.snp.makeConstraints{ make in
-//            make.top.equalTo(AnswerLabel1.snp.bottom).offset(100)
-//            make.leading.trailing.equalToSuperview().inset(16)
-//            make.height.equalTo(30)
-//        }
-    
-    }
-    
-    func  makeAnswerLabel2() {
-        let answerLabel2 = UILabel()
-        answerLabel2.backgroundColor = .orange
+        view.addSubview(buttonForNotMatchCharacters)
+        buttonForNotMatchCharacters.snp.makeConstraints{ make in
+            make.top.equalTo(buttonForMatchCharacters.snp.bottom).offset(40)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(30)
+        }
         
         view.addSubview(answerLabel2)
         answerLabel2.snp.makeConstraints{ make in
@@ -130,11 +127,13 @@ class SetController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(30)
         }
-    }
-  
-    func  makeAnswerLabel3() {
-        let answerLabel3 = UILabel()
-        answerLabel3.backgroundColor = .orange
+        
+        view.addSubview(buttonForUniqueCharacters)
+        buttonForUniqueCharacters.snp.makeConstraints{ make in
+            make.top.equalTo(buttonForNotMatchCharacters.snp.bottom).offset(40)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(60)
+        }
         
         view.addSubview(answerLabel3)
         answerLabel3.snp.makeConstraints{ make in
@@ -143,6 +142,8 @@ class SetController: UIViewController {
             make.height.equalTo(30)
         }
     }
+    
+   
     
     @objc private func buttonPressed(sender: UIButton) {
         switch sender {

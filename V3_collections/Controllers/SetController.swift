@@ -59,7 +59,7 @@ class SetController: UIViewController {
     let answerLabel2: UILabel = {
         let answerLabel2 = UILabel()
         answerLabel2.isHidden = true
-        answerLabel2.backgroundColor = .blue
+        answerLabel2.backgroundColor = .white
         answerLabel2.textAlignment = .center
         return answerLabel2
     }()
@@ -180,7 +180,15 @@ class SetController: UIViewController {
     }
     
     func findDifference() {
+        let textFromTF1: String = textField1.text ?? ""
+        let charSet1 = Set(textFromTF1)
+        let textFromTF2: String = textField2.text ?? ""
+        let charSet2 = Set(textFromTF2)
         
+        let symmetricDifferenceResult = String(charSet1.symmetricDifference(charSet2))
+        
+        answerLabel2.isHidden = false
+        answerLabel2.text = symmetricDifferenceResult
     }
     
     func findUniqueChars() {

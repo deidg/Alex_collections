@@ -139,19 +139,14 @@ class SetController: UIViewController {
         }
     }
     
-   
-    
     @objc private func buttonPressed(sender: UIButton) {
         switch sender {
         case buttonForMatchCharacters:
             findMatching()
-            print("1")
         case buttonForNotMatchCharacters:
             findDifference()
-            print("2")
         case buttonForUniqueCharacters:
             findUniqueChars()
-            print("3")
         default:
             print("")
         }
@@ -205,11 +200,6 @@ class SetController: UIViewController {
         answerLabel3.isHidden = false
         answerLabel3.text = uniqueCharSet
     }
-    
-}
-
-extension SetController {
-    
     
 }
 

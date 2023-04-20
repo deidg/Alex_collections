@@ -91,16 +91,10 @@ extension CollectionVC: UITableViewDelegate {
         case 0:
             self.show(arrayController, sender: self)
             navigationController?.navigationBar.backgroundColor = .white
-//            navigationController.shared.statusBarView?.backgroundColor = UIColor.red
-//            tableView.backgroundColor = .systemPink
-
-            
-            
-//            navigationController?.navigationBar.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-            //UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1)
         case 1:
             self.show(setController, sender: self)
         case 2:
+            
             self.show(dictionaryController, sender: self)
         default:
             print("")

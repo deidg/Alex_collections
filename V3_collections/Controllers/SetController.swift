@@ -36,13 +36,8 @@ class SetController: UIViewController {
     
     let buttonForMatchCharacters: UIButton = {
         let buttonForMatchCharacters = UIButton()
-        buttonForMatchCharacters.backgroundColor = .orange
+        buttonForMatchCharacters.backgroundColor = .white
         buttonForMatchCharacters.setTitle("All matching letters", for: .normal)
-        
-        //        textField2.frame = CGRect(x: 100, y: 100, width: 100, height: 50)
-
-        
-//        buttonForMatchCharacters.font.color
         buttonForMatchCharacters.setTitleColor(.blue, for: .normal)
         
         
@@ -50,7 +45,7 @@ class SetController: UIViewController {
     }()
     let buttonForNotMatchCharacters: UIButton = {
         let buttonForNotMatchCharacters = UIButton()
-        buttonForNotMatchCharacters.backgroundColor = .yellow
+        buttonForNotMatchCharacters.backgroundColor = .white
         buttonForNotMatchCharacters.setTitle("All characters that do not match", for: .normal)
         buttonForNotMatchCharacters.setTitleColor(.blue, for: .normal)
 
@@ -59,8 +54,10 @@ class SetController: UIViewController {
     }()
     let buttonForUniqueCharacters: UIButton = {
         let buttonForUniqueCharacters = UIButton()
-        buttonForUniqueCharacters.backgroundColor = .blue
+        buttonForUniqueCharacters.backgroundColor = .white
         buttonForUniqueCharacters.setTitle("All unique characters from the first text field that do not match in text fields", for: .normal)
+        buttonForUniqueCharacters.titleLabel?.lineBreakMode = .byWordWrapping
+        buttonForUniqueCharacters.titleLabel?.textAlignment = .center
         buttonForUniqueCharacters.setTitleColor(.blue, for: .normal)
 
         
@@ -88,8 +85,33 @@ class SetController: UIViewController {
             make.height.equalTo(30)
 //            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
+        
+        view.addSubview(buttonForMatchCharacters)
+        buttonForMatchCharacters.snp.makeConstraints{ make in
+            make.top.equalTo(textField2.snp.bottom).offset(50)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(30)
+//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
+        }
+        
+        view.addSubview(buttonForNotMatchCharacters)
+        buttonForNotMatchCharacters.snp.makeConstraints{ make in
+            make.top.equalTo(buttonForMatchCharacters.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(30)
+//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
+        }
+        
+        view.addSubview(buttonForUniqueCharacters)
+        buttonForUniqueCharacters.snp.makeConstraints{ make in
+            make.top.equalTo(buttonForNotMatchCharacters.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(60)
+//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
+        }
+        
+        
     }
-    
 }
 
 

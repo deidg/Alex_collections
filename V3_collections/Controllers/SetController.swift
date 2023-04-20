@@ -58,8 +58,8 @@ class SetController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         setupUIelements()
+        defaultConfiguration()
         makeAnswerLabel1()
         makeAnswerLabel2()
         makeAnswerLabel3()
@@ -143,8 +143,25 @@ class SetController: UIViewController {
         }
     }
     
+    @objc private func buttonPressed(sender: UIButton) {
+        switch sender {
+        case buttonForMatchCharacters:
+            print("1")
+        case buttonForNotMatchCharacters:
+            print("2")
+        case buttonForUniqueCharacters:
+            print("3")
+        default:
+            print("")
+        }
+    }
     
-    
+    private func defaultConfiguration() {
+        view.backgroundColor = .white
+        buttonForMatchCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        buttonForNotMatchCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        buttonForUniqueCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+    }
 }
 
 extension SetController {

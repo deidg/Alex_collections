@@ -61,12 +61,13 @@ class DictionaryController: UIViewController {
         }
     }
     func makingCollections() {
-        let array = [Int](0..<1_000_000)
+        
+        let array = [Int](0..<100)
         var dictionary: [Int: String] = [:]
         for i in 0...100 {
             dictionary[i] = "\(i)"
         }
-        //        print(dictionary)
+//                print(array)
     }
     
     let titlesArray: [String] = [
@@ -94,9 +95,11 @@ extension DictionaryController: UICollectionViewDataSource {
         cell.textToShow = item
         
         
+        //TODO: вертикальная черта на первой строчке - сделать
         // цвет ячейки
         if indexPath.row <= 1 {
-            cell.backgroundColor = .white //
+            cell.backgroundColor = .white
+            cell.layer.borderColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).cgColor
         } else {
             cell.backgroundColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
         }
@@ -117,10 +120,21 @@ extension DictionaryController: UICollectionViewDelegate {
         
         switch indexPath.item {
         case 0:
-            
+            cell.isUserInteractionEnabled = false
             print("1")
         case 1:
+            cell.isUserInteractionEnabled = false
             print("2")
+        case 2:
+            cell.isUserInteractionEnabled = true
+            print("3")
+        case 3:
+//            cell.isUserInteractionEnabled = false
+            print("4")
+            
+            
+            
+            
         default:
             break
         }

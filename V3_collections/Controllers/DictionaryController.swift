@@ -39,11 +39,11 @@ class DictionaryController: UIViewController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //        if indexPath.row == 0 {
-        //            return CGSize(width: collectionView.bounds.width, height: 105)
-        //        } else {
-        return CGSize(width: (collectionView.bounds.width/2), height: 105)
-        //        }
+                if indexPath.row <= 1 {
+                    return CGSize(width: collectionView.bounds.width/2, height: 70)
+                } else {
+                    return CGSize(width: (collectionView.bounds.width/2), height: 105)
+                }
     }
     
     func setupContraints() {
@@ -95,8 +95,11 @@ extension DictionaryController: UICollectionViewDataSource {
         
         
         // цвет ячейки
-        cell.backgroundColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
-        
+        if indexPath.row <= 1 {
+            cell.backgroundColor = .white //
+        } else {
+            cell.backgroundColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
+        }
         cell.state = .initial
         
         return cell

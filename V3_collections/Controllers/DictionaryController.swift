@@ -93,6 +93,7 @@ extension DictionaryController: UICollectionViewDataSource {
         let item = titlesArray[indexPath.row]
         cell.textToShow = item
         
+        
         // цвет ячейки
         cell.backgroundColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
         

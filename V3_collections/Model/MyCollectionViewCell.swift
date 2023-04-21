@@ -28,8 +28,9 @@ class MyCollectionViewCell: UICollectionViewCell {
     private let label: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0  //
-        label.textAlignment = .left
+        label.textAlignment = .center
         label.font = .systemFont(ofSize: 20, weight: .medium)
+        label.textColor = UIColor(red: 102/255, green: 178/255, blue: 255/255, alpha: 1)
         return label
     }()
     

@@ -7,8 +7,21 @@
 
 import UIKit
 
+//надо сделать:
+//- переменную State
+//- activity Indicator
+//- начал в DictionaryManager делать case 2,3,4  Сделал экземлпря класса DictionaryManager в Dictionary controller. Делал методы - - искать пооследнее вхождение, первое входение
 
 class DictionaryController: UIViewController {
+    
+    let dictionaryManager = DictionaryManager()
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
+        activityIndicator.color = UIColor.red
+        return activityIndicator
+    }()
     
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -62,11 +75,15 @@ class DictionaryController: UIViewController {
     }
     func makingCollections() {
         
-        let array = [Int](0..<100)
+//        видимо для индикации надо сделать отдельный state
+        activityIndicator.startAnimating()
+        
+        let array = [Int](0..<100_000)
         var dictionary: [Int: String] = [:]
         for i in 0...100 {
             dictionary[i] = "\(i)"
         }
+        activityIndicator.stopAnimating()
 //                print(array)
     }
     
@@ -126,8 +143,9 @@ extension DictionaryController: UICollectionViewDelegate {
             cell.isUserInteractionEnabled = false
             print("2")
         case 2:
-            cell.isUserInteractionEnabled = true
-            print("3")
+            dictionaryManager.printArr()
+            
+            
         case 3:
 //            cell.isUserInteractionEnabled = false
             print("4")

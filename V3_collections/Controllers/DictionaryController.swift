@@ -48,8 +48,7 @@ class DictionaryController: UIViewController {
         makingCollections()
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
 
-        dictionaryManager.fillArray()
-        dictionaryManager.fillDictionary()
+
     }
     
     
@@ -81,12 +80,16 @@ class DictionaryController: UIViewController {
 //        видимо для индикации надо сделать отдельный state
         activityIndicator.startAnimating()
         
-        let array = [Int](0..<100_000)
-        var dictionary: [Int: String] = [:]
-        for i in 0...100 {
-            dictionary[i] = "\(i)"
-        }
-        activityIndicator.stopAnimating()
+        dictionaryManager.fillArray()
+              dictionaryManager.fillDictionary()
+        
+        // код написанный до отпуска - не по ТЗ
+//        let array = [Int](0..<100_000)
+//        var dictionary: [Int: String] = [:]
+//        for i in 0...100 {
+//            dictionary[i] = "\(i)"
+//        }
+//        activityIndicator.stopAnimating()
 //                print(array)
     }
     
@@ -145,17 +148,18 @@ extension DictionaryController: UICollectionViewDelegate {
         case 1:
             cell.isUserInteractionEnabled = false
             print("2")
-//        case 2:
-//            dictionaryManager.printArr()
-            
-            
+        case 2:
+            print("3")
         case 3:
-//            cell.isUserInteractionEnabled = false
             print("4")
-            
-            
-            
-            
+        case 4:
+            print("5")
+        case 5:
+            print("6")
+        case 6:
+            print("7")
+        case 7:
+            print("8")
         default:
             break
         }

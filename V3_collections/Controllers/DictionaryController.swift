@@ -47,10 +47,15 @@ class DictionaryController: UIViewController {
         setupContraints()
         makingCollections()
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
-
-
     }
     
+    var activityIndicator: UIActivityIndicatorView = {
+        let  activityIndicator = UIActivityIndicatorView()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
+        activityIndicator.color = UIColor.red
+        return activityIndicator
+    }()
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -81,7 +86,7 @@ class DictionaryController: UIViewController {
         activityIndicator.startAnimating()
         
         dictionaryManager.fillArray()
-              dictionaryManager.fillDictionary()
+        dictionaryManager.fillDictionary()
         
         // код написанный до отпуска - не по ТЗ
 //        let array = [Int](0..<100_000)

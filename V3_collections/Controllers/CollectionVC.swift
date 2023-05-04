@@ -45,6 +45,13 @@ class CollectionVC: UIViewController {
     
     let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)  // framed вместо grouped
     
+        private let activityIndicator: UIActivityIndicatorView = {
+            let activityIndicator = UIActivityIndicatorView()
+            activityIndicator.hidesWhenStopped = true
+            activityIndicator.style = .large
+            activityIndicator.color = UIColor.red
+            return activityIndicator
+        }()
     
     func setupViews() {
         tableView.delegate = self
@@ -94,8 +101,10 @@ extension CollectionVC: UITableViewDelegate {
         case 1:
             self.show(setController, sender: self)
         case 2:
-            
+            //не понимаю как запустить эту активити индикатор. подумать еще раз, потом спросить Влада.
+            activityIndicator.startAnimating()
             self.show(dictionaryController, sender: self)
+            activityIndicator.stopAnimating()
         default:
             print("")
         }

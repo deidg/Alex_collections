@@ -20,7 +20,7 @@ class DictionaryManager {
 //    func createArrAndDict(completion: ((Double) -> Void)?) {
         //    init() {
         func fillArray() {
-            for i in 0..<1_0000 {
+            for i in 0..<15000 {
                 let name = "name\(i)"
                 var randomNumber = Int.random(in: 1111111...9999999)
                 let phoneNumber = String(randomNumber)
@@ -37,7 +37,7 @@ class DictionaryManager {
         
         
         func fillDictionary() {
-            for i in 0..<1_0000 {
+            for i in 0..<15000 {
                 let name = "dictionaryName\(i)"
                 var randomNumber = Int.random(in: 1111111...9999999)
                 let phoneNumber = String(randomNumber)

@@ -142,8 +142,8 @@ extension DictionaryController: UICollectionViewDelegate {
         case 1:
             cell.isUserInteractionEnabled = false
             print("2")
-        case 2:
-            dictionaryManager.printArr()
+//        case 2:
+//            dictionaryManager.printArr()
             
             
         case 3:

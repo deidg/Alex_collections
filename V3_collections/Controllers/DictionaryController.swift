@@ -155,16 +155,26 @@ extension DictionaryController: UICollectionViewDelegate {
             cell.isUserInteractionEnabled = false
             print("2")
         case 2:
+            cell.state = .loading
+            self.dictionaryManager.findFirstElenemtInArray { time in
+                cell.state =  .result(result: time)
+                cell.isUserInteractionEnabled = false
+            }
             print("3")
         case 3:
+            cell.state = .loading
             print("4")
         case 4:
+            cell.state = .loading
             print("5")
         case 5:
+            cell.state = .loading
             print("6")
         case 6:
+            cell.state = .loading
             print("7")
         case 7:
+            cell.state = .loading
             print("8")
         default:
             break

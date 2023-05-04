@@ -9,7 +9,7 @@ import Foundation
 
 class DictionaryManager {
     
-//    let queue = DispatchQueue(label: "Dictionary_manager_queue_working", qos: .userInitiated)
+    let queue = DispatchQueue(label: "Dictionary_manager_queue_working", qos: .userInitiated)
     struct Contact {
         var name = String()
         var phoneNumber = String()
@@ -20,7 +20,7 @@ class DictionaryManager {
 //    func createArrAndDict(completion: ((Double) -> Void)?) {
         //    init() {
         func fillArray() {
-            for i in 0..<15000 {
+            for i in 0..<100 {
                 let name = "name\(i)"
                 var randomNumber = Int.random(in: 1111111...9999999)
                 let phoneNumber = String(randomNumber)
@@ -34,10 +34,8 @@ class DictionaryManager {
         }
         
         var contactDictionary: [String: String] = [:]
-        
-        
         func fillDictionary() {
-            for i in 0..<15000 {
+            for i in 0..<100 {
                 let name = "dictionaryName\(i)"
                 var randomNumber = Int.random(in: 1111111...9999999)
                 let phoneNumber = String(randomNumber)
@@ -47,7 +45,31 @@ class DictionaryManager {
             }
             print(contactDictionary)
         }
+    
+    func findFirstElenemtInArray(completion: ((Double) -> Void)?) {
+        
+        queue.async { [weak self] in
+            guard let self else { return }
+            
+            let start = CFAbsoluteTimeGetCurrent()
+            
+            let firstElement = self.contactArr.first
+            print(firstElement ?? "")
+            
+            let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
+
+            
+            DispatchQueue.main.async {
+                completion?(result)
+            }
+        }
+        print("1")
+    }
+    
+    
     }
 //}
 
 let dictionaryManager = DictionaryManager()
+
+

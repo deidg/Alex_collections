@@ -47,7 +47,9 @@ class DictionaryController: UIViewController {
         setupContraints()
         makingCollections()
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
-        dictionaryManager.contactArr
+
+        dictionaryManager.fillArray()
+        dictionaryManager.fillDictionary()
     }
     
     

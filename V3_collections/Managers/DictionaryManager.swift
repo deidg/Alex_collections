@@ -27,7 +27,7 @@ class DictionaryManager {
             
             contactArr.append(contact)
             
-            //        print(contactArr[i].name)
+                    print(contactArr[i].name)
             //        i += 1
         }
     }

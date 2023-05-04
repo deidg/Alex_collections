@@ -47,7 +47,7 @@ class DictionaryController: UIViewController {
         setupContraints()
         makingCollections()
 //        collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
-        collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
+        collectionView.register(DictionaryViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
     }
     
     var activityIndicator: UIActivityIndicatorView = {
@@ -117,7 +117,7 @@ extension DictionaryController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DictionaryViewCell", for: indexPath) as? MyCollectionViewCell else
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DictionaryViewCell", for: indexPath) as? DictionaryViewCell else
         { return UICollectionViewCell() }
         
         let item = titlesArray[indexPath.row]
@@ -144,7 +144,7 @@ extension DictionaryController: UICollectionViewDataSource {
 extension DictionaryController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? DictionaryViewCell else { return }
         
         
         switch indexPath.item {

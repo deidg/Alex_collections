@@ -15,13 +15,13 @@ import UIKit
 class DictionaryController: UIViewController {
     
     let dictionaryManager = DictionaryManager()
-    private let activityIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .large
-        activityIndicator.color = UIColor.red
-        return activityIndicator
-    }()
+//    private let activityIndicator: UIActivityIndicatorView = {
+//        let activityIndicator = UIActivityIndicatorView()
+//        activityIndicator.hidesWhenStopped = true
+//        activityIndicator.style = .large
+//        activityIndicator.color = UIColor.red
+//        return activityIndicator
+//    }()
     
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -46,7 +46,8 @@ class DictionaryController: UIViewController {
         self.collectionView.dataSource = self
         setupContraints()
         makingCollections()
-        collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
+//        collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
+        collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
     }
     
     var activityIndicator: UIActivityIndicatorView = {
@@ -116,7 +117,7 @@ extension DictionaryController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as? MyCollectionViewCell else
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DictionaryViewCell", for: indexPath) as? MyCollectionViewCell else
         { return UICollectionViewCell() }
         
         let item = titlesArray[indexPath.row]

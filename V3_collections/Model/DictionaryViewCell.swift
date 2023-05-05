@@ -98,6 +98,8 @@ class  DictionaryViewCell: UICollectionViewCell {
           case loading
           case result(result: Double, firstElement: Int)
           case resultContainsOrNot(result: Double, doesContain: Bool)
+//          case resultForDictionary(result: Double, firstElement: Bool)
+
       }
       
   }

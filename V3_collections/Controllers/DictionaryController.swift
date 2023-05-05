@@ -164,6 +164,16 @@ extension DictionaryController: UICollectionViewDelegate {
             print("3")
         case 3:
             cell.state = .loading
+            self.dictionaryManager.findFirstElenemtInArray { time, firstElement in
+                cell.state =  .result(result: time, firstElement: firstElement)
+                
+                cell.isUserInteractionEnabled = false
+            }
+            
+            
+            
+            
+            
             print("4")
         case 4:
             cell.state = .loading
@@ -177,11 +187,11 @@ extension DictionaryController: UICollectionViewDelegate {
             cell.state = .loading
             print("6")
         case 6:
-            cell.state = .loading
-            self.dictionaryManager.findNotExistingElenemtInArray { result, value in
-                cell.state = .resultContainsOrNot(result: result, doesContain: value)
-            
-        }
+//            cell.state = .loading
+//            self.dictionaryManager.findNotExistingElenemtInArray { result, value in
+//                cell.state = .resultContainsOrNot(result: result, doesContain: value)
+//            
+//        }
             print("7")
         case 7:
             cell.state = .loading

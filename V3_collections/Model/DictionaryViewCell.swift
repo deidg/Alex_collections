@@ -92,7 +92,7 @@ class  DictionaryViewCell: UICollectionViewCell {
       enum State {
           case initial
           case loading
-          case result(result: Double, firstElement: String)
+          case result(result: Double, firstElement: Int)
       }
       
   }

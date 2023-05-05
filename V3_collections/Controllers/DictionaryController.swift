@@ -156,8 +156,8 @@ extension DictionaryController: UICollectionViewDelegate {
             print("2")
         case 2:
             cell.state = .loading
-            self.dictionaryManager.findFirstElenemtInArray { time, name  in
-                cell.state =  .result(result: time, firstElement: name ?? "")  // спросить чем заменить 111
+            self.dictionaryManager.findFirstElenemtInArray { time, indexPath in
+                cell.state =  .result(result: time, firstElement: indexPath)  // спросить чем заменить 111
                 cell.isUserInteractionEnabled = false
             }
             print("3")

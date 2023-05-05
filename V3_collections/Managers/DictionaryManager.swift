@@ -46,16 +46,16 @@ class DictionaryManager {
             print(contactDictionary)
         }
     
-    func findFirstElenemtInArray(completion: ((Double, String?) -> Void)?) {
+    func findFirstElenemtInArray(completion: ((Double, Int) -> Void)?) {
         
         queue.async { [weak self] in
             guard let self else { return }
             
             let start = CFAbsoluteTimeGetCurrent()
             
-            let firstElement = self.contactArr.first?.name //firstIndex //first?
-//            let firstElement = String(element)
-            print(firstElement ?? "")
+            let element = self.contactArr.startIndex //.first//?.name //firstIndex //first?
+            let firstElement = Int(element)
+            print(firstElement )
             
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
 

@@ -157,7 +157,7 @@ extension DictionaryController: UICollectionViewDelegate {
         case 2:
             cell.state = .loading
             self.dictionaryManager.findFirstElenemtInArray { time, indexPath in
-                cell.state =  .result(result: time, firstElement: indexPath)
+                cell.state =  .result(result: time, positionOfElement: indexPath)
                 
                 cell.isUserInteractionEnabled = false
             }
@@ -165,7 +165,7 @@ extension DictionaryController: UICollectionViewDelegate {
         case 3:
             cell.state = .loading
             self.dictionaryManager.findFirstElenemtInArray { time, firstElement in
-                cell.state =  .result(result: time, firstElement: firstElement)
+                cell.state =  .result(result: time, positionOfElement: firstElement)
                 
                 cell.isUserInteractionEnabled = false
             }
@@ -174,7 +174,7 @@ extension DictionaryController: UICollectionViewDelegate {
         case 4:
             cell.state = .loading
             self.dictionaryManager.findLastElenemtInArray { time, indexPath in
-                cell.state = .result(result: time, firstElement: indexPath)
+                cell.state = .result(result: time, positionOfElement: indexPath)
                 
                 cell.isUserInteractionEnabled = false
             }
@@ -182,7 +182,7 @@ extension DictionaryController: UICollectionViewDelegate {
         case 5:
             cell.state = .loading
             
-            self.dictionaryManager.findLastElenemtInDictionary { time, firstElement in cell.state = .result(result: time, firstElement: firstElement)
+            self.dictionaryManager.findLastElenemtInDictionary { time, firstElement in cell.state = .result(result: time, positionOfElement: firstElement)
                 
             }
             print("6")

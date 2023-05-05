@@ -96,7 +96,7 @@ class  DictionaryViewCell: UICollectionViewCell {
       enum State {
           case initial
           case loading
-          case result(result: Double, firstElement: Int)
+          case result(result: Double, positionOfElement: Int)
           case resultContainsOrNot(result: Double, doesContain: Bool)
 //          case resultForDictionary(result: Double, firstElement: Bool)
 

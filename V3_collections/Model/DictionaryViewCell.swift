@@ -84,6 +84,10 @@ class  DictionaryViewCell: UICollectionViewCell {
               activityIndicator.stopAnimating()
               label.isHidden = false
               label.text = "Search time: \(result) sec\n Result number: \(firstElement)" //"Execution time: \(result)"
+          case .resultContainsOrNot(let result, let doesContain):
+              activityIndicator.stopAnimating()
+              label.isHidden = false
+              label.text = "Search time: \(result) sec\n Result number: \(doesContain)"
           }
       }
   }
@@ -93,6 +97,7 @@ class  DictionaryViewCell: UICollectionViewCell {
           case initial
           case loading
           case result(result: Double, firstElement: Int)
+          case resultContainsOrNot(result: Double, doesContain: Bool)
       }
       
   }

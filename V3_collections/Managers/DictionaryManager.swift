@@ -82,8 +82,28 @@ class DictionaryManager {
         }
         print("1")
     }
-    
-    
+    // NOT EXISTING
+    func findNotExistingElenemtInArray(completion: ((Double, Bool) -> Void)?) {
+        
+        queue.async { [weak self] in
+            guard let self else { return }
+            
+            let start = CFAbsoluteTimeGetCurrent()
+            
+            let notExistingElement: String = String((self.contactArr.count)+1)
+//            var doesContain = Bool(true)
+            
+            let doesContain = self.contactArr.contains(where: {"name4"})
+            //настроить чтобы искал name4, как наутчиться - сделать "name\(notExistingElement)" //{ $0.phoneNumber == notExistingElement }
+            
+            let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
+   
+            DispatchQueue.main.async {
+                completion?(result, doesContain)
+            }
+        }
+        print("1")
+    }
     
     }
 //}

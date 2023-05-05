@@ -46,21 +46,24 @@ class DictionaryManager {
             print(contactDictionary)
         }
     
-    func findFirstElenemtInArray(completion: ((Double) -> Void)?) {
+    func findFirstElenemtInArray(completion: ((Double, String?) -> Void)?) {
         
         queue.async { [weak self] in
             guard let self else { return }
             
             let start = CFAbsoluteTimeGetCurrent()
             
-            let firstElement = self.contactArr.first
+            let firstElement = self.contactArr.first?.name //firstIndex //first?
+//            let firstElement = String(element)
             print(firstElement ?? "")
             
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
 
             
             DispatchQueue.main.async {
-                completion?(result)
+                completion?(result, firstElement)
+                
+//                не могу понять почему не работает комлишн хендлер.
             }
         }
         print("1")

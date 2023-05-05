@@ -80,10 +80,10 @@ class  DictionaryViewCell: UICollectionViewCell {
           case .loading:
               activityIndicator.startAnimating()
               label.isHidden = true
-          case .result(let result):
+          case .result(let result, let firstElement):
               activityIndicator.stopAnimating()
               label.isHidden = false
-              label.text = "Search time: \(result) sec" //"Execution time: \(result)"
+              label.text = "Search time: \(result) sec\n Result number: \(firstElement)" //"Execution time: \(result)"
           }
       }
   }
@@ -92,7 +92,7 @@ class  DictionaryViewCell: UICollectionViewCell {
       enum State {
           case initial
           case loading
-          case result(result: Double)
+          case result(result: Double, firstElement: String)
       }
       
   }

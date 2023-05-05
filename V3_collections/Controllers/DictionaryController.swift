@@ -169,11 +169,7 @@ extension DictionaryController: UICollectionViewDelegate {
                 
                 cell.isUserInteractionEnabled = false
             }
-            
-            
-            
-            
-            
+        
             print("4")
         case 4:
             cell.state = .loading
@@ -185,6 +181,10 @@ extension DictionaryController: UICollectionViewDelegate {
             print("5")
         case 5:
             cell.state = .loading
+            
+            self.dictionaryManager.findLastElenemtInDictionary { time, firstElement in cell.state = .result(result: time, firstElement: firstElement)
+                
+            }
             print("6")
         case 6:
 //            cell.state = .loading

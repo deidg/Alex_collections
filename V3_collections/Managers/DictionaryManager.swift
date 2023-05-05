@@ -82,20 +82,20 @@ class DictionaryManager {
     }
     // NOT EXISTING
 //    func findNotExistingElenemtInArray(completion: ((Double, Bool) -> Void)?) {
-//        
+//
 //        queue.async { [weak self] in
 //            guard let self else { return }
-//            
+//
 //            let start = CFAbsoluteTimeGetCurrent()
-//            
+//
 //            let notExistingElement: String = String((self.contactArr.count)+1)
 ////            var doesContain = Bool(true)
-//            
+//
 //            let doesContain = self.contactArr.contains("name\(notExistingElement)")
 //            //настроить чтобы искал name4, как научиться - сделать "name\(notExistingElement)" //{ $0.phoneNumber == notExistingElement }
-//            
+//
 //            let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
-//   
+//
 //            DispatchQueue.main.async {
 //                completion?(result, doesContain)
 //            }
@@ -111,17 +111,38 @@ class DictionaryManager {
             
             let start = CFAbsoluteTimeGetCurrent()
             
-            guard let element = self.contactDictionary["name0"] else { return } //.first//?.name //firstIndex //first?
+            guard let element = self.contactDictionary["name0"] else { return }
             let firstElement = Int(element)// ?? "")
             
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
    
             DispatchQueue.main.async {
-                completion?(result, firstElement ?? 0) 
+                completion?(result, firstElement ?? 0)
             }
         }
         print("4")
     }
+    // LAST element
+    func findLastElenemtInDictionary(completion: ((Double, Int) -> Void)?) {
+        queue.async { [weak self] in
+            guard let self else { return }
+            
+            let start = CFAbsoluteTimeGetCurrent()
+            
+            guard let element = self.contactDictionary["name99"] else { return }
+            let lastElement = Int(element)// ?? "")
+            
+            let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
+   
+            DispatchQueue.main.async {
+                completion?(result, lastElement ?? 0)
+            }
+        }
+        print("6")
+    }
+    
+    
+    
     
     }
 //}

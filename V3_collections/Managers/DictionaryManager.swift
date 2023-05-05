@@ -41,13 +41,11 @@ class DictionaryManager {
                 let phoneNumber = String(randomNumber)
                 
                 contactDictionary[name] = phoneNumber
-                
             }
             print(contactDictionary)
         }
-    
+    // FIRST
     func findFirstElenemtInArray(completion: ((Double, Int) -> Void)?) {
-        
         queue.async { [weak self] in
             guard let self else { return }
             
@@ -55,19 +53,36 @@ class DictionaryManager {
             
             let element = self.contactArr.startIndex //.first//?.name //firstIndex //first?
             let firstElement = Int(element)
-            print(firstElement )
+            print(firstElement)
             
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
-
-            
+   
             DispatchQueue.main.async {
                 completion?(result, firstElement)
-                
-//                не могу понять почему не работает комлишн хендлер.
             }
         }
         print("1")
     }
+    //LAST
+    func findLastElenemtInArray(completion: ((Double, Int) -> Void)?) {
+        
+        queue.async { [weak self] in
+            guard let self else { return }
+            
+            let start = CFAbsoluteTimeGetCurrent()
+            
+            let lastElement = (self.contactArr.count)-1
+            print(lastElement)
+            
+            let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
+   
+            DispatchQueue.main.async {
+                completion?(result, lastElement)
+            }
+        }
+        print("1")
+    }
+    
     
     
     }

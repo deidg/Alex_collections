@@ -157,7 +157,7 @@ extension DictionaryController: UICollectionViewDelegate {
         case 2:
             cell.state = .loading
             self.dictionaryManager.findFirstElenemtInArray { time, indexPath in
-                cell.state =  .result(result: time, firstElement: indexPath)  // спросить чем заменить 111
+                cell.state =  .result(result: time, firstElement: indexPath)
                 cell.isUserInteractionEnabled = false
             }
             print("3")
@@ -166,6 +166,12 @@ extension DictionaryController: UICollectionViewDelegate {
             print("4")
         case 4:
             cell.state = .loading
+            
+            self.dictionaryManager.findLastElenemtInArray { time, indexPath in
+                cell.state =  .result(result: time, firstElement: indexPath)
+                
+                cell.isUserInteractionEnabled = false
+            }
             print("5")
         case 5:
             cell.state = .loading

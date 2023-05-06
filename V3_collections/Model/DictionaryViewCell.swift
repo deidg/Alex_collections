@@ -88,7 +88,11 @@ class  DictionaryViewCell: UICollectionViewCell {
           case .resultContainsOrNot(let result, let doesContain):
               activityIndicator.stopAnimating()
               label.isHidden = false
-              label.text = "Search time: \(result) sec\n Result number: \(doesContain)"
+              if doesContain == false{
+                  label.text = "Search time: \(result) sec\n non existing element: not found"
+              } else {
+                  label.text = "Search time: \(result) sec\n non existing element: found"
+              }
           }
       }
   }

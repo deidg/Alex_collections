@@ -38,7 +38,7 @@ class CollectionVC: UIViewController {
         setupNavBar()
         setupViews()
     }
-    
+
     func setupViews() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -47,10 +47,8 @@ class CollectionVC: UIViewController {
         tableView.tableFooterView = UIView() 
         view = tableView
     }
-    
     func setupNavBar() {
         navigationController?.navigationBar.topItem?.title = "Collections"
-        navigationController?.navigationBar.backgroundColor = .yellow
     }
 }
 

@@ -17,7 +17,7 @@ class DictionaryController: UIViewController {
         collectionView.backgroundColor = .white
         return collectionView
     }()
-    let topView: UIView = {
+    private let topView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         return view
@@ -31,14 +31,14 @@ class DictionaryController: UIViewController {
         makingCollections()
         collectionView.register(DictionaryViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
     }
-    var activityIndicator: UIActivityIndicatorView = {
-        let  activityIndicator = UIActivityIndicatorView()
+    private var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .large
         activityIndicator.color = UIColor.red
         return activityIndicator
     }()
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+    internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row <= 1 {
             return CGSize(width: collectionView.bounds.width/2, height: 70)
@@ -46,7 +46,7 @@ class DictionaryController: UIViewController {
             return CGSize(width: (collectionView.bounds.width/2), height: 105)
         }
     }
-    func setupContraints() {
+    private func setupContraints() {
         view.addSubview(topView)
         topView.snp.makeConstraints{ make in
             make.top.equalToSuperview()
@@ -59,12 +59,12 @@ class DictionaryController: UIViewController {
             make.trailing.leading.bottom.equalToSuperview()
         }
     }
-    func makingCollections() {
+     func makingCollections() {
         activityIndicator.startAnimating()
         dictionaryManager.fillArray()
         dictionaryManager.fillDictionary()
     }
-    let titlesArray: [String] = [
+     let titlesArray: [String] = [
         "Array",
         "Dicitonary",
         "Find the first contact",
@@ -112,14 +112,14 @@ extension DictionaryController: UICollectionViewDelegate {
         case 2:  // ARRAY first element
             cell.state = .loading
             self.dictionaryManager.findFirstElenemtInArray { time, indexPath in
-                cell.state =  .result(result: time, positionOfElement: indexPath)
+                cell.state = .result(result: time, positionOfElement: indexPath)
                 cell.isUserInteractionEnabled = false
             }
             print("3")
         case 3: // DICITONARY first element
             cell.state = .loading
             self.dictionaryManager.findFirstElenemtInArray { time, element in
-                cell.state =  .result(result: time, positionOfElement: element)
+                cell.state = .result(result: time, positionOfElement: element)
                 
                 cell.isUserInteractionEnabled = false
             }

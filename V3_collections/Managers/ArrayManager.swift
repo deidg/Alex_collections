@@ -9,9 +9,9 @@ import UIKit
 import SnapKit
 
 class ArrayManager {
-    let queue = DispatchQueue(label: "Array_manager_queue_working", qos: .userInitiated)
-    var arr = [Int]()
-    let arr2 = [Int](0..<1_000)
+    private let queue = DispatchQueue(label: "Array_manager_queue_working", qos: .userInitiated)
+    private var arr = [Int]()
+    private let arr2 = [Int](0..<1_000)
     func createArr(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }    //  TODO: guard let self -  почитать
@@ -65,16 +65,11 @@ class ArrayManager {
         print("3")
     }
     func insertElementsMiddleAtOnce(completion: ((Double) -> Void)?) {
-        
         queue.async { [weak self] in
             guard let self else { return }
-            
             let start = CFAbsoluteTimeGetCurrent()
-            
             self.arr.insert(contentsOf: self.arr2, at: self.arr.count/2)
-            
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
-            
             DispatchQueue.main.async {
                 completion?(result)
             }
@@ -82,18 +77,14 @@ class ArrayManager {
         print("4")
     }
     func insertElementsEnd1by1(completion: ((Double) -> Void)?) {
-        
         queue.async { [weak self] in
             guard let self else { return }
-            
             let start = CFAbsoluteTimeGetCurrent()
-            
             for var i in 0..<1_000 {
                 self.arr.append(i) //+= i
                 i += 1
             }
             let result = ((CFAbsoluteTimeGetCurrent() - start)*1000).rounded() / 1000
-            
             DispatchQueue.main.async {
                 completion?(result)
             }
@@ -101,16 +92,11 @@ class ArrayManager {
         print("5")
     }
     func insertElementsEndAtOnce(completion: ((Double) -> Void)?) {
-        
         queue.async { [weak self] in
             guard let self else { return }
-            
             let start = CFAbsoluteTimeGetCurrent()
-            
             self.arr.append(contentsOf: self.arr2)
-            
             let result = ((CFAbsoluteTimeGetCurrent() - start)*10000).rounded() / 10000
-            
             DispatchQueue.main.async {
                 completion?(result)
             }

@@ -10,15 +10,15 @@ import UIKit
 import SnapKit
 
 class ArrayController: UIViewController {
-    var myArray: [Int] = []
-    var cellArray: [UICollectionViewCell] = []
-    let arrayManager = ArrayManager()
-    let topView: UIView = {
+    private var myArray: [Int] = []
+    private var cellArray: [UICollectionViewCell] = []
+    private let arrayManager = ArrayManager()
+    private let topView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         return view
     }()
-    let bottomView: UIView = {
+    private let bottomView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         return view
@@ -38,14 +38,14 @@ class ArrayController: UIViewController {
         self.collectionView.dataSource = self
         collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
     }
-    var activityIndicator: UIActivityIndicatorView = {
-        let  activityIndicator = UIActivityIndicatorView()
+    private var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .large
         activityIndicator.color = UIColor.red
         return activityIndicator
     }()
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+    internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 0 {
             return CGSize(width: collectionView.bounds.width, height: 105)
@@ -53,7 +53,7 @@ class ArrayController: UIViewController {
             return CGSize(width: (collectionView.bounds.width/2), height: 105)
         }
     }
-    func setupContraints() {
+    private func setupContraints() {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints{ make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -72,10 +72,10 @@ class ArrayController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
-    var taskForFirstCellArray: [String] = [
+    private var taskForFirstCellArray: [String] = [
         "Create array for 10 mln elements: "
     ]
-    var taskArray: [String] = [
+    private var taskArray: [String] = [
         "Insert 1000 elements at the beginning / of the array one-by-one",
         "Insert 1000 elements at the beginning / of the array at once",
         

@@ -13,18 +13,18 @@ import Foundation
 import UIKit
 
 class CollectionVC: UIViewController {
-    let arrayController = ArrayController()
-    let setController = SetController()
-    let dictionaryController = DictionaryController()
-    let titleLabel: UILabel = {
+    private let arrayController = ArrayController()
+    private let setController = SetController()
+    private let dictionaryController = DictionaryController()
+    private let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.textAlignment = .center
         titleLabel.backgroundColor = .white
         return titleLabel
     }()
-    let cellId = "cellId"
-    let arrayVC = ["Array", "Set", "Dictionary"]
-    let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
+    private let cellId = "cellId"
+    private let arrayVC = ["Array", "Set", "Dictionary"]
+    private let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
     private let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
@@ -39,7 +39,7 @@ class CollectionVC: UIViewController {
         setupViews()
     }
 
-    func setupViews() {
+    private func setupViews() {
         tableView.delegate = self
         tableView.dataSource = self
         view.backgroundColor = .white
@@ -47,7 +47,7 @@ class CollectionVC: UIViewController {
         tableView.tableFooterView = UIView() 
         view = tableView
     }
-    func setupNavBar() {
+    private func setupNavBar() {
         navigationController?.navigationBar.topItem?.title = "Collections"
     }
 }

@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 import SnapKit
 
-class  DictionaryViewCell: UICollectionViewCell {
+class DictionaryViewCell: UICollectionViewCell {
     static var identifier = "DictionaryViewCell"
     var state: State = .initial {
         didSet {
             applyState(state)
         }
     }
-    var textToShow: String = "" {     //  ПОКА НЕ СТИРАТЬ!!!
+     var textToShow: String = "" {     //  ПОКА НЕ СТИРАТЬ!!!
         didSet {
             label.text = textToShow
         }

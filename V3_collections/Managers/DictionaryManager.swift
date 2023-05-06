@@ -12,12 +12,12 @@
 import Foundation
 
 class DictionaryManager {
-    let queue = DispatchQueue(label: "Dictionary_manager_queue_working", qos: .userInitiated)
-    struct Contact {
+    private let queue = DispatchQueue(label: "Dictionary_manager_queue_working", qos: .userInitiated)
+    private struct Contact {
         var name = String()
         var phoneNumber = String()
     }
-    var contactArr: [Contact] = []
+    private var contactArr: [Contact] = []
     func fillArray() {
         for i in 0..<10_000_000 {
             let name = "name\(i)"
@@ -27,7 +27,7 @@ class DictionaryManager {
             contactArr.append(contact)
         }
     }
-    var contactDictionary: [String: String] = [:]
+    private var contactDictionary: [String: String] = [:]
     func fillDictionary() {
         for i in 0..<10_000_000 {
             let name = "dictionaryName\(i)"
@@ -130,6 +130,6 @@ class DictionaryManager {
         print("1")
     }
 }
-let dictionaryManager = DictionaryManager()
+private let dictionaryManager = DictionaryManager()
 
 

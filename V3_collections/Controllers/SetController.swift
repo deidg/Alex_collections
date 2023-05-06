@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class SetController: UIViewController {
-    let textField1: UITextField = {
+    private let textField1: UITextField = {
         let textField1 = UITextField()
         textField1.backgroundColor = .white
         textField1.layer.cornerRadius = 5
@@ -20,7 +20,7 @@ class SetController: UIViewController {
         textField1.leftView = spacerView
         return textField1
     }()
-    let textField2: UITextField = {
+    private let textField2: UITextField = {
         let textField2 = UITextField()
         textField2.backgroundColor = .white
         textField2.layer.cornerRadius = 5
@@ -31,35 +31,35 @@ class SetController: UIViewController {
         textField2.leftView = spacerView
         return textField2
     }()
-    let buttonForMatchCharacters: UIButton = {
+    private let buttonForMatchCharacters: UIButton = {
         let buttonForMatchCharacters = UIButton()
         buttonForMatchCharacters.backgroundColor = .white
         buttonForMatchCharacters.setTitle("All matching letters", for: .normal)
         buttonForMatchCharacters.setTitleColor(.blue, for: .normal)
         return buttonForMatchCharacters
     }()
-    let answerLabel1: UILabel = {
+    private let answerLabel1: UILabel = {
         let answerLabel1 = UILabel()
         answerLabel1.isHidden = true
         answerLabel1.backgroundColor = .white
         answerLabel1.textAlignment = .center
         return answerLabel1
     }()
-    let buttonForNotMatchCharacters: UIButton = {
+    private let buttonForNotMatchCharacters: UIButton = {
         let buttonForNotMatchCharacters = UIButton()
         buttonForNotMatchCharacters.backgroundColor = .white
         buttonForNotMatchCharacters.setTitle("All characters that do not match", for: .normal)
         buttonForNotMatchCharacters.setTitleColor(.blue, for: .normal)
         return buttonForNotMatchCharacters
     }()
-    let answerLabel2: UILabel = {
+    private let answerLabel2: UILabel = {
         let answerLabel2 = UILabel()
         answerLabel2.isHidden = true
         answerLabel2.backgroundColor = .white
         answerLabel2.textAlignment = .center
         return answerLabel2
     }()
-    let buttonForUniqueCharacters: UIButton = {
+    private let buttonForUniqueCharacters: UIButton = {
         let buttonForUniqueCharacters = UIButton()
         buttonForUniqueCharacters.backgroundColor = .white
         buttonForUniqueCharacters.setTitle("All unique characters from the first text field that do not match in text fields", for: .normal)
@@ -68,7 +68,7 @@ class SetController: UIViewController {
         buttonForUniqueCharacters.setTitleColor(.blue, for: .normal)
         return buttonForUniqueCharacters
     }()
-    let answerLabel3: UILabel = {
+    private let answerLabel3: UILabel = {
         let answerLabel3 = UILabel()
         answerLabel3.isHidden = true
         answerLabel3.backgroundColor = .white
@@ -148,7 +148,7 @@ class SetController: UIViewController {
         buttonForNotMatchCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         buttonForUniqueCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
-    func findMatching() {
+    private func findMatching() {
         let textFromTF1: String = textField1.text ?? ""
         let charSet1 = Set(textFromTF1)
         let textFromTF2: String = textField2.text ?? ""
@@ -160,7 +160,7 @@ class SetController: UIViewController {
         answerLabel1.isHidden = false
         answerLabel1.text = intersectionResult
     }
-    func findDifference() {
+    private func findDifference() {
         let textFromTF1: String = textField1.text ?? ""
         let charSet1 = Set(textFromTF1)
         let textFromTF2: String = textField2.text ?? ""
@@ -170,7 +170,7 @@ class SetController: UIViewController {
         answerLabel2.text = symmetricDifferenceResult
     }
     
-    func findUniqueChars() {
+    private func findUniqueChars() {
         let textFromTF1: String = textField1.text ?? ""
         let charSet1 = Set(textFromTF1)
         let textFromTF2: String = textField2.text ?? ""

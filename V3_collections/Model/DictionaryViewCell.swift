@@ -80,10 +80,11 @@ class  DictionaryViewCell: UICollectionViewCell {
           case .loading:
               activityIndicator.startAnimating()
               label.isHidden = true
-          case .result(let result, let firstElement):
+          case .result(let result, let element):
+              print("yee")
               activityIndicator.stopAnimating()
               label.isHidden = false
-              label.text = "Search time: \(result) sec\n Result number: \(firstElement)" //"Execution time: \(result)"
+              label.text = "Search time: \(result) sec\n Result number: \(element)" 
           case .resultContainsOrNot(let result, let doesContain):
               activityIndicator.stopAnimating()
               label.isHidden = false

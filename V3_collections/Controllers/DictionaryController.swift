@@ -154,7 +154,7 @@ extension DictionaryController: UICollectionViewDelegate {
         case 1:
             cell.isUserInteractionEnabled = false
             print("2")
-        case 2:
+        case 2:  // ARRAY first element
             cell.state = .loading
             self.dictionaryManager.findFirstElenemtInArray { time, indexPath in
                 cell.state =  .result(result: time, positionOfElement: indexPath)
@@ -162,16 +162,16 @@ extension DictionaryController: UICollectionViewDelegate {
                 cell.isUserInteractionEnabled = false
             }
             print("3")
-        case 3:
+        case 3: // DICITONARY first element
             cell.state = .loading
-            self.dictionaryManager.findFirstElenemtInArray { time, firstElement in
-                cell.state =  .result(result: time, positionOfElement: firstElement)
+            self.dictionaryManager.findFirstElenemtInArray { time, element in
+                cell.state =  .result(result: time, positionOfElement: element)
                 
                 cell.isUserInteractionEnabled = false
             }
         
             print("4")
-        case 4:
+        case 4: // ARRAY last element
             cell.state = .loading
             self.dictionaryManager.findLastElenemtInArray { time, indexPath in
                 cell.state = .result(result: time, positionOfElement: indexPath)
@@ -179,21 +179,22 @@ extension DictionaryController: UICollectionViewDelegate {
                 cell.isUserInteractionEnabled = false
             }
             print("5")
-        case 5:
+        case 5: // DICITONARY last element
             cell.state = .loading
             
-            self.dictionaryManager.findLastElenemtInDictionary { time, firstElement in cell.state = .result(result: time, positionOfElement: firstElement)
-                
+            self.dictionaryManager.findLastElenemtInDictionary { time, element in cell.state = .result(result: time, positionOfElement: element)
+    
+                cell.isUserInteractionEnabled = false                
             }
-            print("6")
-        case 6:
+            print("from Dictionary controller 6") // to delete
+        case 6: // ARRAY NOT EXIST element
 //            cell.state = .loading
 //            self.dictionaryManager.findNotExistingElenemtInArray { result, value in
 //                cell.state = .resultContainsOrNot(result: result, doesContain: value)
 //            
 //        }
             print("7")
-        case 7:
+        case 7: // DICITONARY NOT EXIST element
             cell.state = .loading
             print("8")
         default:

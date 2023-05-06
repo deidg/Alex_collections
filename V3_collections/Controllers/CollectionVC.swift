@@ -56,6 +56,7 @@ class CollectionVC: UIViewController {
         view.backgroundColor = .white
         
         tableView.register(Cell.self, forCellReuseIdentifier: cellId)
+        
         tableView.tableFooterView = UIView()
         //        tableView.backgroundColor = .systemPink
         
@@ -101,6 +102,8 @@ extension CollectionVC: UITableViewDelegate {
             activityIndicator.startAnimating()
             self.show(dictionaryController, sender: self)
             activityIndicator.stopAnimating()
+            
+            
         default:
             print("")
         }
@@ -115,10 +118,11 @@ extension CollectionVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        cell?.accessoryType = .disclosureIndicator   // почему то не работает.
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         }
         cell?.textLabel?.text = String(arrayVC[indexPath.row])
-        return cell!
+        return cell!   // как сделать unwrapp?
     }
 }

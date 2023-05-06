@@ -29,6 +29,13 @@ class Cell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+//    cell.accessoryType = UITableViewCellAccessoryType
+//    cell.accessoryType = .disclosureIndicator
+
+    
+    
+    
 }
 
 extension Cell {

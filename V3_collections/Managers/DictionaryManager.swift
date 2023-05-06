@@ -6,7 +6,6 @@
 //
 
 
-//увеличить кол- во элементов и посомтреть на большоам количестве.
 //сделать активит индикатор во время создания коллекций
 //разделить в разные потоки поиск несуществующих элементов
 //зачистить всё.
@@ -30,9 +29,6 @@ class DictionaryManager {
                 let contact = Contact(name: name, phoneNumber: phoneNumber)
                 
                 contactArr.append(contact)
-                
-//                print(contactArr[i].name)
-//                print(contactArr[i].phoneNumber)
             }
     }
     
@@ -45,7 +41,6 @@ class DictionaryManager {
             
             contactDictionary[name] = phoneNumber
         }
-//        print(contactDictionary)
     }
     //ARRAY
     // FIRST

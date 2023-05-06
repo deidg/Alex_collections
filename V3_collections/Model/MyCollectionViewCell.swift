@@ -84,7 +84,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         case .result(let result):
             activityIndicator.stopAnimating()
             label.isHidden = false
-            label.text = "Search time: \(result) sec2" //"Execution time: \(result)"
+            label.text = "Search time: \(result) sec" //"Execution time: \(result)"
         }
     }
 }

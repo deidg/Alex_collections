@@ -49,7 +49,7 @@ class DictionaryManager {
             
             let start = CFAbsoluteTimeGetCurrent()
             
-            let elementFromArray = self.contactArr.startIndex //.first//?.name //firstIndex //first?
+            let elementFromArray = self.contactArr.startIndex 
             let element = Int(elementFromArray)
             print(element)
             
@@ -112,7 +112,7 @@ class DictionaryManager {
             let start = CFAbsoluteTimeGetCurrent()
             
             guard let elementFromDictionary = self.contactDictionary["dictionaryName0"] else { return }
-            let element = Int(elementFromDictionary)// ?? "")
+            let element = Int(elementFromDictionary)
             
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             
@@ -130,9 +130,7 @@ class DictionaryManager {
             let start = CFAbsoluteTimeGetCurrent()
             
             guard let elementFromDictionary = self.contactDictionary["dictionaryName99"] else { return }
-            let element = Int(elementFromDictionary)// ?? "")
-            print("printing dictionaryName99 - \("dictionaryName99")") // to delete
-
+            let element = Int(elementFromDictionary)
             
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             

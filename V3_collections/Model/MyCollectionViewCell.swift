@@ -12,7 +12,6 @@ import SnapKit
 
 class MyCollectionViewCell: UICollectionViewCell {
     static var identifier = "MyCollectionViewCell"
-
     var state: State = .initial {
         didSet {
             applyState(state)
@@ -23,7 +22,6 @@ class MyCollectionViewCell: UICollectionViewCell {
             label.text = textToShow
         }
     }
-    
     //TODO: lines between cells
     private let label: UILabel = {
         let label = UILabel()
@@ -33,7 +31,6 @@ class MyCollectionViewCell: UICollectionViewCell {
         label.textColor = UIColor(red: 102/255, green: 178/255, blue: 255/255, alpha: 1)
         return label
     }()
-    
     private let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
@@ -41,12 +38,10 @@ class MyCollectionViewCell: UICollectionViewCell {
         activityIndicator.color = UIColor.red
         return activityIndicator
     }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-         // цвет рамки и ее толщина
-          self.layer.borderColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1).cgColor
+        // цвет рамки и ее толщина
+        self.layer.borderColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1).cgColor
         self.layer.borderWidth = 1
         cellSetupUI()
     }
@@ -54,7 +49,6 @@ class MyCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
         fatalError()
     }
-    
     private func cellSetupUI() {
         contentView.addSubview(label)
         label.snp.makeConstraints{ make in
@@ -65,35 +59,24 @@ class MyCollectionViewCell: UICollectionViewCell {
             make.center.equalToSuperview()
         }
     }
-    
-
-    
-   
-    
-
-    
     private func applyState(_ state: State) {
-      
         switch state {
         case .initial:
             return
-//            taskForFirstCellArray.append
         case .loading:
             activityIndicator.startAnimating()
             label.isHidden = true
         case .result(let result):
             activityIndicator.stopAnimating()
             label.isHidden = false
-            label.text = "Search time: \(result) sec" //"Execution time: \(result)"
+            label.text = "Search time: \(result) sec"
         }
     }
 }
-
 extension MyCollectionViewCell {
     enum State {
         case initial
         case loading
         case result(result: Double)
     }
-    
 }

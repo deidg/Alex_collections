@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 class SetController: UIViewController {
-
     let textField1: UITextField = {
         let textField1 = UITextField()
         textField1.backgroundColor = .white
@@ -39,7 +38,6 @@ class SetController: UIViewController {
         buttonForMatchCharacters.setTitleColor(.blue, for: .normal)
         return buttonForMatchCharacters
     }()
-    
     let answerLabel1: UILabel = {
         let answerLabel1 = UILabel()
         answerLabel1.isHidden = true
@@ -47,7 +45,6 @@ class SetController: UIViewController {
         answerLabel1.textAlignment = .center
         return answerLabel1
     }()
-            
     let buttonForNotMatchCharacters: UIButton = {
         let buttonForNotMatchCharacters = UIButton()
         buttonForNotMatchCharacters.backgroundColor = .white
@@ -55,7 +52,6 @@ class SetController: UIViewController {
         buttonForNotMatchCharacters.setTitleColor(.blue, for: .normal)
         return buttonForNotMatchCharacters
     }()
-    
     let answerLabel2: UILabel = {
         let answerLabel2 = UILabel()
         answerLabel2.isHidden = true
@@ -63,7 +59,6 @@ class SetController: UIViewController {
         answerLabel2.textAlignment = .center
         return answerLabel2
     }()
-    
     let buttonForUniqueCharacters: UIButton = {
         let buttonForUniqueCharacters = UIButton()
         buttonForUniqueCharacters.backgroundColor = .white
@@ -73,7 +68,6 @@ class SetController: UIViewController {
         buttonForUniqueCharacters.setTitleColor(.blue, for: .normal)
         return buttonForUniqueCharacters
     }()
-    
     let answerLabel3: UILabel = {
         let answerLabel3 = UILabel()
         answerLabel3.isHidden = true
@@ -81,13 +75,11 @@ class SetController: UIViewController {
         answerLabel3.textAlignment = .center
         return answerLabel3
     }()
-  
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUIelements()
         defaultConfiguration()
     }
-    
     private func setupUIelements() {
         view.addSubview(textField1)
         textField1.snp.makeConstraints{ make in
@@ -138,7 +130,6 @@ class SetController: UIViewController {
             make.height.equalTo(30)
         }
     }
-    
     @objc private func buttonPressed(sender: UIButton) {
         switch sender {
         case buttonForMatchCharacters:
@@ -151,14 +142,12 @@ class SetController: UIViewController {
             print("")
         }
     }
-    
     private func defaultConfiguration() {
         view.backgroundColor = .white
         buttonForMatchCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         buttonForNotMatchCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         buttonForUniqueCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
-    
     func findMatching() {
         let textFromTF1: String = textField1.text ?? ""
         let charSet1 = Set(textFromTF1)
@@ -168,20 +157,15 @@ class SetController: UIViewController {
         let intersectionResult = String(charSet1.intersection(charSet2))
         //zxCFvbn
         //asdCFgh
-        
         answerLabel1.isHidden = false
         answerLabel1.text = intersectionResult
-        
     }
-    
     func findDifference() {
         let textFromTF1: String = textField1.text ?? ""
         let charSet1 = Set(textFromTF1)
         let textFromTF2: String = textField2.text ?? ""
         let charSet2 = Set(textFromTF2)
-        
         let symmetricDifferenceResult = String(charSet1.symmetricDifference(charSet2))
-        
         answerLabel2.isHidden = false
         answerLabel2.text = symmetricDifferenceResult
     }
@@ -191,16 +175,13 @@ class SetController: UIViewController {
         let charSet1 = Set(textFromTF1)
         let textFromTF2: String = textField2.text ?? ""
         let charSet2 = Set(textFromTF2)
-        
         let intersectionResult = charSet1.intersection(charSet2)
         let unitedSet = intersectionResult.union(charSet2)
         let uniqueCharSet = String(charSet1.subtracting(unitedSet))
         print(uniqueCharSet)
-
         answerLabel3.isHidden = false
         answerLabel3.text = uniqueCharSet
     }
-    
 }
 
 

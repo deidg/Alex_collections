@@ -13,34 +13,18 @@ import Foundation
 import UIKit
 
 class CollectionVC: UIViewController {
-    
-    //    let collectionVC = CollectionVC()
     let arrayController = ArrayController()
     let setController = SetController()
     let dictionaryController = DictionaryController()
-    
-    
     let titleLabel: UILabel = {
         let titleLabel = UILabel()
-        //        titleLabel.font = Constants.Fonts.titleLabelFont //titleLabelFont
         titleLabel.textAlignment = .center
         titleLabel.backgroundColor = .white
-        //        titleLabel.text = Constants.Labels.largeLabelText //largeLabelText
         return titleLabel
     }()
-    
-    let arrayVC = ["Array", "Set", "Dictionary"]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupNavBar()
-        setupViews()
-    }
-    
     let cellId = "cellId"
-    
-    let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)  // framed вместо grouped
-    
+    let arrayVC = ["Array", "Set", "Dictionary"]
+    let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
     private let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
@@ -49,48 +33,30 @@ class CollectionVC: UIViewController {
         return activityIndicator
     }()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupNavBar()
+        setupViews()
+    }
+    
     func setupViews() {
         tableView.delegate = self
         tableView.dataSource = self
-        
         view.backgroundColor = .white
-        
         tableView.register(Cell.self, forCellReuseIdentifier: cellId)
-        
-        tableView.tableFooterView = UIView()
-        //        tableView.backgroundColor = .systemPink
-        
+        tableView.tableFooterView = UIView() 
         view = tableView
     }
     
     func setupNavBar() {
         navigationController?.navigationBar.topItem?.title = "Collections"
-        //        navigationController?.navigationBar.backgroundColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1)
-        //        navigationController?.navigationBar.prefersLargeTitles = true
-        //        navigationController?.navigationBar.backgroundColor = .yellow
+        navigationController?.navigationBar.backgroundColor = .yellow
     }
-    
-    
-    
-    //    tableView.addSubview(titleLabel)
-    //    titleLabel.snp.makeConstraints { make in
-    //        make.leading.trailing.equalToSuperview().inset(16)
-    //        make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(64)
-    //        make.height.equalTo(41)
-    //    }
-    
-    
 }
-
-//class TableViewCell: UITableViewCell {
-//
-//}
 
 // MARK: extensions
 extension CollectionVC: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         switch indexPath.row {
         case 0:
             self.show(arrayController, sender: self)
@@ -98,12 +64,10 @@ extension CollectionVC: UITableViewDelegate {
         case 1:
             self.show(setController, sender: self)
         case 2:
-            //не понимаю как запустить эту активити индикатор. подумать еще раз, потом спросить Влада.
+            //не понимаю как запустить эту активити индикатор.
             activityIndicator.startAnimating()
             self.show(dictionaryController, sender: self)
             activityIndicator.stopAnimating()
-            
-            
         default:
             print("")
         }
@@ -111,11 +75,9 @@ extension CollectionVC: UITableViewDelegate {
 }
 
 extension CollectionVC: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayVC.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
         cell?.accessoryType = .disclosureIndicator   // почему то не работает.
@@ -123,6 +85,6 @@ extension CollectionVC: UITableViewDataSource {
             cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         }
         cell?.textLabel?.text = String(arrayVC[indexPath.row])
-        return cell!   // как сделать unwrapp?
+        return cell!                                  // как сделать unwrapp?
     }
 }

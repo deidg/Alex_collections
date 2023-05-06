@@ -5,6 +5,12 @@
 //  Created by Alex on 21.04.2023.
 //
 
+
+//увеличить кол- во элементов и посомтреть на большоам количестве.
+//сделать активит индикатор во время создания коллекций
+//разделить в разные потоки поиск несуществующих элементов
+//зачистить всё.
+
 import Foundation
 
 class DictionaryManager {
@@ -17,7 +23,7 @@ class DictionaryManager {
     var contactArr: [Contact] = []
     
         func fillArray() {
-            for i in 0..<100 {
+            for i in 0..<10_000_000 {
                 let name = "name\(i)"
                 var randomNumber = Int.random(in: 1111111...9999999)
                 let phoneNumber = String(randomNumber)
@@ -25,21 +31,21 @@ class DictionaryManager {
                 
                 contactArr.append(contact)
                 
-                print(contactArr[i].name)
-                print(contactArr[i].phoneNumber)
+//                print(contactArr[i].name)
+//                print(contactArr[i].phoneNumber)
             }
     }
     
     var contactDictionary: [String: String] = [:]
     func fillDictionary() {
-        for i in 0..<100 {
+        for i in 0..<10_000_000 {
             let name = "dictionaryName\(i)"
             var randomNumber = Int.random(in: 1111111...9999999)
             let phoneNumber = String(randomNumber)
             
             contactDictionary[name] = phoneNumber
         }
-        print(contactDictionary)
+//        print(contactDictionary)
     }
     //ARRAY
     // FIRST
@@ -91,7 +97,7 @@ class DictionaryManager {
                 let notExistingNumber = String((self.contactArr.count))
                 print("not existing number - \(notExistingNumber)") // удалить
 
-                let notExistingElement = "name\(notExistingNumber)" //"name2"//
+                let notExistingElement = "name234458678"//"name\(notExistingNumber)" //"name2"//
                 print(notExistingElement)  // удалить
 
                 let doesContain = self.contactArr.contains { $0.name == notExistingElement }
@@ -154,7 +160,7 @@ func findNotExistingElenemtInDictionary(completion: ((Double, Bool) -> Void)?) {
         let notExistingNumber = String((self.contactDictionary.count))
         print("not existing number - \(notExistingNumber)")  // удалить
 
-        let notExistingElement = "name\(notExistingNumber)" //"name2"//
+        let notExistingElement = "name234458678"// "name\(notExistingNumber)" //"name2"//
         print(notExistingElement)   // удалить
 
         let doesContain = self.contactArr.contains { $0.name == notExistingElement }

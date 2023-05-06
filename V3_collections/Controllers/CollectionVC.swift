@@ -6,7 +6,6 @@
 //
 
 
-//TODO:  - пофиксить баг - при загрузке экран с названием Коллекция. А при возврате - Array. Вариант - возвращать VC через pop?
 //TODO: стрелки направо >  с правой стороны
 //TODO: все функции сделать private
 
@@ -20,18 +19,15 @@ class CollectionVC: UIViewController {
     let setController = SetController()
     let dictionaryController = DictionaryController()
     
-  
+    
     let titleLabel: UILabel = {
         let titleLabel = UILabel()
-//        titleLabel.font = Constants.Fonts.titleLabelFont //titleLabelFont
+        //        titleLabel.font = Constants.Fonts.titleLabelFont //titleLabelFont
         titleLabel.textAlignment = .center
         titleLabel.backgroundColor = .white
-//        titleLabel.text = Constants.Labels.largeLabelText //largeLabelText
+        //        titleLabel.text = Constants.Labels.largeLabelText //largeLabelText
         return titleLabel
     }()
-    
-    
-    
     
     let arrayVC = ["Array", "Set", "Dictionary"]
     
@@ -45,13 +41,13 @@ class CollectionVC: UIViewController {
     
     let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)  // framed вместо grouped
     
-        private let activityIndicator: UIActivityIndicatorView = {
-            let activityIndicator = UIActivityIndicatorView()
-            activityIndicator.hidesWhenStopped = true
-            activityIndicator.style = .large
-            activityIndicator.color = UIColor.red
-            return activityIndicator
-        }()
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
+        activityIndicator.color = UIColor.red
+        return activityIndicator
+    }()
     
     func setupViews() {
         tableView.delegate = self
@@ -61,7 +57,7 @@ class CollectionVC: UIViewController {
         
         tableView.register(Cell.self, forCellReuseIdentifier: cellId)
         tableView.tableFooterView = UIView()
-//        tableView.backgroundColor = .systemPink
+        //        tableView.backgroundColor = .systemPink
         
         view = tableView
     }
@@ -75,13 +71,13 @@ class CollectionVC: UIViewController {
     
     
     
-//    tableView.addSubview(titleLabel)
-//    titleLabel.snp.makeConstraints { make in
-//        make.leading.trailing.equalToSuperview().inset(16)
-//        make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(64)
-//        make.height.equalTo(41)
-//    }
-   
+    //    tableView.addSubview(titleLabel)
+    //    titleLabel.snp.makeConstraints { make in
+    //        make.leading.trailing.equalToSuperview().inset(16)
+    //        make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(64)
+    //        make.height.equalTo(41)
+    //    }
+    
     
 }
 
@@ -93,7 +89,7 @@ class CollectionVC: UIViewController {
 extension CollectionVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
         switch indexPath.row {
         case 0:
             self.show(arrayController, sender: self)
@@ -111,7 +107,6 @@ extension CollectionVC: UITableViewDelegate {
     }
 }
 
-//TODO:  убрать cell! стр 83
 extension CollectionVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

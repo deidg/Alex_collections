@@ -3,9 +3,6 @@
 //  V3_collections
 //
 //  Created by Alex on 02.04.2023.
-//
-//  TODO:  округлить значения до 0.00
-
 
 import Foundation
 import UIKit
@@ -18,7 +15,6 @@ class ArrayManager {
     let arr2 = [Int](0..<1_000)
 
     
-//посмотреть еще раз что такое комплишн
     func createArr(completion: ((Double) -> Void)?) {
 
         queue.async { [weak self] in

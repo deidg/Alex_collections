@@ -16,18 +16,18 @@ class DictionaryManager {
     }
     var contactArr: [Contact] = []
     
-    func fillArray() {
-        for i in 0..<100 {
-            let name = "name\(i)"
-            var randomNumber = Int.random(in: 1111111...9999999)
-            let phoneNumber = String(randomNumber)
-            let contact = Contact(name: name, phoneNumber: phoneNumber)
-            
-            contactArr.append(contact)
-            
-            print(contactArr[i].name)
-            print(contactArr[i].phoneNumber)
-        }
+        func fillArray() {
+            for i in 0..<100 {
+                let name = "name\(i)"
+                var randomNumber = Int.random(in: 1111111...9999999)
+                let phoneNumber = String(randomNumber)
+                let contact = Contact(name: name, phoneNumber: phoneNumber)
+                
+                contactArr.append(contact)
+                
+                print(contactArr[i].name)
+                print(contactArr[i].phoneNumber)
+            }
     }
     
     var contactDictionary: [String: String] = [:]
@@ -81,27 +81,29 @@ class DictionaryManager {
         print("1")
     }
     // NOT EXISTING
-    //    func findNotExistingElenemtInArray(completion: ((Double, Bool) -> Void)?) {
-    //
-    //        queue.async { [weak self] in
-    //            guard let self else { return }
-    //
-    //            let start = CFAbsoluteTimeGetCurrent()
-    //
-    //            let notExistingElement: String = String((self.contactArr.count)+1)
-    ////            var doesContain = Bool(true)
-    //
-    //            let doesContain = self.contactArr.contains("name\(notExistingElement)")
-    //            //настроить чтобы искал name4, как научиться - сделать "name\(notExistingElement)" //{ $0.phoneNumber == notExistingElement }
-    //
-    //            let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
-    //
-    //            DispatchQueue.main.async {
-    //                completion?(result, doesContain)
-    //            }
-    //        }
-    //        print("1")
-    //    }
+        func findNotExistingElenemtInArray(completion: ((Double, Bool) -> Void)?) {
+    
+            queue.async { [weak self] in
+                guard let self else { return }
+    
+                let start = CFAbsoluteTimeGetCurrent()
+    
+                let notExistingNumber = String((self.contactArr.count))
+                print("not existing number - \(notExistingNumber)")
+
+                let notExistingElement = "name\(notExistingNumber)"
+                print(notExistingElement)
+
+                let doesContain = self.contactArr.contains { $0.name == notExistingElement }
+
+                let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
+    
+                DispatchQueue.main.async {
+                    completion?(result, doesContain )
+                }
+            }
+            print("1")
+        }
     
     //DICTIONARY
     // FIRST element

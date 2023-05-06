@@ -184,15 +184,14 @@ extension DictionaryController: UICollectionViewDelegate {
             
             self.dictionaryManager.findLastElenemtInDictionary { time, element in cell.state = .result(result: time, positionOfElement: element)
     
-                cell.isUserInteractionEnabled = false                
+                cell.isUserInteractionEnabled = false
             }
             print("from Dictionary controller 6") // to delete
         case 6: // ARRAY NOT EXIST element
-//            cell.state = .loading
-//            self.dictionaryManager.findNotExistingElenemtInArray { result, value in
-//                cell.state = .resultContainsOrNot(result: result, doesContain: value)
-//            
-//        }
+            cell.state = .loading
+            self.dictionaryManager.findNotExistingElenemtInArray { time, element in
+                cell.state = .resultContainsOrNot( result: time, doesContain: element)
+        }
             print("7")
         case 7: // DICITONARY NOT EXIST element
             cell.state = .loading

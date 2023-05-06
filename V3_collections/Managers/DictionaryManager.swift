@@ -89,10 +89,10 @@ class DictionaryManager {
                 let start = CFAbsoluteTimeGetCurrent()
     
                 let notExistingNumber = String((self.contactArr.count))
-                print("not existing number - \(notExistingNumber)")
+                print("not existing number - \(notExistingNumber)") // удалить
 
-                let notExistingElement = "name\(notExistingNumber)"
-                print(notExistingElement)
+                let notExistingElement = "name\(notExistingNumber)" //"name2"//
+                print(notExistingElement)  // удалить
 
                 let doesContain = self.contactArr.contains { $0.name == notExistingElement }
 
@@ -142,8 +142,33 @@ class DictionaryManager {
         }
         print("from Dictionary manager 6") // to delete
     }
+
+//NOT EXISTING
+func findNotExistingElenemtInDictionary(completion: ((Double, Bool) -> Void)?) {
+
+    queue.async { [weak self] in
+        guard let self else { return }
+
+        let start = CFAbsoluteTimeGetCurrent()
+
+        let notExistingNumber = String((self.contactDictionary.count))
+        print("not existing number - \(notExistingNumber)")  // удалить
+
+        let notExistingElement = "name\(notExistingNumber)" //"name2"//
+        print(notExistingElement)   // удалить
+
+        let doesContain = self.contactArr.contains { $0.name == notExistingElement }
+
+        let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
+
+        DispatchQueue.main.async {
+            completion?(result, doesContain )
+        }
+    }
+    print("1")
 }
-//}
+
+}
 
 let dictionaryManager = DictionaryManager()
 

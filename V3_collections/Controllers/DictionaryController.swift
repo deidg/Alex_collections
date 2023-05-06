@@ -195,6 +195,9 @@ extension DictionaryController: UICollectionViewDelegate {
             print("7")
         case 7: // DICITONARY NOT EXIST element
             cell.state = .loading
+            self.dictionaryManager.findNotExistingElenemtInDictionary { time, element in
+                cell.state = .resultContainsOrNot( result: time, doesContain: element)
+        }
             print("8")
         default:
             break

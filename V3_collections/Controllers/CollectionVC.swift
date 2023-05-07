@@ -5,9 +5,9 @@
 //  Created by Alex on 18.03.2023.
 //
 
-
-//TODO: стрелки направо >  с правой стороны
-//TODO: все функции сделать private
+// activity indicator при загрузке Dictionary controller 63-65
+//TODO: стрелки направо > с правой стороны. 80ю disclosureIndicator не работает.
+//..
 
 import Foundation
 import UIKit
@@ -31,6 +31,11 @@ class CollectionVC: UIViewController {
         activityIndicator.style = .large
         activityIndicator.color = UIColor.red
         return activityIndicator
+    }()
+    
+    var accessoryView: UIView? = {
+        let accessoryView = UIView()
+        return accessoryView
     }()
     
     override func viewDidLoad() {
@@ -62,10 +67,11 @@ extension CollectionVC: UITableViewDelegate {
         case 1:
             self.show(setController, sender: self)
         case 2:
-            //не понимаю как запустить эту активити индикатор.
             activityIndicator.startAnimating()
             self.show(dictionaryController, sender: self)
-            activityIndicator.stopAnimating()
+//            {
+                activityIndicator.stopAnimating()
+//            }
         default:
             print("")
         }
@@ -78,10 +84,10 @@ extension CollectionVC: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-        cell?.accessoryType = .disclosureIndicator   // почему то не работает.
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         }
+        cell?.accessoryType = .disclosureIndicator
         cell?.textLabel?.text = String(arrayVC[indexPath.row])
         return cell!                                  // как сделать unwrapp?
     }

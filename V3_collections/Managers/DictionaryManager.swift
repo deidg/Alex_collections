@@ -19,7 +19,7 @@ class DictionaryManager {
     }
     private var contactArr: [Contact] = []
     func fillArray() {
-        for i in 0..<10_000_000 {
+        for i in 0..<2_000_000 {
             let name = "name\(i)"
             let randomNumber = Int.random(in: 1111111...9999999)
             let phoneNumber = String(randomNumber)
@@ -29,7 +29,7 @@ class DictionaryManager {
     }
     private var contactDictionary: [String: String] = [:]
     func fillDictionary() {
-        for i in 0..<10_000_000 {
+        for i in 0..<2_000_000 {
             let name = "dictionaryName\(i)"
             let randomNumber = Int.random(in: 1111111...9999999)
             let phoneNumber = String(randomNumber)

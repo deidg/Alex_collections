@@ -27,7 +27,6 @@ class ArrayController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        // цвет нижней части
         collectionView.backgroundColor = UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1)
         return collectionView
     }()
@@ -46,7 +45,7 @@ class ArrayController: UIViewController {
         return activityIndicator
     }()
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+                                 sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 0 {
             return CGSize(width: collectionView.bounds.width, height: 105)
         } else {
@@ -95,6 +94,7 @@ class ArrayController: UIViewController {
         "Remove 1000 elements at the end of the array",
     ]
 }
+// MARK: extensions
 extension ArrayController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return taskForFirstCellArray.count
@@ -204,7 +204,6 @@ extension ArrayController: UICollectionViewDelegate {
         }
     }
 }
-
 extension ArrayController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

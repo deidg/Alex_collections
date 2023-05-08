@@ -25,8 +25,6 @@ class DictionaryController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.collectionView.delegate = self
-//        self.collectionView.dataSource = self
         setupContraints()
         collectionView.register(DictionaryViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
         
@@ -36,19 +34,16 @@ class DictionaryController: UIViewController {
             DispatchQueue.main.async {
                 self.activityIndicator.stopAnimating()
                 self.collectionView.reloadData()
-                
                 self.collectionView.delegate = self
                 self.collectionView.dataSource = self
-//                self.setupContraints()
-//                self.collectionView.register(DictionaryViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
             }
         }
     }
     var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .large
-        activityIndicator.color = UIColor.red
+        activityIndicator.style = .medium
+        activityIndicator.color = UIColor.gray
         return activityIndicator
     }()
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
@@ -78,15 +73,8 @@ class DictionaryController: UIViewController {
     }
     
     func makingCollections() {
-//        self.activityIndicator.startAnimating()
-//        DispatchQueue.global(qos: .userInitiated).async {
-            self.dictionaryManager.fillArray()
-            self.dictionaryManager.fillDictionary()
-//            DispatchQueue.main.async {
-//                self.activityIndicator.stopAnimating()
-//                self.collectionView.reloadData()            }
-//        }
-        print("making collections")
+        self.dictionaryManager.fillArray()
+        self.dictionaryManager.fillDictionary()
     }
     
     
@@ -101,6 +89,7 @@ class DictionaryController: UIViewController {
         "Find the non-existing element"
     ]
 }
+// MARK: extensions
 extension DictionaryController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return titlesArray.count
@@ -111,9 +100,6 @@ extension DictionaryController: UICollectionViewDataSource {
         
         let item = titlesArray[indexPath.row]
         cell.textToShow = item
-        
-        //TODO: вертикальная черта на первой строчке - сделать
-        // цвет ячейки
         if indexPath.row <= 1 {
             cell.backgroundColor = .white
             cell.layer.borderColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).cgColor
@@ -124,58 +110,47 @@ extension DictionaryController: UICollectionViewDataSource {
         return cell
     }
 }
-
 extension DictionaryController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DictionaryViewCell else { return }
         switch indexPath.item {
         case 0:
             cell.isUserInteractionEnabled = false
-            print("1")
         case 1:
             cell.isUserInteractionEnabled = false
-            print("2")
-        case 2:  // ARRAY first element
+        case 2:
             cell.state = .loading
             self.dictionaryManager.findFirstElenemtInArray { time, indexPath in
                 cell.state = .result(result: time, positionOfElement: indexPath)
                 cell.isUserInteractionEnabled = false
             }
-            print("3")
-        case 3: // DICITONARY first element
+        case 3:
             cell.state = .loading
             self.dictionaryManager.findFirstElenemtInArray { time, element in
                 cell.state = .result(result: time, positionOfElement: element)
-                
                 cell.isUserInteractionEnabled = false
             }
-            print("4")
-        case 4: // ARRAY last element
+        case 4:
             cell.state = .loading
             self.dictionaryManager.findLastElenemtInArray { time, indexPath in
                 cell.state = .result(result: time, positionOfElement: indexPath)
-                
                 cell.isUserInteractionEnabled = false
             }
-            print("5")
-        case 5: // DICITONARY last element
+        case 5:
             cell.state = .loading
             self.dictionaryManager.findLastElenemtInDictionary { time, element in cell.state = .result(result: time, positionOfElement: element)
                 cell.isUserInteractionEnabled = false
             }
-            print("from Dictionary controller 6") // to delete
-        case 6: // ARRAY NOT EXIST element
+        case 6:
             cell.state = .loading
             self.dictionaryManager.findNotExistingElenemtInArray { time, element in
                 cell.state = .resultContainsOrNot( result: time, doesContain: element)
             }
-            print("7")
-        case 7: // DICITONARY NOT EXIST element
+        case 7:
             cell.state = .loading
             self.dictionaryManager.findNotExistingElenemtInDictionary { time, element in
                 cell.state = .resultContainsOrNot( result: time, doesContain: element)
             }
-            print("8")
         default:
             break
         }

@@ -15,7 +15,7 @@ class SetController: UIViewController {
         textField1.layer.cornerRadius = 5
         textField1.layer.borderColor = CGColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
         textField1.layer.borderWidth = 1.0
-        let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10)) //отступ от левого края
+        let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
         textField1.leftViewMode = .always
         textField1.leftView = spacerView
         return textField1
@@ -26,7 +26,7 @@ class SetController: UIViewController {
         textField2.layer.cornerRadius = 5
         textField2.layer.borderColor = CGColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
         textField2.layer.borderWidth = 1.0
-        let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10)) //отступ от левого края
+        let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
         textField2.leftViewMode = .always
         textField2.leftView = spacerView
         return textField2
@@ -169,7 +169,6 @@ class SetController: UIViewController {
         answerLabel2.isHidden = false
         answerLabel2.text = symmetricDifferenceResult
     }
-    
     private func findUniqueChars() {
         let textFromTF1: String = textField1.text ?? ""
         let charSet1 = Set(textFromTF1)

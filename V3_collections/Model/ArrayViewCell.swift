@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 
 class ArrayViewCell: UICollectionViewCell {
-    static var identifier = "ArrayViewCell" //"MyCollectionViewCell"
+    static var identifier = "ArrayViewCell" 
     var state: State = .initial {
         didSet {
             applyState(state)

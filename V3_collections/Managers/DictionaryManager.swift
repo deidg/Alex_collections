@@ -39,7 +39,6 @@ class DictionaryManager {
             let start = CFAbsoluteTimeGetCurrent()
             let elementFromArray = self.contactArr.startIndex
             let element = Int(elementFromArray)
-            print(element)
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             DispatchQueue.main.async {
                 completion?(result, element)
@@ -51,7 +50,6 @@ class DictionaryManager {
             guard let self else { return }
             let start = CFAbsoluteTimeGetCurrent()
             let elementFromArray = (self.contactArr.count)-1
-            print(elementFromArray)
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             DispatchQueue.main.async {
                 completion?(result, elementFromArray)

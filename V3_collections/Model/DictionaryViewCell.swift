@@ -16,7 +16,7 @@ class DictionaryViewCell: UICollectionViewCell {
             applyState(state)
         }
     }
-     var textToShow: String = "" {
+    var textToShow: String = "" {
         didSet {
             label.text = textToShow
         }
@@ -64,7 +64,6 @@ class DictionaryViewCell: UICollectionViewCell {
             activityIndicator.startAnimating()
             label.isHidden = true
         case .result(let result, let element):
-            print("yee")
             activityIndicator.stopAnimating()
             label.isHidden = false
             label.text = "Search time: \(result) sec\n Result number: \(element)" 

@@ -25,19 +25,26 @@ class DictionaryController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
+//        self.collectionView.delegate = self
+//        self.collectionView.dataSource = self
         setupContraints()
-        
-//        activityIndicator.startAnimating()
-        makingCollections()
-//        print("making collections")
-//        activityIndicator.stopAnimating()
-        
-        
         collectionView.register(DictionaryViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
+        
+        self.activityIndicator.startAnimating()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.makingCollections()
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+                self.collectionView.reloadData()
+                
+                self.collectionView.delegate = self
+                self.collectionView.dataSource = self
+//                self.setupContraints()
+//                self.collectionView.register(DictionaryViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
+            }
+        }
     }
-    private var activityIndicator: UIActivityIndicatorView = {
+    var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .large
@@ -45,7 +52,7 @@ class DictionaryController: UIViewController {
         return activityIndicator
     }()
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+                                 sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row <= 1 {
             return CGSize(width: collectionView.bounds.width/2, height: 70)
         } else {
@@ -71,16 +78,19 @@ class DictionaryController: UIViewController {
     }
     
     func makingCollections() {
-        activityIndicator.startAnimating()
-        dictionaryManager.fillArray()
-        dictionaryManager.fillDictionary()
+//        self.activityIndicator.startAnimating()
+//        DispatchQueue.global(qos: .userInitiated).async {
+            self.dictionaryManager.fillArray()
+            self.dictionaryManager.fillDictionary()
+//            DispatchQueue.main.async {
+//                self.activityIndicator.stopAnimating()
+//                self.collectionView.reloadData()            }
+//        }
         print("making collections")
-        activityIndicator.stopAnimating()
-        collectionView.reloadData()
     }
-
     
-     let titlesArray: [String] = [
+    
+    let titlesArray: [String] = [
         "Array",
         "Dicitonary",
         "Find the first contact",

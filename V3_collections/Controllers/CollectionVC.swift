@@ -5,9 +5,7 @@
 //  Created by Alex on 18.03.2023.
 //
 
-// activity indicator при загрузке Dictionary controller 63-65
-//TODO: стрелки направо > с правой стороны. 80ю disclosureIndicator не работает.
-//..
+//TODO: backgroundColor  основного экрана сделать белым
 
 import Foundation
 import UIKit

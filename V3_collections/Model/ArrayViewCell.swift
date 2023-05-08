@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 import SnapKit
 
-class MyCollectionViewCell: UICollectionViewCell {
-    static var identifier = "MyCollectionViewCell"
+class ArrayViewCell: UICollectionViewCell {
+    static var identifier = "ArrayViewCell" //"MyCollectionViewCell"
     var state: State = .initial {
         didSet {
             applyState(state)
@@ -71,7 +71,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         }
     }
 }
-extension MyCollectionViewCell {
+extension ArrayViewCell {
     enum State {
         case initial
         case loading

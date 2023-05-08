@@ -36,7 +36,7 @@ class ArrayController: UIViewController {
         setupContraints()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
+        collectionView.register(ArrayViewCell.self, forCellWithReuseIdentifier: "ArrayViewCell")
     }
     private var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
@@ -100,8 +100,8 @@ extension ArrayController: UICollectionViewDataSource {
         return taskForFirstCellArray.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell",
-                                                            for: indexPath) as? MyCollectionViewCell else
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArrayViewCell",
+                                                            for: indexPath) as? ArrayViewCell else
         { return UICollectionViewCell() }
         let item = taskForFirstCellArray[indexPath.row]
         cell.textToShow = item
@@ -115,7 +115,7 @@ extension ArrayController: UICollectionViewDataSource {
 
 extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ArrayViewCell else { return }
         //TODO: make enum
         switch indexPath.item {
         case 0:

@@ -5,10 +5,6 @@
 //  Created by Alex on 21.04.2023.
 //
 
-
-//сделать активит индикатор во время создания коллекций
-//разделить в разные потоки поиск несуществующих элементов
-
 import Foundation
 
 class DictionaryManager {
@@ -19,7 +15,7 @@ class DictionaryManager {
     }
     private var contactArr: [Contact] = []
     func fillArray() {
-        for i in 0..<2_000_000 {
+        for i in 0..<10_000_000 {
             let name = "name\(i)"
             let randomNumber = Int.random(in: 1111111...9999999)
             let phoneNumber = String(randomNumber)
@@ -29,7 +25,7 @@ class DictionaryManager {
     }
     private var contactDictionary: [String: String] = [:]
     func fillDictionary() {
-        for i in 0..<2_000_000 {
+        for i in 0..<10_000_000 {
             let name = "dictionaryName\(i)"
             let randomNumber = Int.random(in: 1111111...9999999)
             let phoneNumber = String(randomNumber)
@@ -37,7 +33,6 @@ class DictionaryManager {
         }
     }
     //ARRAY
-    // FIRST
     func findFirstElenemtInArray(completion: ((Double, Int) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -50,9 +45,7 @@ class DictionaryManager {
                 completion?(result, element)
             }
         }
-        print("1")
     }
-    //LAST
     func findLastElenemtInArray(completion: ((Double, Int) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -64,9 +57,7 @@ class DictionaryManager {
                 completion?(result, elementFromArray)
             }
         }
-        print("1")
     }
-    // NOT EXISTING
     func findNotExistingElenemtInArray(completion: ((Double, Bool) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -79,11 +70,8 @@ class DictionaryManager {
                 completion?(result, doesContain )
             }
         }
-        print("1")
     }
-    
     //DICTIONARY
-    // FIRST element
     func findFirstElenemtInDictionary(completion: ((Double, Int) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -95,9 +83,7 @@ class DictionaryManager {
                 completion?(result, element ?? 0)
             }
         }
-        print("4")
     }
-    // LAST element
     func findLastElenemtInDictionary(completion: ((Double, Int) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -109,25 +95,19 @@ class DictionaryManager {
                 completion?(result, element ?? 0)
             }
         }
-        print("from Dictionary manager 6") // to delete
     }
-    
-    //NOT EXISTING
     func findNotExistingElenemtInDictionary(completion: ((Double, Bool) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
             let start = CFAbsoluteTimeGetCurrent()
             let notExistingNumber = String((self.contactDictionary.count))
-            print("not existing number - \(notExistingNumber)")  // удалить
             let notExistingElement = "name234458678"// "name\(notExistingNumber)" //"name2"//
-            print(notExistingElement)   // удалить
             let doesContain = self.contactArr.contains { $0.name == notExistingElement }
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             DispatchQueue.main.async {
                 completion?(result, doesContain )
             }
         }
-        print("1")
     }
 }
 private let dictionaryManager = DictionaryManager()

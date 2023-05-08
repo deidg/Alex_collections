@@ -3,9 +3,6 @@
 //  V3_collections
 //
 //  Created by Alex on 26.03.2023.
-//
-
-//  ячейка для CollectionVC
 
 import UIKit
 
@@ -32,7 +29,7 @@ extension Cell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     func layout() {
-        contentView.addSubview(titleLabel) // important!
+        contentView.addSubview(titleLabel)
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),

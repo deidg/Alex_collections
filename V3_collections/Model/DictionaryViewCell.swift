@@ -16,12 +16,11 @@ class DictionaryViewCell: UICollectionViewCell {
             applyState(state)
         }
     }
-     var textToShow: String = "" {     //  ПОКА НЕ СТИРАТЬ!!!
+     var textToShow: String = "" {
         didSet {
             label.text = textToShow
         }
     }
-    //TODO: lines between cells
     private let label: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0  //
@@ -39,7 +38,6 @@ class DictionaryViewCell: UICollectionViewCell {
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        // цвет рамки и ее толщина
         self.layer.borderColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1).cgColor
         self.layer.borderWidth = 1
         cellSetupUI()
@@ -81,7 +79,6 @@ class DictionaryViewCell: UICollectionViewCell {
         }
     }
 }
-
 extension DictionaryViewCell {
     enum State {
         case initial

@@ -14,9 +14,9 @@ class ArrayManager {
     private let arr2 = [Int](0..<1_000)
     func createArr(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
-            guard let self else { return }    //  TODO: guard let self -  почитать
+            guard let self else { return }
             let start = CFAbsoluteTimeGetCurrent()
-            let arr = [Int](0..<3_000_000)
+            let arr = [Int](0..<10_000_000)
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             self.arr = arr
             DispatchQueue.main.async {
@@ -36,7 +36,6 @@ class ArrayManager {
                 completion?(result)
             }
         }
-        print("1")
     }
     func insertElementsBeginningAtOnce(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
@@ -48,21 +47,19 @@ class ArrayManager {
                 completion?(result)
             }
         }
-        print("2")
     }
     func insertElementsMiddle1by1(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
             let start = CFAbsoluteTimeGetCurrent()
             for i in (0...1_000).reversed() {
-                self.arr.insert(i, at: (self.arr.count/2)) // TODO: added backwords
+                self.arr.insert(i, at: (self.arr.count/2))
             }
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             DispatchQueue.main.async {
                 completion?(result)
             }
         }
-        print("3")
     }
     func insertElementsMiddleAtOnce(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
@@ -74,7 +71,6 @@ class ArrayManager {
                 completion?(result)
             }
         }
-        print("4")
     }
     func insertElementsEnd1by1(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
@@ -89,7 +85,6 @@ class ArrayManager {
                 completion?(result)
             }
         }
-        print("5")
     }
     func insertElementsEndAtOnce(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
@@ -101,7 +96,6 @@ class ArrayManager {
                 completion?(result)
             }
         }
-        print("6")
     }
     ///==================================
     func removeElementsBeginning1by1(completion: ((Double) -> Void)?) {
@@ -117,19 +111,17 @@ class ArrayManager {
                 completion?(result)
             }
         }
-        print("7")
     }
     func removeElementsBeginningAtOnce(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
             let start = CFAbsoluteTimeGetCurrent()
-            self.arr.removeFirst(1_000)  // TODO: added backwords
+            self.arr.removeFirst(1_000)
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             DispatchQueue.main.async {
                 completion?(result)
             }
         }
-        print("8")
     }
     func removeElementsMiddle1by1(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
@@ -144,7 +136,6 @@ class ArrayManager {
                 completion?(result)
             }
         }
-        print("9")
     }
     func removeElementsMiddleAtOnce(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
@@ -156,7 +147,6 @@ class ArrayManager {
                 completion?(result)
             }
         }
-        print("10")
     }
     func removeElementsEnd1by1(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
@@ -171,19 +161,17 @@ class ArrayManager {
                 completion?(result)
             }
         }
-        print("11")
     }
     func removeElementsEndAtOnce(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
             let start = CFAbsoluteTimeGetCurrent()
-            self.arr.removeLast(1_000)// TODO: added backwords
+            self.arr.removeLast(1_000)
             let result = ((CFAbsoluteTimeGetCurrent() - start)*10000).rounded() / 10000
             DispatchQueue.main.async {
                 completion?(result)
             }
         }
-        print("12")
     }
 }
 

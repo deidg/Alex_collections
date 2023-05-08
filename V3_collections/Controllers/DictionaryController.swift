@@ -28,7 +28,10 @@ class DictionaryController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         setupContraints()
+        
+//        activityIndicator.startAnimating()
         makingCollections()
+        
         collectionView.register(DictionaryViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
     }
     private var activityIndicator: UIActivityIndicatorView = {
@@ -60,7 +63,7 @@ class DictionaryController: UIViewController {
         }
     }
      func makingCollections() {
-        activityIndicator.startAnimating()
+//        activityIndicator.startAnimating()
         dictionaryManager.fillArray()
         dictionaryManager.fillDictionary()
     }

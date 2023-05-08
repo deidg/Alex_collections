@@ -69,26 +69,44 @@ extension CollectionVC: UITableViewDelegate {
         case 2:
             activityIndicator.startAnimating()
             self.show(dictionaryController, sender: self)
-//            {
+            
                 activityIndicator.stopAnimating()
-//            }
+            
         default:
             print("")
         }
     }
 }
 
+//extension CollectionVC: UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return arrayVC.count
+//    }
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") } //else { return UITableViewCell() }
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+//        if cell == nil {
+//            cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+//        }
+//        cell?.accessoryType = .disclosureIndicator
+//        cell?.textLabel?.text = String(arrayVC[indexPath.row])
+//        return cell! //?? { return UITableViewCell }                               // как сделать unwrapp?
+//    }
+//}
+
+
 extension CollectionVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayVC.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cellId")
         if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+            cell = UITableViewCell(style: .default, reuseIdentifier: "cellId")
         }
+        
         cell?.accessoryType = .disclosureIndicator
         cell?.textLabel?.text = String(arrayVC[indexPath.row])
-        return cell!                                  // как сделать unwrapp?
+        return cell ?? UITableViewCell()                           
     }
 }

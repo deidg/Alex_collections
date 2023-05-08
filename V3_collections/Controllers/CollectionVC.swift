@@ -67,33 +67,16 @@ extension CollectionVC: UITableViewDelegate {
         case 1:
             self.show(setController, sender: self)
         case 2:
-            activityIndicator.startAnimating()
+//            activityIndicator.startAnimating()
             self.show(dictionaryController, sender: self)
             
-                activityIndicator.stopAnimating()
+//                activityIndicator.stopAnimating()
             
         default:
             print("")
         }
     }
 }
-
-//extension CollectionVC: UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return arrayVC.count
-//    }
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") } //else { return UITableViewCell() }
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-//        if cell == nil {
-//            cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-//        }
-//        cell?.accessoryType = .disclosureIndicator
-//        cell?.textLabel?.text = String(arrayVC[indexPath.row])
-//        return cell! //?? { return UITableViewCell }                               // как сделать unwrapp?
-//    }
-//}
-
 
 extension CollectionVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

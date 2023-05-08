@@ -31,6 +31,9 @@ class DictionaryController: UIViewController {
         
 //        activityIndicator.startAnimating()
         makingCollections()
+//        print("making collections")
+//        activityIndicator.stopAnimating()
+        
         
         collectionView.register(DictionaryViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
     }
@@ -61,12 +64,22 @@ class DictionaryController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.trailing.leading.bottom.equalToSuperview()
         }
+        view.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints{ make in
+            make.center.equalToSuperview()
+        }
     }
-     func makingCollections() {
-//        activityIndicator.startAnimating()
+    
+    func makingCollections() {
+        activityIndicator.startAnimating()
         dictionaryManager.fillArray()
         dictionaryManager.fillDictionary()
+        print("making collections")
+        activityIndicator.stopAnimating()
+        collectionView.reloadData()
     }
+
+    
      let titlesArray: [String] = [
         "Array",
         "Dicitonary",

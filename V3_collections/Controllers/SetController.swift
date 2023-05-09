@@ -139,7 +139,7 @@ class SetController: UIViewController {
         case buttonForUniqueCharacters:
             findUniqueChars()
         default:
-            print("")
+            break
         }
     }
     private func defaultConfiguration() {
@@ -177,7 +177,6 @@ class SetController: UIViewController {
         let intersectionResult = charSet1.intersection(charSet2)
         let unitedSet = intersectionResult.union(charSet2)
         let uniqueCharSet = String(charSet1.subtracting(unitedSet))
-        print(uniqueCharSet)
         answerLabel3.isHidden = false
         answerLabel3.text = uniqueCharSet
     }

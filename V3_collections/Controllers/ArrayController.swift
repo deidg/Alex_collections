@@ -48,8 +48,6 @@ class ArrayController: UIViewController {
     private var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .large
-        activityIndicator.color = UIColor.red
         return activityIndicator
     }()
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,

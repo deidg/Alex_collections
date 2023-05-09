@@ -42,8 +42,6 @@ class DictionaryController: UIViewController {
     var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .medium
-        activityIndicator.color = UIColor.gray
         return activityIndicator
     }()
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
@@ -145,11 +143,13 @@ extension DictionaryController: UICollectionViewDelegate {
             cell.state = .loading
             self.dictionaryManager.findNotExistingElenemtInArray { time, element in
                 cell.state = .resultContainsOrNot( result: time, doesContain: element)
+                cell.isUserInteractionEnabled = false
             }
         case 7:
             cell.state = .loading
             self.dictionaryManager.findNotExistingElenemtInDictionary { time, element in
                 cell.state = .resultContainsOrNot( result: time, doesContain: element)
+                cell.isUserInteractionEnabled = false
             }
         default:
             break

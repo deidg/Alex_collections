@@ -61,7 +61,7 @@ class DictionaryManager {
             guard let self else { return }
             let start = CFAbsoluteTimeGetCurrent()
             let notExistingNumber = String((self.contactArr.count))
-            let notExistingElement = "name234458678"//"name\(notExistingNumber)" //"name2"//
+            let notExistingElement = "name\(notExistingNumber)"
             let doesContain = self.contactArr.contains { $0.name == notExistingElement }
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             DispatchQueue.main.async {
@@ -86,8 +86,10 @@ class DictionaryManager {
         queue.async { [weak self] in
             guard let self else { return }
             let start = CFAbsoluteTimeGetCurrent()
-            guard let elementFromDictionary = self.contactDictionary["dictionaryName99"] else { return }
+            
+            guard let elementFromDictionary = self.contactDictionary["dictionaryName999999"] else { return }
             let element = Int(elementFromDictionary)
+            
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             DispatchQueue.main.async {
                 completion?(result, element ?? 0)
@@ -99,7 +101,7 @@ class DictionaryManager {
             guard let self else { return }
             let start = CFAbsoluteTimeGetCurrent()
             let notExistingNumber = String((self.contactDictionary.count))
-            let notExistingElement = "name234458678"// "name\(notExistingNumber)" //"name2"//
+            let notExistingElement = "name\(notExistingNumber)"
             let doesContain = self.contactArr.contains { $0.name == notExistingElement }
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             DispatchQueue.main.async {

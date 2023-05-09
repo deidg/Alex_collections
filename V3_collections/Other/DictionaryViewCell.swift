@@ -32,8 +32,6 @@ class DictionaryViewCell: UICollectionViewCell {
     private let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .large
-        activityIndicator.color = UIColor.red
         return activityIndicator
     }()
     override init(frame: CGRect) {

@@ -6,6 +6,7 @@
 //
 
 //TODO: сделать везде константы
+//TODO: поставить везде MARK
 //TODO: сделать запись в обсидиане о сделаных вещах
 
 
@@ -14,7 +15,7 @@
 import Foundation
 import UIKit
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     private let arrayController = ArrayController()
     private let setController = SetController()
     private let dictionaryController = DictionaryController()
@@ -27,12 +28,10 @@ class MainViewController: UIViewController {
     private let cellId = "cellId"
     private let arrayVC = ["Array", "Set", "Dictionary"]
     private let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
-//    table
+    //    table
     private let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .large
-        activityIndicator.color = UIColor.red
         return activityIndicator
     }()
     var accessoryView: UIView? = {
@@ -54,7 +53,7 @@ class MainViewController: UIViewController {
     }
     private func setupNavBar() {
         navigationController?.navigationBar.topItem?.title = "Collections"
-//        navigationController?.navigationBar.backItem?.title = "Colletctions2" //topItem?.title = "Collections"
+        //        navigationController?.navigationBar.backItem?.title = "Colletctions2" //topItem?.title = "Collections"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
@@ -63,7 +62,7 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.topItem?.title = "Collections"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-//    navigationController.navigationBar.prefersLargeTitles = true
+    //    navigationController.navigationBar.prefersLargeTitles = true
 }
 // MARK: extensions
 extension MainViewController: UITableViewDelegate {
@@ -77,7 +76,7 @@ extension MainViewController: UITableViewDelegate {
         case 2:
             self.show(dictionaryController, sender: self)
         default:
-            print("")
+            break
         }
     }
 }

@@ -5,6 +5,8 @@
 //  Created by Alex on 21.03.2023.
 //
 
+//TODO: сделать константы (текст, цвета и CGSize)
+
 
 import UIKit
 import SnapKit
@@ -34,10 +36,7 @@ class ArrayController: UIViewController {
         super.viewDidLoad()
         setupContraints()
         setupDelegates()
-        title = "Array"
-       
-        collectionView.register(ArrayViewCell.self, forCellWithReuseIdentifier: "ArrayViewCell")
-        navigationController?.navigationBar.prefersLargeTitles = false
+        setupUI()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -47,14 +46,18 @@ class ArrayController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
     }
+    private func setupUI(){
+        navigationController?.navigationBar.prefersLargeTitles = false
+        title = "Array"
+        collectionView.register(ArrayViewCell.self, forCellWithReuseIdentifier: "ArrayViewCell")
+    }
     
     private var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
         return activityIndicator
     }()
-    internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                                 sizeForItemAt indexPath: IndexPath) -> CGSize {
+    internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 0 {
             return CGSize(width: collectionView.bounds.width, height: 105)
         } else {
@@ -65,18 +68,18 @@ class ArrayController: UIViewController {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints{ make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.trailing.leading.bottom.equalToSuperview()
+            make.horizontalEdges.bottom.equalToSuperview()
         }
         view.addSubview(topView)
         topView.snp.makeConstraints{ make in
             make.top.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
         view.addSubview(bottomView)
         bottomView.snp.makeConstraints{ make in
             make.bottom.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
@@ -109,13 +112,10 @@ extension ArrayController: UICollectionViewDataSource {
         return taskForFirstCellArray.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArrayViewCell",
-                                                            for: indexPath) as? ArrayViewCell else
-        { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArrayViewCell", for: indexPath) as? ArrayViewCell else { return UICollectionViewCell() }
         let item = taskForFirstCellArray[indexPath.row]
         cell.textToShow = item
         cell.backgroundColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
-        
         //        cell.textToShow = taskForFirstCellArray[indexPath.row]   //  ПОДУМАТЬ  сделать без textToShow
         cell.state = .initial
         return cell
@@ -215,11 +215,11 @@ extension ArrayController: UICollectionViewDelegate {
 }
 extension ArrayController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
 }

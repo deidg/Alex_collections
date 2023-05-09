@@ -84,49 +84,49 @@ class SetController: UIViewController {
         view.addSubview(textField1)
         textField1.snp.makeConstraints{ make in
             make.top.equalTo(view).offset(150)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(30)
         }
         view.addSubview(textField2)
         textField2.snp.makeConstraints{ make in
             make.top.equalTo(textField1.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(30)
         }
         view.addSubview(buttonForMatchCharacters)
         buttonForMatchCharacters.snp.makeConstraints{ make in
             make.top.equalTo(textField2.snp.bottom).offset(50)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(30)
         }
         view.addSubview(answerLabel1)
         answerLabel1.snp.makeConstraints{ make in
             make.top.equalTo(buttonForMatchCharacters.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(30)
         }
         view.addSubview(buttonForNotMatchCharacters)
         buttonForNotMatchCharacters.snp.makeConstraints{ make in
             make.top.equalTo(buttonForMatchCharacters.snp.bottom).offset(40)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(30)
         }
         view.addSubview(answerLabel2)
         answerLabel2.snp.makeConstraints{ make in
             make.top.equalTo(buttonForNotMatchCharacters.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(30)
         }
         view.addSubview(buttonForUniqueCharacters)
         buttonForUniqueCharacters.snp.makeConstraints{ make in
             make.top.equalTo(buttonForNotMatchCharacters.snp.bottom).offset(40)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(60)
         }
         view.addSubview(answerLabel3)
         answerLabel3.snp.makeConstraints{ make in
             make.top.equalTo(buttonForUniqueCharacters.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(30)
         }
     }

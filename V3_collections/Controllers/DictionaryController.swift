@@ -56,13 +56,13 @@ class DictionaryController: UIViewController {
         view.addSubview(topView)
         topView.snp.makeConstraints{ make in
             make.top.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints{ make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.trailing.leading.bottom.equalToSuperview()
+            make.horizontalEdges.bottom.equalToSuperview()
         }
         view.addSubview(activityIndicator)
         activityIndicator.snp.makeConstraints{ make in

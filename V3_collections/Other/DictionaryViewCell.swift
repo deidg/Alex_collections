@@ -42,7 +42,7 @@ class DictionaryViewCell: UICollectionViewCell {
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        fatalError()
+        return nil
     }
     private func cellSetupUI() {
         contentView.addSubview(label)

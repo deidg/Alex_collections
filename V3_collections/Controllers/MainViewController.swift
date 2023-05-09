@@ -27,16 +27,17 @@ final class MainViewController: UIViewController {
     }()
     private let cellId = "cellId"
     private let arrayVC = ["Array", "Set", "Dictionary"]
-    private let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
-    //    table
+    
+    private let tableView: UITableView = {
+        let view = UITableView()
+        view.register(MainViewControllerCell.self, forCellReuseIdentifier: "cellId")
+        return view
+    }()
+
     private let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
         return activityIndicator
-    }()
-    var accessoryView: UIView? = {
-        let accessoryView = UIView()
-        return accessoryView
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,6 @@ final class MainViewController: UIViewController {
         setupDelegats()
     }
     private func setupViews() {
-        tableView.register(MainViewControllerCell.self, forCellReuseIdentifier: cellId)
         tableView.tableFooterView = UIView()
         view = tableView
         view.backgroundColor = .white

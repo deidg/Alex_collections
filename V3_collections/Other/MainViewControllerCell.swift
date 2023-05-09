@@ -1,12 +1,12 @@
 //
-//  Cell.swift
+// MainViewControllerCell   ( ex Cell.swift before 09.05.23)
 //  V3_collections
 //
 //  Created by Alex on 26.03.2023.
 
 import UIKit
 
-class Cell: UITableViewCell {
+class MainViewControllerCell: UITableViewCell {
     let titleLabel = UILabel()
     var collection: String? {
         didSet {
@@ -24,7 +24,7 @@ class Cell: UITableViewCell {
     }
 }
 
-extension Cell {
+extension MainViewControllerCell {
     func setup() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
     }

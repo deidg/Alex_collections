@@ -46,7 +46,7 @@ final class MainViewController: UIViewController {
     private func setupViews() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(Cell.self, forCellReuseIdentifier: cellId)
+        tableView.register(MainViewControllerCell.self, forCellReuseIdentifier: cellId)
         tableView.tableFooterView = UIView()
         view = tableView
         view.backgroundColor = .white

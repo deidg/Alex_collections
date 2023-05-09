@@ -16,7 +16,7 @@ class ArrayManager {
         queue.async { [weak self] in
             guard let self else { return }
             let start = CFAbsoluteTimeGetCurrent()
-            let arr = [Int](0..<10_000_000)
+            let arr = [Int](0..<1_000_000)
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             self.arr = arr
             DispatchQueue.main.async {

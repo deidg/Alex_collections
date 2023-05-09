@@ -155,8 +155,8 @@ class SetController: UIViewController {
         let charSet2 = Set(textFromTF2)
         
         let intersectionResult = String(charSet1.intersection(charSet2))
-        //zxCFvbn
-        //asdCFgh
+//        zxCFvbn
+//        asdCFgh
         answerLabel1.isHidden = false
         answerLabel1.text = intersectionResult
     }

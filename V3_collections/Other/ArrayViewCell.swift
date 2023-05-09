@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 
 class ArrayViewCell: UICollectionViewCell {
-    static var identifier = "ArrayViewCell" 
+    static var identifier = "ArrayViewCell"
     var state: State = .initial {
         didSet {
             applyState(state)
@@ -32,9 +32,6 @@ class ArrayViewCell: UICollectionViewCell {
     }()
     private let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .large
-        activityIndicator.color = UIColor.red
         return activityIndicator
     }()
     override init(frame: CGRect) {
@@ -67,7 +64,7 @@ class ArrayViewCell: UICollectionViewCell {
         case .result(let result):
             activityIndicator.stopAnimating()
             label.isHidden = false
-            label.text = "Search time: \(result) sec"
+            label.text = "Execution time: \(result) sec"
         }
     }
 }

@@ -156,7 +156,6 @@
 				FA92CF2429D9E37100F99C86 /* Managers */,
 				FA89959E29C6EB8700DD1313 /* Model */,
 				FA89225229C434560012EA2C /* Assets */,
-				FA89225129C434390012EA2C /* Views */,
 				FA89224F29C4340F0012EA2C /* Other */,
 				FA89225029C434240012EA2C /* Controllers */,
 				FA89222A29C433B90012EA2C /* LaunchScreen.storyboard */,
@@ -185,6 +184,9 @@
 		FA89224F29C4340F0012EA2C /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				FAAA525D29D00FF200B5FAA2 /* Cell.swift */,
+				FA92001F29D3FBF000C9C7F9 /* ArrayViewCell.swift */,
+				FA9DBBA62A03DA2000372AC4 /* DictionaryViewCell.swift */,
 				FA89221F29C433B60012EA2C /* AppDelegate.swift */,
 				FA89222129C433B60012EA2C /* SceneDelegate.swift */,
 			);
@@ -202,13 +204,6 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		FA89225129C434390012EA2C /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		FA89225229C434560012EA2C /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,9 +215,6 @@
 		FA89959E29C6EB8700DD1313 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FAAA525D29D00FF200B5FAA2 /* Cell.swift */,
-				FA92001F29D3FBF000C9C7F9 /* ArrayViewCell.swift */,
-				FA9DBBA62A03DA2000372AC4 /* DictionaryViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

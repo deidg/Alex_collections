@@ -16,10 +16,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let collectionVC = UINavigationController(rootViewController: CollectionVC())    
+        let MainViewController = UINavigationController(rootViewController: MainViewController())
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = collectionVC
+        window?.rootViewController = MainViewController
 //        window?.backgroundColor = .white
         window?.makeKeyAndVisible()
     }

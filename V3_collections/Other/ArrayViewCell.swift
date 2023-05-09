@@ -47,7 +47,7 @@ class ArrayViewCell: UICollectionViewCell {
     private func cellSetupUI() {
         contentView.addSubview(label)
         label.snp.makeConstraints{ make in
-            make.leading.top.trailing.bottom.equalToSuperview().inset(2)
+            make.edges.equalToSuperview().inset(2)
         }
         contentView.addSubview(activityIndicator)
         activityIndicator.snp.makeConstraints{ make in

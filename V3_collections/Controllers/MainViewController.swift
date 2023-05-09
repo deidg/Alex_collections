@@ -42,14 +42,17 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         setupNavBar()
         setupViews()
+        setupDelegats()
     }
     private func setupViews() {
-        tableView.delegate = self
-        tableView.dataSource = self
         tableView.register(MainViewControllerCell.self, forCellReuseIdentifier: cellId)
         tableView.tableFooterView = UIView()
         view = tableView
         view.backgroundColor = .white
+    }
+    private func setupDelegats() {
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     private func setupNavBar() {
         navigationController?.navigationBar.topItem?.title = "Collections"

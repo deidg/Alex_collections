@@ -33,9 +33,9 @@ class ArrayController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupContraints()
+        setupDelegates()
         title = "Array"
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
+       
         collectionView.register(ArrayViewCell.self, forCellWithReuseIdentifier: "ArrayViewCell")
         navigationController?.navigationBar.prefersLargeTitles = false
     }
@@ -43,7 +43,10 @@ class ArrayController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = false
     }
-    
+    private func setupDelegates() {
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+    }
     
     private var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()

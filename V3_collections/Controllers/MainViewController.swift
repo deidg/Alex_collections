@@ -49,7 +49,16 @@ final class MainViewController: UIViewController {
         tableView.tableFooterView = UIView()
         view = tableView
         view.backgroundColor = .white
+        navigationController?.navigationBar.backgroundColor = .white
     }
+    //ЗАЧЕМ?
+    private func setupUI() {
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints{ make in
+            make.horizontalEdges.equalToSuperview()
+        }
+    }
+    
     private func setupDelegats() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -73,7 +82,6 @@ extension MainViewController: UITableViewDelegate {
         switch indexPath.row {
         case 0:
             self.show(arrayController, sender: self)
-            navigationController?.navigationBar.backgroundColor = .white
         case 1:
             self.show(setController, sender: self)
         case 2:
@@ -88,12 +96,9 @@ extension MainViewController: UITableViewDataSource {
         return arrayVC.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cellId")
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "cellId")
-        }
-        cell?.accessoryType = .disclosureIndicator
-        cell?.textLabel?.text = String(arrayVC[indexPath.row])
-        return cell ?? UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellId") else { return UITableViewCell() }
+        cell.accessoryType = .disclosureIndicator
+        cell.textLabel?.text = String(arrayVC[indexPath.row])
+        return cell
     }
 }

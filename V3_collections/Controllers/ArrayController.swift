@@ -33,10 +33,18 @@ class ArrayController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupContraints()
+        title = "Array"
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         collectionView.register(ArrayViewCell.self, forCellWithReuseIdentifier: "ArrayViewCell")
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    
     private var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true

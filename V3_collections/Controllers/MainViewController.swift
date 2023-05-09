@@ -8,6 +8,9 @@
 //TODO: сделать везде константы
 //TODO: сделать запись в обсидиане о сделаных вещах
 
+
+//TODO: спросить - почему при загрузке ArrayController поздно исчезает название Collections и почему при повторении операции в заголовке вместо Array появляется Collections
+
 import Foundation
 import UIKit
 
@@ -51,7 +54,16 @@ class MainViewController: UIViewController {
     }
     private func setupNavBar() {
         navigationController?.navigationBar.topItem?.title = "Collections"
+//        navigationController?.navigationBar.backItem?.title = "Colletctions2" //topItem?.title = "Collections"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.topItem?.title = "Collections"
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+//    navigationController.navigationBar.prefersLargeTitles = true
 }
 // MARK: extensions
 extension MainViewController: UITableViewDelegate {

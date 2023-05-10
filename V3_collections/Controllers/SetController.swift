@@ -9,27 +9,28 @@ import UIKit
 import SnapKit
 
 class SetController: UIViewController {
+    let setManager = SetManager()
     private let textField1: UITextField = {
-        let textField1 = UITextField()
-        textField1.backgroundColor = .white
-        textField1.layer.cornerRadius = 5
-        textField1.layer.borderColor = CGColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
-        textField1.layer.borderWidth = 1.0
+        let textField = UITextField()
+        textField.backgroundColor = .white
+        textField.layer.cornerRadius = 5
+        textField.layer.borderColor = CGColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
+        textField.layer.borderWidth = 1.0
         let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
-        textField1.leftViewMode = .always
-        textField1.leftView = spacerView
-        return textField1
+        textField.leftViewMode = .always
+        textField.leftView = spacerView
+        return textField
     }()
     private let textField2: UITextField = {
-        let textField2 = UITextField()
-        textField2.backgroundColor = .white
-        textField2.layer.cornerRadius = 5
-        textField2.layer.borderColor = CGColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
-        textField2.layer.borderWidth = 1.0
+        let textField = UITextField()
+        textField.backgroundColor = .white
+        textField.layer.cornerRadius = 5
+        textField.layer.borderColor = CGColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
+        textField.layer.borderWidth = 1.0
         let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
-        textField2.leftViewMode = .always
-        textField2.leftView = spacerView
-        return textField2
+        textField.leftViewMode = .always
+        textField.leftView = spacerView
+        return textField
     }()
     private let buttonForMatchCharacters: UIButton = {
         let buttonForMatchCharacters = UIButton()
@@ -79,6 +80,7 @@ class SetController: UIViewController {
         super.viewDidLoad()
         setupUIelements()
         defaultConfiguration()
+        makeTarget()
     }
     private func setupUIelements() {
         view.addSubview(textField1)
@@ -144,10 +146,13 @@ class SetController: UIViewController {
     }
     private func defaultConfiguration() {
         view.backgroundColor = .white
+    }
+    private func makeTarget() {
         buttonForMatchCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         buttonForNotMatchCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         buttonForUniqueCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
+    
     private func findMatching() {
         let textFromTF1: String = textField1.text ?? ""
         let charSet1 = Set(textFromTF1)
@@ -155,8 +160,6 @@ class SetController: UIViewController {
         let charSet2 = Set(textFromTF2)
         
         let intersectionResult = String(charSet1.intersection(charSet2))
-//        zxCFvbn
-//        asdCFgh
         answerLabel1.isHidden = false
         answerLabel1.text = intersectionResult
     }
@@ -180,6 +183,7 @@ class SetController: UIViewController {
         answerLabel3.isHidden = false
         answerLabel3.text = uniqueCharSet
     }
+
 }
 
 

@@ -100,12 +100,22 @@ class DictionaryManager {
         queue.async { [weak self] in
             guard let self else { return }
             let start = CFAbsoluteTimeGetCurrent()
-            let notExistingNumber = String((self.contactDictionary.count))
-            let notExistingElement = "name\(notExistingNumber)"
-            let doesContain = self.contactArr.contains { $0.name == notExistingElement }
+            
+//            let notExistingNumber = String((self.contactDictionary.count))
+//            let notExistingElement = "name99999999"
+//            let doesContain = self.contactArr.contains { $0.name == notExistingElement }
+            
+            
+            
+            
+//            let notExistingNumber = String((self.contactDictionary.count))
+            let key = "name99999999"
+            let keyExist = self.contactDictionary[key] != nil
+            
+            //self.contactDictionary.contains { $0.name == "name99999999" }
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             DispatchQueue.main.async {
-                completion?(result, doesContain )
+                completion?(result, keyExist)
             }
         }
     }

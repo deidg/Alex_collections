@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 class DictionaryViewCell: UICollectionViewCell {
-    static var identifier = "DictionaryViewCell"
+    static let identifier = "DictionaryViewCell"
     var state: State = .initial {
         didSet {
             applyState(state)
@@ -64,11 +64,11 @@ class DictionaryViewCell: UICollectionViewCell {
         case .result(let result, let element):
             activityIndicator.stopAnimating()
             label.isHidden = false
-            label.text = "Search time: \(result) sec\n Result number: \(element)" 
-        case .resultContainsOrNot(let result, let doesContain):
+            label.text = "Search time: \(result) sec\n Result number: \(element)"
+        case .resultFoundedOrNot (let result, let notFounded):
             activityIndicator.stopAnimating()
             label.isHidden = false
-            if doesContain == false{
+            if notFounded == true {
                 label.text = "Search time: \(result) sec\n non existing element: not found"
             } else {
                 label.text = "Search time: \(result) sec\n non existing element: found"
@@ -81,6 +81,6 @@ extension DictionaryViewCell {
         case initial
         case loading
         case result(result: Double, positionOfElement: Int)
-        case resultContainsOrNot(result: Double, doesContain: Bool)
+        case resultFoundedOrNot(result: Double, notFounded: Bool)
     }
 }

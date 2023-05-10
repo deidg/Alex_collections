@@ -10,6 +10,7 @@ import SnapKit
 
 class SetController: UIViewController {
     let setManager = SetManager()
+    
     private let textField1: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .white
@@ -135,11 +136,17 @@ class SetController: UIViewController {
     @objc private func buttonPressed(sender: UIButton) {
         switch sender {
         case buttonForMatchCharacters:
-            findMatching()
+            let textFromTF1 = textField1.text ?? ""
+            let textFromTF2 = textField2.text ?? ""
+            setManager.findMatching(textField1: textFromTF1, textField2: textFromTF2, answerLabel1: answerLabel1)
         case buttonForNotMatchCharacters:
-            findDifference()
+            let textFromTF1 = textField1.text ?? ""
+            let textFromTF2 = textField2.text ?? ""
+            setManager.findDifference(textFromTF1: textFromTF1, textFromTF2: textFromTF2, answerLabel2: answerLabel2)
         case buttonForUniqueCharacters:
-            findUniqueChars()
+            let textFromTF1 = textField1.text ?? ""
+            let textFromTF2 = textField2.text ?? ""
+            setManager.findUniqueChars(textFromTF1: textFromTF1, textFromTF2: textFromTF2, answerLabel3: answerLabel3)
         default:
             break
         }
@@ -152,38 +159,6 @@ class SetController: UIViewController {
         buttonForNotMatchCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         buttonForUniqueCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
-    
-    private func findMatching() {
-        let textFromTF1: String = textField1.text ?? ""
-        let charSet1 = Set(textFromTF1)
-        let textFromTF2: String = textField2.text ?? ""
-        let charSet2 = Set(textFromTF2)
-        
-        let intersectionResult = String(charSet1.intersection(charSet2))
-        answerLabel1.isHidden = false
-        answerLabel1.text = intersectionResult
-    }
-    private func findDifference() {
-        let textFromTF1: String = textField1.text ?? ""
-        let charSet1 = Set(textFromTF1)
-        let textFromTF2: String = textField2.text ?? ""
-        let charSet2 = Set(textFromTF2)
-        let symmetricDifferenceResult = String(charSet1.symmetricDifference(charSet2))
-        answerLabel2.isHidden = false
-        answerLabel2.text = symmetricDifferenceResult
-    }
-    private func findUniqueChars() {
-        let textFromTF1: String = textField1.text ?? ""
-        let charSet1 = Set(textFromTF1)
-        let textFromTF2: String = textField2.text ?? ""
-        let charSet2 = Set(textFromTF2)
-        let intersectionResult = charSet1.intersection(charSet2)
-        let unitedSet = intersectionResult.union(charSet2)
-        let uniqueCharSet = String(charSet1.subtracting(unitedSet))
-        answerLabel3.isHidden = false
-        answerLabel3.text = uniqueCharSet
-    }
-
 }
 
 

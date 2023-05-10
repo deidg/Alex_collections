@@ -38,10 +38,11 @@ class ArrayController: UIViewController {
         setupDelegates()
         setupUI()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = false
-    }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.navigationBar.prefersLargeTitles = false
+//    }
     private func setupDelegates() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self

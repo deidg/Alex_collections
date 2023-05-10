@@ -17,11 +17,12 @@ class DictionaryController: UIViewController {
         collectionView.backgroundColor = .white
         return collectionView
     }()
-    private let topView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
-    }()
+    // из за этого кода стала появляться надписть Collection при загрузке VC, но исчез отсутп сверху
+//    private let topView: UIView = {
+//        let view = UIView()
+//        view.backgroundColor = .white
+//        return view
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,10 @@ class DictionaryController: UIViewController {
             }
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
     var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
@@ -53,16 +58,17 @@ class DictionaryController: UIViewController {
         }
     }
     private func setupContraints() {
-        view.addSubview(topView)
-        topView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.horizontalEdges.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
-        }
+//        view.addSubview(topView)
+//        topView.snp.makeConstraints{ make in
+//            make.top.equalToSuperview()
+//            make.horizontalEdges.equalToSuperview()
+//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
+//        }
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints{ make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.horizontalEdges.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
+//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+//            make.horizontalEdges.bottom.equalToSuperview()
         }
         view.addSubview(activityIndicator)
         activityIndicator.snp.makeConstraints{ make in

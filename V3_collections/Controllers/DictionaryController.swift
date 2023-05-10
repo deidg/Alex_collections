@@ -23,12 +23,15 @@ class DictionaryController: UIViewController {
 //        view.backgroundColor = .white
 //        return view
 //    }()
-    
+    var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.hidesWhenStopped = true
+        return activityIndicator
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupContraints()
-        collectionView.register(DictionaryViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
-        
+        setupElements()
         self.activityIndicator.startAnimating()
         DispatchQueue.global(qos: .userInitiated).async {
             self.makingCollections()
@@ -44,19 +47,8 @@ class DictionaryController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = false
     }
-    var activityIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.hidesWhenStopped = true
-        return activityIndicator
-    }()
-    internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                                 sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.row <= 1 {
-            return CGSize(width: collectionView.bounds.width/2, height: 70)
-        } else {
-            return CGSize(width: (collectionView.bounds.width/2), height: 105)
-        }
-    }
+    
+    
     private func setupContraints() {
 //        view.addSubview(topView)
 //        topView.snp.makeConstraints{ make in
@@ -74,6 +66,9 @@ class DictionaryController: UIViewController {
         activityIndicator.snp.makeConstraints{ make in
             make.center.equalToSuperview()
         }
+    }
+    func setupElements() {
+        collectionView.register(DictionaryViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
     }
     
     func makingCollections() {
@@ -168,5 +163,13 @@ extension DictionaryController: UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                                 sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.row <= 1 {
+            return CGSize(width: collectionView.bounds.width/2, height: 70)
+        } else {
+            return CGSize(width: (collectionView.bounds.width/2), height: 105)
+        }
     }
 }

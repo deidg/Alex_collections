@@ -34,7 +34,7 @@ final class MainViewController: UIViewController {
         view.register(MainViewControllerCell.self, forCellReuseIdentifier: "cellId")
         return view
     }()
-
+    
     private let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
@@ -101,5 +101,13 @@ extension MainViewController: UITableViewDataSource {
         cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text = String(arrayVC[indexPath.row])
         return cell
+    }
+}
+extension MainViewController {
+    //MARK: extension ViewController -  Constants
+    enum Constants {
+        enum NavigationBarSetup {
+            //            static let navigationBarTitle =
+        }
     }
 }

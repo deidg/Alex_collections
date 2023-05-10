@@ -27,7 +27,7 @@ class ArrayViewCell: UICollectionViewCell {
         label.numberOfLines = 0  //
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 20, weight: .medium)
-        label.textColor = UIColor(red: 102/255, green: 178/255, blue: 255/255, alpha: 1)
+        label.textColor = Constants.LabelsTexts.labelTextColor
         return label
     }()
     private let activityIndicator: UIActivityIndicatorView = {
@@ -36,7 +36,7 @@ class ArrayViewCell: UICollectionViewCell {
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.borderColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1).cgColor
+        self.layer.borderColor = Constants.Borders.frameBorderColor
         self.layer.borderWidth = 1
         cellSetupUI()
     }
@@ -73,5 +73,13 @@ extension ArrayViewCell {
         case initial
         case loading
         case result(result: Double)
+    }
+    enum Constants {
+        enum LabelsTexts {
+            static let labelTextColor = UIColor(red: 102/255, green: 178/255, blue: 255/255, alpha: 1)
+        }
+        enum Borders {
+            static let frameBorderColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1).cgColor
+        }
     }
 }

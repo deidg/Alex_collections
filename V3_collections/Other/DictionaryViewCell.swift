@@ -26,7 +26,7 @@ class DictionaryViewCell: UICollectionViewCell {
         label.numberOfLines = 0  //
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 20, weight: .medium)
-        label.textColor = UIColor(red: 102/255, green: 178/255, blue: 255/255, alpha: 1)
+        label.textColor = Constants.LabelsTexts.labelTextColor
         return label
     }()
     private let activityIndicator: UIActivityIndicatorView = {
@@ -36,7 +36,7 @@ class DictionaryViewCell: UICollectionViewCell {
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.borderColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1).cgColor
+        self.layer.borderColor = Constants.Borders.frameBorderColor
         self.layer.borderWidth = 1
         cellSetupUI()
     }
@@ -64,7 +64,7 @@ class DictionaryViewCell: UICollectionViewCell {
         case .result(let result, let element):
             activityIndicator.stopAnimating()
             label.isHidden = false
-            label.text = "Search time: \(result) sec\n Result number: \(element)"
+            label.text = "Search time: \(result) sec\n Result number: \(element)"   //  не выносится в enum из за \(result) и \(element)
         case .resultFoundedOrNot (let result, let notFounded):
             activityIndicator.stopAnimating()
             label.isHidden = false
@@ -82,5 +82,13 @@ extension DictionaryViewCell {
         case loading
         case result(result: Double, positionOfElement: Int)
         case resultFoundedOrNot(result: Double, notFounded: Bool)
+    }
+    enum Constants {
+        enum LabelsTexts {
+            static let labelTextColor = UIColor(red: 102/255, green: 178/255, blue: 255/255, alpha: 1)
+        }
+        enum Borders {
+            static let frameBorderColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1).cgColor
+        }
     }
 }

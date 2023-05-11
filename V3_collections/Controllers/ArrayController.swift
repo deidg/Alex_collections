@@ -122,7 +122,6 @@ extension ArrayController: UICollectionViewDataSource {
         let item = taskForFirstCellArray[indexPath.row]
         cell.textToShow = item
         cell.backgroundColor = Constants.Colors.firstCellBackgroundColor
-        //        cell.textToShow = taskForFirstCellArray[indexPath.row]   //  ПОДУМАТЬ  сделать без textToShow
         cell.state = .initial
         return cell
     }

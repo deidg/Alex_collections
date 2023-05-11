@@ -54,7 +54,7 @@ final class MainViewController: UIViewController {
     private func setupUI() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints{ make in
-            make.horizontalEdges.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     private func setupNavBar() {

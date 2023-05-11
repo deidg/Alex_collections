@@ -101,9 +101,9 @@ extension DictionaryController: UICollectionViewDataSource {
         cell.textToShow = item
         if indexPath.row <= 1 {
             cell.backgroundColor = .white
-            cell.layer.borderColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).cgColor
+            cell.layer.borderColor = Constants.Borders.layerBorderColorFirst
         } else {
-            cell.backgroundColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
+            cell.backgroundColor = Constants.Borders.layerBorderColorSecond
         }
         cell.state = .initial
         return cell
@@ -170,6 +170,14 @@ extension DictionaryController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.bounds.width/2, height: 70)
         } else {
             return CGSize(width: (collectionView.bounds.width/2), height: 105)
+        }
+    }
+}
+extension DictionaryController {
+    enum Constants {
+        enum Borders {
+            static let layerBorderColorFirst = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).cgColor
+            static let layerBorderColorSecond = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
         }
     }
 }

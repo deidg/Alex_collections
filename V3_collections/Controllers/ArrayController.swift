@@ -45,7 +45,7 @@ class ArrayController: UIViewController {
         setupDelegates()
         setupUI()
     }
-    
+   
     //    override func viewWillAppear(_ animated: Bool) {
     //        super.viewWillAppear(animated)
     //        navigationController?.navigationBar.prefersLargeTitles = false
@@ -130,7 +130,6 @@ extension ArrayController: UICollectionViewDataSource {
 extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? ArrayViewCell else { return }
-        //TODO: make enum
         switch indexPath.item {
         case 0:
             cell.state = .loading

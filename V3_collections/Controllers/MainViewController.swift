@@ -5,8 +5,6 @@
 //  Created by Alex on 18.03.2023.
 //
 
-//TODO: поставить везде MARK
-//TODO: отсутпы
 //TODO: сделать запись в обсидиане о сделаных вещах
 
 
@@ -59,13 +57,11 @@ final class MainViewController: UIViewController {
             make.horizontalEdges.equalToSuperview()
         }
     }
-    
     private func setupNavBar() {
         navigationController?.navigationBar.topItem?.title = "Collections"
         //        navigationController?.navigationBar.backItem?.title = "Colletctions2" //topItem?.title = "Collections"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.topItem?.title = "Collections"

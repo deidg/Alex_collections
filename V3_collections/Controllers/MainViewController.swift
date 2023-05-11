@@ -5,7 +5,6 @@
 //  Created by Alex on 18.03.2023.
 //
 
-//TODO: сделать везде константы
 //TODO: поставить везде MARK
 //TODO: отсутпы
 //TODO: сделать запись в обсидиане о сделаных вещах
@@ -17,6 +16,7 @@ import Foundation
 import UIKit
 
 final class MainViewController: UIViewController {
+    //MARK: UI elements
     private let arrayController = ArrayController()
     private let setController = SetController()
     private let dictionaryController = DictionaryController()
@@ -28,24 +28,24 @@ final class MainViewController: UIViewController {
     }()
     private let cellId = "cellId"
     private let arrayVC = ["Array", "Set", "Dictionary"]
-    
     private let tableView: UITableView = {
         let view = UITableView()
         view.register(MainViewControllerCell.self, forCellReuseIdentifier: "cellId")
         return view
     }()
-    
     private let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
         return activityIndicator
     }()
+    //MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
         setupViews()
-        setupDelegats()
+        setupDelegates()
     }
+    //MARK: Items On View
     private func setupViews() {
         tableView.tableFooterView = UIView()
         view = tableView
@@ -60,10 +60,6 @@ final class MainViewController: UIViewController {
         }
     }
     
-    private func setupDelegats() {
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
     private func setupNavBar() {
         navigationController?.navigationBar.topItem?.title = "Collections"
         //        navigationController?.navigationBar.backItem?.title = "Colletctions2" //topItem?.title = "Collections"
@@ -76,8 +72,13 @@ final class MainViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     //    navigationController.navigationBar.prefersLargeTitles = true
+    //MARK: delegates
+    private func setupDelegates() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
 }
-// MARK: extensions
+// MARK: extensions - UITableView
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
@@ -103,11 +104,11 @@ extension MainViewController: UITableViewDataSource {
         return cell
     }
 }
-extension MainViewController {
-    //MARK: extension ViewController -  Constants
-    enum Constants {
-        enum NavigationBarSetup {
-            //            static let navigationBarTitle =
-        }
-    }
-}
+// MARK: extensions - ViewController -  Constants
+//extension MainViewController {
+//    enum Constants {
+//        enum NavigationBarSetup {
+//            //            static let navigationBarTitle =
+//        }
+//    }
+//}

@@ -32,6 +32,7 @@ class DictionaryManager {
             contactDictionary[name] = phoneNumber
         }
     }
+    //MARK: methods
     //ARRAY
     func findFirstElenemtInArray(completion: ((Double, Int) -> Void)?) {
         queue.async { [weak self] in

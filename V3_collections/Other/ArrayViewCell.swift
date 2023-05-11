@@ -11,6 +11,7 @@ import UIKit
 import SnapKit
 
 class ArrayViewCell: UICollectionViewCell {
+    //MARK: UI elements
     static var identifier = "ArrayViewCell"
     var state: State = .initial {
         didSet {
@@ -44,6 +45,7 @@ class ArrayViewCell: UICollectionViewCell {
         super.init(coder: coder)
         return nil
     }
+    //MARK: methods
     private func cellSetupUI() {
         contentView.addSubview(label)
         label.snp.makeConstraints{ make in
@@ -68,6 +70,7 @@ class ArrayViewCell: UICollectionViewCell {
         }
     }
 }
+// MARK: extensions
 extension ArrayViewCell {
     enum State {
         case initial

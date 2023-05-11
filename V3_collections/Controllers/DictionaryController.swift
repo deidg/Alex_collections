@@ -8,7 +8,7 @@
 import UIKit
 
 class DictionaryController: UIViewController {
-    
+    //MARK: UI elements
     let dictionaryManager = DictionaryManager()
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -28,6 +28,7 @@ class DictionaryController: UIViewController {
         activityIndicator.hidesWhenStopped = true
         return activityIndicator
     }()
+    //MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupContraints()
@@ -47,8 +48,7 @@ class DictionaryController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = false
     }
-    
-    
+    //MARK: Items On View
     private func setupContraints() {
 //        view.addSubview(topView)
 //        topView.snp.makeConstraints{ make in
@@ -70,13 +70,11 @@ class DictionaryController: UIViewController {
     func setupElements() {
         collectionView.register(DictionaryViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
     }
-    
+    //MARK: methods
     func makingCollections() {
         self.dictionaryManager.fillArray()
         self.dictionaryManager.fillDictionary()
     }
-    
-    
     let titlesArray: [String] = [
         "Array",
         "Dicitonary",
@@ -88,7 +86,7 @@ class DictionaryController: UIViewController {
         "Find the non-existing element"
     ]
 }
-// MARK: extensions
+// MARK: extensions - delegate
 extension DictionaryController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return titlesArray.count
@@ -173,6 +171,7 @@ extension DictionaryController: UICollectionViewDelegateFlowLayout {
         }
     }
 }
+// MARK: extensions constants
 extension DictionaryController {
     enum Constants {
         enum Borders {

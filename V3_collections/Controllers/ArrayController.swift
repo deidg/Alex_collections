@@ -12,6 +12,7 @@ import UIKit
 import SnapKit
 
 class ArrayController: UIViewController {
+    //MARK: UI elements
     private var myArray: [Int] = []
     private var cellArray: [UICollectionViewCell] = []
     private let arrayManager = ArrayManager()
@@ -32,6 +33,12 @@ class ArrayController: UIViewController {
         collectionView.backgroundColor = Constants.Colors.mainBackgroundColor
         return collectionView
     }()
+    private var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.hidesWhenStopped = true
+        return activityIndicator
+    }()
+    //MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupContraints()
@@ -39,25 +46,22 @@ class ArrayController: UIViewController {
         setupUI()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationController?.navigationBar.prefersLargeTitles = false
-//    }
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        super.viewWillAppear(animated)
+    //        navigationController?.navigationBar.prefersLargeTitles = false
+    //    }
+    //MARK: delegates
     private func setupDelegates() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
     }
+    //MARK: Items On View
     private func setupUI(){
         navigationController?.navigationBar.prefersLargeTitles = false
         title = "Array"
         collectionView.register(ArrayViewCell.self, forCellWithReuseIdentifier: "ArrayViewCell")
     }
-    
-    private var activityIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.hidesWhenStopped = true
-        return activityIndicator
-    }()
+    // MARK: methods
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 0 {
             return CGSize(width: collectionView.bounds.width, height: 105)
@@ -84,6 +88,7 @@ class ArrayController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
+    //MARK: texts
     private var taskForFirstCellArray: [String] = [
         "Create array for 10 mln elements: "
     ]
@@ -107,7 +112,7 @@ class ArrayController: UIViewController {
         "Remove 1000 elements at the end of the array",
     ]
 }
-// MARK: extensions
+// MARK: extensions - delegate
 extension ArrayController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return taskForFirstCellArray.count
@@ -122,7 +127,6 @@ extension ArrayController: UICollectionViewDataSource {
         return cell
     }
 }
-
 extension ArrayController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? ArrayViewCell else { return }
@@ -216,15 +220,17 @@ extension ArrayController: UICollectionViewDelegate {
 }
 extension ArrayController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
 }
+// MARK: extensions - constants
 extension ArrayController {
+    
     enum Constants {
         enum LabelsTexts {
             static let labelTextColor = UIColor(red: 102/255, green: 178/255, blue: 255/255, alpha: 1)

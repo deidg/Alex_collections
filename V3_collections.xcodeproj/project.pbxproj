@@ -225,8 +225,8 @@
 			isa = PBXGroup;
 			children = (
 				FA92CF2529D9E3CA00F99C86 /* ArrayManager.swift */,
-				FA974BA929F2BC7D005EA161 /* DictionaryManager.swift */,
 				FAA5C9CE2A0BB12D00975C45 /* SetManager.swift */,
+				FA974BA929F2BC7D005EA161 /* DictionaryManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";

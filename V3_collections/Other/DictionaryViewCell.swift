@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 
 class DictionaryViewCell: UICollectionViewCell {
+    //MARK: UI elements
     static let identifier = "DictionaryViewCell"
     var state: State = .initial {
         didSet {
@@ -54,6 +55,7 @@ class DictionaryViewCell: UICollectionViewCell {
             make.center.equalToSuperview()
         }
     }
+    //MARK: State
     private func applyState(_ state: State) {
         switch state {
         case .initial:
@@ -76,6 +78,7 @@ class DictionaryViewCell: UICollectionViewCell {
         }
     }
 }
+//MARK: extensions
 extension DictionaryViewCell {
     enum State {
         case initial

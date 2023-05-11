@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class SetManager {
+    //MARK: methods
     func findMatching(textField1: String, textField2: String, answerLabel1: UILabel) {
         let textFromTF1: String = textField1
         let charSet1 = Set(textFromTF1)

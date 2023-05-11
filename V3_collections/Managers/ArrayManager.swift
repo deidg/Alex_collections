@@ -24,6 +24,7 @@ class ArrayManager {
             }
         }
     }
+    //MARK: methods
     func insertElementsBeginning1by1(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -97,7 +98,6 @@ class ArrayManager {
             }
         }
     }
-    ///==================================
     func removeElementsBeginning1by1(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }

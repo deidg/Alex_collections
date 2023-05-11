@@ -7,6 +7,7 @@
 import UIKit
 
 class MainViewControllerCell: UITableViewCell {
+    //MARK: UI elements
     let titleLabel = UILabel()
     var collection: String? {
         didSet {
@@ -23,7 +24,7 @@ class MainViewControllerCell: UITableViewCell {
         return nil
     }
 }
-
+// MARK: extensions
 extension MainViewControllerCell {
     func setup() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false

@@ -10,7 +10,7 @@ import SnapKit
 
 class SetController: UIViewController {
     let setManager = SetManager()
-    
+    //MARK: UI elements
     private let textField1: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .white
@@ -77,12 +77,14 @@ class SetController: UIViewController {
         answerLabel3.textAlignment = .center
         return answerLabel3
     }()
+    //MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUIelements()
         defaultConfiguration()
         makeTarget()
     }
+    //MARK: Items On View
     private func setupUIelements() {
         view.addSubview(textField1)
         textField1.snp.makeConstraints{ make in
@@ -133,6 +135,7 @@ class SetController: UIViewController {
             make.height.equalTo(Constants.Constraints.standartHeightConstraint)
         }
     }
+    //MARK: methods
     @objc private func buttonPressed(sender: UIButton) {
         switch sender {
         case buttonForMatchCharacters:
@@ -154,12 +157,14 @@ class SetController: UIViewController {
     private func defaultConfiguration() {
         view.backgroundColor = .white
     }
+    //MARK: targets
     private func makeTarget() {
         buttonForMatchCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         buttonForNotMatchCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         buttonForUniqueCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
 }
+// MARK: extension
 extension SetController {
     enum Constants {
         enum Borders {

@@ -14,10 +14,10 @@ class SetController: UIViewController {
     private let textField1: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .white
-        textField.layer.cornerRadius = 5
-        textField.layer.borderColor = CGColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
-        textField.layer.borderWidth = 1.0
-        let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
+        textField.layer.cornerRadius = Constants.Borders.textFieldCornerRadius
+        textField.layer.borderColor = Constants.Borders.textFieldBorderColor
+        textField.layer.borderWidth = Constants.Borders.textFieldBorderWidth
+        let spacerView = UIView(frame: Constants.FrameCGRect.rect)
         textField.leftViewMode = .always
         textField.leftView = spacerView
         return textField
@@ -25,10 +25,10 @@ class SetController: UIViewController {
     private let textField2: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .white
-        textField.layer.cornerRadius = 5
-        textField.layer.borderColor = CGColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
-        textField.layer.borderWidth = 1.0
-        let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
+        textField.layer.cornerRadius = Constants.Borders.textFieldCornerRadius
+        textField.layer.borderColor = Constants.Borders.textFieldBorderColor
+        textField.layer.borderWidth = Constants.Borders.textFieldBorderWidth
+        let spacerView = UIView(frame: Constants.FrameCGRect.rect)
         textField.leftViewMode = .always
         textField.leftView = spacerView
         return textField
@@ -36,7 +36,7 @@ class SetController: UIViewController {
     private let buttonForMatchCharacters: UIButton = {
         let buttonForMatchCharacters = UIButton()
         buttonForMatchCharacters.backgroundColor = .white
-        buttonForMatchCharacters.setTitle("All matching letters", for: .normal)
+        buttonForMatchCharacters.setTitle(Constants.ButtonTexts.buttonForMatchCharactersText, for: .normal)
         buttonForMatchCharacters.setTitleColor(.blue, for: .normal)
         return buttonForMatchCharacters
     }()
@@ -50,7 +50,7 @@ class SetController: UIViewController {
     private let buttonForNotMatchCharacters: UIButton = {
         let buttonForNotMatchCharacters = UIButton()
         buttonForNotMatchCharacters.backgroundColor = .white
-        buttonForNotMatchCharacters.setTitle("All characters that do not match", for: .normal)
+        buttonForNotMatchCharacters.setTitle(Constants.ButtonTexts.buttonForNotMatchCharactersText, for: .normal)
         buttonForNotMatchCharacters.setTitleColor(.blue, for: .normal)
         return buttonForNotMatchCharacters
     }()
@@ -64,7 +64,7 @@ class SetController: UIViewController {
     private let buttonForUniqueCharacters: UIButton = {
         let buttonForUniqueCharacters = UIButton()
         buttonForUniqueCharacters.backgroundColor = .white
-        buttonForUniqueCharacters.setTitle("All unique characters from the first text field that do not match in text fields", for: .normal)
+        buttonForUniqueCharacters.setTitle(Constants.ButtonTexts.buttonForUniqueCharactersText, for: .normal)
         buttonForUniqueCharacters.titleLabel?.lineBreakMode = .byWordWrapping
         buttonForUniqueCharacters.titleLabel?.textAlignment = .center
         buttonForUniqueCharacters.setTitleColor(.blue, for: .normal)
@@ -86,51 +86,51 @@ class SetController: UIViewController {
     private func setupUIelements() {
         view.addSubview(textField1)
         textField1.snp.makeConstraints{ make in
-            make.top.equalTo(view).offset(150)
-            make.horizontalEdges.equalToSuperview().inset(16)
-            make.height.equalTo(30)
+            make.top.equalTo(view).offset(Constants.Constraints.topViewOffset)
+            make.horizontalEdges.equalToSuperview().inset(Constants.Constraints.horizontalEdgesInset)
+            make.height.equalTo(Constants.Constraints.standartHeightConstraint)
         }
         view.addSubview(textField2)
         textField2.snp.makeConstraints{ make in
-            make.top.equalTo(textField1.snp.bottom).offset(10)
-            make.horizontalEdges.equalToSuperview().inset(16)
-            make.height.equalTo(30)
+            make.top.equalTo(textField1.snp.bottom).offset(Constants.Constraints.minimumTopOfset)
+            make.horizontalEdges.equalToSuperview().inset(Constants.Constraints.horizontalEdgesInset)
+            make.height.equalTo(Constants.Constraints.standartHeightConstraint)
         }
         view.addSubview(buttonForMatchCharacters)
         buttonForMatchCharacters.snp.makeConstraints{ make in
-            make.top.equalTo(textField2.snp.bottom).offset(50)
-            make.horizontalEdges.equalToSuperview().inset(16)
-            make.height.equalTo(30)
+            make.top.equalTo(textField2.snp.bottom).offset(Constants.Constraints.buttonForMatchCharactersOffset)
+            make.horizontalEdges.equalToSuperview().inset(Constants.Constraints.horizontalEdgesInset)
+            make.height.equalTo(Constants.Constraints.standartHeightConstraint)
         }
         view.addSubview(answerLabel1)
         answerLabel1.snp.makeConstraints{ make in
-            make.top.equalTo(buttonForMatchCharacters.snp.bottom).offset(10)
-            make.horizontalEdges.equalToSuperview().inset(16)
-            make.height.equalTo(30)
+            make.top.equalTo(buttonForMatchCharacters.snp.bottom).offset(Constants.Constraints.minimumTopOfset)
+            make.horizontalEdges.equalToSuperview().inset(Constants.Constraints.horizontalEdgesInset)
+            make.height.equalTo(Constants.Constraints.standartHeightConstraint)
         }
         view.addSubview(buttonForNotMatchCharacters)
         buttonForNotMatchCharacters.snp.makeConstraints{ make in
-            make.top.equalTo(buttonForMatchCharacters.snp.bottom).offset(40)
-            make.horizontalEdges.equalToSuperview().inset(16)
-            make.height.equalTo(30)
+            make.top.equalTo(buttonForMatchCharacters.snp.bottom).offset(Constants.Constraints.standartTopOfset)
+            make.horizontalEdges.equalToSuperview().inset(Constants.Constraints.horizontalEdgesInset)
+            make.height.equalTo(Constants.Constraints.standartHeightConstraint)
         }
         view.addSubview(answerLabel2)
         answerLabel2.snp.makeConstraints{ make in
-            make.top.equalTo(buttonForNotMatchCharacters.snp.bottom).offset(10)
-            make.horizontalEdges.equalToSuperview().inset(16)
-            make.height.equalTo(30)
+            make.top.equalTo(buttonForNotMatchCharacters.snp.bottom).offset(Constants.Constraints.minimumTopOfset)
+            make.horizontalEdges.equalToSuperview().inset(Constants.Constraints.horizontalEdgesInset)
+            make.height.equalTo(Constants.Constraints.standartHeightConstraint)
         }
         view.addSubview(buttonForUniqueCharacters)
         buttonForUniqueCharacters.snp.makeConstraints{ make in
-            make.top.equalTo(buttonForNotMatchCharacters.snp.bottom).offset(40)
-            make.horizontalEdges.equalToSuperview().inset(16)
-            make.height.equalTo(60)
+            make.top.equalTo(buttonForNotMatchCharacters.snp.bottom).offset(Constants.Constraints.standartTopOfset)
+            make.horizontalEdges.equalToSuperview().inset(Constants.Constraints.horizontalEdgesInset)
+            make.height.equalTo(Constants.Constraints.maxHeightConstraint)
         }
         view.addSubview(answerLabel3)
         answerLabel3.snp.makeConstraints{ make in
-            make.top.equalTo(buttonForUniqueCharacters.snp.bottom).offset(10)
-            make.horizontalEdges.equalToSuperview().inset(16)
-            make.height.equalTo(30)
+            make.top.equalTo(buttonForUniqueCharacters.snp.bottom).offset(Constants.Constraints.minimumTopOfset)
+            make.horizontalEdges.equalToSuperview().inset(Constants.Constraints.horizontalEdgesInset)
+            make.height.equalTo(Constants.Constraints.standartHeightConstraint)
         }
     }
     @objc private func buttonPressed(sender: UIButton) {
@@ -160,5 +160,30 @@ class SetController: UIViewController {
         buttonForUniqueCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
 }
-
+extension SetController {
+    enum Constants {
+        enum Borders {
+            static let textFieldBorderColor = CGColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
+            static let textFieldBorderWidth = 1.0
+            static let textFieldCornerRadius = CGFloat(5)
+        }
+        enum Constraints {
+            static let topViewOffset = 150
+            static let minimumTopOfset = 10
+            static let standartTopOfset = 40
+            static let horizontalEdgesInset = 16
+            static let standartHeightConstraint = 30
+            static let maxHeightConstraint = 30
+            static let buttonForMatchCharactersOffset = 50
+        }
+        enum ButtonTexts {
+            static let buttonForMatchCharactersText = "All matching letters"
+            static let buttonForNotMatchCharactersText = "All characters that do not match"
+            static let buttonForUniqueCharactersText = "All unique characters from the first text field that do not match in text fields"
+        }
+        enum FrameCGRect {
+            static let rect = CGRect(x:0, y:0, width:10, height:10)
+        }
+    }
+}
 

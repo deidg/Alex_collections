@@ -29,7 +29,7 @@ class ArrayController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1)
+        collectionView.backgroundColor = Constants.Colors.mainBackgroundColor
         return collectionView
     }()
     override func viewDidLoad() {
@@ -116,7 +116,7 @@ extension ArrayController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArrayViewCell", for: indexPath) as? ArrayViewCell else { return UICollectionViewCell() }
         let item = taskForFirstCellArray[indexPath.row]
         cell.textToShow = item
-        cell.backgroundColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
+        cell.backgroundColor = Constants.Colors.firstCellBackgroundColor
         //        cell.textToShow = taskForFirstCellArray[indexPath.row]   //  ПОДУМАТЬ  сделать без textToShow
         cell.state = .initial
         return cell
@@ -224,6 +224,18 @@ extension ArrayController: UICollectionViewDelegateFlowLayout {
         return 0
     }
 }
-
-
+extension ArrayController {
+    enum Constants {
+        enum LabelsTexts {
+            static let labelTextColor = UIColor(red: 102/255, green: 178/255, blue: 255/255, alpha: 1)
+        }
+        enum Borders {
+            static let frameBorderColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1).cgColor
+        }
+        enum Colors {
+            static let mainBackgroundColor = UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1)
+            static let firstCellBackgroundColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
+        }
+    }
+}
 

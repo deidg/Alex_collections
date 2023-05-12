@@ -17,12 +17,6 @@ class DictionaryController: UIViewController {
         collectionView.backgroundColor = .white
         return collectionView
     }()
-    // из за этого кода стала появляться надписть Collection при загрузке VC, но исчез отсутп сверху
-//    private let topView: UIView = {
-//        let view = UIView()
-//        view.backgroundColor = .white
-//        return view
-//    }()
     var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true

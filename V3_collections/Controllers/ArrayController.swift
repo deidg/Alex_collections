@@ -42,6 +42,7 @@ class ArrayController: UIViewController {
         setupContraints()
         setupDelegates()
         setupUI()
+        view.backgroundColor = .white
     }
    
 //        override func viewWillAppear(_ animated: Bool) {
@@ -119,7 +120,7 @@ extension ArrayController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArrayViewCell", for: indexPath) as? ArrayViewCell else { return UICollectionViewCell() }
         let item = taskForFirstCellArray[indexPath.row]
         cell.textToShow = item
-        cell.backgroundColor = Constants.Colors.firstCellBackgroundColor
+        cell.backgroundColor = .white //Constants.Colors.firstCellBackgroundColor
         cell.state = .initial
         return cell
     }

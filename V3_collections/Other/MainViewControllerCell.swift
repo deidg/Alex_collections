@@ -18,7 +18,7 @@ class MainViewControllerCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
-        layout()
+//        layout()
     }
     required init?(coder aDecoder: NSCoder) {
         return nil
@@ -27,13 +27,13 @@ class MainViewControllerCell: UITableViewCell {
 // MARK: extensions
 extension MainViewControllerCell {
     func setup() {
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+//        titleLabel.translatesAutoresizingMaskIntoConstraints = false
     }
-    func layout() {
-        contentView.addSubview(titleLabel)
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-        ])
+//    func layout() {
+//        contentView.addSubview(titleLabel)
+//        NSLayoutConstraint.activate([
+//            titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
+//            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+//        ])
     }
-}
+//}

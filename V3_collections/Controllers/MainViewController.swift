@@ -100,11 +100,4 @@ extension MainViewController: UITableViewDataSource {
         return cell
     }
 }
-// MARK: extensions - ViewController -  Constants
-//extension MainViewController {
-//    enum Constants {
-//        enum NavigationBarSetup {
-//            //            static let navigationBarTitle =
-//        }
-//    }
-//}
+

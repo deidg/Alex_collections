@@ -5,8 +5,6 @@
 //  Created by Alex on 21.03.2023.
 //
 
-//TODO: сделать константы (текст, цвета и CGSize)
-
 
 import UIKit
 import SnapKit
@@ -46,10 +44,10 @@ class ArrayController: UIViewController {
         setupUI()
     }
    
-    //    override func viewWillAppear(_ animated: Bool) {
-    //        super.viewWillAppear(animated)
-    //        navigationController?.navigationBar.prefersLargeTitles = false
-    //    }
+//        override func viewWillAppear(_ animated: Bool) {
+//            super.viewWillAppear(animated)
+//            navigationController?.navigationBar.prefersLargeTitles = false
+//        }
     //MARK: delegates
     private func setupDelegates() {
         self.collectionView.delegate = self

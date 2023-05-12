@@ -66,7 +66,7 @@ class DictionaryViewCell: UICollectionViewCell {
         case .result(let result, let element):
             activityIndicator.stopAnimating()
             label.isHidden = false
-            label.text = "Search time: \(result) sec\n Result number: \(element)"   //  не выносится в enum из за \(result) и \(element)
+            label.text = "Search time: \(result) sec\n Result number: \(element)" 
         case .resultFoundedOrNot (let result, let notFounded):
             activityIndicator.stopAnimating()
             label.isHidden = false

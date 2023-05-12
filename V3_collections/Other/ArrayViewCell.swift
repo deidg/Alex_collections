@@ -25,7 +25,7 @@ class ArrayViewCell: UICollectionViewCell {
     }
     private let label: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0  //
+        label.numberOfLines = 0 
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 20, weight: .medium)
         label.textColor = Constants.LabelsTexts.labelTextColor

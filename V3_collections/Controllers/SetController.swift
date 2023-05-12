@@ -156,6 +156,12 @@ class SetController: UIViewController {
     }
     private func defaultConfiguration() {
         view.backgroundColor = .white
+        navigationController?.navigationBar.prefersLargeTitles = false
+        title = "Set"
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
     //MARK: targets
     private func makeTarget() {

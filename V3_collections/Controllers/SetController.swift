@@ -164,7 +164,6 @@ class SetController: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.topItem?.title = "Collections"
     }
-    
     //MARK: targets
     private func makeTarget() {
         buttonForMatchCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)

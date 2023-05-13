@@ -44,8 +44,6 @@ class ArrayController: UIViewController {
         setupUI()
         view.backgroundColor = .white
     }
-    
-    
     //MARK: delegates
     private func setupDelegates() {
         self.collectionView.delegate = self

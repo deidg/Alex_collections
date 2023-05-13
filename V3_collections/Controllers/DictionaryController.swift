@@ -50,17 +50,10 @@ class DictionaryController: UIViewController {
     }
     //MARK: Items On View
     private func setupContraints() {
-//        view.addSubview(topView)
-//        topView.snp.makeConstraints{ make in
-//            make.top.equalToSuperview()
-//            make.horizontalEdges.equalToSuperview()
-//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
-//        }
+
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints{ make in
             make.edges.equalToSuperview()
-//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-//            make.horizontalEdges.bottom.equalToSuperview()
         }
         view.addSubview(activityIndicator)
         activityIndicator.snp.makeConstraints{ make in

@@ -5,10 +5,6 @@
 //  Created by Alex on 18.03.2023.
 //
 
-//TODO: сделать запись в обсидиане о сделаных вещах
-
-
-//TODO: спросить - почему при загрузке ArrayController поздно исчезает название Collections и почему при повторении операции в заголовке вместо Array появляется Collections
 
 import Foundation
 import UIKit
@@ -65,7 +61,6 @@ final class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .always
     }
-
     //MARK: delegates
     private func setupDelegates() {
         tableView.delegate = self

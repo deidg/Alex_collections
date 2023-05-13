@@ -17,23 +17,9 @@ class MainViewControllerCell: UITableViewCell {
     }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setup()
-//        layout()
     }
     required init?(coder aDecoder: NSCoder) {
         return nil
     }
 }
-// MARK: extensions
-extension MainViewControllerCell {
-    func setup() {
-//        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    }
-//    func layout() {
-//        contentView.addSubview(titleLabel)
-//        NSLayoutConstraint.activate([
-//            titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
-//            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-//        ])
-    }
-//}
+

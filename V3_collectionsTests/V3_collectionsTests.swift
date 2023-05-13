@@ -9,13 +9,22 @@ import XCTest
 @testable import V3_collections
 
 final class V3collectionsTests: XCTestCase {
-
+    var arrayManager: ArrayManager!
+    var setManager: SetManager!
+    var dictionaryManager: DictionaryManager!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+         try super.setUpWithError()
+         arrayManager = ArrayManager()
+         setManager = SetManager()
+         dictionaryManager = DictionaryManager()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        arrayManager = nil
+        setManager = nil
+        dictionaryManager = nil
+        try super.tearDownWithError()
     }
 
     func testExample() throws {

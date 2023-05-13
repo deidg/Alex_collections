@@ -27,6 +27,7 @@ class DictionaryController: UIViewController {
         super.viewDidLoad()
         setupContraints()
         setupElements()
+        defaultConfiguration()
         self.activityIndicator.startAnimating()
         DispatchQueue.global(qos: .userInitiated).async {
             self.makingCollections()
@@ -38,11 +39,14 @@ class DictionaryController: UIViewController {
             }
         }
     }
+    private func defaultConfiguration() {
+        view.backgroundColor = .white
+        self.navigationItem.title = "Dictionary"
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.largeTitleDisplayMode = .never
-        title = "Dictionary"
+        navigationController?.navigationBar.topItem?.title = "Collections"
     }
     //MARK: Items On View
     private func setupContraints() {

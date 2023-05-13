@@ -44,11 +44,8 @@ class ArrayController: UIViewController {
         setupUI()
         view.backgroundColor = .white
     }
-   
-//        override func viewWillAppear(_ animated: Bool) {
-//            super.viewWillAppear(animated)
-//            navigationController?.navigationBar.prefersLargeTitles = false
-//        }
+    
+    
     //MARK: delegates
     private func setupDelegates() {
         self.collectionView.delegate = self
@@ -56,10 +53,14 @@ class ArrayController: UIViewController {
     }
     //MARK: Items On View
     private func setupUI(){
-//        navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.largeTitleDisplayMode = .never
         title = "Array"
         collectionView.register(ArrayViewCell.self, forCellWithReuseIdentifier: "ArrayViewCell")
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.topItem?.title = "Collections"
     }
     // MARK: methods
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {

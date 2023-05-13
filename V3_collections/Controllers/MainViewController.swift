@@ -61,18 +61,14 @@ final class MainViewController: UIViewController {
     }
     private func setupNavBar() {
         navigationController?.navigationBar.topItem?.title = "Collections"
-        //        navigationController?.navigationBar.backItem?.title = "Colletctions2" //topItem?.title = "Collections"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//                title = "Setjj"
-
-//        navigationController?.navigationBar.topItem?.title = "Collections"
-//        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
     }
-    //    navigationController.navigationBar.prefersLargeTitles = true
+
+
     //MARK: delegates
     private func setupDelegates() {
         tableView.delegate = self

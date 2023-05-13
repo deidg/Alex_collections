@@ -28,12 +28,43 @@ final class V3collectionsTests: XCTestCase {
     }
 
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete.
-//        Check the results with assertions afterwards.
+ 
+        // Zxcdfvbn
+        //Asdfcvgh
+        
+        //dfcv
+        //Zbgaxnhs
+        //zxnb
+        
+//        let textField1 = UITextField()
+//            let textField2 = UITextField()
+//            let answerLabel1 = UILabel()
+//            // 2. set the initial state of the objects
+//            textField1.text = "Hefdfs"
+//            textField2.text = "world"
+//            answerLabel1.isHidden = true
+//            // 3. call the function being tested
+//        setManager.findMatching(textField1: textField1.text!, textField2: textField2.text!, answerLabel1: answerLabel1)
+//            // 4. check if the answerLabel1 text is set to the correct value
+//            XCTAssertEqual(answerLabel1.text, "ef")
+
+//        func testSetMatchChars() {
+//            let text1 = "Hello" //"Zxcdfvbn"
+//            let text2 = "World" //"Asdfcvgh"
+//            let answerLabel = UILabel()
+//
+//            setManager.findMatching(textField1: text1, textField2: text2, answerLabel1: answerLabel)
+//            XCTAssertEqual(answerLabel.text, "lo")
+//        }
+        
+        
+//        func testSetNotMatchChars
+//
+//        func testSetUnqiaueChars
+        
+        
+        
+        
     }
 
     func testPerformanceExample() throws {

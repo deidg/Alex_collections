@@ -42,8 +42,6 @@ final class MainViewController: UIViewController {
         setupNavBar()
         setupViews()
         setupDelegates()
-//        navigationController?.navigationBar.topItem?.title = "Collections"
-
     }
     //MARK: Items On View
     private func setupViews() {
@@ -67,7 +65,6 @@ final class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .always
     }
-
 
     //MARK: delegates
     private func setupDelegates() {

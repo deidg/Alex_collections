@@ -156,12 +156,13 @@ class SetController: UIViewController {
     }
     private func defaultConfiguration() {
         view.backgroundColor = .white
-        navigationController?.navigationBar.prefersLargeTitles = false
+//        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.largeTitleDisplayMode = .never
         title = "Set"
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = false
+//        navigationController?.navigationBar.prefersLargeTitles = false
     }
     //MARK: targets
     private func makeTarget() {

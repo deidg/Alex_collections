@@ -56,7 +56,8 @@ class ArrayController: UIViewController {
     }
     //MARK: Items On View
     private func setupUI(){
-        navigationController?.navigationBar.prefersLargeTitles = false
+//        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.largeTitleDisplayMode = .never
         title = "Array"
         collectionView.register(ArrayViewCell.self, forCellWithReuseIdentifier: "ArrayViewCell")
     }

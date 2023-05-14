@@ -23,6 +23,7 @@ class DictionaryManager {
             contactArr.append(contact)
         }
     }
+    
     private var contactDictionary: [String: String] = [:]
     func fillDictionary() {
         for i in 0..<1_000_000 {
@@ -46,6 +47,7 @@ class DictionaryManager {
             }
         }
     }
+    
     func findLastElenemtInArray(completion: ((Double, Int) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -57,6 +59,7 @@ class DictionaryManager {
             }
         }
     }
+    
     func findNotExistingElenemtInArray(completion: ((Double, Bool) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -70,6 +73,7 @@ class DictionaryManager {
             }
         }
     }
+    
     //DICTIONARY
     func findFirstElenemtInDictionary(completion: ((Double, Int) -> Void)?) {
         queue.async { [weak self] in
@@ -83,6 +87,7 @@ class DictionaryManager {
             }
         }
     }
+    
     func findLastElenemtInDictionary(completion: ((Double, Int) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -97,6 +102,7 @@ class DictionaryManager {
             }
         }
     }
+    
     func findNotExistingElenemtInDictionary(completion: ((Double, Bool) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }

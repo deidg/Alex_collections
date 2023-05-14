@@ -84,6 +84,7 @@ class SetController: UIViewController {
         defaultConfiguration()
         addTargets()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .never

@@ -43,16 +43,19 @@ final class MainViewController: UIViewController {
         view.backgroundColor = .white
         navigationController?.navigationBar.backgroundColor = .white
     }
+    
     private func setupUI() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints{ make in
             make.edges.equalToSuperview()
         }
     }
+    
     private func setupNavBar() {
         navigationController?.navigationBar.topItem?.title = "Collections"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .always

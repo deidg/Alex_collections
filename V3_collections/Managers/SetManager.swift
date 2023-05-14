@@ -19,6 +19,7 @@ class SetManager {
         answerLabel1.isHidden = false
         answerLabel1.text = intersectionResult
     }
+    
     func findDifference(textFromTF1: String, textFromTF2: String, answerLabel2: UILabel) {
         let textFromTF1: String = textFromTF1
         let charSet1 = Set(textFromTF1)
@@ -28,6 +29,7 @@ class SetManager {
         answerLabel2.isHidden = false
         answerLabel2.text = symmetricDifferenceResult
     }
+    
     func findUniqueChars(textFromTF1: String, textFromTF2: String, answerLabel3: UILabel) {
         let textFromTF1: String = textFromTF1
         let charSet1 = Set(textFromTF1)

@@ -36,6 +36,7 @@ class ArrayManager {
             }
         }
     }
+    
     func insertElementsBeginningAtOnce(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -47,6 +48,7 @@ class ArrayManager {
             }
         }
     }
+    
     func insertElementsMiddle1by1(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -60,6 +62,7 @@ class ArrayManager {
             }
         }
     }
+    
     func insertElementsMiddleAtOnce(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -71,6 +74,7 @@ class ArrayManager {
             }
         }
     }
+    
     func insertElementsEnd1by1(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -85,6 +89,7 @@ class ArrayManager {
             }
         }
     }
+    
     func insertElementsEndAtOnce(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -96,6 +101,7 @@ class ArrayManager {
             }
         }
     }
+    
     func removeElementsBeginning1by1(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -110,6 +116,7 @@ class ArrayManager {
             }
         }
     }
+    
     func removeElementsBeginningAtOnce(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -121,6 +128,7 @@ class ArrayManager {
             }
         }
     }
+    
     func removeElementsMiddle1by1(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -135,6 +143,7 @@ class ArrayManager {
             }
         }
     }
+    
     func removeElementsMiddleAtOnce(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -146,6 +155,7 @@ class ArrayManager {
             }
         }
     }
+    
     func removeElementsEnd1by1(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
@@ -160,6 +170,7 @@ class ArrayManager {
             }
         }
     }
+    
     func removeElementsEndAtOnce(completion: ((Double) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }

@@ -57,6 +57,7 @@ class DictionaryController: UIViewController {
         view.backgroundColor = .white
         self.navigationItem.title = "Dictionary"
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .never

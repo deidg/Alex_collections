@@ -82,8 +82,7 @@ class SetController: UIViewController {
         super.viewDidLoad()
         setupUIelements()
         defaultConfiguration()
-        makeTarget()
-        self.title = "Set"
+        addTargets()
     }
     //MARK: Items On View
     private func setupUIelements() {
@@ -162,10 +161,9 @@ class SetController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .never
-        navigationController?.navigationBar.topItem?.title = "Collections"
     }
     //MARK: targets
-    private func makeTarget() {
+    private func addTargets() {
         buttonForMatchCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         buttonForNotMatchCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         buttonForUniqueCharacters.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)

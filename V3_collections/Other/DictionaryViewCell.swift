@@ -24,7 +24,7 @@ class DictionaryViewCell: UICollectionViewCell {
     }
     private let label: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0  //
+        label.numberOfLines = 0
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 20, weight: .medium)
         label.textColor = Constants.LabelsTexts.labelTextColor
@@ -45,6 +45,7 @@ class DictionaryViewCell: UICollectionViewCell {
         super.init(coder: coder)
         return nil
     }
+//MARK: methods
     private func cellSetupUI() {
         contentView.addSubview(label)
         label.snp.makeConstraints{ make in
@@ -55,7 +56,7 @@ class DictionaryViewCell: UICollectionViewCell {
             make.center.equalToSuperview()
         }
     }
-    //MARK: State
+    
     private func applyState(_ state: State) {
         switch state {
         case .initial:
@@ -66,7 +67,7 @@ class DictionaryViewCell: UICollectionViewCell {
         case .result(let result, let element):
             activityIndicator.stopAnimating()
             label.isHidden = false
-            label.text = "Search time: \(result) sec\n Result number: \(element)" 
+            label.text = "Search time: \(result) sec\n Result number: \(element)" // if lelemnt not found
         case .resultFoundedOrNot (let result, let notFounded):
             activityIndicator.stopAnimating()
             label.isHidden = false

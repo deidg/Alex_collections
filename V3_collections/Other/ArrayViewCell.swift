@@ -12,7 +12,6 @@ import SnapKit
 
 class ArrayViewCell: UICollectionViewCell {
     //MARK: UI elements
-    static var identifier = "ArrayViewCell"
     var state: State = .initial {
         didSet {
             applyState(state)
@@ -70,13 +69,16 @@ class ArrayViewCell: UICollectionViewCell {
         }
     }
 }
-// MARK: extensions
+// MARK: State
 extension ArrayViewCell {
     enum State {
         case initial
         case loading
         case result(result: Double)
     }
+}
+// MARK: Constants
+extension ArrayViewCell {
     enum Constants {
         enum LabelsTexts {
             static let labelTextColor = UIColor(red: 102/255, green: 178/255, blue: 255/255, alpha: 1)

@@ -10,84 +10,7 @@ import UIKit
 import SnapKit
 
 class ArrayController: UIViewController {
-    //MARK: UI elements
-    private var myArray: [Int] = []
-    private var cellArray: [UICollectionViewCell] = []
-    private let arrayManager = ArrayManager()
-    private let topView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
-    }()
-    private let bottomView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
-    }()
-    private var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = Constants.Colors.mainBackgroundColor
-        return collectionView
-    }()
-    private var activityIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.hidesWhenStopped = true
-        return activityIndicator
-    }()
-    //MARK: lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupContraints()
-        setupDelegates()
-        setupUI()
-        view.backgroundColor = .white
-    }
-    //MARK: delegates
-    private func setupDelegates() {
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-    }
-    //MARK: Items On View
-    private func setupUI(){
-        navigationItem.largeTitleDisplayMode = .never
-        title = "Array"
-        collectionView.register(ArrayViewCell.self, forCellWithReuseIdentifier: "ArrayViewCell")
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.largeTitleDisplayMode = .never
-        navigationController?.navigationBar.topItem?.title = "Collections"
-    }
-    // MARK: methods
-    internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.row == 0 {
-            return CGSize(width: collectionView.bounds.width, height: 105)
-        } else {
-            return CGSize(width: (collectionView.bounds.width/2), height: 105)
-        }
-    }
-    private func setupContraints() {
-        view.addSubview(collectionView)
-        collectionView.snp.makeConstraints{ make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.horizontalEdges.bottom.equalToSuperview()
-        }
-        view.addSubview(topView)
-        topView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.horizontalEdges.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
-        }
-        view.addSubview(bottomView)
-        bottomView.snp.makeConstraints{ make in
-            make.bottom.equalToSuperview()
-            make.horizontalEdges.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-        }
-    }
-    //MARK: texts
+    //MARK: array data
     private var taskForFirstCellArray: [String] = [
         "Create array for 10 mln elements: "
     ]
@@ -110,6 +33,46 @@ class ArrayController: UIViewController {
         "Remove 1000 elements at the end of the array one-by-one",
         "Remove 1000 elements at the end of the array",
     ]
+    //MARK: UI elements
+    private let arrayManager = ArrayManager()
+    private var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = Constants.Colors.mainBackgroundColor
+        collectionView.register(ArrayViewCell.self, forCellWithReuseIdentifier: Constants.collectionViewCellIdentifier)
+        return collectionView
+    }()
+    
+    //MARK: lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupContraints()
+        setupDelegates()
+        setupConfiguration()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.largeTitleDisplayMode = .never
+    }
+    //MARK: delegates
+    private func setupDelegates() {
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+    }
+    //MARK: Items On View
+    private func setupConfiguration(){
+        navigationItem.largeTitleDisplayMode = .never
+        title = "Array"
+        view.backgroundColor = .white
+    }
+    // MARK: methods
+    private func setupContraints() {
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints{ make in
+            make.edges.equalToSuperview()
+        }
+    }
 }
 // MARK: extensions - delegate
 extension ArrayController: UICollectionViewDataSource {
@@ -117,7 +80,7 @@ extension ArrayController: UICollectionViewDataSource {
         return taskForFirstCellArray.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArrayViewCell", for: indexPath) as? ArrayViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.collectionViewCellIdentifier, for: indexPath) as? ArrayViewCell else { return UICollectionViewCell() }
         let item = taskForFirstCellArray[indexPath.row]
         cell.textToShow = item
         cell.backgroundColor = .white //Constants.Colors.firstCellBackgroundColor
@@ -218,17 +181,25 @@ extension ArrayController: UICollectionViewDelegate {
 extension ArrayController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 0 //0.5  делает отступ в таблице 0.5. поменять background во collection View
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 0 // 0.5
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.row == 0 {
+            return CGSize(width: collectionView.bounds.width, height: 105)
+        } else {
+            return CGSize(width: (collectionView.bounds.width/2), height: 105)
+        }
     }
 }
 // MARK: extensions - constants
 extension ArrayController {
     
     enum Constants {
+        static let collectionViewCellIdentifier = "ArrayViewCell"
         enum LabelsTexts {
             static let labelTextColor = UIColor(red: 102/255, green: 178/255, blue: 255/255, alpha: 1)
         }

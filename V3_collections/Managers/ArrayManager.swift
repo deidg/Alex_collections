@@ -5,8 +5,6 @@
 //  Created by Alex on 02.04.2023.
 
 import Foundation
-import UIKit
-import SnapKit
 
 class ArrayManager {
     private let queue = DispatchQueue(label: "Array_manager_queue_working", qos: .userInitiated)

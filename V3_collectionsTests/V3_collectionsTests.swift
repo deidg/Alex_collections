@@ -36,25 +36,19 @@ final class V3collectionsTests: XCTestCase {
         //Zbgaxnhs
         //zxnb
         
-//        let textField1 = UITextField()
-//            let textField2 = UITextField()
-//            let answerLabel1 = UILabel()
-//            // 2. set the initial state of the objects
-//            textField1.text = "Hefdfs"
-//            textField2.text = "world"
-//            answerLabel1.isHidden = true
-//            // 3. call the function being tested
-//        setManager.findMatching(textField1: textField1.text!, textField2: textField2.text!, answerLabel1: answerLabel1)
-//            // 4. check if the answerLabel1 text is set to the correct value
-//            XCTAssertEqual(answerLabel1.text, "ef")
 
 //        func testSetMatchChars() {
-//            let text1 = "Hello" //"Zxcdfvbn"
+//            let text1 = "Hnkj" //"Zxcdfvbn"
 //            let text2 = "World" //"Asdfcvgh"
 //            let answerLabel = UILabel()
 //
+//            let charSet1 = Set(text1)
+//            let charSet2 = Set(text2)
+//            let intersectionResultTest = String(charSet1.intersection(charSet2))
+//
 //            setManager.findMatching(textField1: text1, textField2: text2, answerLabel1: answerLabel)
-//            XCTAssertEqual(answerLabel.text, "lo")
+////            XCTAssert(true)
+//            XCTAssertEqual(EquatableintersectionResultTest, EquatableintersectionResult)
 //        }
         
         

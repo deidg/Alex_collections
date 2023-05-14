@@ -13,6 +13,8 @@ class DictionaryController: UIViewController {
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(DictionaryViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
+        
         // цвет нижней части
         collectionView.backgroundColor = .white
         return collectionView
@@ -26,11 +28,12 @@ class DictionaryController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupContraints()
-        setupElements()
+        //        setupElements()
         defaultConfiguration()
         self.activityIndicator.startAnimating()
         DispatchQueue.global(qos: .userInitiated).async {
-            self.makingCollections()
+            self.dictionaryManager.fillArray()
+            self.dictionaryManager.fillDictionary()
             DispatchQueue.main.async {
                 self.activityIndicator.stopAnimating()
                 self.collectionView.reloadData()
@@ -46,11 +49,9 @@ class DictionaryController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .never
-        navigationController?.navigationBar.topItem?.title = "Collections"
     }
     //MARK: Items On View
     private func setupContraints() {
-
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints{ make in
             make.edges.equalToSuperview()
@@ -59,14 +60,6 @@ class DictionaryController: UIViewController {
         activityIndicator.snp.makeConstraints{ make in
             make.center.equalToSuperview()
         }
-    }
-    func setupElements() {
-        collectionView.register(DictionaryViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
-    }
-    //MARK: methods
-    func makingCollections() {
-        self.dictionaryManager.fillArray()
-        self.dictionaryManager.fillDictionary()
     }
     let titlesArray: [String] = [
         "Array",
@@ -92,7 +85,7 @@ extension DictionaryController: UICollectionViewDataSource {
         cell.textToShow = item
         if indexPath.row <= 1 {
             cell.backgroundColor = .white
-            cell.layer.borderColor = Constants.Borders.layerBorderColorFirst
+            cell.layer.borderColor = Constants.Borders.layerBorderColorFirst // return 0/5
         } else {
             cell.backgroundColor = Constants.Borders.layerBorderColorSecond
         }
@@ -156,7 +149,7 @@ extension DictionaryController: UICollectionViewDelegateFlowLayout {
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                                 sizeForItemAt indexPath: IndexPath) -> CGSize {
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row <= 1 {
             return CGSize(width: collectionView.bounds.width/2, height: 70)
         } else {

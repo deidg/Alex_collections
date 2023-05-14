@@ -14,17 +14,11 @@ final class MainViewController: UIViewController {
     private let arrayController = ArrayController()
     private let setController = SetController()
     private let dictionaryController = DictionaryController()
-    private let titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.textAlignment = .center
-        titleLabel.backgroundColor = .white
-        return titleLabel
-    }()
     private let cellId = "cellId"
     private let arrayVC = ["Array", "Set", "Dictionary"]
     private let tableView: UITableView = {
         let view = UITableView()
-        view.register(MainViewControllerCell.self, forCellReuseIdentifier: "cellId")
+        view.register(UITableViewCell.self, forCellReuseIdentifier: "cellId") // зменить на станлартную
         return view
     }()
     private let activityIndicator: UIActivityIndicatorView = {
@@ -38,11 +32,10 @@ final class MainViewController: UIViewController {
         setupNavBar()
         setupViews()
         setupDelegates()
+        setupUI()
     }
     //MARK: Items On View
     private func setupViews() {
-        tableView.tableFooterView = UIView()
-        view = tableView
         view.backgroundColor = .white
         navigationController?.navigationBar.backgroundColor = .white
     }
@@ -89,7 +82,7 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellId") else { return UITableViewCell() }
         cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.text = String(arrayVC[indexPath.row])
+        cell.textLabel?.text = arrayVC[indexPath.row]
         return cell
     }
 }

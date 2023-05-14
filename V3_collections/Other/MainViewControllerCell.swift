@@ -11,7 +11,6 @@ class MainViewControllerCell: UITableViewCell {
     let titleLabel = UILabel()
     var collection: String? {
         didSet {
-//            guard let array = collection else { return }
             titleLabel.text = collection
         }
     }

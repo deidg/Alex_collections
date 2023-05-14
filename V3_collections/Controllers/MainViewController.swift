@@ -14,11 +14,10 @@ final class MainViewController: UIViewController {
     private let arrayController = ArrayController()
     private let setController = SetController()
     private let dictionaryController = DictionaryController()
-    private let cellId = "cellId"
     private let arrayVC = ["Array", "Set", "Dictionary"]
     private let tableView: UITableView = {
         let view = UITableView()
-        view.register(UITableViewCell.self, forCellReuseIdentifier: "cellId") // зменить на станлартную
+        view.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         return view
     }()
     private let activityIndicator: UIActivityIndicatorView = {

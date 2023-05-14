@@ -37,8 +37,10 @@ class DictionaryController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupContraints()
-        //        setupElements()
+//                setupElements()
         defaultConfiguration()
+//        setupDelegates()
+        
         self.activityIndicator.startAnimating()
         DispatchQueue.global(qos: .userInitiated).async {
             self.dictionaryManager.fillArray()
@@ -50,6 +52,8 @@ class DictionaryController: UIViewController {
                 self.collectionView.dataSource = self
             }
         }
+        
+//        makingCollections()
     }
     private func defaultConfiguration() {
         view.backgroundColor = .white
@@ -59,6 +63,21 @@ class DictionaryController: UIViewController {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .never
     }
+//    private func setupDelegates() {
+//        self.collectionView.delegate = self
+//        self.collectionView.dataSource = self
+//    }
+//    private func makingCollections() {
+//        self.activityIndicator.startAnimating()
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            self.dictionaryManager.fillArray()
+//            self.dictionaryManager.fillDictionary()
+//            DispatchQueue.main.async {
+//                self.activityIndicator.stopAnimating()
+//                self.collectionView.reloadData()
+//            }
+//        }
+//    }
     //MARK: Items On View
     private func setupContraints() {
         view.addSubview(collectionView)

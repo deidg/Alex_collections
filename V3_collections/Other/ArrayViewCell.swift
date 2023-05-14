@@ -61,6 +61,7 @@ class ArrayViewCell: UICollectionViewCell {
             return
         case .loading:
             activityIndicator.startAnimating()
+            self.backgroundColor = Constants.BackgorundColor.cellLoadingBackgroundColor
             label.isHidden = true
         case .result(let result):
             activityIndicator.stopAnimating()
@@ -88,6 +89,7 @@ extension ArrayViewCell {
         }
         enum BackgorundColor {
             static let cellBackgroundColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
+            static let cellLoadingBackgroundColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
         }
     }
 }

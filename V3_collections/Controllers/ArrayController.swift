@@ -64,7 +64,7 @@ class ArrayController: UIViewController {
     private func setupConfiguration(){
         navigationItem.largeTitleDisplayMode = .never
         title = "Array"
-        view.backgroundColor = .white
+        collectionView.backgroundColor = .white
     }
     // MARK: methods
     private func setupContraints() {

@@ -27,6 +27,7 @@ class ArrayViewCell: UICollectionViewCell {
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 20, weight: .medium)
         label.textColor = Constants.LabelsTexts.labelTextColor
+        label.backgroundColor = Constants.BackgorundColor.cellBackgroundColor
         return label
     }()
     private let activityIndicator: UIActivityIndicatorView = {
@@ -84,6 +85,9 @@ extension ArrayViewCell {
         }
         enum Borders {
             static let frameBorderColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1).cgColor
+        }
+        enum BackgorundColor {
+            static let cellBackgroundColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
         }
     }
 }

@@ -24,7 +24,7 @@ class DictionaryController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(DictionaryViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
-        collectionView.backgroundColor = .green     //.white
+        collectionView.backgroundColor = .gray
         return collectionView
     }()
     var activityIndicator: UIActivityIndicatorView = {
@@ -50,8 +50,6 @@ class DictionaryController: UIViewController {
                 self.collectionView.dataSource = self
             }
         }
-        
-//        makingCollections()
     }
     private func defaultConfiguration() {
         view.backgroundColor = .white
@@ -62,21 +60,11 @@ class DictionaryController: UIViewController {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .never
     }
-//    private func setupDelegates() {
-//        self.collectionView.delegate = self
-//        self.collectionView.dataSource = self
-//    }
-//    private func makingCollections() {
-//        self.activityIndicator.startAnimating()
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            self.dictionaryManager.fillArray()
-//            self.dictionaryManager.fillDictionary()
-//            DispatchQueue.main.async {
-//                self.activityIndicator.stopAnimating()
-//                self.collectionView.reloadData()
-//            }
+//        private func setupDelegates() {
+//            self.collectionView.delegate = self
+//            self.collectionView.dataSource = self
 //        }
-//    }
+    
     //MARK: Items On View
     private func setupContraints() {
         view.addSubview(collectionView)
@@ -102,7 +90,7 @@ extension DictionaryController: UICollectionViewDataSource {
         cell.textToShow = item
         if indexPath.row <= 1 {
             cell.backgroundColor = .white
-            cell.layer.borderColor = Constants.Borders.layerBorderColorFirst 
+            cell.layer.borderColor = Constants.Borders.layerBorderColorFirst
         } else {
             cell.backgroundColor = Constants.Borders.layerBorderColorSecond
         }
@@ -151,12 +139,6 @@ extension DictionaryController: UICollectionViewDelegate {
             cell.state = .loading
             self.dictionaryManager.findNotExistingElenemtInDictionary { time, flag in
                 cell.state = .result(result: time, positionOfElement: flag)
-            
-                
-                //cell.state = .result(result: time, positionOfElement: flag)
-                
-                
-                //.result(result: time, positionOfElement: flag) //( result: time, notFounded: flag)
                 cell.isUserInteractionEnabled = false
             }
         default:
@@ -169,7 +151,7 @@ extension DictionaryController: UICollectionViewDelegateFlowLayout {
         return -1
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-           return 1
+        return 1
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {

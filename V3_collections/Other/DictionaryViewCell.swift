@@ -10,7 +10,6 @@ import SnapKit
 
 class DictionaryViewCell: UICollectionViewCell {
     //MARK: UI elements
-    static let identifier = "DictionaryViewCell"
     var state: State = .initial {
         didSet {
             applyState(state)
@@ -36,15 +35,13 @@ class DictionaryViewCell: UICollectionViewCell {
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        self.layer.borderColor = CGColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)
-//        self.layer.borderWidth = 1
         cellSetupUI()
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         return nil
     }
-//MARK: methods
+    //MARK: methods
     private func cellSetupUI() {
         contentView.addSubview(label)
         label.snp.makeConstraints{ make in
@@ -65,21 +62,15 @@ class DictionaryViewCell: UICollectionViewCell {
         case .result(let result, let flag):
             activityIndicator.stopAnimating()
             label.isHidden = false
-//            label.text = "Search time: \(result) sec\n Result number: \(element)"
+            
             if flag == 0 {
                 label.text = "Search time: \(result) sec\n non existing element: not found"
             } else {
                 label.text = "Search time: \(result) sec\n non existing element: found"
             }
-            
-            // if lelemnt not found
-//        case .resultFoundedOrNot (let result, let flag):
-//            activityIndicator.stopAnimating()
-//            label.isHidden = false
-           
-            }
         }
     }
+}
 
 //MARK: extensions
 extension DictionaryViewCell {
@@ -87,14 +78,10 @@ extension DictionaryViewCell {
         case initial
         case loading
         case result(result: Double, positionOfElement: Int)
-//        case resultFoundedOrNot(result: Double, notFounded: Bool)
     }
     enum Constants {
         enum LabelsTexts {
             static let labelTextColor = UIColor(red: 102/255, green: 178/255, blue: 255/255, alpha: 1)
-        }
-        enum Borders {
-//            static let frameBorderColor = //.green //UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1).cgColor
         }
     }
 }

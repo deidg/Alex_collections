@@ -62,7 +62,6 @@ class DictionaryViewCell: UICollectionViewCell {
         case .result(let result, let flag):
             activityIndicator.stopAnimating()
             label.isHidden = false
-            
             if flag == 0 {
                 label.text = "Search time: \(result) sec\n non existing element: not found"
             } else {

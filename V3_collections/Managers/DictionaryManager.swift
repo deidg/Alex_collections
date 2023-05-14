@@ -72,7 +72,7 @@ class DictionaryManager {
             if nonExistingElement == true {
                 flag += 1
             } else {
-                flag = 0  ///!!!!!!!!!!!
+                flag = 0
             }
     
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100

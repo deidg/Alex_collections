@@ -9,12 +9,21 @@ import UIKit
 
 class DictionaryController: UIViewController {
     //MARK: UI elements
+    let titlesArray: [String] = [
+        "Array",
+        "Dicitonary",
+        "Find the first contact",
+        "Find the first contact",
+        "Find the last contact",
+        "Find the last contact",
+        "Find the non-existing element",
+        "Find the non-existing element"
+    ]
     let dictionaryManager = DictionaryManager()
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(DictionaryViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
-        
         // цвет нижней части
         collectionView.backgroundColor = .white
         return collectionView
@@ -61,16 +70,6 @@ class DictionaryController: UIViewController {
             make.center.equalToSuperview()
         }
     }
-    let titlesArray: [String] = [
-        "Array",
-        "Dicitonary",
-        "Find the first contact",
-        "Find the first contact",
-        "Find the last contact",
-        "Find the last contact",
-        "Find the non-existing element",
-        "Find the non-existing element"
-    ]
 }
 // MARK: extensions - delegate
 extension DictionaryController: UICollectionViewDataSource {

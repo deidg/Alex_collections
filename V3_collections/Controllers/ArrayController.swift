@@ -83,7 +83,7 @@ extension ArrayController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.collectionViewCellIdentifier, for: indexPath) as? ArrayViewCell else { return UICollectionViewCell() }
         let item = taskForFirstCellArray[indexPath.row]
         cell.textToShow = item
-        cell.backgroundColor = .white //Constants.Colors.firstCellBackgroundColor
+        cell.backgroundColor = .white
         cell.state = .initial
         return cell
     }
@@ -189,9 +189,9 @@ extension ArrayController: UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 0 {
-            return CGSize(width: collectionView.bounds.width, height: 105)
+            return CGSize(width: collectionView.bounds.width, height: 105) //Constants.Borders.cgSizeHeight)
         } else {
-            return CGSize(width: (collectionView.bounds.width/2), height: 105)
+            return CGSize(width: (collectionView.bounds.width/2), height: 105) //Constants.Borders.cgSizeHeight)
         }
     }
 }
@@ -205,6 +205,7 @@ extension ArrayController {
         }
         enum Borders {
             static let frameBorderColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1).cgColor
+//            static let cgSizeHeight = 105
         }
         enum Colors {
             static let mainBackgroundColor = UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1)

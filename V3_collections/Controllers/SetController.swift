@@ -84,6 +84,10 @@ class SetController: UIViewController {
         defaultConfiguration()
         addTargets()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.largeTitleDisplayMode = .never
+    }
     //MARK: Items On View
     private func setupUIelements() {
         view.addSubview(textField1)
@@ -157,10 +161,6 @@ class SetController: UIViewController {
     private func defaultConfiguration() {
         view.backgroundColor = .white
         self.navigationItem.title = "Set"
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.largeTitleDisplayMode = .never
     }
     //MARK: targets
     private func addTargets() {

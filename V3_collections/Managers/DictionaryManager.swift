@@ -60,16 +60,24 @@ class DictionaryManager {
         }
     }
     
-    func findNotExistingElenemtInArray(completion: ((Double, Bool) -> Void)?) {
+    func findNotExistingElenemtInArray(completion: ((Double, Int) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
             let start = CFAbsoluteTimeGetCurrent()
+            var flag: Int = 0
             let nonExistingNumber = String((self.contactArr.count)-1)
-            let nonExistingItem = "name\(nonExistingNumber)"
+            let nonExistingItem = "name9999999999" //"name\(nonExistingNumber)"
             let nonExistingElement = self.contactArr.contains { $0.name == nonExistingItem }
+            
+            if nonExistingElement == true {
+                flag += 1
+            } else {
+                flag = 0  ///!!!!!!!!!!!
+            }
+    
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             DispatchQueue.main.async {
-                completion?(result, nonExistingElement )
+                completion?(result, flag )
             }
         }
     }
@@ -103,15 +111,22 @@ class DictionaryManager {
         }
     }
     
-    func findNotExistingElenemtInDictionary(completion: ((Double, Bool) -> Void)?) {
+    func findNotExistingElenemtInDictionary(completion: ((Double, Int) -> Void)?) {
         queue.async { [weak self] in
             guard let self else { return }
             let start = CFAbsoluteTimeGetCurrent()
-            let key = "name99999999"
-            let keyExist = self.contactDictionary[key] != nil
+            var flag: Int = 0
+            let key = "dictionaryName999999999999"
+          
+            if self.contactDictionary.keys.contains(key) {
+                flag = flag + 1
+            } else {
+                flag = 0  ///!!!!!!!!!!!
+            }
+            
             let result = ((CFAbsoluteTimeGetCurrent() - start)*100).rounded() / 100
             DispatchQueue.main.async {
-                completion?(result, keyExist)
+                completion?(result, flag)
             }
         }
     }

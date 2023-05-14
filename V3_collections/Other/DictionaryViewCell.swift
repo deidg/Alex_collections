@@ -62,28 +62,32 @@ class DictionaryViewCell: UICollectionViewCell {
         case .loading:
             activityIndicator.startAnimating()
             label.isHidden = true
-        case .result(let result, let element):
+        case .result(let result, let flag):
             activityIndicator.stopAnimating()
             label.isHidden = false
-            label.text = "Search time: \(result) sec\n Result number: \(element)" // if lelemnt not found
-        case .resultFoundedOrNot (let result, let notFounded):
-            activityIndicator.stopAnimating()
-            label.isHidden = false
-            if notFounded == true {
+//            label.text = "Search time: \(result) sec\n Result number: \(element)"
+            if flag == 0 {
                 label.text = "Search time: \(result) sec\n non existing element: not found"
             } else {
                 label.text = "Search time: \(result) sec\n non existing element: found"
             }
+            
+            // if lelemnt not found
+//        case .resultFoundedOrNot (let result, let flag):
+//            activityIndicator.stopAnimating()
+//            label.isHidden = false
+           
+            }
         }
     }
-}
+
 //MARK: extensions
 extension DictionaryViewCell {
     enum State {
         case initial
         case loading
         case result(result: Double, positionOfElement: Int)
-        case resultFoundedOrNot(result: Double, notFounded: Bool)
+//        case resultFoundedOrNot(result: Double, notFounded: Bool)
     }
     enum Constants {
         enum LabelsTexts {

@@ -143,14 +143,20 @@ extension DictionaryController: UICollectionViewDelegate {
             }
         case 6:
             cell.state = .loading
-            self.dictionaryManager.findNotExistingElenemtInArray { time, element in
-                cell.state = .resultFoundedOrNot( result: time, notFounded: element)
+            self.dictionaryManager.findNotExistingElenemtInArray { time, flag in
+                cell.state = .result(result: time, positionOfElement: flag)
                 cell.isUserInteractionEnabled = false
             }
         case 7:
             cell.state = .loading
-            self.dictionaryManager.findNotExistingElenemtInDictionary { time, keyExist in
-                cell.state = .resultFoundedOrNot( result: time, notFounded: keyExist)
+            self.dictionaryManager.findNotExistingElenemtInDictionary { time, flag in
+                cell.state = .result(result: time, positionOfElement: flag)
+            
+                
+                //cell.state = .result(result: time, positionOfElement: flag)
+                
+                
+                //.result(result: time, positionOfElement: flag) //( result: time, notFounded: flag)
                 cell.isUserInteractionEnabled = false
             }
         default:

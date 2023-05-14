@@ -36,7 +36,7 @@ class DictionaryViewCell: UICollectionViewCell {
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.borderColor = Constants.Borders.frameBorderColor
+//        self.layer.borderColor = CGColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)
 //        self.layer.borderWidth = 1
         cellSetupUI()
     }
@@ -90,7 +90,7 @@ extension DictionaryViewCell {
             static let labelTextColor = UIColor(red: 102/255, green: 178/255, blue: 255/255, alpha: 1)
         }
         enum Borders {
-            static let frameBorderColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1).cgColor
+//            static let frameBorderColor = //.green //UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1).cgColor
         }
     }
 }

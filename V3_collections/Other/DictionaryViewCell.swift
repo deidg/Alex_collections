@@ -37,7 +37,7 @@ class DictionaryViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.layer.borderColor = Constants.Borders.frameBorderColor
-        self.layer.borderWidth = 1
+//        self.layer.borderWidth = 1
         cellSetupUI()
     }
     required init?(coder: NSCoder) {
@@ -55,7 +55,6 @@ class DictionaryViewCell: UICollectionViewCell {
             make.center.equalToSuperview()
         }
     }
-    
     private func applyState(_ state: State) {
         switch state {
         case .initial:

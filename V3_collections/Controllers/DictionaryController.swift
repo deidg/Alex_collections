@@ -24,8 +24,7 @@ class DictionaryController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(DictionaryViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
-        // цвет нижней части
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .green     //.white
         return collectionView
     }()
     var activityIndicator: UIActivityIndicatorView = {
@@ -37,7 +36,6 @@ class DictionaryController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupContraints()
-//                setupElements()
         defaultConfiguration()
 //        setupDelegates()
         
@@ -103,7 +101,7 @@ extension DictionaryController: UICollectionViewDataSource {
         cell.textToShow = item
         if indexPath.row <= 1 {
             cell.backgroundColor = .white
-            cell.layer.borderColor = Constants.Borders.layerBorderColorFirst // return 0/5
+            cell.layer.borderColor = Constants.Borders.layerBorderColorFirst 
         } else {
             cell.backgroundColor = Constants.Borders.layerBorderColorSecond
         }
@@ -161,10 +159,10 @@ extension DictionaryController: UICollectionViewDelegate {
 }
 extension DictionaryController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 0.5
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 0.5
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {

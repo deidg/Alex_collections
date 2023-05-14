@@ -43,7 +43,6 @@ class ArrayController: UIViewController {
         collectionView.register(ArrayViewCell.self, forCellWithReuseIdentifier: Constants.collectionViewCellIdentifier)
         return collectionView
     }()
-    
     //MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -33,12 +33,16 @@ final class MainViewController: UIViewController {
         setupDelegates()
         setupUI()
     }
+    //MARK: delegates
+    private func setupDelegates() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
     //MARK: Items On View
     private func setupViews() {
         view.backgroundColor = .white
         navigationController?.navigationBar.backgroundColor = .white
     }
-    //ЗАЧЕМ?
     private func setupUI() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints{ make in
@@ -52,11 +56,6 @@ final class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .always
-    }
-    //MARK: delegates
-    private func setupDelegates() {
-        tableView.delegate = self
-        tableView.dataSource = self
     }
 }
 // MARK: extensions - UITableView

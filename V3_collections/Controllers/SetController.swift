@@ -146,15 +146,21 @@ class SetController: UIViewController {
         case buttonForMatchCharacters:
             let textFromTF1 = textField1.text ?? ""
             let textFromTF2 = textField2.text ?? ""
-            setManager.findMatching(textField1: textFromTF1, textField2: textFromTF2, answerLabel1: answerLabel1)
+            let result = setManager.findMatching(textField1: textFromTF1, textField2: textFromTF2) //, answerLabel1: answerLabel1)
+            answerLabel1.text = result
+            answerLabel1.isHidden = false
         case buttonForNotMatchCharacters:
             let textFromTF1 = textField1.text ?? ""
             let textFromTF2 = textField2.text ?? ""
-            setManager.findDifference(textFromTF1: textFromTF1, textFromTF2: textFromTF2, answerLabel2: answerLabel2)
+            let result = setManager.findDifference(textFromTF1: textFromTF1, textFromTF2: textFromTF2) //, answerLabel2: answerLabel2)
+            answerLabel2.text = result
+            answerLabel2.isHidden = false
         case buttonForUniqueCharacters:
             let textFromTF1 = textField1.text ?? ""
             let textFromTF2 = textField2.text ?? ""
-            setManager.findUniqueChars(textFromTF1: textFromTF1, textFromTF2: textFromTF2, answerLabel3: answerLabel3)
+            let result = setManager.findUniqueChars(textFromTF1: textFromTF1, textFromTF2: textFromTF2) //, answerLabel3: answerLabel3)
+            answerLabel3.text = result
+            answerLabel3.isHidden = false
         default:
             break
         }

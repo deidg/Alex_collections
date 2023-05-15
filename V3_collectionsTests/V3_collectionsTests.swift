@@ -14,58 +14,65 @@ final class V3collectionsTests: XCTestCase {
     var dictionaryManager: DictionaryManager!
     
     override func setUpWithError() throws {
-         try super.setUpWithError()
-         arrayManager = ArrayManager()
-         setManager = SetManager()
-         dictionaryManager = DictionaryManager()
+        try super.setUpWithError()
+        arrayManager = ArrayManager()
+        setManager = SetManager()
+        dictionaryManager = DictionaryManager()
     }
-
+    
     override func tearDownWithError() throws {
         arrayManager = nil
         setManager = nil
         dictionaryManager = nil
         try super.tearDownWithError()
     }
-
-//    func testExample() throws {
- 
-        // Zxcdfvbn
-        //Asdfcvgh
+    //MARK: ArrayController
+    //        - создалось ли первое поле, какой у него текст
+    //        - создалось ли конкретное поле глубже...
+    
+    //MARK: SetController
+    func testSetMatchChars(intersectionResult: String) throws {
+        let text1 = "Temp"   // correct answer - "e", "m", "p"
+        let text2 = "amper"
+        let charSet1 = Set(text1)
+        let charSet2 = Set(text2)
+        let intersectionResultTest = String(charSet1.intersection(charSet2))
         
-        //dfcv
-        //Zbgaxnhs
-        //zxnb
+        let setManagerResult = setManager.findMatching(textField1: text1, textField2: text2)
         
-
-//        func testSetMatchChars() {
-//            let text1 = "Hnkj" //"Zxcdfvbn"
-//            let text2 = "World" //"Asdfcvgh"
-//            let answerLabel = UILabel()
-//
-//            let charSet1 = Set(text1)
-//            let charSet2 = Set(text2)
-//            let intersectionResultTest = String(charSet1.intersection(charSet2))
-//
-//            setManager.findMatching(textField1: text1, textField2: text2, answerLabel1: answerLabel)
-////            XCTAssert(true)
-//            XCTAssertEqual(EquatableintersectionResultTest, EquatableintersectionResult)
-//        }
-        
-        
-//        func testSetNotMatchChars
-//
-//        func testSetUnqiaueChars
-        
-        
-        
-        
-//    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        XCTAssertEqual(intersectionResultTest, setManagerResult)
     }
-
+    func testSetNotMatchChars(symmetricDifferenceResult: String) throws {
+        let text1 = "Temp"   // correct answer - "T", "a", "r""
+        let text2 = "amper"
+        let charSet1 = Set(text1)
+        let charSet2 = Set(text2)
+        let intersectionResultTest = String(charSet1.symmetricDifference(charSet2))
+        
+        let setManagerResult = setManager.findDifference(textFromTF1: text1, textFromTF2: text2)
+        
+        XCTAssertEqual(intersectionResultTest, setManagerResult)
+    }
+    func testSetUnqiaueChars(symmetricDifferenceResult: String) {
+        let text1 = "Temp"   // correct answer - "T"
+        let text2 = "amper"
+        let charSet1 = Set(text1)
+        let charSet2 = Set(text2)
+        let intersectionResult = charSet1.intersection(charSet2)
+        let unitedSet = intersectionResult.union(charSet2)
+        let uniqueCharSet = String(charSet1.subtracting(unitedSet))
+        
+        let setManagerResult = setManager.findUniqueChars(textFromTF1: text1, textFromTF2: text2)
+        
+        XCTAssertEqual(uniqueCharSet, setManagerResult)
+    }
+    
+    //MARK: Dictionary Controller
+//    - создался ли архив.
+//    - поя вилась ли нужная ячейка
+    
+    
+    
 }
+
+

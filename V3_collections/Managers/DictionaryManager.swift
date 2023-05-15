@@ -65,7 +65,7 @@ class DictionaryManager {
             guard let self else { return }
             let start = CFAbsoluteTimeGetCurrent()
             var flag: Int = 0
-            let nonExistingNumber = String((self.contactArr.count)-1)
+//            let nonExistingNumber = String((self.contactArr.count)-1)
             let nonExistingItem = "name9999999999" //"name\(nonExistingNumber)"
             let nonExistingElement = self.contactArr.contains { $0.name == nonExistingItem }
             

@@ -39,3 +39,10 @@ class SetManager {
     }
     
 }
+
+//
+//insertAtBeginingOfArray1by1
+//insertInTheMiddleOfArray1by1
+//insertInTheMiddleOfArrayAtOnce
+//insertInTheEndOfArray1by1
+//insertInTheEndOfArrayAtOnce

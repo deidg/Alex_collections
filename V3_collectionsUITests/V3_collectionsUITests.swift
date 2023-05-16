@@ -11,7 +11,6 @@ final class V3collectionsUITests: XCTestCase {
     
     override func setUpWithError() throws {
     }
-    
     override func tearDownWithError() throws {
     }
     
@@ -68,53 +67,46 @@ final class V3collectionsUITests: XCTestCase {
         returnButton.tap()
     }
     
+    func testDictionaryController() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        let collectionViewsQuery = app.collectionViews
+        
+        let dictionaryControllerCell = app.tables/*@START_MENU_TOKEN@*/.staticTexts["Dictionary"]/*[[".cells.staticTexts[\"Dictionary\"]",".staticTexts[\"Dictionary\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        XCTAssertTrue(dictionaryControllerCell.exists)
+        dictionaryControllerCell.tap()
+        
+        sleep(10)
+        
+        let collectionViewsQuery2 = app.collectionViews
+        let arrayLabel = collectionViewsQuery2/*@START_MENU_TOKEN@*/.staticTexts["Array"]/*[[".cells.staticTexts[\"Array\"]",".staticTexts[\"Array\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        XCTAssertTrue(arrayLabel.exists)
+        let dictionaryLabel = collectionViewsQuery.staticTexts["Dictionary"]
+        XCTAssertTrue(dictionaryLabel.exists)
+        let find1stContactArray = collectionViewsQuery2.children(matching: .cell).element(boundBy: 2).staticTexts["Find the first contact"]
+        XCTAssertTrue(find1stContactArray.exists)
+        find1stContactArray.tap()
+        let find1stContactDictionary = collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["Find the first contact"]/*[[".cells.staticTexts[\"Find the first contact\"]",".staticTexts[\"Find the first contact\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        XCTAssertTrue(find1stContactDictionary.exists)
+        find1stContactDictionary.tap()
+        let findLastContactInArray = collectionViewsQuery2.children(matching: .cell).element(boundBy: 4).staticTexts["Find the last contact"]
+        XCTAssertTrue(findLastContactInArray.exists)
+        findLastContactInArray.tap()
+        let findLastContactInDictionary = collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["Find the last contact"]/*[[".cells.staticTexts[\"Find the last contact\"]",".staticTexts[\"Find the last contact\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        XCTAssertTrue(findLastContactInDictionary.exists)
+        findLastContactInDictionary.tap()
+        let findNonExistingElementInArray = collectionViewsQuery2.children(matching: .cell).element(boundBy: 6).staticTexts["Find the non-existing element"]
+        XCTAssertTrue(findNonExistingElementInArray.exists)
+        findNonExistingElementInArray.tap()
+        let findNonExistingElementInDictionary = collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["Find the non-existing element"]/*[[".cells.staticTexts[\"Find the non-existing element\"]",".staticTexts[\"Find the non-existing element\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        XCTAssertTrue(findNonExistingElementInDictionary.exists)
+        findNonExistingElementInDictionary.tap()
+        
+        let returnButton = app.navigationBars["Dictionary"].buttons["Collections"]
+        XCTAssertTrue(returnButton.exists)
+        returnButton.tap()
+    }
     
-    
-    
-    
-    
-    //    func testLaunchPerformance() throws {
-    //        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-    //            // This measures how long it takes to launch your application.
-    //            measure(metrics: [XCTApplicationLaunchMetric()]) {
-    //                XCUIApplication().launch()
-    //            }
-    //        }
-    //    }
 }
-
-
-
-//        let tablesQuery = app.tables
-////        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Set"]/*[[".cells.staticTexts[\"Set\"]",".staticTexts[\"Set\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-////        app.navigationBars["Set"].buttons["Collections"].tap()
-//        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Array"]/*[[".cells.staticTexts[\"Array\"]",".staticTexts[\"Array\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//
-//        let collectionViewsQuery = app.collectionViews
-//        collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["Create array for 10 mln elements: "]/*[[".cells.staticTexts[\"Create array for 10 mln elements: \"]",".staticTexts[\"Create array for 10 mln elements: \"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["Insert 1000 elements at the beginning / of the array one-by-one"]/*[[".cells.staticTexts[\"Insert 1000 elements at the beginning \/ of the array one-by-one\"]",".staticTexts[\"Insert 1000 elements at the beginning \/ of the array one-by-one\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["Insert 1000 elements at the beginning / of the array at once"]/*[[".cells.staticTexts[\"Insert 1000 elements at the beginning \/ of the array at once\"]",".staticTexts[\"Insert 1000 elements at the beginning \/ of the array at once\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["Insert 1000 elements in the middle of / the array one-by-one"]/*[[".cells.staticTexts[\"Insert 1000 elements in the middle of \/ the array one-by-one\"]",".staticTexts[\"Insert 1000 elements in the middle of \/ the array one-by-one\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["Insert 1000 elements in the middle of / the array all at once"]/*[[".cells.staticTexts[\"Insert 1000 elements in the middle of \/ the array all at once\"]",".staticTexts[\"Insert 1000 elements in the middle of \/ the array all at once\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        app.navigationBars["Array"].buttons["Collections"].tap()
-
-
-//=========================================
-//        let arrayControllerCell = app.tables/*@START_MENU_TOKEN@*/.staticTexts["Array"]/*[[".cells.staticTexts[\"Array\"]",".staticTexts[\"Array\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-//        XCTAssertTrue(arrayControllerCell.exists)
-//
-//        arrayControllerCell.tap()
-//
-//        let collectionViewsQuery = app.collectionViews
-//
-//        let cell10mlnForElementsArray = collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["Create array for 10 mln elements: "]/*[[".cells.staticTexts[\"Create array for 10 mln elements: \"]",".staticTexts[\"Create array for 10 mln elements: \"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-//        XCTAssertTrue(cell10mlnForElementsArray.exists)
-//
-//        cell10mlnForElementsArray.tap()
-//
-
-//        let insertAtBeginingOfArray1by1 = collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["Insert 1000 elements at the beginning / of the array one-by-one"]/*[[".cells.staticTexts[\"Insert 1000 elements at the beginning \/ of the array one-by-one\"]",".staticTexts[\"Insert 1000 elements at the beginning \/ of the array one-by-one\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-//        XCTAssertTrue(insertAtBeginingOfArray1by1.exists)
-//        insertAtBeginingOfArray1by1.tap()
-
 

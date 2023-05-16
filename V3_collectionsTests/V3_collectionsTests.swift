@@ -26,10 +26,7 @@ final class V3collectionsTests: XCTestCase {
         dictionaryManager = nil
         try super.tearDownWithError()
     }
-    //MARK: ArrayController
-    //        - создалось ли первое поле, какой у него текст
-    //        - создалось ли конкретное поле глубже...
-    
+   
     //MARK: SetController
     func testSetMatchChars(intersectionResult: String) throws {
         let text1 = "Temp"   // correct answer - "e", "m", "p"
@@ -66,13 +63,6 @@ final class V3collectionsTests: XCTestCase {
         
         XCTAssertEqual(uniqueCharSet, setManagerResult)
     }
-    
-    //MARK: Dictionary Controller
-//    - создался ли архив.
-//    - поя вилась ли нужная ячейка
-    
-    
-    
 }
 
 

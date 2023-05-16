@@ -11,7 +11,7 @@ class DictionaryController: UIViewController {
     //MARK: UI elements
     let titlesArray: [String] = [
         "Array",
-        "Dicitonary",
+        "Dictionary",
         "Find the first contact",
         "Find the first contact",
         "Find the last contact",

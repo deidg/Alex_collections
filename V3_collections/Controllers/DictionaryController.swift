@@ -24,7 +24,6 @@ class DictionaryController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(DictionaryViewCell.self, forCellWithReuseIdentifier: "DictionaryViewCell")
-        collectionView.backgroundColor = .gray
         return collectionView
     }()
     var activityIndicator: UIActivityIndicatorView = {
